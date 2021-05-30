@@ -3,7 +3,7 @@ package domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "facturas")
+@Table(name = "lineas")
 public class Linea {
 
     @Id
@@ -38,6 +38,5 @@ public class Linea {
         this.precioUnitario = precioUnitario;
         this.subTotal = subTotal;
     }
-    
-    
+
 }

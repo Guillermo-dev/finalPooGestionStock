@@ -32,11 +32,11 @@ public class Proveedor {
 
     @Column(name = "email")
     private String email;
-    
-    @OneToMany(mappedBy="proveedores",cascade= CascadeType.ALL)
+
+    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL)
     private List<Articulo> articulos;
-    
-    @OneToMany(mappedBy="proveedores",cascade= CascadeType.ALL)
+
+    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL)
     private List<Factura> facturas;
 
     public Proveedor() {

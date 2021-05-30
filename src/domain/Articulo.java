@@ -34,8 +34,8 @@ public class Articulo {
 
     @Column(name = "stock_minimo")
     private int stockMinimo;
-    
-    @OneToMany(mappedBy="proveedores",cascade= CascadeType.ALL)
+
+    @OneToMany(mappedBy = "articulo", cascade = CascadeType.ALL)
     private List<Linea> lineas;
 
     public Articulo() {
@@ -50,5 +50,5 @@ public class Articulo {
         this.stockActual = stockActual;
         this.stockMinimo = stockMinimo;
     }
-    
+
 }

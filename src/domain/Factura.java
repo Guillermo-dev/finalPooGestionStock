@@ -12,11 +12,11 @@ public class Factura {
     @Column(name = "id_factura")
     private int id;
 
-    @ManyToOne()
+    @ManyToOne(optional = true)
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    @ManyToOne()
+    @ManyToOne(optional = true)
     @JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;
 
@@ -32,7 +32,7 @@ public class Factura {
     @Column(name = "total")
     private float total;
 
-    @OneToMany(mappedBy = "facturas", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL)
     private List<Linea> lineas;
 
     public Factura() {
@@ -54,6 +54,5 @@ public class Factura {
         this.total = total;
         this.lineas = lineas;
     }
-    
-    
+
 }

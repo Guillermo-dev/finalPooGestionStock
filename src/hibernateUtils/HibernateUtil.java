@@ -5,8 +5,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-
 public class HibernateUtil {
+
     public static SessionFactory newSessionFactory() {
         Configuration configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");
