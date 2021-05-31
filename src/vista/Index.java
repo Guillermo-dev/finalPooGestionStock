@@ -1,4 +1,4 @@
-package ui;
+package vista;
 
 public class Index extends javax.swing.JFrame {
 
@@ -26,6 +26,10 @@ public class Index extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //TODAS LAS VARIABLES (BOTONES INPUTTEXT, ETC 
+    // EN ACCESO: PUBLIC
+    
+    
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {

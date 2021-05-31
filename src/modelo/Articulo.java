@@ -1,4 +1,4 @@
-package domain;
+package modelo;
 
 import java.util.List;
 import javax.persistence.*;
