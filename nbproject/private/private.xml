@@ -6,9 +6,10 @@
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/domain/Rubro.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/domain/Factura.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/domain/Articulo.java</file>
-            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/hibernateUtils/HibernateUtil.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/services/HibernateUtil.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/gestiondestock/GestionDeStock.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/domain/Linea.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/ui/Index.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/domain/Proveedor.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/domain/Cliente.java</file>
         </group>
