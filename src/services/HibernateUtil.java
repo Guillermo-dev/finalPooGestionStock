@@ -1,4 +1,4 @@
-package hibernateUtils;
+package services;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
