@@ -44,4 +44,26 @@ public class Cliente {
         this.email = email;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+    
+    
+
 }

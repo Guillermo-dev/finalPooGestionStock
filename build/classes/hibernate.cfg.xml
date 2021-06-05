@@ -47,11 +47,11 @@ Contributor(s):
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">newpassword</property>
         <property name="hibernate.c3p0.timeout">0</property>
-        <mapping class="domain.Articulo"/>
-        <mapping class="domain.Cliente"/>
-        <mapping class="domain.Factura"/>
-        <mapping class="domain.Linea"/>
-        <mapping class="domain.Proveedor"/>
-        <mapping class="domain.Rubro"/>
+        <mapping class="modelo.Articulo"/>
+        <mapping class="modelo.Cliente"/>
+        <mapping class="modelo.Factura"/>
+        <mapping class="modelo.Linea"/>
+        <mapping class="modelo.Proveedor"/>
+        <mapping class="modelo.Rubro"/>
     </session-factory>
 </hibernate-configuration>

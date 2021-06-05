@@ -1,5 +1,6 @@
 package modelo.services;
 
+import java.util.ArrayList;
 import modelo.Cliente;
 import java.util.List;
 import org.hibernate.Query;
@@ -18,17 +19,31 @@ public class HibernateUtil {
         SessionFactory SessionFactory = configuration.buildSessionFactory(serviceRegistry);
         return SessionFactory;
     }
-    
-        public List<Cliente> getAllClientes () {
+
+    public static ArrayList<Cliente> getAllClientes() {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
         session.beginTransaction();
-        Query query = session.createQuery("FROM clientes");
+        Query query = session.createQuery("FROM Cliente");
         List<Cliente> clientes = (List<Cliente>) query.list();
 
         session.close();
         sessionFactory.close();
-        return clientes;
+        return (ArrayList<Cliente>) clientes;
+    }
+    
+    public static void deleteCliente(int idCliente){
+        SessionFactory sessionFactory = newSessionFactory();
+        Session session = sessionFactory.openSession();
+        
+        Cliente cliente = (Cliente) session.get(Cliente.class, idCliente);
+
+        session.beginTransaction();
+        session.delete(cliente);
+        session.getTransaction().commit();
+
+        session.close();
+        sessionFactory.close();
     }
 }
