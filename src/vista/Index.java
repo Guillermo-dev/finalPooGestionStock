@@ -176,6 +176,7 @@ public class Index extends javax.swing.JPanel {
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
 
+
         setPreferredSize(new java.awt.Dimension(1000, 800));
 
         Botonera.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -1524,6 +1525,7 @@ public class Index extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private javax.swing.JPanel Art;
     private javax.swing.JPanel Botonera;
     private javax.swing.JPanel Clie;

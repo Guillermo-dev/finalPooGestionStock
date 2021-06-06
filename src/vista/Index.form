@@ -26,6 +26,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="Botonera" max="32767" attributes="0"/>
                   <Component id="Ventanas" max="32767" attributes="0"/>
+
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -152,7 +153,6 @@
       <Properties>
         <Property name="tabPlacement" type="int" value="3"/>
       </Properties>
-
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="Art">
