@@ -5,8 +5,8 @@
         <group>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/vista/Index.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/Controlador.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/ClienteControlador.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/modelo/services/HibernateUtil.java</file>
-            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/gestiondestock/GestionDeStock.java</file>
         </group>
     </open-files>
 </project-private>
