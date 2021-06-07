@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import vista.Index;
 
@@ -13,23 +12,29 @@ public class Controlador implements ActionListener {
     private Index view;
 
     public Controlador(Index view /*Modelo model*/) {
-        this.view = view;
-        //Modelo
-
+        this.view = view;    
+        
         //Se declaran todos los botones o posibles actions de la misma forma
-        ListSelectionModel model = view.TableClientes.getSelectionModel();
+        
+        
+        // LISTENER DE ITEM SELECCIONADO EN TALBA DE CLIENTES
+        ListSelectionModel model = view.cliTabla.getSelectionModel();
         model.addListSelectionListener((ListSelectionEvent lse) -> {
-            TableModel clientesModel = view.TableClientes.getModel();
-            String idSelected = clientesModel.getValueAt(this.view.TableClientes.getSelectedRow(), 0).toString();
-            ClienteControlador.seleccionarCliente(view, idSelected);
+            TableModel clientesModel = view.cliTabla.getModel();
+            try{
+               String cliIdSelected = clientesModel.getValueAt(this.view.cliTabla.getSelectedRow(), 0).toString();
+               String cliApellidoSelected = clientesModel.getValueAt(this.view.cliTabla.getSelectedRow(), 1).toString();
+               String cliNombreSelected = clientesModel.getValueAt(this.view.cliTabla.getSelectedRow(), 2).toString();
+               String cliDniSelected = clientesModel.getValueAt(this.view.cliTabla.getSelectedRow(), 3).toString();
+               String cliDireccionSelected = clientesModel.getValueAt(this.view.cliTabla.getSelectedRow(), 4).toString();
+               String cliTelefonoSelected = clientesModel.getValueAt(this.view.cliTabla.getSelectedRow(), 5).toString();
+               String cliEmailSelected = clientesModel.getValueAt(this.view.cliTabla.getSelectedRow(), 6).toString();
+            ClienteControlador.seleccionarCliente(view, cliIdSelected, cliApellidoSelected, cliNombreSelected, cliDniSelected, cliDireccionSelected, cliTelefonoSelected, cliEmailSelected); 
+            }catch(Exception e){             
+            }         
         });
-
-        this.view.listaClientes.addListSelectionListener((ListSelectionEvent lse) -> {
-            ClienteControlador.seleccionarCliente(view, this.view.listaClientes.getSelectedValue());
-        });
-
-        this.view.boton1.addActionListener(this);
-        this.view.botonEliminarCliente.addActionListener(this);
+        
+        this.view.clienteBotonEliminar.addActionListener(this);
     }
 
     public void iniciar() {
@@ -38,19 +43,14 @@ public class Controlador implements ActionListener {
         view.setVisible(true);
 
         //Tabla
-        DefaultTableModel clientesModel = new DefaultTableModel();
-        ClienteControlador.cargarTabla(view, clientesModel);
+        ClienteControlador.cargarTabla(view);
         // Lista
-        ClienteControlador.cargarLista(view);
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == view.boton1) {
-            view.clienteIdText.setText(view.listaClientes.getSelectedValue());
-        }
-        if (e.getSource() == view.botonEliminarCliente) {
+        if (e.getSource() == view.clienteBotonEliminar) {
             ClienteControlador.eliminarCliente(view);
         }
     }

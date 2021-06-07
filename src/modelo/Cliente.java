@@ -63,6 +63,14 @@ public class Cliente {
     public String getDireccion() {
         return direccion;
     }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
     
     
 
