@@ -9,8 +9,10 @@ public class GestionDeStock {
         // PATRON DE DISEÑO MVC (MODELO, VISTA, CONTROLADOR)
         // Modelo model = new Modelo(); CREO que no es necesario
        Index view = new Index();
+       
        Controlador ctrl = new Controlador(view);
        ctrl.iniciar();
+       view.setVisible(true);
 
     }
 

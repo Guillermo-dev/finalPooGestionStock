@@ -21,7 +21,6 @@ public class Controlador implements ActionListener, ListSelectionListener {
     public void iniciar() {
         view.setTitle("Gestion de stock");
         view.setLocationRelativeTo(null);
-        view.setVisible(true);
 
         //Tabla
         ClienteControlador.cargarTabla(view);
