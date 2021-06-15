@@ -2,38 +2,19 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.table.TableModel;
+import javax.swing.event.ListSelectionListener;
 import vista.Index;
 
-public class Controlador implements ActionListener {
+public class Controlador implements ActionListener, ListSelectionListener {
 
     private Index view;
 
     public Controlador(Index view /*Modelo model*/) {
-        this.view = view;    
+        this.view = view;
+        // modelo??
         
-        //Se declaran todos los botones o posibles actions de la misma forma
-        
-        
-        // LISTENER DE ITEM SELECCIONADO EN TALBA DE CLIENTES
-        ListSelectionModel model = view.cliTabla.getSelectionModel();
-        model.addListSelectionListener((ListSelectionEvent lse) -> {
-            TableModel clientesModel = view.cliTabla.getModel();
-            try{
-               String cliIdSelected = clientesModel.getValueAt(this.view.cliTabla.getSelectedRow(), 0).toString();
-               String cliApellidoSelected = clientesModel.getValueAt(this.view.cliTabla.getSelectedRow(), 1).toString();
-               String cliNombreSelected = clientesModel.getValueAt(this.view.cliTabla.getSelectedRow(), 2).toString();
-               String cliDniSelected = clientesModel.getValueAt(this.view.cliTabla.getSelectedRow(), 3).toString();
-               String cliDireccionSelected = clientesModel.getValueAt(this.view.cliTabla.getSelectedRow(), 4).toString();
-               String cliTelefonoSelected = clientesModel.getValueAt(this.view.cliTabla.getSelectedRow(), 5).toString();
-               String cliEmailSelected = clientesModel.getValueAt(this.view.cliTabla.getSelectedRow(), 6).toString();
-            ClienteControlador.seleccionarCliente(view, cliIdSelected, cliApellidoSelected, cliNombreSelected, cliDniSelected, cliDireccionSelected, cliTelefonoSelected, cliEmailSelected); 
-            }catch(Exception e){             
-            }         
-        });
-        
+        this.view.cliTabla.getSelectionModel().addListSelectionListener(this);
         this.view.clienteBotonEliminar.addActionListener(this);
     }
 
@@ -44,14 +25,31 @@ public class Controlador implements ActionListener {
 
         //Tabla
         ClienteControlador.cargarTabla(view);
-        // Lista
-
     }
 
+    
+    //BOTONES
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == view.clienteBotonEliminar) {
+    public void actionPerformed(ActionEvent lse) {
+        if (lse.getSource() == view.clienteBotonEliminar) {
             ClienteControlador.eliminarCliente(view);
+        }
+    }
+
+    //TABLAS
+    @Override
+    public void valueChanged(ListSelectionEvent lse) {
+        if (lse.getSource() == view.cliTabla.getSelectionModel()) {
+            ClienteControlador.seleccionarCliente(
+                    view,
+                    view.cliTabla.getValueAt(this.view.cliTabla.getSelectedRow(), 0).toString(),
+                    view.cliTabla.getValueAt(this.view.cliTabla.getSelectedRow(), 1).toString(),
+                    view.cliTabla.getValueAt(this.view.cliTabla.getSelectedRow(), 2).toString(),
+                    view.cliTabla.getValueAt(this.view.cliTabla.getSelectedRow(), 3).toString(),
+                    view.cliTabla.getValueAt(this.view.cliTabla.getSelectedRow(), 4).toString(),
+                    view.cliTabla.getValueAt(this.view.cliTabla.getSelectedRow(), 5).toString(),
+                    view.cliTabla.getValueAt(this.view.cliTabla.getSelectedRow(), 6).toString()
+            );
         }
     }
 
