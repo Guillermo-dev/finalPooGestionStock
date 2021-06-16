@@ -14,8 +14,8 @@ public class Controlador implements ActionListener, ListSelectionListener {
         this.view = view;
         // modelo??
         
-        this.view.cliTabla.getSelectionModel().addListSelectionListener(this);
-        this.view.clienteBotonEliminar.addActionListener(this);
+        this.view.clieTabla.getSelectionModel().addListSelectionListener(this);
+        this.view.clieBtnEliminar.addActionListener(this);
     }
 
     public void iniciar() {
@@ -30,7 +30,7 @@ public class Controlador implements ActionListener, ListSelectionListener {
     //BOTONES
     @Override
     public void actionPerformed(ActionEvent lse) {
-        if (lse.getSource() == view.clienteBotonEliminar) {
+        if (lse.getSource() == view.clieBtnEliminar) {
             ClienteControlador.eliminarCliente(view);
         }
     }
@@ -38,16 +38,16 @@ public class Controlador implements ActionListener, ListSelectionListener {
     //TABLAS
     @Override
     public void valueChanged(ListSelectionEvent lse) {
-        if (lse.getSource() == view.cliTabla.getSelectionModel()) {
+        if (lse.getSource() == view.clieTabla.getSelectionModel()) {
             ClienteControlador.seleccionarCliente(
                     view,
-                    view.cliTabla.getValueAt(this.view.cliTabla.getSelectedRow(), 0).toString(),
-                    view.cliTabla.getValueAt(this.view.cliTabla.getSelectedRow(), 1).toString(),
-                    view.cliTabla.getValueAt(this.view.cliTabla.getSelectedRow(), 2).toString(),
-                    view.cliTabla.getValueAt(this.view.cliTabla.getSelectedRow(), 3).toString(),
-                    view.cliTabla.getValueAt(this.view.cliTabla.getSelectedRow(), 4).toString(),
-                    view.cliTabla.getValueAt(this.view.cliTabla.getSelectedRow(), 5).toString(),
-                    view.cliTabla.getValueAt(this.view.cliTabla.getSelectedRow(), 6).toString()
+                    view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 0).toString(),
+                    view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 1).toString(),
+                    view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 2).toString(),
+                    view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 3).toString(),
+                    view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 4).toString(),
+                    view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 5).toString(),
+                    view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 6).toString()
             );
         }
     }

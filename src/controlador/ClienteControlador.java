@@ -10,7 +10,7 @@ public class ClienteControlador {
 
     public static void cargarTabla(Index view) {
         DefaultTableModel clientesModel = new DefaultTableModel();
-        view.cliTabla.setModel(clientesModel);
+        view.clieTabla.setModel(clientesModel);
         ArrayList<Cliente> clientes = HibernateUtil.getAllClientes();
 
         clientesModel.addColumn("Id");
@@ -36,13 +36,13 @@ public class ClienteControlador {
 
     public static void seleccionarCliente(Index view, String id, String apellido, String nombre, String dni, String direccion, String telefono, String email) {
         try {
-            view.cliIdText.setText(id);
-            view.cliApellidoText.setText(apellido);
-            view.cliNombreText.setText(nombre);
-            view.cliDniText.setText(dni);
-            view.cliDireccionText.setText(direccion);
-            view.cliTelefonoText.setText(telefono);
-            view.cliEmailText.setText(email);
+            view.clieInputTextId.setText(id);
+            view.clieInputTextApellido.setText(apellido);
+            view.clieInputTextNombre.setText(nombre);
+            view.clieInputTextDni.setText(dni);
+            view.clieInputTextDireccion.setText(direccion);
+            view.clieInputTextTelefono.setText(telefono);
+            view.clieInputTextEmail.setText(email);
         } catch (Exception e) {
 
         }
@@ -50,16 +50,16 @@ public class ClienteControlador {
 
     public static void eliminarCliente(Index view) {
         try {
-            HibernateUtil.deleteCliente(Integer.parseInt(view.cliIdText.getText()));
-            DefaultTableModel clientesModel = (DefaultTableModel) view.cliTabla.getModel();
-            clientesModel.removeRow(view.cliTabla.getSelectedRow());
-            view.cliApellidoText.setText("");
-            view.cliNombreText.setText("");
-            view.cliDniText.setText("");
-            view.cliDireccionText.setText("");
-            view.cliTelefonoText.setText("");
-            view.cliEmailText.setText("");
-            view.cliIdText.setText("");
+            HibernateUtil.deleteCliente(Integer.parseInt(view.clieInputTextId.getText()));
+            DefaultTableModel clientesModel = (DefaultTableModel) view.clieTabla.getModel();
+            clientesModel.removeRow(view.clieTabla.getSelectedRow());
+            view.clieInputTextApellido.setText("");
+            view.clieInputTextNombre.setText("");
+            view.clieInputTextDni.setText("");
+            view.clieInputTextDireccion.setText("");
+            view.clieInputTextTelefono.setText("");
+            view.clieInputTextEmail.setText("");
+            view.clieInputTextId.setText("");
             System.out.println("Eliminado uscces");
         } catch (Exception e) {
             System.out.println("Error: " + e);
