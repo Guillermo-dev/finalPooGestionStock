@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import vista.Index;
-import modelo.services.HibernateUtil;
+import modelo.services.ClienteConsultas;
 
 public class ClienteControlador {
 
-    public static void cargarTabla(Index view) {
+    public static void cargarTabla(Index view, ClienteConsultas services) {
         DefaultTableModel clientesModel = new DefaultTableModel();
         view.clieTabla.setModel(clientesModel);
-        ArrayList<Cliente> clientes = HibernateUtil.getAllClientes();
+        ArrayList<Cliente> clientes = services.getAllClientes();
 
         clientesModel.addColumn("Id");
         clientesModel.addColumn("Apellido");
@@ -48,9 +48,9 @@ public class ClienteControlador {
         }
     }
 
-    public static void eliminarCliente(Index view) {
+    public static void eliminarCliente(Index view, ClienteConsultas services) {
         try {
-            HibernateUtil.deleteCliente(Integer.parseInt(view.clieInputTextId.getText()));
+            services.deleteCliente(Integer.parseInt(view.clieInputTextId.getText()));
             DefaultTableModel clientesModel = (DefaultTableModel) view.clieTabla.getModel();
             clientesModel.removeRow(view.clieTabla.getSelectedRow());
             view.clieInputTextApellido.setText("");

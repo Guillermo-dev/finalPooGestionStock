@@ -4,16 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import modelo.services.ClienteConsultas;
 import vista.Index;
 
 public class Controlador implements ActionListener, ListSelectionListener {
 
-    private Index view;
+    private final Index view;
+    private final ClienteConsultas domConsultasClie;
 
-    public Controlador(Index view /*Modelo model*/) {
+    public Controlador(Index view, ClienteConsultas domConsultasClie) {
         this.view = view;
-        // modelo??
-        
+        this.domConsultasClie = domConsultasClie;
+
         this.view.clieTabla.getSelectionModel().addListSelectionListener(this);
         this.view.clieBtnEliminar.addActionListener(this);
     }
@@ -22,16 +24,15 @@ public class Controlador implements ActionListener, ListSelectionListener {
         view.setTitle("Gestion de stock");
         view.setLocationRelativeTo(null);
 
-        //Tabla
-        ClienteControlador.cargarTabla(view);
+        //iniciar tabla
+        ClienteControlador.cargarTabla(view, domConsultasClie);
     }
 
-    
     //BOTONES
     @Override
     public void actionPerformed(ActionEvent lse) {
         if (lse.getSource() == view.clieBtnEliminar) {
-            ClienteControlador.eliminarCliente(view);
+            ClienteControlador.eliminarCliente(view, domConsultasClie);
         }
     }
 
