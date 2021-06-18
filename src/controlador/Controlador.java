@@ -19,11 +19,14 @@ public class Controlador implements ActionListener, ListSelectionListener {
         this.domConsultasClie = domConsultasClie;
         this.facturasDetalles = facturasDetalles;
 
-        //CLIENTES
+        //PROVEEDORES
+        this.view.provDropdownRazonSocial.addActionListener(this);
+        
+        // CLIENTES
         this.view.clieTabla.getSelectionModel().addListSelectionListener(this);
         this.view.clieBtnEliminar.addActionListener(this);
 
-        //FACTURAS
+        // FACTURAS
         this.view.factBtnVerMas.addActionListener(this);
     }
 
@@ -31,25 +34,36 @@ public class Controlador implements ActionListener, ListSelectionListener {
         view.setTitle("Gestion de stock");
         view.setLocationRelativeTo(null);
 
-        //iniciar tabla
+        // iniciar tabla
         ClienteControlador.cargarTabla(view, domConsultasClie);
+        
+        // Valores de DropDown
+        ProveedorControlador.setDropdownOptions(view);
     }
 
-    //BOTONES
+    // BOTONES
     @Override
     public void actionPerformed(ActionEvent lse) {
+        // Proveedores
+        if(lse.getSource() == view.provDropdownRazonSocial) {
+            System.out.println(view.provDropdownRazonSocial.getSelectedItem());
+        }
+        
+        // Clientes
         if (lse.getSource() == view.clieBtnEliminar) {
             ClienteControlador.eliminarCliente(view, domConsultasClie);
         }
 
+        // Facturas
         if (lse.getSource() == view.factBtnVerMas) {
             FacturaControlador.open(facturasDetalles);
         }
     }
 
-    //TABLAS
+    // TABLAS
     @Override
     public void valueChanged(ListSelectionEvent lse) {
+        // Clientes
         if (lse.getSource() == view.clieTabla.getSelectionModel()) {
             try {
                 // Limitar una sola seleccion
