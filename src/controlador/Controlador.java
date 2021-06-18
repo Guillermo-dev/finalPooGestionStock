@@ -40,16 +40,20 @@ public class Controlador implements ActionListener, ListSelectionListener {
     @Override
     public void valueChanged(ListSelectionEvent lse) {
         if (lse.getSource() == view.clieTabla.getSelectionModel()) {
-            ClienteControlador.seleccionarCliente(
-                    view,
-                    view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 0).toString(),
-                    view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 1).toString(),
-                    view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 2).toString(),
-                    view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 3).toString(),
-                    view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 4).toString(),
-                    view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 5).toString(),
-                    view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 6).toString()
-            );
+            try {
+                ClienteControlador.seleccionarCliente(
+                        view,
+                        view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 0).toString(),
+                        view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 1).toString(),
+                        view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 2).toString(),
+                        view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 3).toString(),
+                        view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 4).toString(),
+                        view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 5).toString(),
+                        view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 6).toString()
+                );
+            } catch (Exception e) {
+
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 package controlador;
 
 import java.util.ArrayList;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import vista.Index;
@@ -9,18 +10,9 @@ import modelo.services.ClienteConsultas;
 public class ClienteControlador {
 
     public static void cargarTabla(Index view, ClienteConsultas services) {
-        DefaultTableModel clientesModel = new DefaultTableModel();
-        view.clieTabla.setModel(clientesModel);
+        DefaultTableModel clientesModel = (DefaultTableModel) view.clieTabla.getModel();
         ArrayList<Cliente> clientes = services.getAllClientes();
-
-        clientesModel.addColumn("Id");
-        clientesModel.addColumn("Apellido");
-        clientesModel.addColumn("Nombre");
-        clientesModel.addColumn("DNI");
-        clientesModel.addColumn("Direccion");
-        clientesModel.addColumn("Telefono");
-        clientesModel.addColumn("Email");
-
+        
         clientes.forEach((cliente) -> {
             String[] data = new String[7];
             data[0] = Integer.toString(cliente.getId());
@@ -48,19 +40,24 @@ public class ClienteControlador {
         }
     }
 
+    public static void clearInputTexts(Index view) {
+        view.clieInputTextApellido.setText("");
+        view.clieInputTextNombre.setText("");
+        view.clieInputTextDni.setText("");
+        view.clieInputTextDireccion.setText("");
+        view.clieInputTextTelefono.setText("");
+        view.clieInputTextEmail.setText("");
+        view.clieInputTextId.setText("");
+    }
+
     public static void eliminarCliente(Index view, ClienteConsultas services) {
         try {
             services.deleteCliente(Integer.parseInt(view.clieInputTextId.getText()));
+
             DefaultTableModel clientesModel = (DefaultTableModel) view.clieTabla.getModel();
             clientesModel.removeRow(view.clieTabla.getSelectedRow());
-            view.clieInputTextApellido.setText("");
-            view.clieInputTextNombre.setText("");
-            view.clieInputTextDni.setText("");
-            view.clieInputTextDireccion.setText("");
-            view.clieInputTextTelefono.setText("");
-            view.clieInputTextEmail.setText("");
-            view.clieInputTextId.setText("");
-            System.out.println("Eliminado uscces");
+           
+            clearInputTexts(view);
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
