@@ -25,6 +25,28 @@ public class ClienteControlador {
         });
     }
 
+    public static void buscar(Index view, ClienteConsultas services, String buscador) {
+        if (buscador.equals("")) {
+            cargarTabla(view, services);
+        } else {
+            DefaultTableModel clientesModel = (DefaultTableModel) view.clieTabla.getModel();
+            clientesModel.setRowCount(0);
+            ArrayList<Cliente> clientes = services.getClientesBusacador(buscador);
+            clientes.forEach((cliente) -> {
+                String[] data = new String[7];
+                data[0] = Integer.toString(cliente.getId());
+                data[1] = cliente.getApellido();
+                data[2] = cliente.getNombre();
+                data[3] = cliente.getDni();
+                data[4] = cliente.getDireccion();
+                data[5] = cliente.getTelefono();
+                data[6] = cliente.getEmail();
+                clientesModel.addRow(data);
+            });
+        }
+
+    }
+
     public static void seleccionarCliente(Index view, String id, String apellido, String nombre, String dni, String direccion, String telefono, String email) {
         try {
             view.clieInputTextId.setText(id);

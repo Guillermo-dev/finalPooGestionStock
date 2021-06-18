@@ -252,9 +252,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="artInputTextBuscador">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="buscador de articulos"/>
-                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -758,9 +755,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="provInputTextBuscador">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="buscador de proveedores"/>
-                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -1209,9 +1203,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="clieInputTextBuscador">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="buscador de CLIENTES"/>
-                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -1687,9 +1678,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="factInputTextBuscador">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="buscador de FACTURAS"/>
-                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -2142,9 +2130,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="rubInputTextBuscador">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="buscador de RUBROS"/>
-                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>

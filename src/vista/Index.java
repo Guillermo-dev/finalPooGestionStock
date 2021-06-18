@@ -212,8 +212,6 @@ public class Index extends javax.swing.JFrame {
 
         jLabel2.setText("Buscador: ");
 
-        artInputTextBuscador.setText("buscador de articulos");
-
         artBtnBuscar.setBackground(new java.awt.Color(0, 204, 153));
         artBtnBuscar.setText("BUSCAR");
 
@@ -449,8 +447,6 @@ public class Index extends javax.swing.JFrame {
 
         jLabel22.setText("Buscador: ");
 
-        provInputTextBuscador.setText("buscador de proveedores");
-
         provBtnBuscar.setBackground(new java.awt.Color(0, 204, 153));
         provBtnBuscar.setText("BUSCAR");
 
@@ -670,8 +666,6 @@ public class Index extends javax.swing.JFrame {
         jLabel31.setText("CLIENTES");
 
         jLabel32.setText("Buscador: ");
-
-        clieInputTextBuscador.setText("buscador de CLIENTES");
 
         clieBtnBusacar.setBackground(new java.awt.Color(0, 204, 153));
         clieBtnBusacar.setText("BUSCAR");
@@ -908,8 +902,6 @@ public class Index extends javax.swing.JFrame {
 
         jLabel42.setText("Buscador: ");
 
-        factInputTextBuscador.setText("buscador de FACTURAS");
-
         factBtnBuscar.setBackground(new java.awt.Color(0, 204, 153));
         factBtnBuscar.setText("BUSCAR");
 
@@ -1143,8 +1135,6 @@ public class Index extends javax.swing.JFrame {
         jLabel11.setText("RUBROS");
 
         jLabel12.setText("Buscador: ");
-
-        rubInputTextBuscador.setText("buscador de RUBROS");
 
         rubBtnBuscar.setBackground(new java.awt.Color(0, 204, 153));
         rubBtnBuscar.setText("BUSCAR");
