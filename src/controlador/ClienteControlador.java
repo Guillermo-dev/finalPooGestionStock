@@ -11,7 +11,7 @@ public class ClienteControlador {
     public static void cargarTabla(Index view, ClienteConsultas services) {
         DefaultTableModel clientesModel = (DefaultTableModel) view.clieTabla.getModel();
         ArrayList<Cliente> clientes = services.getAllClientes();
-        
+
         clientes.forEach((cliente) -> {
             String[] data = new String[7];
             data[0] = Integer.toString(cliente.getId());
@@ -40,13 +40,13 @@ public class ClienteControlador {
     }
 
     public static void clearInputTexts(Index view) {
+        view.clieInputTextId.setText("");
         view.clieInputTextApellido.setText("");
         view.clieInputTextNombre.setText("");
         view.clieInputTextDni.setText("");
         view.clieInputTextDireccion.setText("");
         view.clieInputTextTelefono.setText("");
         view.clieInputTextEmail.setText("");
-        view.clieInputTextId.setText("");
     }
 
     public static void eliminarCliente(Index view, ClienteConsultas services) {
@@ -55,7 +55,7 @@ public class ClienteControlador {
 
             DefaultTableModel clientesModel = (DefaultTableModel) view.clieTabla.getModel();
             clientesModel.removeRow(view.clieTabla.getSelectedRow());
-           
+
             clearInputTexts(view);
         } catch (Exception e) {
             System.out.println("Error: " + e);
