@@ -28,6 +28,7 @@ public class Index extends javax.swing.JFrame {
         artTabla = new javax.swing.JTable();
         artBtnEliminar = new javax.swing.JButton();
         artBtnEditar = new javax.swing.JButton();
+        clieCheckBoxStockMinimo = new javax.swing.JCheckBox();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -69,6 +70,8 @@ public class Index extends javax.swing.JFrame {
         provDropdownRazonSocial = new javax.swing.JComboBox<>();
         jLabel30 = new javax.swing.JLabel();
         provInputTextId = new javax.swing.JTextField();
+        provBtnListaCompra = new javax.swing.JButton();
+        provBtnNuevaFactura = new javax.swing.JButton();
         jPanel26 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -222,7 +225,7 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 481, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(artInputTextBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,15 +272,19 @@ public class Index extends javax.swing.JFrame {
         artBtnEditar.setBackground(new java.awt.Color(0, 204, 153));
         artBtnEditar.setText("EDITAR");
 
+        clieCheckBoxStockMinimo.setText("Solo Stok Minimo");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(clieCheckBoxStockMinimo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(artBtnEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(artBtnEliminar)
@@ -292,7 +299,8 @@ public class Index extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(artBtnEditar)
-                    .addComponent(artBtnEliminar))
+                    .addComponent(artBtnEliminar)
+                    .addComponent(clieCheckBoxStockMinimo))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -502,6 +510,12 @@ public class Index extends javax.swing.JFrame {
 
         provInputTextId.setEditable(false);
 
+        provBtnListaCompra.setBackground(new java.awt.Color(0, 204, 153));
+        provBtnListaCompra.setText("LISTA COMPRAS");
+
+        provBtnNuevaFactura.setBackground(new java.awt.Color(0, 204, 153));
+        provBtnNuevaFactura.setText("NUEVA FACTURA");
+
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
         jPanel25Layout.setHorizontalGroup(
@@ -511,7 +525,8 @@ public class Index extends javax.swing.JFrame {
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel25Layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
+                        .addComponent(provBtnListaCompra)
+                        .addGap(97, 97, 97)
                         .addComponent(provBtnLimpiar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(provBtnGuardar))
@@ -541,7 +556,8 @@ public class Index extends javax.swing.JFrame {
                     .addGroup(jPanel25Layout.createSequentialGroup()
                         .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23)
-                        .addComponent(provInputTextId, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(provInputTextId, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(provBtnNuevaFactura))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel25Layout.setVerticalGroup(
@@ -573,11 +589,14 @@ public class Index extends javax.swing.JFrame {
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(provInputTextEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(119, 119, 119)
+                .addGap(75, 75, 75)
+                .addComponent(provBtnNuevaFactura)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(provBtnGuardar)
-                    .addComponent(provBtnLimpiar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(provBtnLimpiar)
+                    .addComponent(provBtnListaCompra))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jPanel26.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -1041,12 +1060,12 @@ public class Index extends javax.swing.JFrame {
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(factInputTextTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel51))
-                .addGap(151, 151, 151)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(factBtnGuardar)
                     .addComponent(factBtnLimpiar)
                     .addComponent(factBtnVerMas))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         jPanel32.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -1410,6 +1429,7 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JButton clieBtnEditar;
     public javax.swing.JButton clieBtnEliminar;
     public javax.swing.JButton clieBtnLimpiar;
+    public javax.swing.JCheckBox clieCheckBoxStockMinimo;
     public javax.swing.JTextField clieInputTextApellido;
     public javax.swing.JTextField clieInputTextBuscador;
     public javax.swing.JTextField clieInputTextDireccion;
@@ -1504,6 +1524,8 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JButton provBtnEliminar;
     public javax.swing.JButton provBtnGuardar;
     public javax.swing.JButton provBtnLimpiar;
+    public javax.swing.JButton provBtnListaCompra;
+    public javax.swing.JButton provBtnNuevaFactura;
     public javax.swing.JComboBox<String> provDropdownRazonSocial;
     public javax.swing.JTextField provInputTextBuscador;
     public javax.swing.JTextField provInputTextCuilT;

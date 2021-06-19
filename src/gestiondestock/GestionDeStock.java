@@ -15,8 +15,6 @@ public class GestionDeStock {
        
        Controlador ctrl = new Controlador(view,facturasDetalles, domConsultasClie);
        ctrl.iniciar();
-       view.setVisible(true);
-
     }
 
 }

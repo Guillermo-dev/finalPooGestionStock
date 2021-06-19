@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelo.services.ClienteConsultas;
@@ -34,6 +35,7 @@ public class Controlador implements ActionListener, ListSelectionListener {
     public void iniciar() {
         this.view.setTitle("Gestion de stock");
         this.view.setLocationRelativeTo(null);
+        this.view.setVisible(true);
 
         // iniciar tabla
         ClienteControlador.cargarTabla(this.view, this.domConsultasClie);
@@ -60,6 +62,7 @@ public class Controlador implements ActionListener, ListSelectionListener {
 
         // Facturas
         if (lse.getSource() == this.view.factBtnVerMas) {
+            // DIALOG MENSAJE (https://www.youtube.com/watch?v=sT5zeMX8X50&t=205s)JOptionPane.showMessageDialog(null, "HOLA MUNDO");
             FacturaControlador.open(this.viewDacturasDetalles);
         }
     }
