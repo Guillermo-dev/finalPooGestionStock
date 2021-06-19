@@ -526,7 +526,7 @@ public class Index extends javax.swing.JFrame {
         provBtnListaCompra.setText("LISTA COMPRAS");
 
         provBtnNuevaFactura.setBackground(new java.awt.Color(0, 204, 153));
-        provBtnNuevaFactura.setText("NUEVA FACTURA");
+        provBtnNuevaFactura.setText("CARGAR FACTURA");
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
