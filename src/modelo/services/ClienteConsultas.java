@@ -22,6 +22,27 @@ public class ClienteConsultas extends HibernateUtil {
         return (ArrayList<Cliente>) clientes;
     }
 
+    public ArrayList<Cliente> getClientesBusacador(String buscador) {
+        SessionFactory sessionFactory = newSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        buscador = buscador.toUpperCase();
+        session.beginTransaction();
+        Query query = session.createQuery("FROM Cliente WHERE "
+                + "UPPER (nombre) LIKE CONCAT('%',:buscador,'%') "
+                + "OR UPPER (apellido) LIKE CONCAT('%',:buscador,'%')"
+                + "OR UPPER (dni) LIKE CONCAT('%',:buscador,'%')"
+                + "OR UPPER (direccion) LIKE CONCAT('%',:buscador,'%')"
+                + "OR UPPER (telefono) LIKE CONCAT('%',:buscador,'%')"
+                + "OR UPPER (email) LIKE CONCAT('%',:buscador,'%')");
+        query.setParameter("buscador", buscador);
+        List<Cliente> clientes = (List<Cliente>) query.list();
+
+        session.close();
+        sessionFactory.close();
+        return (ArrayList<Cliente>) clientes;     
+    }
+
     public void deleteCliente(int idCliente) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
