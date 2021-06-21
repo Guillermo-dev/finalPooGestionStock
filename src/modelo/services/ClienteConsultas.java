@@ -23,11 +23,12 @@ public class ClienteConsultas extends HibernateUtil {
     }
 
     public ArrayList<Cliente> getClientesBusacador(String buscador) {
+        buscador = buscador.toUpperCase();
+        
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
-
-        buscador = buscador.toUpperCase();
         session.beginTransaction();
+        
         Query query = session.createQuery("FROM Cliente WHERE "
                 + "UPPER (nombre) LIKE CONCAT('%',:buscador,'%') "
                 + "OR UPPER (apellido) LIKE CONCAT('%',:buscador,'%')"

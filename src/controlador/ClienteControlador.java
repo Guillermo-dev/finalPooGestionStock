@@ -1,6 +1,8 @@
 package controlador;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import vista.Index;
@@ -8,11 +10,19 @@ import modelo.services.ClienteConsultas;
 
 public class ClienteControlador {
 
-    public static void cargarTabla(Index view, ClienteConsultas services) {
-        DefaultTableModel clientesModel = (DefaultTableModel) view.clieTabla.getModel();
-        clientesModel.setNumRows(0);
-
+    public static void iniciarTabla(JTable clieTabla, ClienteConsultas services) {
         ArrayList<Cliente> clientes = services.getAllClientes();
+        cargarTabla(clieTabla, clientes);
+    }
+
+    public static void buscarTabla(JTable clieTabla, ClienteConsultas services, String buscador) {
+        ArrayList<Cliente> clientes = services.getClientesBusacador(buscador);
+        cargarTabla(clieTabla, clientes);
+    }
+
+    public static void cargarTabla(JTable clieTabla, ArrayList<Cliente> clientes) {
+        DefaultTableModel tableModel = (DefaultTableModel) clieTabla.getModel();
+        tableModel.setNumRows(0);
 
         clientes.forEach((cliente) -> {
             String[] data = new String[7];
@@ -23,47 +33,21 @@ public class ClienteControlador {
             data[4] = cliente.getDireccion();
             data[5] = cliente.getTelefono();
             data[6] = cliente.getEmail();
-            clientesModel.addRow(data);
+            tableModel.addRow(data);
         });
     }
 
-    public static void buscar(Index view, ClienteConsultas services, String buscador) {
-        if (buscador.equals("")) {
-            cargarTabla(view, services);
-        } else {
-            DefaultTableModel clientesModel = (DefaultTableModel) view.clieTabla.getModel();
-            clientesModel.setRowCount(0);
-            ArrayList<Cliente> clientes = services.getClientesBusacador(buscador);
-            clientes.forEach((cliente) -> {
-                String[] data = new String[7];
-                data[0] = Integer.toString(cliente.getId());
-                data[1] = cliente.getApellido();
-                data[2] = cliente.getNombre();
-                data[3] = cliente.getDni();
-                data[4] = cliente.getDireccion();
-                data[5] = cliente.getTelefono();
-                data[6] = cliente.getEmail();
-                clientesModel.addRow(data);
-            });
-        }
-
+    public static void cargarInputTexts(Index view, String id, String apellido, String nombre, String dni, String direccion, String telefono, String email) {
+        view.clieInputTextId.setText(id);
+        view.clieInputTextApellido.setText(apellido);
+        view.clieInputTextNombre.setText(nombre);
+        view.clieInputTextDni.setText(dni);
+        view.clieInputTextDireccion.setText(direccion);
+        view.clieInputTextTelefono.setText(telefono);
+        view.clieInputTextEmail.setText(email);
     }
 
-    public static void seleccionarCliente(Index view, String id, String apellido, String nombre, String dni, String direccion, String telefono, String email) {
-        try {
-            view.clieInputTextId.setText(id);
-            view.clieInputTextApellido.setText(apellido);
-            view.clieInputTextNombre.setText(nombre);
-            view.clieInputTextDni.setText(dni);
-            view.clieInputTextDireccion.setText(direccion);
-            view.clieInputTextTelefono.setText(telefono);
-            view.clieInputTextEmail.setText(email);
-        } catch (Exception e) {
-
-        }
-    }
-
-    public static void clearInputTexts(Index view) {
+    public static void vaciarInputTexts(Index view) {
         view.clieInputTextId.setText("");
         view.clieInputTextApellido.setText("");
         view.clieInputTextNombre.setText("");
@@ -79,10 +63,11 @@ public class ClienteControlador {
 
             DefaultTableModel clientesModel = (DefaultTableModel) view.clieTabla.getModel();
             clientesModel.removeRow(view.clieTabla.getSelectedRow());
-            
-            clearInputTexts(view);
+
+            vaciarInputTexts(view);
         } catch (Exception e) {
             System.out.println("Error: " + e);
+            JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");
         }
 
     }

@@ -38,7 +38,7 @@ public class Controlador implements ActionListener, ListSelectionListener {
         this.view.setVisible(true);
 
         // iniciar tabla
-        ClienteControlador.cargarTabla(this.view, this.domConsultasClie);
+        ClienteControlador.iniciarTabla(this.view.clieTabla, this.domConsultasClie);
 
         // Valores de DropDown
         ProveedorControlador.setDropdownOptions(this.view);
@@ -54,7 +54,7 @@ public class Controlador implements ActionListener, ListSelectionListener {
 
         // Clientes
         if (lse.getSource() == this.view.clieBtnBusacar) {
-            ClienteControlador.buscar(this.view, this.domConsultasClie, this.view.clieInputTextBuscador.getText());
+            ClienteControlador.buscarTabla(this.view.clieTabla, this.domConsultasClie, this.view.clieInputTextBuscador.getText());
         }
         if (lse.getSource() == this.view.clieBtnEliminar) {
             ClienteControlador.eliminarCliente(this.view, this.domConsultasClie);
@@ -78,7 +78,7 @@ public class Controlador implements ActionListener, ListSelectionListener {
                 int row = this.view.clieTabla.getSelectedRow();
                 this.view.clieTabla.setRowSelectionInterval(row, row);
 
-                ClienteControlador.seleccionarCliente(
+                ClienteControlador.cargarInputTexts(
                         this.view,
                         this.view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 0).toString(),
                         this.view.clieTabla.getValueAt(this.view.clieTabla.getSelectedRow(), 1).toString(),
