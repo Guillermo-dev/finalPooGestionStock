@@ -20,7 +20,7 @@ public class Controlador implements ActionListener, ListSelectionListener {
         this.domConsultasClie = domConsultasClie;
         this.viewDacturasDetalles = facturasDetalles;
 
-        //PROVEEDORES
+        // PROVEEDORES
         this.view.provDropdownRazonSocial.addActionListener(this);
 
         // CLIENTES
@@ -62,7 +62,8 @@ public class Controlador implements ActionListener, ListSelectionListener {
 
         // Facturas
         if (lse.getSource() == this.view.factBtnVerMas) {
-            // DIALOG MENSAJE (https://www.youtube.com/watch?v=sT5zeMX8X50&t=205s)JOptionPane.showMessageDialog(null, "HOLA MUNDO");
+            // DIALOG MENSAJE (https://www.youtube.com/watch?v=sT5zeMX8X50&t=205s)
+            JOptionPane.showMessageDialog(null, "HOLA MUNDO");
             FacturaControlador.open(this.viewDacturasDetalles);
         }
     }

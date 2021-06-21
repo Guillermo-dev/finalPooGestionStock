@@ -10,6 +10,8 @@ public class ClienteControlador {
 
     public static void cargarTabla(Index view, ClienteConsultas services) {
         DefaultTableModel clientesModel = (DefaultTableModel) view.clieTabla.getModel();
+        clientesModel.setNumRows(0);
+
         ArrayList<Cliente> clientes = services.getAllClientes();
 
         clientes.forEach((cliente) -> {
@@ -77,7 +79,7 @@ public class ClienteControlador {
 
             DefaultTableModel clientesModel = (DefaultTableModel) view.clieTabla.getModel();
             clientesModel.removeRow(view.clieTabla.getSelectedRow());
-
+            
             clearInputTexts(view);
         } catch (Exception e) {
             System.out.println("Error: " + e);
