@@ -29,4 +29,17 @@ public class Rubro {
         this.descripcion = descripcion;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    
 }
