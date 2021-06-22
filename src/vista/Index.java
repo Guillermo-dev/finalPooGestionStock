@@ -11,7 +11,7 @@ public class Index extends javax.swing.JFrame {
     private void initComponents() {
 
         Botonera = new javax.swing.JPanel();
-        bonoteraArt = new javax.swing.JButton();
+        botoneraArt = new javax.swing.JButton();
         botoneraRub = new javax.swing.JButton();
         botoneraCli = new javax.swing.JButton();
         botoneraFact = new javax.swing.JButton();
@@ -123,16 +123,18 @@ public class Index extends javax.swing.JFrame {
         factBtnLimpiar = new javax.swing.JButton();
         jLabel51 = new javax.swing.JLabel();
         factInputTextTotal = new javax.swing.JTextField();
-        factBtnVerMas = new javax.swing.JButton();
         factInputTextProposito = new javax.swing.JTextField();
         jLabel48 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         factInputTextId = new javax.swing.JTextField();
+        factBtnVerMas = new javax.swing.JButton();
         jPanel32 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
         factTabla = new javax.swing.JTable();
         factBtnEliminar = new javax.swing.JButton();
         factBtnEditar = new javax.swing.JButton();
+        factCheckBoxVenta = new javax.swing.JCheckBox();
+        factCheckBoxCompra = new javax.swing.JCheckBox();
         Fact = new javax.swing.JPanel();
         jPanel21 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -161,8 +163,8 @@ public class Index extends javax.swing.JFrame {
         Botonera.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         Botonera.setPreferredSize(new java.awt.Dimension(988, 50));
 
-        bonoteraArt.setBackground(new java.awt.Color(0, 153, 153));
-        bonoteraArt.setText("ARTICULO");
+        botoneraArt.setBackground(new java.awt.Color(0, 153, 153));
+        botoneraArt.setText("ARTICULO");
 
         botoneraRub.setBackground(new java.awt.Color(0, 153, 153));
         botoneraRub.setText("RUBROS");
@@ -182,7 +184,7 @@ public class Index extends javax.swing.JFrame {
             BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BotoneraLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bonoteraArt)
+                .addComponent(botoneraArt)
                 .addGap(18, 18, 18)
                 .addComponent(botoneraProv)
                 .addGap(18, 18, 18)
@@ -198,7 +200,7 @@ public class Index extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotoneraLayout.createSequentialGroup()
                 .addContainerGap(8, Short.MAX_VALUE)
                 .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bonoteraArt)
+                    .addComponent(botoneraArt)
                     .addComponent(botoneraRub)
                     .addComponent(botoneraCli)
                     .addComponent(botoneraFact)
@@ -274,6 +276,11 @@ public class Index extends javax.swing.JFrame {
         artBtnEditar.setText("EDITAR");
 
         clieCheckBoxStockMinimo.setText("Solo Stok Minimo");
+        clieCheckBoxStockMinimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clieCheckBoxStockMinimoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -349,6 +356,16 @@ public class Index extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(artInputTextStock, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(artDropdownProveedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel7Layout.createSequentialGroup()
                                     .addComponent(artBtnLimpiar)
@@ -368,28 +385,18 @@ public class Index extends javax.swing.JFrame {
                                         .addComponent(artInputTextStockMin))))
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addComponent(artInputTextStock, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(artDropdownProveedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(23, 23, 23)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(artInputTextId, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                                     .addComponent(artDropdownRubro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addContainerGap())
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(artBtnCargarFactura)
-                        .addGap(22, 22, 22))))
+                        .addComponent(artBtnCargarFactura)))
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -991,9 +998,6 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
-        factBtnVerMas.setBackground(new java.awt.Color(0, 204, 153));
-        factBtnVerMas.setText("VER MAS");
-
         factInputTextProposito.setEditable(false);
 
         jLabel48.setText("PROPPOSITO:");
@@ -1002,6 +1006,9 @@ public class Index extends javax.swing.JFrame {
 
         factInputTextId.setEditable(false);
 
+        factBtnVerMas.setBackground(new java.awt.Color(0, 204, 153));
+        factBtnVerMas.setText("VER MAS / NUEVA FACTURA");
+
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
         jPanel31Layout.setHorizontalGroup(
@@ -1009,18 +1016,16 @@ public class Index extends javax.swing.JFrame {
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel31Layout.createSequentialGroup()
-                        .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel31Layout.createSequentialGroup()
-                                .addComponent(factBtnVerMas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(factBtnLimpiar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(factBtnGuardar))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel31Layout.createSequentialGroup()
-                                .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 229, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel31Layout.createSequentialGroup()
+                        .addComponent(factBtnVerMas, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(factBtnLimpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(factBtnGuardar)
                         .addGap(25, 25, 25))
+                    .addGroup(jPanel31Layout.createSequentialGroup()
+                        .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 254, Short.MAX_VALUE))
                     .addGroup(jPanel31Layout.createSequentialGroup()
                         .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1074,8 +1079,8 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(jLabel51))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(factBtnGuardar)
                     .addComponent(factBtnLimpiar)
+                    .addComponent(factBtnGuardar)
                     .addComponent(factBtnVerMas))
                 .addGap(14, 14, 14))
         );
@@ -1106,31 +1111,50 @@ public class Index extends javax.swing.JFrame {
         factBtnEditar.setBackground(new java.awt.Color(0, 204, 153));
         factBtnEditar.setText("EDITAR");
 
+        factCheckBoxVenta.setText("Venta");
+        factCheckBoxVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                factCheckBoxVentaActionPerformed(evt);
+            }
+        });
+
+        factCheckBoxCompra.setText("Compra");
+
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
         jPanel32.setLayout(jPanel32Layout);
         jPanel32Layout.setHorizontalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(factBtnEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(factBtnEliminar)
-                .addGap(14, 14, 14))
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
+                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(factCheckBoxVenta)
+                            .addComponent(factCheckBoxCompra))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(factBtnEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(factBtnEliminar)
+                        .addGap(14, 14, 14))))
         );
         jPanel32Layout.setVerticalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(factBtnEliminar)
-                    .addComponent(factBtnEditar))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(factBtnEliminar)
+                        .addComponent(factBtnEditar))
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addComponent(factCheckBoxVenta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(factCheckBoxCompra)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout RubLayout = new javax.swing.GroupLayout(Rub);
@@ -1155,7 +1179,7 @@ public class Index extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(RubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, 465, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1384,6 +1408,14 @@ public class Index extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_factInputTextTotalActionPerformed
 
+    private void clieCheckBoxStockMinimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clieCheckBoxStockMinimoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clieCheckBoxStockMinimoActionPerformed
+
+    private void factCheckBoxVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_factCheckBoxVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_factCheckBoxVentaActionPerformed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1433,7 +1465,7 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JTextField artInputTextStock;
     public javax.swing.JTextField artInputTextStockMin;
     public javax.swing.JTable artTabla;
-    public javax.swing.JButton bonoteraArt;
+    public javax.swing.JButton botoneraArt;
     public javax.swing.JButton botoneraCli;
     public javax.swing.JButton botoneraFact;
     public javax.swing.JButton botoneraProv;
@@ -1458,6 +1490,8 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JButton factBtnGuardar;
     public javax.swing.JButton factBtnLimpiar;
     public javax.swing.JButton factBtnVerMas;
+    public javax.swing.JCheckBox factCheckBoxCompra;
+    public javax.swing.JCheckBox factCheckBoxVenta;
     public javax.swing.JTextField factInputTextBuscador;
     public javax.swing.JTextField factInputTextFecha;
     public javax.swing.JTextField factInputTextId;

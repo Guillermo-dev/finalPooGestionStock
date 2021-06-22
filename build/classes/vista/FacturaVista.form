@@ -45,9 +45,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="PODER AGREGAR NUEVOS ARTICULOS SI ES NUEVA FACTURA"/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="PODER AGREGAR NUEVOS ARTICULOS SI ES NUEVA FACTURA"/>
-      </AccessibilityProperties>
     </Component>
   </SubComponents>
 </Form>

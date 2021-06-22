@@ -10,16 +10,6 @@ import modelo.services.ClienteConsultas;
 
 public class ClienteControlador {
 
-    public static void iniciarTabla(JTable clieTabla, ClienteConsultas services) {
-        ArrayList<Cliente> clientes = services.getAllClientes();
-        cargarTabla(clieTabla, clientes);
-    }
-
-    public static void buscarTabla(JTable clieTabla, ClienteConsultas services, String buscador) {
-        ArrayList<Cliente> clientes = services.getClientesBusacador(buscador);
-        cargarTabla(clieTabla, clientes);
-    }
-
     public static void cargarTabla(JTable clieTabla, ArrayList<Cliente> clientes) {
         DefaultTableModel tableModel = (DefaultTableModel) clieTabla.getModel();
         tableModel.setNumRows(0);
@@ -35,6 +25,16 @@ public class ClienteControlador {
             data[6] = cliente.getEmail();
             tableModel.addRow(data);
         });
+    }
+
+    public static void iniciarTabla(JTable clieTabla, ClienteConsultas services) {
+        ArrayList<Cliente> clientes = services.getAllClientes();
+        cargarTabla(clieTabla, clientes);
+    }
+
+    public static void buscarTabla(JTable clieTabla, ClienteConsultas services, String buscador) {
+        ArrayList<Cliente> clientes = services.getClientesBusacador(buscador);
+        cargarTabla(clieTabla, clientes);
     }
 
     public static void cargarInputTexts(Index view, String id, String apellido, String nombre, String dni, String direccion, String telefono, String email) {

@@ -6,20 +6,23 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelo.services.ClienteConsultas;
-import vista.FacturaDetalles;
+import vista.FacturaVista;
 import vista.Index;
 
 public class Controlador implements ActionListener, ListSelectionListener {
 
     private final Index view;
-    private final FacturaDetalles viewDacturasDetalles;
+    private final FacturaVista viewDacturasDetalles;
     private final ClienteConsultas domConsultasClie;
 
-    public Controlador(Index view, FacturaDetalles facturasDetalles, ClienteConsultas domConsultasClie) {
+    public Controlador(Index view, FacturaVista viewFacturasDetalles, ClienteConsultas domConsultasClie) {
         this.view = view;
         this.domConsultasClie = domConsultasClie;
-        this.viewDacturasDetalles = facturasDetalles;
+        this.viewDacturasDetalles = viewFacturasDetalles;
 
+        // BOTONERA
+        this.view.botoneraArt.addActionListener(this);
+        
         // PROVEEDORES
         this.view.provDropdownRazonSocial.addActionListener(this);
 
@@ -47,6 +50,10 @@ public class Controlador implements ActionListener, ListSelectionListener {
     // BOTONES
     @Override
     public void actionPerformed(ActionEvent lse) {
+        /// BOTONERA
+        if(lse.getSource() == this.view.botoneraArt) {
+            
+        }
         // Proveedores
         if (lse.getSource() == this.view.provDropdownRazonSocial) {
             System.out.println(this.view.provDropdownRazonSocial.getSelectedItem());

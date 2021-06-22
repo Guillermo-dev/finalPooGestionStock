@@ -9,12 +9,12 @@ package vista;
  *
  * @author guill
  */
-public class FacturaDetalles extends javax.swing.JFrame {
+public class FacturaVista extends javax.swing.JFrame {
 
     /**
      * Creates new form FacturaDetalles
      */
-    public FacturaDetalles() {
+    public FacturaVista() {
         initComponents();
     }
 
@@ -50,8 +50,6 @@ public class FacturaDetalles extends javax.swing.JFrame {
                 .addContainerGap(158, Short.MAX_VALUE))
         );
 
-        label1.getAccessibleContext().setAccessibleName("PODER AGREGAR NUEVOS ARTICULOS SI ES NUEVA FACTURA");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -72,20 +70,21 @@ public class FacturaDetalles extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FacturaDetalles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FacturaVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FacturaDetalles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FacturaVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FacturaDetalles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FacturaVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FacturaDetalles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FacturaVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FacturaDetalles().setVisible(true);
+                new FacturaVista().setVisible(true);
             }
         });
     }
