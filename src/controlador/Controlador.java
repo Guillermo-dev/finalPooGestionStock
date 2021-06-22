@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelo.services.ClienteConsultas;
+import modelo.services.RubrosConsultas;
 import vista.FacturaVista;
 import vista.Index;
 
@@ -16,10 +17,12 @@ public class Controlador implements ActionListener, ListSelectionListener {
     private final Index view;
     private final FacturaVista viewDacturasDetalles;
     private final ClienteConsultas domConsultasClie;
+    private final RubrosConsultas domConsultasRub;
 
-    public Controlador(Index view, FacturaVista viewFacturasDetalles, ClienteConsultas domConsultasClie) {
+    public Controlador(Index view, FacturaVista viewFacturasDetalles, ClienteConsultas domConsultasClie, RubrosConsultas domConsultasRub) {
         this.view = view;
         this.domConsultasClie = domConsultasClie;
+        this.domConsultasRub = domConsultasRub;
         this.viewDacturasDetalles = viewFacturasDetalles;
         
         // BOTONERA
@@ -34,7 +37,14 @@ public class Controlador implements ActionListener, ListSelectionListener {
         this.view.clieBtnGuardar.addActionListener(this);
         this.view.clieBtnLimpiar.addActionListener(this);
         this.view.clieBtnEliminar.addActionListener(this);
-
+        
+        //RUBROS
+        this.view.rubroTabla.getSelectionModel().addListSelectionListener(this);
+        this.view.rubBtnBuscar.addActionListener(this);
+        this.view.rubBtnGuardar.addActionListener (this);
+         this.view.rubBtnLimpiar.addActionListener(this);
+         this.view.rubBtnEliminar.addActionListener(this);
+         
         // FACTURAS
         this.view.factBtnVerMas.addActionListener(this);
     }
@@ -77,6 +87,22 @@ public class Controlador implements ActionListener, ListSelectionListener {
             ClienteControlador.eliminarCliente(this.view, this.domConsultasClie);
         }
 
+        
+        //Rubros
+        if (lse.getSource() == this.view.rubBtnBuscar){
+            RubroControlador.buscarTabla(this.view.rubroTabla, this.domConsultasRub, this.view.rubInputTextBuscador.getText());
+        }
+        if (lse.getSource() == this.view.rubBtnGuardar){
+            RubroControlador.agregarRubro(this.view, this.domConsultasRub);
+        }
+        if (lse.getSource() == this.view.rubBtnLimpiar){
+            RubroControlador.vaciarInputTexts(view);
+        }
+        if (lse.getSource() == this.view.rubBtnEliminar){
+            RubroControlador.eliminarRubro(this.view, this.domConsultasRub);
+        }
+        
+        
         // Facturas
         if (lse.getSource() == this.view.factBtnVerMas) {
             // DIALOG MENSAJE (https://www.youtube.com/watch?v=sT5zeMX8X50&t=205s)
