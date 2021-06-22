@@ -58,7 +58,7 @@ public class ClienteControlador {
     }
 
     public static boolean inputsTextValido(Index view) {
-        //Agregar logica de validacion
+        // TODO: Agregar logica de validacion
         return view.clieInputTextApellido.getText().equals("")
                 || view.clieInputTextNombre.getText().equals("")
                 || view.clieInputTextDni.getText().equals("")
@@ -86,17 +86,17 @@ public class ClienteControlador {
                 try {
                     services.updateCliente(cliente, Integer.parseInt(view.clieInputTextId.getText()));
                 } catch (Exception e) {
-                    System.out.println(e);
+                    // TODO
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             } else {
                 try {
                     services.saveCliente(cliente);
                 } catch (Exception e) {
+                    // TODO
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             }
-
             iniciarTabla(view.clieTabla, services);
             vaciarInputTexts(view);
         }
@@ -111,7 +111,7 @@ public class ClienteControlador {
 
             vaciarInputTexts(view);
         } catch (Exception e) {
-            System.out.println("Error: " + e);
+            // TODO
             JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");
         }
 
