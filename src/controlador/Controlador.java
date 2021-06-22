@@ -9,6 +9,8 @@ import modelo.services.ClienteConsultas;
 import vista.FacturaVista;
 import vista.Index;
 
+// diasble button  setEnabled(false);
+
 public class Controlador implements ActionListener, ListSelectionListener {
 
     private final Index view;
@@ -19,16 +21,18 @@ public class Controlador implements ActionListener, ListSelectionListener {
         this.view = view;
         this.domConsultasClie = domConsultasClie;
         this.viewDacturasDetalles = viewFacturasDetalles;
-
+        
         // BOTONERA
         this.view.botoneraArt.addActionListener(this);
-        
+
         // PROVEEDORES
         this.view.provDropdownRazonSocial.addActionListener(this);
 
         // CLIENTES
         this.view.clieTabla.getSelectionModel().addListSelectionListener(this);
         this.view.clieBtnBusacar.addActionListener(this);
+        this.view.clieBtnGuardar.addActionListener(this);
+        this.view.clieBtnLimpiar.addActionListener(this);
         this.view.clieBtnEliminar.addActionListener(this);
 
         // FACTURAS
@@ -51,8 +55,8 @@ public class Controlador implements ActionListener, ListSelectionListener {
     @Override
     public void actionPerformed(ActionEvent lse) {
         /// BOTONERA
-        if(lse.getSource() == this.view.botoneraArt) {
-            
+        if (lse.getSource() == this.view.botoneraArt) {
+
         }
         // Proveedores
         if (lse.getSource() == this.view.provDropdownRazonSocial) {
@@ -62,6 +66,12 @@ public class Controlador implements ActionListener, ListSelectionListener {
         // Clientes
         if (lse.getSource() == this.view.clieBtnBusacar) {
             ClienteControlador.buscarTabla(this.view.clieTabla, this.domConsultasClie, this.view.clieInputTextBuscador.getText());
+        }
+        if (lse.getSource() == this.view.clieBtnGuardar) {
+            ClienteControlador.agregarCliente(this.view, this.domConsultasClie);
+        }
+        if (lse.getSource() == this.view.clieBtnLimpiar) {
+            ClienteControlador.vaciarInputTexts(view);
         }
         if (lse.getSource() == this.view.clieBtnEliminar) {
             ClienteControlador.eliminarCliente(this.view, this.domConsultasClie);

@@ -57,6 +57,51 @@ public class ClienteControlador {
         view.clieInputTextEmail.setText("");
     }
 
+    public static boolean inputsTextValido(Index view) {
+        // TODO: Agregar logica de validacion
+        return view.clieInputTextApellido.getText().equals("")
+                || view.clieInputTextNombre.getText().equals("")
+                || view.clieInputTextDni.getText().equals("")
+                || view.clieInputTextDireccion.getText().equals("")
+                || view.clieInputTextTelefono.getText().equals("")
+                || view.clieInputTextEmail.getText().equals("");
+    }
+
+    public static boolean clienteSeleccionado(Index view) {
+        return !view.clieInputTextId.getText().equals("");
+    }
+
+    public static void agregarCliente(Index view, ClienteConsultas services) {
+        if (inputsTextValido(view)) {
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+        } else {
+            Cliente cliente = new Cliente(
+                    view.clieInputTextNombre.getText(),
+                    view.clieInputTextApellido.getText(),
+                    view.clieInputTextDni.getText(),
+                    view.clieInputTextDireccion.getText(),
+                    view.clieInputTextTelefono.getText(),
+                    view.clieInputTextEmail.getText());
+            if (clienteSeleccionado(view)) {
+                try {
+                    services.updateCliente(cliente, Integer.parseInt(view.clieInputTextId.getText()));
+                } catch (Exception e) {
+                    // TODO
+                    JOptionPane.showMessageDialog(null, "Error inesperado");
+                }
+            } else {
+                try {
+                    services.saveCliente(cliente);
+                } catch (Exception e) {
+                    // TODO
+                    JOptionPane.showMessageDialog(null, "Error inesperado");
+                }
+            }
+            iniciarTabla(view.clieTabla, services);
+            vaciarInputTexts(view);
+        }
+    }
+
     public static void eliminarCliente(Index view, ClienteConsultas services) {
         try {
             services.deleteCliente(Integer.parseInt(view.clieInputTextId.getText()));
@@ -66,7 +111,7 @@ public class ClienteControlador {
 
             vaciarInputTexts(view);
         } catch (Exception e) {
-            System.out.println("Error: " + e);
+            // TODO
             JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");
         }
 
