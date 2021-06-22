@@ -97,7 +97,7 @@ public class Index extends javax.swing.JFrame {
         clieInputTextDni = new javax.swing.JTextField();
         clieInputTextDireccion = new javax.swing.JTextField();
         clieInputTextTelefono = new javax.swing.JTextField();
-        ClieBtnGuardar = new javax.swing.JButton();
+        clieBtnGuardar = new javax.swing.JButton();
         clieBtnLimpiar = new javax.swing.JButton();
         clieInputTextEmail = new javax.swing.JTextField();
         clieInputTextId = new javax.swing.JTextField();
@@ -752,8 +752,8 @@ public class Index extends javax.swing.JFrame {
 
         jLabel40.setText("EMAIL:");
 
-        ClieBtnGuardar.setBackground(new java.awt.Color(0, 204, 153));
-        ClieBtnGuardar.setText("GUARDAR");
+        clieBtnGuardar.setBackground(new java.awt.Color(0, 204, 153));
+        clieBtnGuardar.setText("GUARDAR");
 
         clieBtnLimpiar.setBackground(new java.awt.Color(0, 204, 153));
         clieBtnLimpiar.setText("LIMPIAR");
@@ -774,7 +774,7 @@ public class Index extends javax.swing.JFrame {
                         .addGap(220, 220, 220)
                         .addComponent(clieBtnLimpiar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ClieBtnGuardar))
+                        .addComponent(clieBtnGuardar))
                     .addGroup(jPanel28Layout.createSequentialGroup()
                         .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23)
@@ -843,7 +843,7 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(clieInputTextEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(73, 73, 73)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ClieBtnGuardar)
+                    .addComponent(clieBtnGuardar)
                     .addComponent(clieBtnLimpiar))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
@@ -1445,7 +1445,6 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JPanel Art;
     private javax.swing.JPanel Botonera;
     private javax.swing.JPanel Clie;
-    public javax.swing.JButton ClieBtnGuardar;
     private javax.swing.JPanel Fact;
     private javax.swing.JPanel Prov;
     private javax.swing.JPanel Rub;
@@ -1473,6 +1472,7 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JButton clieBtnBusacar;
     public javax.swing.JButton clieBtnEditar;
     public javax.swing.JButton clieBtnEliminar;
+    public javax.swing.JButton clieBtnGuardar;
     public javax.swing.JButton clieBtnLimpiar;
     public javax.swing.JCheckBox clieCheckBoxStockMinimo;
     public javax.swing.JTextField clieInputTextApellido;

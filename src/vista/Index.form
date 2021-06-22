@@ -1304,7 +1304,7 @@
                                   <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
                                   <Component id="clieBtnLimpiar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ClieBtnGuardar" min="-2" max="-2" attributes="0"/>
+                                  <Component id="clieBtnGuardar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel35" min="-2" pref="64" max="-2" attributes="0"/>
@@ -1396,7 +1396,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ClieBtnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="clieBtnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="clieBtnLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="10" max="32767" attributes="0"/>
@@ -1466,7 +1466,7 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="ClieBtnGuardar">
+                <Component class="javax.swing.JButton" name="clieBtnGuardar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="cc" red="0" type="rgb"/>
