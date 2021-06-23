@@ -19,6 +19,9 @@ public class Factura {
     @ManyToOne(optional = true)
     @JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;
+    
+    @OneToOne(mappedBy="factura")
+    private NotaCredito notaCredito;
 
     @Column(name = "proposito")
     private char proposito;

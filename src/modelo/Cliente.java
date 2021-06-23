@@ -32,6 +32,9 @@ public class Cliente {
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Factura> factura;
+    
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<NotaCredito> notasCredito;
 
     public Cliente() {
     }

@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.Rubro;
-import modelo.services.RubrosConsultas;
+import modelo.services.RubroConsultas;
 import vista.Index;
 
 public class RubroControlador {
@@ -24,12 +24,12 @@ public class RubroControlador {
         });
     }
     
-    public static void iniciarTabla(JTable rubroTabla, RubrosConsultas services) {
+    public static void iniciarTabla(JTable rubroTabla, RubroConsultas services) {
         ArrayList<Rubro> rubros = services.getAllRubros();
         cargarTabla(rubroTabla, rubros);
     }
     
-    public static void buscarTabla(JTable rubroTabla, RubrosConsultas services, String buscador) {
+    public static void buscarTabla(JTable rubroTabla, RubroConsultas services, String buscador) {
         ArrayList<Rubro> rubros = services.getRubrosBuscador(buscador);
         cargarTabla(rubroTabla, rubros);
     }
@@ -46,7 +46,7 @@ public class RubroControlador {
         view.rubInputTextDescripcion.setText(null);
     }
     
-    public static void eliminarCliente(Index view, RubrosConsultas services) {
+    public static void eliminarCliente(Index view, RubroConsultas services) {
         try {
             services.deleteRubro(Integer.parseInt(view.rubInputTextId.getText()));
 

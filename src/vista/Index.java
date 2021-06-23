@@ -13,11 +13,11 @@ public class Index extends javax.swing.JFrame {
         Botonera = new javax.swing.JPanel();
         botoneraArt = new javax.swing.JButton();
         botoneraRub = new javax.swing.JButton();
-        botoneraCli = new javax.swing.JButton();
+        botoneraClie = new javax.swing.JButton();
         botoneraFact = new javax.swing.JButton();
         botoneraProv = new javax.swing.JButton();
-        Ventanas = new javax.swing.JTabbedPane();
-        Art = new javax.swing.JPanel();
+        panelContainer = new javax.swing.JTabbedPane();
+        art = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -27,7 +27,6 @@ public class Index extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         artTabla = new javax.swing.JTable();
         artBtnEliminar = new javax.swing.JButton();
-        artBtnEditar = new javax.swing.JButton();
         clieCheckBoxStockMinimo = new javax.swing.JCheckBox();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -49,7 +48,9 @@ public class Index extends javax.swing.JFrame {
         artDropdownRubro = new javax.swing.JComboBox<>();
         artDropdownProveedor = new javax.swing.JComboBox<>();
         artBtnCargarFactura = new javax.swing.JButton();
-        Prov = new javax.swing.JPanel();
+        artInputTextNombre = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        prov = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -77,13 +78,12 @@ public class Index extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         provBtnEliminar = new javax.swing.JButton();
-        provBtnEditar = new javax.swing.JButton();
-        Clie = new javax.swing.JPanel();
+        clie = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         clieInputTextBuscador = new javax.swing.JTextField();
-        clieBtnBusacar = new javax.swing.JButton();
+        clieBtnBuscar = new javax.swing.JButton();
         jPanel28 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
@@ -106,8 +106,7 @@ public class Index extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         clieTabla = new javax.swing.JTable();
         clieBtnEliminar = new javax.swing.JButton();
-        clieBtnEditar = new javax.swing.JButton();
-        Rub = new javax.swing.JPanel();
+        fact = new javax.swing.JPanel();
         jPanel30 = new javax.swing.JPanel();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
@@ -132,10 +131,9 @@ public class Index extends javax.swing.JFrame {
         jScrollPane10 = new javax.swing.JScrollPane();
         factTabla = new javax.swing.JTable();
         factBtnEliminar = new javax.swing.JButton();
-        factBtnEditar = new javax.swing.JButton();
         factCheckBoxVenta = new javax.swing.JCheckBox();
         factCheckBoxCompra = new javax.swing.JCheckBox();
-        Fact = new javax.swing.JPanel();
+        rub = new javax.swing.JPanel();
         jPanel21 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -156,7 +154,6 @@ public class Index extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         rubroTabla = new javax.swing.JTable();
         rubBtnEliminar = new javax.swing.JButton();
-        rubBtnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,8 +166,8 @@ public class Index extends javax.swing.JFrame {
         botoneraRub.setBackground(new java.awt.Color(0, 153, 153));
         botoneraRub.setText("RUBROS");
 
-        botoneraCli.setBackground(new java.awt.Color(0, 153, 153));
-        botoneraCli.setText("CLIENTES");
+        botoneraClie.setBackground(new java.awt.Color(0, 153, 153));
+        botoneraClie.setText("CLIENTES");
 
         botoneraFact.setBackground(new java.awt.Color(0, 153, 153));
         botoneraFact.setText("FACTURAS");
@@ -188,7 +185,7 @@ public class Index extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(botoneraProv)
                 .addGap(18, 18, 18)
-                .addComponent(botoneraCli)
+                .addComponent(botoneraClie)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botoneraFact)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -198,18 +195,18 @@ public class Index extends javax.swing.JFrame {
         BotoneraLayout.setVerticalGroup(
             BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotoneraLayout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(8, Short.MAX_VALUE)
                 .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botoneraArt)
                     .addComponent(botoneraRub)
-                    .addComponent(botoneraCli)
+                    .addComponent(botoneraClie)
                     .addComponent(botoneraFact)
                     .addComponent(botoneraProv))
                 .addContainerGap())
         );
 
-        Ventanas.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
-        Ventanas.setToolTipText("");
+        panelContainer.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+        panelContainer.setToolTipText("");
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         jPanel6.setPreferredSize(new java.awt.Dimension(509, 50));
@@ -256,11 +253,11 @@ public class Index extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "DESCRIPCION", "RUBRO", "PROVEEDOR", "STOCK", "STOCK MIN", "PRECIO UNID."
+                "ID", "NOMBRE", "RUBRO", "DESCRIPCION", "PROVEEDOR", "STOCK", "STOCK MIN", "PRECIO UNID."
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -271,9 +268,6 @@ public class Index extends javax.swing.JFrame {
 
         artBtnEliminar.setBackground(new java.awt.Color(0, 204, 153));
         artBtnEliminar.setText("BORRAR");
-
-        artBtnEditar.setBackground(new java.awt.Color(0, 204, 153));
-        artBtnEditar.setText("EDITAR");
 
         clieCheckBoxStockMinimo.setText("Solo Stok Minimo");
         clieCheckBoxStockMinimo.addActionListener(new java.awt.event.ActionListener() {
@@ -293,8 +287,6 @@ public class Index extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(clieCheckBoxStockMinimo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(artBtnEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(artBtnEliminar)
                         .addGap(9, 9, 9)))
                 .addGap(114, 114, 114))
@@ -306,10 +298,9 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(artBtnEditar)
                     .addComponent(artBtnEliminar)
                     .addComponent(clieCheckBoxStockMinimo))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -347,6 +338,8 @@ public class Index extends javax.swing.JFrame {
         artBtnCargarFactura.setBackground(new java.awt.Color(0, 204, 153));
         artBtnCargarFactura.setText("CARGAR FACTURA");
 
+        jLabel17.setText("NOMBRE:");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -372,10 +365,6 @@ public class Index extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(artBtnGuardar))
                                 .addGroup(jPanel7Layout.createSequentialGroup()
-                                    .addComponent(jLabel10)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel7Layout.createSequentialGroup()
                                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel8)
                                         .addComponent(jLabel9))
@@ -395,7 +384,15 @@ public class Index extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(artBtnCargarFactura)))
+                        .addComponent(artBtnCargarFactura))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(artInputTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -409,11 +406,15 @@ public class Index extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(artInputTextId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(artDropdownRubro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel17)
+                    .addComponent(artInputTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(artDropdownRubro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(artDropdownProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -432,41 +433,41 @@ public class Index extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(artBtnGuardar)
                     .addComponent(artBtnLimpiar))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout ArtLayout = new javax.swing.GroupLayout(Art);
-        Art.setLayout(ArtLayout);
-        ArtLayout.setHorizontalGroup(
-            ArtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ArtLayout.createSequentialGroup()
+        javax.swing.GroupLayout artLayout = new javax.swing.GroupLayout(art);
+        art.setLayout(artLayout);
+        artLayout.setHorizontalGroup(
+            artLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(artLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ArtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1005, Short.MAX_VALUE)
-                    .addGroup(ArtLayout.createSequentialGroup()
+                .addGroup(artLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1016, Short.MAX_VALUE)
+                    .addGroup(artLayout.createSequentialGroup()
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 590, Short.MAX_VALUE)))
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 601, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        ArtLayout.setVerticalGroup(
-            ArtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ArtLayout.createSequentialGroup()
+        artLayout.setVerticalGroup(
+            artLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(artLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(ArtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(artLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Ventanas.addTab("", Art);
+        panelContainer.addTab("", art);
 
         jPanel24.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
@@ -641,21 +642,16 @@ public class Index extends javax.swing.JFrame {
         provBtnEliminar.setBackground(new java.awt.Color(0, 204, 153));
         provBtnEliminar.setText("BORRAR");
 
-        provBtnEditar.setBackground(new java.awt.Color(0, 204, 153));
-        provBtnEditar.setText("EDITAR");
-
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
         jPanel26Layout.setHorizontalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(provBtnEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(provBtnEliminar)
                 .addGap(14, 14, 14))
         );
@@ -665,39 +661,37 @@ public class Index extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(provBtnEliminar)
-                    .addComponent(provBtnEditar))
+                .addComponent(provBtnEliminar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout ProvLayout = new javax.swing.GroupLayout(Prov);
-        Prov.setLayout(ProvLayout);
-        ProvLayout.setHorizontalGroup(
-            ProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ProvLayout.createSequentialGroup()
+        javax.swing.GroupLayout provLayout = new javax.swing.GroupLayout(prov);
+        prov.setLayout(provLayout);
+        provLayout.setHorizontalGroup(
+            provLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(provLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(provLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(ProvLayout.createSequentialGroup()
+                    .addGroup(provLayout.createSequentialGroup()
                         .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        ProvLayout.setVerticalGroup(
-            ProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ProvLayout.createSequentialGroup()
+        provLayout.setVerticalGroup(
+            provLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(provLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(ProvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(provLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        Ventanas.addTab("", Prov);
+        panelContainer.addTab("", prov);
 
         jPanel27.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
@@ -705,8 +699,8 @@ public class Index extends javax.swing.JFrame {
 
         jLabel32.setText("Buscador: ");
 
-        clieBtnBusacar.setBackground(new java.awt.Color(0, 204, 153));
-        clieBtnBusacar.setText("BUSCAR");
+        clieBtnBuscar.setBackground(new java.awt.Color(0, 204, 153));
+        clieBtnBuscar.setText("BUSCAR");
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
@@ -720,7 +714,7 @@ public class Index extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(clieInputTextBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(clieBtnBusacar)
+                .addComponent(clieBtnBuscar)
                 .addGap(61, 61, 61))
         );
         jPanel27Layout.setVerticalGroup(
@@ -731,7 +725,7 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(jLabel31)
                     .addComponent(jLabel32)
                     .addComponent(clieInputTextBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(clieBtnBusacar))
+                    .addComponent(clieBtnBuscar))
                 .addContainerGap())
         );
 
@@ -876,21 +870,16 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
-        clieBtnEditar.setBackground(new java.awt.Color(0, 204, 153));
-        clieBtnEditar.setText("EDITAR");
-
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(clieBtnEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(clieBtnEliminar)
                 .addGap(14, 14, 14))
         );
@@ -900,39 +889,37 @@ public class Index extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clieBtnEliminar)
-                    .addComponent(clieBtnEditar))
+                .addComponent(clieBtnEliminar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout ClieLayout = new javax.swing.GroupLayout(Clie);
-        Clie.setLayout(ClieLayout);
-        ClieLayout.setHorizontalGroup(
-            ClieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ClieLayout.createSequentialGroup()
+        javax.swing.GroupLayout clieLayout = new javax.swing.GroupLayout(clie);
+        clie.setLayout(clieLayout);
+        clieLayout.setHorizontalGroup(
+            clieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(clieLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ClieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(clieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(ClieLayout.createSequentialGroup()
+                    .addGroup(clieLayout.createSequentialGroup()
                         .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        ClieLayout.setVerticalGroup(
-            ClieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ClieLayout.createSequentialGroup()
+        clieLayout.setVerticalGroup(
+            clieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(clieLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(ClieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(clieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        Ventanas.addTab("", Clie);
+        panelContainer.addTab("", clie);
 
         jPanel30.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
@@ -1108,9 +1095,6 @@ public class Index extends javax.swing.JFrame {
         factBtnEliminar.setBackground(new java.awt.Color(0, 204, 153));
         factBtnEliminar.setText("BORRAR");
 
-        factBtnEditar.setBackground(new java.awt.Color(0, 204, 153));
-        factBtnEditar.setText("EDITAR");
-
         factCheckBoxVenta.setText("Venta");
         factCheckBoxVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1128,15 +1112,13 @@ public class Index extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel32Layout.createSequentialGroup()
-                        .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
                         .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(factCheckBoxVenta)
                             .addComponent(factCheckBoxCompra))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(factBtnEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(factBtnEliminar)
                         .addGap(14, 14, 14))))
         );
@@ -1147,9 +1129,7 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(factBtnEliminar)
-                        .addComponent(factBtnEditar))
+                    .addComponent(factBtnEliminar)
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addComponent(factCheckBoxVenta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1157,33 +1137,33 @@ public class Index extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout RubLayout = new javax.swing.GroupLayout(Rub);
-        Rub.setLayout(RubLayout);
-        RubLayout.setHorizontalGroup(
-            RubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RubLayout.createSequentialGroup()
+        javax.swing.GroupLayout factLayout = new javax.swing.GroupLayout(fact);
+        fact.setLayout(factLayout);
+        factLayout.setHorizontalGroup(
+            factLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(factLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(RubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(factLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(RubLayout.createSequentialGroup()
+                    .addGroup(factLayout.createSequentialGroup()
                         .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        RubLayout.setVerticalGroup(
-            RubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RubLayout.createSequentialGroup()
+        factLayout.setVerticalGroup(
+            factLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(factLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(RubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(factLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, 465, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        Ventanas.addTab("", Rub);
+        panelContainer.addTab("", fact);
 
         jPanel21.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
@@ -1318,21 +1298,16 @@ public class Index extends javax.swing.JFrame {
         rubBtnEliminar.setBackground(new java.awt.Color(0, 204, 153));
         rubBtnEliminar.setText("BORRAR");
 
-        rubBtnEditar.setBackground(new java.awt.Color(0, 204, 153));
-        rubBtnEditar.setText("EDITAR");
-
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
         jPanel23Layout.setHorizontalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rubBtnEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(rubBtnEliminar)
                 .addGap(14, 14, 14))
         );
@@ -1342,39 +1317,37 @@ public class Index extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rubBtnEliminar)
-                    .addComponent(rubBtnEditar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(rubBtnEliminar)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout FactLayout = new javax.swing.GroupLayout(Fact);
-        Fact.setLayout(FactLayout);
-        FactLayout.setHorizontalGroup(
-            FactLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FactLayout.createSequentialGroup()
+        javax.swing.GroupLayout rubLayout = new javax.swing.GroupLayout(rub);
+        rub.setLayout(rubLayout);
+        rubLayout.setHorizontalGroup(
+            rubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rubLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(FactLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(rubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(FactLayout.createSequentialGroup()
+                    .addGroup(rubLayout.createSequentialGroup()
                         .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        FactLayout.setVerticalGroup(
-            FactLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FactLayout.createSequentialGroup()
+        rubLayout.setVerticalGroup(
+            rubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rubLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(FactLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(rubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        Ventanas.addTab("", Fact);
+        panelContainer.addTab("", rub);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1384,7 +1357,7 @@ public class Index extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Botonera, javax.swing.GroupLayout.DEFAULT_SIZE, 1030, Short.MAX_VALUE)
-                    .addComponent(Ventanas))
+                    .addComponent(panelContainer))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1393,7 +1366,7 @@ public class Index extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(Botonera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Ventanas)
+                .addComponent(panelContainer)
                 .addContainerGap())
         );
 
@@ -1442,16 +1415,10 @@ public class Index extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Art;
     private javax.swing.JPanel Botonera;
-    private javax.swing.JPanel Clie;
-    private javax.swing.JPanel Fact;
-    private javax.swing.JPanel Prov;
-    private javax.swing.JPanel Rub;
-    private javax.swing.JTabbedPane Ventanas;
+    public javax.swing.JPanel art;
     public javax.swing.JButton artBtnBuscar;
     public javax.swing.JButton artBtnCargarFactura;
-    public javax.swing.JButton artBtnEditar;
     public javax.swing.JButton artBtnEliminar;
     public javax.swing.JButton artBtnGuardar;
     public javax.swing.JButton artBtnLimpiar;
@@ -1460,17 +1427,18 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JTextField artInputTextBuscador;
     public javax.swing.JTextArea artInputTextDescripcion;
     public javax.swing.JTextField artInputTextId;
+    public javax.swing.JTextField artInputTextNombre;
     public javax.swing.JTextField artInputTextPrecio;
     public javax.swing.JTextField artInputTextStock;
     public javax.swing.JTextField artInputTextStockMin;
     public javax.swing.JTable artTabla;
     public javax.swing.JButton botoneraArt;
-    public javax.swing.JButton botoneraCli;
+    public javax.swing.JButton botoneraClie;
     public javax.swing.JButton botoneraFact;
     public javax.swing.JButton botoneraProv;
-    private javax.swing.JButton botoneraRub;
-    public javax.swing.JButton clieBtnBusacar;
-    public javax.swing.JButton clieBtnEditar;
+    public javax.swing.JButton botoneraRub;
+    public javax.swing.JPanel clie;
+    public javax.swing.JButton clieBtnBuscar;
     public javax.swing.JButton clieBtnEliminar;
     public javax.swing.JButton clieBtnGuardar;
     public javax.swing.JButton clieBtnLimpiar;
@@ -1484,8 +1452,8 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JTextField clieInputTextNombre;
     public javax.swing.JTextField clieInputTextTelefono;
     public javax.swing.JTable clieTabla;
+    public javax.swing.JPanel fact;
     public javax.swing.JButton factBtnBuscar;
-    public javax.swing.JButton factBtnEditar;
     public javax.swing.JButton factBtnEliminar;
     public javax.swing.JButton factBtnGuardar;
     public javax.swing.JButton factBtnLimpiar;
@@ -1507,6 +1475,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -1565,8 +1534,9 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTable jTable3;
+    public javax.swing.JTabbedPane panelContainer;
+    public javax.swing.JPanel prov;
     public javax.swing.JButton provBtnBuscar;
-    public javax.swing.JButton provBtnEditar;
     public javax.swing.JButton provBtnEliminar;
     public javax.swing.JButton provBtnGuardar;
     public javax.swing.JButton provBtnLimpiar;
@@ -1579,8 +1549,8 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JTextField provInputTextEmail;
     public javax.swing.JTextField provInputTextId;
     public javax.swing.JTextField provInputTextTelefono;
+    public javax.swing.JPanel rub;
     public javax.swing.JButton rubBtnBuscar;
-    public javax.swing.JButton rubBtnEditar;
     public javax.swing.JButton rubBtnEliminar;
     public javax.swing.JButton rubBtnGuardar;
     public javax.swing.JButton rubBtnLimpiar;
