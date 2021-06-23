@@ -98,12 +98,12 @@ public class Index extends javax.swing.JFrame {
         clieInputTextDni = new javax.swing.JTextField();
         clieInputTextDireccion = new javax.swing.JTextField();
         clieInputTextTelefono = new javax.swing.JTextField();
-        clieBtnGuardar = new javax.swing.JButton();
         clieBtnLimpiar = new javax.swing.JButton();
         clieInputTextEmail = new javax.swing.JTextField();
         clieInputTextId = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
         clieBtnEliminar = new javax.swing.JButton();
+        clieBtnGuardar = new javax.swing.JButton();
         jPanel29 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         clieTabla = new javax.swing.JTable();
@@ -187,19 +187,19 @@ public class Index extends javax.swing.JFrame {
         Botonera.setPreferredSize(new java.awt.Dimension(988, 50));
 
         botoneraArt.setBackground(new java.awt.Color(0, 153, 153));
-        botoneraArt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/articulos.png"))); // NOI18N
+        botoneraArt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/articulos_1.png"))); // NOI18N
         botoneraArt.setText("ARTICULOS");
 
         botoneraRub.setBackground(new java.awt.Color(0, 153, 153));
-        botoneraRub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/compras.png"))); // NOI18N
+        botoneraRub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/compras.png"))); // NOI18N
         botoneraRub.setText("RUBROS");
 
         botoneraClie.setBackground(new java.awt.Color(0, 153, 153));
-        botoneraClie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/clientes.png"))); // NOI18N
+        botoneraClie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/clientes.png"))); // NOI18N
         botoneraClie.setText("CLIENTES");
 
         botoneraFact.setBackground(new java.awt.Color(0, 153, 153));
-        botoneraFact.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/reportes.png"))); // NOI18N
+        botoneraFact.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/reportes.png"))); // NOI18N
         botoneraFact.setText("FACTURAS");
         botoneraFact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,7 +208,7 @@ public class Index extends javax.swing.JFrame {
         });
 
         botoneraProv.setBackground(new java.awt.Color(0, 153, 153));
-        botoneraProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/proveedores.png"))); // NOI18N
+        botoneraProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/proveedores.png"))); // NOI18N
         botoneraProv.setText("PROVEEDORES");
 
         javax.swing.GroupLayout BotoneraLayout = new javax.swing.GroupLayout(Botonera);
@@ -251,7 +251,7 @@ public class Index extends javax.swing.JFrame {
 
         jLabel2.setText("Buscador: ");
 
-        artBtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png"))); // NOI18N
+        artBtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/buscar.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -801,12 +801,8 @@ public class Index extends javax.swing.JFrame {
         jPanel28.add(clieInputTextDireccion);
         jPanel28.add(clieInputTextTelefono);
 
-        clieBtnGuardar.setBackground(new java.awt.Color(0, 204, 153));
-        clieBtnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/guardar_mediano.png"))); // NOI18N
-        jPanel28.add(clieBtnGuardar);
-
         clieBtnLimpiar.setBackground(new java.awt.Color(0, 204, 153));
-        clieBtnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/limpiar mediano.png"))); // NOI18N
+        clieBtnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/limpiar mediano.png"))); // NOI18N
         jPanel28.add(clieBtnLimpiar);
         jPanel28.add(clieInputTextEmail);
 
@@ -817,13 +813,17 @@ public class Index extends javax.swing.JFrame {
         jPanel28.add(jLabel44);
 
         clieBtnEliminar.setBackground(new java.awt.Color(0, 204, 153));
-        clieBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/close.png"))); // NOI18N
+        clieBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/eliminar mediano.png"))); // NOI18N
         clieBtnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clieBtnEliminarActionPerformed(evt);
             }
         });
         jPanel28.add(clieBtnEliminar);
+
+        clieBtnGuardar.setBackground(new java.awt.Color(0, 204, 153));
+        clieBtnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/guardar_mediano.png"))); // NOI18N
+        jPanel28.add(clieBtnGuardar);
 
         jPanel29.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
@@ -858,7 +858,7 @@ public class Index extends javax.swing.JFrame {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout clieLayout = new javax.swing.GroupLayout(clie);
@@ -884,7 +884,7 @@ public class Index extends javax.swing.JFrame {
                 .addGroup(clieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         ventanasContainer.addTab("", clie);
