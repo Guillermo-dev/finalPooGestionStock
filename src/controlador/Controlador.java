@@ -15,16 +15,21 @@ import vista.Index;
 public class Controlador implements ActionListener, ListSelectionListener {
 
     private final Index view;
-    private final FacturaVista viewDacturasDetalles;
+    private final FacturaVista viewFacturasDetalles;
     private final ClienteConsultas domConsultasClie;
     private final RubrosConsultas domConsultasRub;
 
     public Controlador(Index view, FacturaVista viewFacturasDetalles, ClienteConsultas domConsultasClie, RubrosConsultas domConsultasRub) {
         this.view = view;
         this.domConsultasClie = domConsultasClie;
+<<<<<<< Updated upstream
         this.domConsultasRub = domConsultasRub;
         this.viewDacturasDetalles = viewFacturasDetalles;
         
+=======
+        this.viewFacturasDetalles = viewFacturasDetalles;
+
+>>>>>>> Stashed changes
         // BOTONERA
         this.view.botoneraArt.addActionListener(this);
 
@@ -46,6 +51,7 @@ public class Controlador implements ActionListener, ListSelectionListener {
          this.view.rubBtnEliminar.addActionListener(this);
          
         // FACTURAS
+        this.view.factBtnNuevaFactura.addActionListener(this);
         this.view.factBtnVerMas.addActionListener(this);
     }
 
@@ -104,10 +110,10 @@ public class Controlador implements ActionListener, ListSelectionListener {
         
         
         // Facturas
-        if (lse.getSource() == this.view.factBtnVerMas) {
+        if (lse.getSource() == this.view.factBtnNuevaFactura) {
             // DIALOG MENSAJE (https://www.youtube.com/watch?v=sT5zeMX8X50&t=205s)
-            JOptionPane.showMessageDialog(null, "HOLA MUNDO");
-            FacturaControlador.open(this.viewDacturasDetalles);
+            //JOptionPane.showMessageDialog(null, "HOLA MUNDO");
+            FacturaControlador.crearFactura(this.viewFacturasDetalles);
         }
     }
 

@@ -17,6 +17,9 @@ public class GestionDeStock {
        
        Controlador ctrl = new Controlador(view,facturasDetalles, domConsultasClie, domConsultasRub);
        ctrl.iniciar();
+       
+       //Agregar el diseño de la vista  3- AcrylLookAndFeel()
+       
     }
 
 }
