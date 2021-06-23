@@ -5,10 +5,20 @@
         <group>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/vista/Index.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/ArticuloControlador.java</file>
-            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/modelo/services/ArticuloConsultas.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/modelo/services/ClienteConsultas.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/vista/FacturaVista.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/Controlador.java</file>
-            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/ClienteControlador.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/gestiondestock/GestionDeStock.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/modelo/Articulo.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/modelo/services/ProveedorConsultas.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/ProveedorControlador.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/modelo/services/ArticuloConsultas.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/FacturaControlador.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/ClienteControlador.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/modelo/services/HibernateUtil.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/modelo/Rubro.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/RubroControlador.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/modelo/services/RubroConsultas.java</file>
         </group>
     </open-files>
 </project-private>

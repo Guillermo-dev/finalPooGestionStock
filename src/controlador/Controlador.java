@@ -16,7 +16,7 @@ import vista.Index;
 public class Controlador implements ActionListener, ListSelectionListener {
 
     private final Index view;
-    private final FacturaVista viewDacturasDetalles;
+    private final FacturaVista viewFacturasDetalles;
     private final ArticuloConsultas domConsultasArt;
     private final ClienteConsultas domConsultasClie;
     private final RubroConsultas domConsultasRub;
@@ -24,7 +24,7 @@ public class Controlador implements ActionListener, ListSelectionListener {
 
     public Controlador(Index view, ArticuloConsultas domConsultasArt, FacturaVista viewFacturasDetalles, ProveedorConsultas domConsultasProv, ClienteConsultas domConsultasClie, RubroConsultas domConsultasRub) {
         this.view = view;
-        this.viewDacturasDetalles = viewFacturasDetalles;
+        this.viewFacturasDetalles = viewFacturasDetalles;
         this.domConsultasArt = domConsultasArt;
         this.domConsultasProv = domConsultasProv;
         this.domConsultasClie = domConsultasClie;
@@ -54,8 +54,16 @@ public class Controlador implements ActionListener, ListSelectionListener {
         this.view.clieBtnGuardar.addActionListener(this);
         this.view.clieBtnLimpiar.addActionListener(this);
         this.view.clieBtnEliminar.addActionListener(this);
-
+        
+        //RUBROS
+        this.view.rubroTabla.getSelectionModel().addListSelectionListener(this);
+        this.view.rubBtnBuscar.addActionListener(this);
+        this.view.rubBtnGuardar.addActionListener (this);
+         this.view.rubBtnLimpiar.addActionListener(this);
+         this.view.rubBtnEliminar.addActionListener(this);
+         
         // FACTURAS
+        this.view.factBtnNuevaFactura.addActionListener(this);
         this.view.factBtnVerMas.addActionListener(this);
     }
 
@@ -79,20 +87,20 @@ public class Controlador implements ActionListener, ListSelectionListener {
         /// BOTONERA
         if (lse.getSource() == this.view.botoneraArt) {
 
-            this.view.panelContainer.setSelectedComponent(this.view.art);
+            this.view.ventanasContainer.setSelectedComponent(this.view.art);
         }
         if (lse.getSource() == this.view.botoneraProv) {
-            this.view.panelContainer.setSelectedComponent(this.view.prov);
+            this.view.ventanasContainer.setSelectedComponent(this.view.prov);
         }
         if (lse.getSource() == this.view.botoneraClie) {
             ClienteControlador.iniciarTabla(this.view.clieTabla, this.domConsultasClie);
-            this.view.panelContainer.setSelectedComponent(this.view.clie);
+            this.view.ventanasContainer.setSelectedComponent(this.view.clie);
         }
         if (lse.getSource() == this.view.botoneraFact) {
-            this.view.panelContainer.setSelectedComponent(this.view.rub);
+            this.view.ventanasContainer.setSelectedComponent(this.view.rub);
         }
         if (lse.getSource() == this.view.botoneraRub) {
-            this.view.panelContainer.setSelectedComponent(this.view.fact);
+            this.view.ventanasContainer.setSelectedComponent(this.view.fact);
         }
 
         // ARTICULOS
@@ -125,11 +133,27 @@ public class Controlador implements ActionListener, ListSelectionListener {
             ClienteControlador.eliminarCliente(this.view, this.domConsultasClie);
         }
 
+        
+        //Rubros
+        if (lse.getSource() == this.view.rubBtnBuscar){
+            RubroControlador.buscarTabla(this.view.rubroTabla, this.domConsultasRub, this.view.rubInputTextBuscador.getText());
+        }
+        if (lse.getSource() == this.view.rubBtnGuardar){
+            RubroControlador.agregarRubro(this.view, this.domConsultasRub);
+        }
+        if (lse.getSource() == this.view.rubBtnLimpiar){
+            RubroControlador.vaciarInputTexts(view);
+        }
+        if (lse.getSource() == this.view.rubBtnEliminar){
+            RubroControlador.eliminarRubro(this.view, this.domConsultasRub);
+        }
+        
+        
         // Facturas
-        if (lse.getSource() == this.view.factBtnVerMas) {
+        if (lse.getSource() == this.view.factBtnNuevaFactura) {
             // DIALOG MENSAJE (https://www.youtube.com/watch?v=sT5zeMX8X50&t=205s)
-            JOptionPane.showMessageDialog(null, "HOLA MUNDO");
-            FacturaControlador.open(this.viewDacturasDetalles);
+            //JOptionPane.showMessageDialog(null, "HOLA MUNDO");
+            FacturaControlador.crearFactura(this.viewFacturasDetalles);
         }
     }
 
@@ -155,6 +179,7 @@ public class Controlador implements ActionListener, ListSelectionListener {
                         this.view.artTabla.getValueAt(this.view.artTabla.getSelectedRow(), 7).toString()
                 );
             } catch (Exception e) {
+                System.out.println(e);
             }
         }
 

@@ -39,7 +39,36 @@ public class RubroConsultas extends HibernateUtil {
         sessionFactory.close();
         return (ArrayList<Rubro>) rubros;
     }
+    
+    public void saveRubro(Rubro rubro) {
+        SessionFactory sessionFactory = newSessionFactory();
+        Session session = sessionFactory.openSession();
 
+        session.beginTransaction();
+        session.save(rubro);
+        session.getTransaction().commit();
+
+        session.close();
+        sessionFactory.close();
+    }
+    
+    public void updateRubro(Rubro newRubro, int idRubro) {
+        SessionFactory sessionFactory = newSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        Rubro oldRubro = (Rubro) session.get(Rubro.class, idRubro);
+        oldRubro.setDescripcion(newRubro.getDescripcion());
+        oldRubro.setNombre(newRubro.getNombre());
+        
+
+        session.beginTransaction();
+        session.update(oldRubro);
+        session.getTransaction().commit();
+
+        session.close();
+        sessionFactory.close();
+    }
+    
     public void deleteRubro(int idRubro) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();

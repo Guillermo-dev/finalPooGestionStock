@@ -46,7 +46,8 @@ public class RubroControlador {
         view.rubInputTextDescripcion.setText(null);
     }
     
-    public static void eliminarCliente(Index view, RubroConsultas services) {
+
+    public static void eliminarRubro(Index view, RubroConsultas services) {
         try {
             services.deleteRubro(Integer.parseInt(view.rubInputTextId.getText()));
 
@@ -58,6 +59,42 @@ public class RubroControlador {
             System.out.println("Error: " + e);
             JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentelo mas tarde");
         }
-
+    }
+    
+    public static boolean inputsTextValido(Index view) {
+        // TODO: Agregar logica de validacion
+        return view.rubInputTextNombre.getText().equals("")
+                || view.rubInputTextDescripcion.getText().equals("");
+    }
+    
+    public static boolean rubroSeleccionado(Index view) {
+        return !view.rubInputTextId.getText().equals("");
+    }
+    
+    public static void agregarRubro(Index view, RubroConsultas services) {
+        if (inputsTextValido(view)) {
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+        } else {
+            Rubro rubro = new Rubro(
+                    view.rubInputTextNombre.getText(),
+                    view.rubInputTextDescripcion.getText());
+            if (rubroSeleccionado(view)) {
+                try {
+                    services.updateRubro(rubro, Integer.parseInt(view.rubInputTextId.getText()));
+                } catch (Exception e) {
+                    // TODO
+                    JOptionPane.showMessageDialog(null, "Error inesperado");
+                }
+            } else {
+                try {
+                    services.saveRubro(rubro);
+                } catch (Exception e) {
+                    // TODO
+                    JOptionPane.showMessageDialog(null, "Error inesperado");
+                }
+            }
+            iniciarTabla(view.rubroTabla, services);
+            vaciarInputTexts(view);
+        }
     }
 }
