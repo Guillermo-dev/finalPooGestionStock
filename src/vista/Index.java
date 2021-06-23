@@ -229,11 +229,7 @@ public class Index extends javax.swing.JFrame {
         BotoneraLayout.setVerticalGroup(
             BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotoneraLayout.createSequentialGroup()
-<<<<<<< Updated upstream
-                .addContainerGap(12, Short.MAX_VALUE)
-=======
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
->>>>>>> Stashed changes
                 .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botoneraArt)
                     .addComponent(botoneraRub)
@@ -473,19 +469,11 @@ public class Index extends javax.swing.JFrame {
             .addGroup(ArtLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ArtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< Updated upstream
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1005, Short.MAX_VALUE)
-                    .addGroup(ArtLayout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 590, Short.MAX_VALUE)))
-=======
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1176, Short.MAX_VALUE)
                     .addGroup(ArtLayout.createSequentialGroup()
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)))
->>>>>>> Stashed changes
                 .addContainerGap())
         );
         ArtLayout.setVerticalGroup(
@@ -656,11 +644,8 @@ public class Index extends javax.swing.JFrame {
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(provBtnListaCompra)
                     .addComponent(provBtnLimpiar)
-<<<<<<< Updated upstream
                     .addComponent(provBtnListaCompra))
-=======
                     .addComponent(provBtnGuardar))
->>>>>>> Stashed changes
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -791,13 +776,8 @@ public class Index extends javax.swing.JFrame {
 
         jLabel40.setText("EMAIL:");
 
-<<<<<<< Updated upstream
-        clieBtnGuardar.setBackground(new java.awt.Color(0, 204, 153));
-        clieBtnGuardar.setText("GUARDAR");
-=======
         ClieBtnGuardar.setBackground(new java.awt.Color(0, 204, 153));
         ClieBtnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/guardar_mediano.png"))); // NOI18N
->>>>>>> Stashed changes
 
         clieBtnLimpiar.setBackground(new java.awt.Color(0, 204, 153));
         clieBtnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/limpiar mediano.png"))); // NOI18N
@@ -823,7 +803,6 @@ public class Index extends javax.swing.JFrame {
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel28Layout.createSequentialGroup()
-<<<<<<< Updated upstream
                         .addGap(220, 220, 220)
                         .addComponent(clieBtnLimpiar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -844,20 +823,6 @@ public class Index extends javax.swing.JFrame {
                                     .addComponent(jLabel40)
                                     .addGap(45, 45, 45)))
                             .addGroup(jPanel28Layout.createSequentialGroup()
-=======
-                        .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(clieInputTextId, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel28Layout.createSequentialGroup()
-                            .addComponent(clieBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(clieBtnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(ClieBtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel28Layout.createSequentialGroup()
-                            .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
->>>>>>> Stashed changes
                                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
@@ -918,20 +883,11 @@ public class Index extends javax.swing.JFrame {
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
                     .addComponent(clieInputTextEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-<<<<<<< Updated upstream
                 .addGap(73, 73, 73)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clieBtnGuardar)
                     .addComponent(clieBtnLimpiar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-=======
-                .addGap(18, 18, 18)
-                .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(clieBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(clieBtnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ClieBtnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
->>>>>>> Stashed changes
         );
 
         jPanel29.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -1681,11 +1637,7 @@ public class Index extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< Updated upstream
-                    .addComponent(Botonera, javax.swing.GroupLayout.DEFAULT_SIZE, 1030, Short.MAX_VALUE)
-=======
                     .addComponent(Botonera, javax.swing.GroupLayout.DEFAULT_SIZE, 1190, Short.MAX_VALUE)
->>>>>>> Stashed changes
                     .addComponent(Ventanas))
                 .addContainerGap())
         );
@@ -1892,11 +1844,8 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-<<<<<<< Updated upstream
-=======
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
->>>>>>> Stashed changes
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField1;
