@@ -19,7 +19,7 @@ public class GestionDeStock {
         ClienteConsultas domConsultasClie = new ClienteConsultas();
         RubroConsultas domConsultasRub = new RubroConsultas();
 
-        Controlador ctrl = new Controlador(view, domConsultasArt, facturasDetalles, domConsultasProv, domConsultasClie, domConsultasRub);
+        Controlador ctrl = new Controlador(view, facturasDetalles, domConsultasArt, domConsultasProv, domConsultasClie, domConsultasRub);
 
         ctrl.iniciar();
 

@@ -110,8 +110,8 @@ public class Index extends javax.swing.JFrame {
         jLabel42 = new javax.swing.JLabel();
         factInputTextBuscador = new javax.swing.JTextField();
         factBtnBuscar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        factBtnFacturas = new javax.swing.JButton();
+        notBtnNotasCredito = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panelFactura = new javax.swing.JPanel();
         jPanel31 = new javax.swing.JPanel();
@@ -142,21 +142,21 @@ public class Index extends javax.swing.JFrame {
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
-        factInputTextFecha1 = new javax.swing.JTextField();
-        factBtnGuardar1 = new javax.swing.JButton();
-        factBtnLimpiar1 = new javax.swing.JButton();
+        notInputTextFecha = new javax.swing.JTextField();
+        notBtnGuardar = new javax.swing.JButton();
+        notBtnLimpiar = new javax.swing.JButton();
         jLabel53 = new javax.swing.JLabel();
-        factInputTextTotal1 = new javax.swing.JTextField();
-        factInputTextProposito1 = new javax.swing.JTextField();
+        notInputTextTotal = new javax.swing.JTextField();
+        notInputTextCliente = new javax.swing.JTextField();
         jLabel54 = new javax.swing.JLabel();
         jLabel55 = new javax.swing.JLabel();
-        factInputTextId1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        notInputTextId = new javax.swing.JTextField();
+        notDropDownFactura = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        notTabla = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        notBtnEliminar = new javax.swing.JButton();
         fact = new javax.swing.JPanel();
         jPanel21 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -452,9 +452,9 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(artBtnGuardar)
-                    .addComponent(artBtnLimpiar))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(artBtnLimpiar)
+                    .addComponent(artBtnGuardar))
                 .addContainerGap())
         );
 
@@ -800,19 +800,7 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(clieBtnGuardar, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
 
-        clieInputTextId.setText("jTextField2");
-
-        clieInputTextNombre.setText("jTextField3");
-
-        clieInputTextApellido.setText("jTextField4");
-
-        clieInputTextDni.setText("jTextField5");
-
-        clieInputTextDireccion.setText("jTextField6");
-
-        clieInputTextTelefono.setText("jTextField7");
-
-        clieInputTextEmail.setText("jTextField8");
+        clieInputTextId.setEditable(false);
 
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
@@ -959,9 +947,9 @@ public class Index extends javax.swing.JFrame {
         factBtnBuscar.setBackground(new java.awt.Color(0, 204, 153));
         factBtnBuscar.setText("BUSCAR");
 
-        jButton3.setText("FACTURAS");
+        factBtnFacturas.setText("FACTURAS");
 
-        jButton4.setText("NOTAS DE CREDITO");
+        notBtnNotasCredito.setText("NOTAS DE CREDITO");
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
@@ -969,9 +957,9 @@ public class Index extends javax.swing.JFrame {
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jButton3)
+                .addComponent(factBtnFacturas)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(notBtnNotasCredito)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel42)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -988,8 +976,8 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(jLabel42)
                     .addComponent(factInputTextBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(factBtnBuscar)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(factBtnFacturas)
+                    .addComponent(notBtnNotasCredito))
                 .addContainerGap())
         );
 
@@ -1224,32 +1212,30 @@ public class Index extends javax.swing.JFrame {
 
         jLabel52.setText("FECHA:");
 
-        factInputTextFecha1.setEditable(false);
+        notInputTextFecha.setEditable(false);
 
-        factBtnGuardar1.setBackground(new java.awt.Color(0, 204, 153));
-        factBtnGuardar1.setText("GUARDAR");
+        notBtnGuardar.setBackground(new java.awt.Color(0, 204, 153));
+        notBtnGuardar.setText("GUARDAR");
 
-        factBtnLimpiar1.setBackground(new java.awt.Color(0, 204, 153));
-        factBtnLimpiar1.setText("LIMPIAR");
+        notBtnLimpiar.setBackground(new java.awt.Color(0, 204, 153));
+        notBtnLimpiar.setText("LIMPIAR");
 
         jLabel53.setText("TOTAL:");
 
-        factInputTextTotal1.setEditable(false);
-        factInputTextTotal1.addActionListener(new java.awt.event.ActionListener() {
+        notInputTextTotal.setEditable(false);
+        notInputTextTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                factInputTextTotal1ActionPerformed(evt);
+                notInputTextTotalActionPerformed(evt);
             }
         });
 
-        factInputTextProposito1.setEditable(false);
+        notInputTextCliente.setEditable(false);
 
         jLabel54.setText("CLIENTE:");
 
         jLabel55.setText("ID:");
 
-        factInputTextId1.setEditable(false);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        notInputTextId.setEditable(false);
 
         javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
         jPanel33.setLayout(jPanel33Layout);
@@ -1268,29 +1254,29 @@ public class Index extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel33Layout.createSequentialGroup()
-                                .addComponent(factBtnLimpiar1)
+                                .addComponent(notBtnLimpiar)
                                 .addGap(18, 18, 18)
-                                .addComponent(factBtnGuardar1)
+                                .addComponent(notBtnGuardar)
                                 .addGap(36, 36, 36))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel33Layout.createSequentialGroup()
                                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(factInputTextTotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(notInputTextTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(factInputTextProposito1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(notInputTextCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel33Layout.createSequentialGroup()
                                             .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(factInputTextId1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(notInputTextId, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel33Layout.createSequentialGroup()
                                             .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel54)
                                                 .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(notDropDownFactura, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGroup(jPanel33Layout.createSequentialGroup()
                                             .addComponent(jLabel52)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(factInputTextFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(notInputTextFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(43, 43, 43))))))
         );
         jPanel33Layout.setVerticalGroup(
@@ -1300,34 +1286,34 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(factInputTextId1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(notInputTextId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel55))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel50)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(notDropDownFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(factInputTextProposito1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(notInputTextCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel54))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(factInputTextFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(notInputTextFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel52))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(factInputTextTotal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(notInputTextTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel53))
                 .addGap(99, 99, 99)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(factBtnLimpiar1)
-                    .addComponent(factBtnGuardar1))
+                    .addComponent(notBtnLimpiar)
+                    .addComponent(notBtnGuardar))
                 .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        notTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1343,7 +1329,7 @@ public class Index extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane7.setViewportView(jTable4);
+        jScrollPane7.setViewportView(notTabla);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1364,7 +1350,7 @@ public class Index extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
-        jButton2.setText("BORRAR");
+        notBtnEliminar.setText("BORRAR");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1372,14 +1358,14 @@ public class Index extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(notBtnEliminar)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(notBtnEliminar)
                 .addContainerGap())
         );
 
@@ -1657,9 +1643,9 @@ public class Index extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_factInputTextTotalActionPerformed
 
-    private void factInputTextTotal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_factInputTextTotal1ActionPerformed
+    private void notInputTextTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notInputTextTotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_factInputTextTotal1ActionPerformed
+    }//GEN-LAST:event_notInputTextTotalActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -1733,30 +1719,21 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JTable clieTabla;
     public javax.swing.JPanel fact;
     public javax.swing.JButton factBtnBuscar;
+    public javax.swing.JButton factBtnFacturas;
     public javax.swing.JButton factBtnGuardar;
-    public javax.swing.JButton factBtnGuardar1;
     public javax.swing.JButton factBtnLimpiar;
-    public javax.swing.JButton factBtnLimpiar1;
     public javax.swing.JButton factBtnNuevaFactura;
     public javax.swing.JButton factBtnVerMas;
-    private javax.swing.JCheckBox factCheckBoxCompra;
-    private javax.swing.JCheckBox factCheckBoxVenta;
+    public javax.swing.JCheckBox factCheckBoxCompra;
+    public javax.swing.JCheckBox factCheckBoxVenta;
     public javax.swing.JTextField factInputTextBuscador;
     public javax.swing.JTextField factInputTextFecha;
-    public javax.swing.JTextField factInputTextFecha1;
     public javax.swing.JTextField factInputTextId;
-    public javax.swing.JTextField factInputTextId1;
     public javax.swing.JTextField factInputTextNumero;
     public javax.swing.JTextField factInputTextProposito;
-    public javax.swing.JTextField factInputTextProposito1;
     public javax.swing.JTextField factInputTextTotal;
-    public javax.swing.JTextField factInputTextTotal1;
-    private javax.swing.JTable factTabla;
+    public javax.swing.JTable factTabla;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1834,8 +1811,17 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField1;
+    public javax.swing.JButton notBtnEliminar;
+    public javax.swing.JButton notBtnGuardar;
+    public javax.swing.JButton notBtnLimpiar;
+    public javax.swing.JButton notBtnNotasCredito;
+    public javax.swing.JComboBox<String> notDropDownFactura;
+    public javax.swing.JTextField notInputTextCliente;
+    public javax.swing.JTextField notInputTextFecha;
+    public javax.swing.JTextField notInputTextId;
+    public javax.swing.JTextField notInputTextTotal;
+    public javax.swing.JTable notTabla;
     private javax.swing.JPanel panelFactura;
     private javax.swing.JPanel panelNotasC;
     public javax.swing.JPanel prov;

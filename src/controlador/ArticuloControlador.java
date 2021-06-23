@@ -32,7 +32,7 @@ public class ArticuloControlador {
 
         dropModel.addElement("<Seleccionar Proveedor>");
         proveedores.forEach(proveedor -> {
-            dropModel.addElement(proveedor.getId() + ", CUIL/T:" + proveedor.getCuilCuit());
+            dropModel.addElement(proveedor.getId() + ", " + proveedor.getNombre());
         });
     }
 
@@ -46,7 +46,7 @@ public class ArticuloControlador {
             data[1] = articulo.getNombre();
             data[2] = articulo.getRubro().getId() + ", " + articulo.getRubro().getNombre();
             data[3] = articulo.getDescripcion();
-            // data[4] = articulo.getProveedor().getId() + ", " + articulo.getProveedor().getNombre();
+            data[4] = articulo.getProveedor().getId() + ", " + articulo.getProveedor().getNombre();
             data[5] = Integer.toString(articulo.getStockActual());
             data[6] = Integer.toString(articulo.getStockMinimo());
             data[7] = String.valueOf(articulo.getPrecioUnitario());
@@ -76,6 +76,7 @@ public class ArticuloControlador {
     }
 
     public static void vaciarInputTexts(Index view) {
+        view.artInputTextId.setText("");
         view.artInputTextNombre.setText("");
         view.artInputTextDescripcion.setText("");
         view.artInputTextPrecio.setText("");

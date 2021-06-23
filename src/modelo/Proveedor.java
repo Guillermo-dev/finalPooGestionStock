@@ -12,6 +12,9 @@ public class Proveedor {
     @Column(name = "id_proveedor")
     private int id;
 
+    @Column(name = "nombre")
+    private String nombre;
+
     @Column(name = "cuil_cuit")
     private String cuilCuit;
 
@@ -36,7 +39,8 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(String cuilCuit, String razonSocial, String direccion, String telefono, String email) {
+    public Proveedor(String nombre, String cuilCuit, String razonSocial, String direccion, String telefono, String email) {
+        this.nombre = nombre;
         this.cuilCuit = cuilCuit;
         this.razonSocial = razonSocial;
         this.direccion = direccion;
@@ -48,6 +52,10 @@ public class Proveedor {
         return id;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     public String getCuilCuit() {
         return cuilCuit;
     }
@@ -55,6 +63,4 @@ public class Proveedor {
     public String getEmail() {
         return email;
     }
-
-    
 }
