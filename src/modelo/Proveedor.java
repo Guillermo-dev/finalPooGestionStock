@@ -44,4 +44,17 @@ public class Proveedor {
         this.email = email;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getCuilCuit() {
+        return cuilCuit;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    
 }

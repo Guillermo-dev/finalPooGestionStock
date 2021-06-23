@@ -57,7 +57,7 @@ public class ClienteControlador {
         view.clieInputTextEmail.setText("");
     }
 
-    public static boolean inputsTextValido(Index view) {
+    public static boolean inputsTextInvalidos(Index view) {
         // TODO: Agregar logica de validacion
         return view.clieInputTextApellido.getText().equals("")
                 || view.clieInputTextNombre.getText().equals("")
@@ -71,8 +71,8 @@ public class ClienteControlador {
         return !view.clieInputTextId.getText().equals("");
     }
 
-    public static void agregarCliente(Index view, ClienteConsultas services) {
-        if (inputsTextValido(view)) {
+    public static void guardarCliente(Index view, ClienteConsultas services) {
+        if (inputsTextInvalidos(view)) {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos");
         } else {
             Cliente cliente = new Cliente(
@@ -106,8 +106,8 @@ public class ClienteControlador {
         try {
             services.deleteCliente(Integer.parseInt(view.clieInputTextId.getText()));
 
-            DefaultTableModel clientesModel = (DefaultTableModel) view.clieTabla.getModel();
-            clientesModel.removeRow(view.clieTabla.getSelectedRow());
+            DefaultTableModel tablaModel = (DefaultTableModel) view.clieTabla.getModel();
+            tablaModel.removeRow(view.clieTabla.getSelectedRow());
 
             vaciarInputTexts(view);
         } catch (Exception e) {

@@ -26,8 +26,8 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Botonera" alignment="0" pref="1190" max="32767" attributes="0"/>
-                  <Component id="Ventanas" alignment="0" max="32767" attributes="0"/>
+                  <Component id="Botonera" alignment="0" pref="977" max="32767" attributes="0"/>
+                  <Component id="ventanasContainer" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -39,7 +39,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="Botonera" min="-2" pref="69" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Ventanas" min="-2" pref="540" max="-2" attributes="0"/>
+              <Component id="ventanasContainer" min="-2" pref="540" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -67,7 +67,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="botoneraProv" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="botoneraCli" min="-2" max="-2" attributes="0"/>
+                  <Component id="botoneraClie" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="botoneraFact" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -83,7 +83,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="botoneraArt" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botoneraRub" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="botoneraCli" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botoneraClie" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botoneraFact" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botoneraProv" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -117,8 +117,11 @@
             </Property>
             <Property name="text" type="java.lang.String" value="RUBROS"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="botoneraCli">
+        <Component class="javax.swing.JButton" name="botoneraClie">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="0" type="rgb"/>
@@ -165,15 +168,21 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JTabbedPane" name="Ventanas">
+    <Container class="javax.swing.JTabbedPane" name="ventanasContainer">
       <Properties>
         <Property name="tabPlacement" type="int" value="3"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="Art">
+        <Container class="javax.swing.JPanel" name="art">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="">
@@ -188,11 +197,11 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel6" pref="1176" max="32767" attributes="0"/>
+                          <Component id="jPanel6" pref="963" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel8" pref="761" max="32767" attributes="0"/>
+                              <Component id="jPanel8" pref="548" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -233,7 +242,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="681" max="32767" attributes="0"/>
+                          <EmptySpace pref="468" max="32767" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="artInputTextBuscador" min="-2" pref="220" max="-2" attributes="0"/>
@@ -328,7 +337,7 @@
                               <Component id="artBtnEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="clieCheckBoxStockMinimo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="24" max="32767" attributes="0"/>
+                          <EmptySpace pref="19" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -344,10 +353,11 @@
                     <Component class="javax.swing.JTable" name="artTabla">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="7" rowCount="0">
+                          <Table columnCount="8" rowCount="0">
                             <Column editable="false" title="ID" type="java.lang.Object"/>
-                            <Column editable="false" title="DESCRIPCION" type="java.lang.Object"/>
+                            <Column editable="false" title="NOMBRE" type="java.lang.Object"/>
                             <Column editable="false" title="RUBRO" type="java.lang.Object"/>
+                            <Column editable="false" title="DESCRIPCION" type="java.lang.Object"/>
                             <Column editable="false" title="PROVEEDOR" type="java.lang.Object"/>
                             <Column editable="false" title="STOCK" type="java.lang.Object"/>
                             <Column editable="false" title="STOCK MIN" type="java.lang.Object"/>
@@ -356,6 +366,11 @@
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
@@ -444,12 +459,6 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="artBtnLimpiar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="artBtnGuardar" min="-2" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel3" min="-2" pref="153" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -506,6 +515,21 @@
                                       </Group>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="artBtnLimpiar" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="artBtnGuardar" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel17" min="-2" pref="64" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="artInputTextNombre" min="-2" pref="306" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -521,7 +545,12 @@
                               <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="artInputTextId" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="artInputTextNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="artDropdownRubro" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -556,7 +585,7 @@
                               <Component id="artBtnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="artBtnLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="44" max="32767" attributes="0"/>
+                          <EmptySpace pref="7" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -688,11 +717,24 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
+                <Component class="javax.swing.JTextField" name="artInputTextNombre">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel17">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="NOMBRE:"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="Prov">
+        <Container class="javax.swing.JPanel" name="prov">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="">
@@ -1069,7 +1111,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane6" alignment="0" pref="745" max="32767" attributes="0"/>
+                              <Component id="jScrollPane6" alignment="0" pref="532" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="provBtnEliminar" min="-2" max="-2" attributes="0"/>
@@ -1173,7 +1215,10 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="Clie">
+        <Container class="javax.swing.JPanel" name="clie">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="">
@@ -1188,10 +1233,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel27" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jPanel28" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel27" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jPanel28" min="-2" pref="443" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jPanel29" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -1209,7 +1254,7 @@
                           <Component id="jPanel28" max="32767" attributes="0"/>
                           <Component id="jPanel29" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="11" max="32767" attributes="0"/>
+                      <EmptySpace pref="23" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1235,7 +1280,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="clieInputTextBuscador" min="-2" pref="220" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="clieBtnBusacar" min="-2" max="-2" attributes="0"/>
+                          <Component id="clieBtnBuscar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1248,7 +1293,7 @@
                               <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="clieInputTextBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="clieBtnBusacar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="clieBtnBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1271,7 +1316,7 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="clieBtnBusacar">
+                <Component class="javax.swing.JButton" name="clieBtnBuscar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="cc" red="0" type="rgb"/>
@@ -1552,17 +1597,16 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane8" pref="712" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane8" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane8" min="-2" pref="394" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jScrollPane8" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1641,7 +1685,10 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="Rub">
+        <Container class="javax.swing.JPanel" name="rub">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="">
@@ -1781,7 +1828,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanel31" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="766" max="32767" attributes="0"/>
+                                  <EmptySpace pref="553" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -2046,7 +2093,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane5" pref="735" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane5" pref="522" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -2191,7 +2238,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="402" max="32767" attributes="0"/>
+                              <EmptySpace pref="189" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jPanel2" max="32767" attributes="0"/>
                                   <Component id="jPanel4" max="32767" attributes="0"/>
@@ -2202,7 +2249,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanel33" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="778" max="32767" attributes="0"/>
+                                  <EmptySpace pref="565" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -2560,7 +2607,10 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="Fact">
+        <Container class="javax.swing.JPanel" name="fact">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="">
@@ -2841,7 +2891,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane4" alignment="0" pref="745" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" alignment="0" pref="532" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="rubBtnEliminar" min="-2" max="-2" attributes="0"/>

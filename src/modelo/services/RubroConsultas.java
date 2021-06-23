@@ -7,11 +7,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+public class RubroConsultas extends HibernateUtil {
 
-
-
-public class RubrosConsultas extends HibernateUtil{
-    
     public ArrayList<Rubro> getAllRubros() {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
@@ -24,14 +21,14 @@ public class RubrosConsultas extends HibernateUtil{
         sessionFactory.close();
         return (ArrayList<Rubro>) rubros;
     }
-    
+
     public ArrayList<Rubro> getRubrosBuscador(String buscador) {
         buscador = buscador.toUpperCase();
-        
+
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        
+
         Query query = session.createQuery("FROM Rubro WHERE "
                 + "UPPER (nombre) LIKE CONCAT('%',:buscador,'%') "
                 + "OR UPPER (descripcion) LIKE CONCAT('%',:buscador,'%')");
@@ -40,7 +37,7 @@ public class RubrosConsultas extends HibernateUtil{
 
         session.close();
         sessionFactory.close();
-        return (ArrayList<Rubro>) rubros;     
+        return (ArrayList<Rubro>) rubros;
     }
     
     public void saveRubro(Rubro rubro) {
@@ -84,5 +81,17 @@ public class RubrosConsultas extends HibernateUtil{
 
         session.close();
         sessionFactory.close();
+    }
+
+    public Rubro getRubro(int idRubro) {
+        SessionFactory sessionFactory = newSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        Rubro rubro = (Rubro) session.get(Rubro.class, idRubro);
+
+        session.close();
+        sessionFactory.close();
+
+        return rubro;
     }
 }

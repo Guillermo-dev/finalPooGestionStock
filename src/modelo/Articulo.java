@@ -51,4 +51,64 @@ public class Articulo {
         this.stockMinimo = stockMinimo;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
+
+    public Rubro getRubro() {
+        return rubro;
+    }
+
+    public void setRubro(Rubro rubro) {
+        this.rubro = rubro;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public float getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    public void setPrecioUnitario(float precioUnitario) {
+        this.precioUnitario = precioUnitario;
+    }
+
+    public int getStockActual() {
+        return stockActual;
+    }
+
+    public void setStockActual(int stockActual) {
+        this.stockActual = stockActual;
+    }
+
+    public int getStockMinimo() {
+        return stockMinimo;
+    }
+
+    public void setStockMinimo(int stockMinimo) {
+        this.stockMinimo = stockMinimo;
+    }
+
 }

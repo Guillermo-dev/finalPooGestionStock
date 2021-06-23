@@ -53,5 +53,6 @@ Contributor(s):
         <mapping class="modelo.Linea"/>
         <mapping class="modelo.Proveedor"/>
         <mapping class="modelo.Rubro"/>
+        <mapping class="modelo.NotaCredito"/>
     </session-factory>
 </hibernate-configuration>
