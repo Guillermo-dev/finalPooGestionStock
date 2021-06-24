@@ -546,6 +546,11 @@ public class Index extends javax.swing.JFrame {
 
         provBtnListaCompra.setBackground(new java.awt.Color(0, 204, 153));
         provBtnListaCompra.setText("LISTA COMPRAS");
+        provBtnListaCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                provBtnListaCompraActionPerformed(evt);
+            }
+        });
 
         provBtnNuevaFactura.setBackground(new java.awt.Color(0, 204, 153));
         provBtnNuevaFactura.setText("CARGAR FACTURA");
@@ -1017,6 +1022,11 @@ public class Index extends javax.swing.JFrame {
 
         factBtnNuevaFactura.setBackground(new java.awt.Color(0, 204, 153));
         factBtnNuevaFactura.setText("+  NUEVA FACTURA");
+        factBtnNuevaFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                factBtnNuevaFacturaActionPerformed(evt);
+            }
+        });
 
         factBtnVerMas.setText("+ VER MAS");
 
@@ -1653,6 +1663,14 @@ public class Index extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_clieBtnEliminarActionPerformed
 
+    private void provBtnListaCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provBtnListaCompraActionPerformed
+
+    }//GEN-LAST:event_provBtnListaCompraActionPerformed
+
+    private void factBtnNuevaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_factBtnNuevaFacturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_factBtnNuevaFacturaActionPerformed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -1808,8 +1826,6 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
     public javax.swing.JButton notBtnEliminar;
     public javax.swing.JButton notBtnGuardar;
     public javax.swing.JButton notBtnLimpiar;
@@ -1837,7 +1853,7 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JTextField provInputTextId;
     public javax.swing.JTextField provInputTextNombre;
     public javax.swing.JTextField provInputTextTelefono;
-    private javax.swing.JTable provTabla;
+    public javax.swing.JTable provTabla;
     public javax.swing.JPanel rub;
     public javax.swing.JButton rubBtnBuscar;
     public javax.swing.JButton rubBtnEliminar;

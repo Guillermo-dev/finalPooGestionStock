@@ -17,7 +17,7 @@ public class Proveedor {
 
     @Column(name = "cuil_cuit")
     private String cuilCuit;
-    
+
     @Column(name = "razon_social")
     private String razonSocial;
 
@@ -46,6 +46,11 @@ public class Proveedor {
         this.telefono = telefono;
         this.email = email;
         this.nombre = nombre;
+    }
+
+    //ME LO PEDIA EN GUARDAR PROVEEDOR
+    public Proveedor(String text, String text0, String text1, Object selectedItem, String text2, String text3, String text4) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void setId(int id) {
