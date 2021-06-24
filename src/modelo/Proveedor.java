@@ -18,11 +18,22 @@ public class Proveedor {
     @Column(name = "cuil_cuit")
     private String cuilCuit;
 
+    @Column(name = "nombre")
+    private String nombre;
+    
     @Column(name = "razon_social")
     private String razonSocial;
 
     @Column(name = "direccion")
     private String direccion;
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
 
     @Column(name = "telefono")
     private String telefono;
@@ -40,12 +51,48 @@ public class Proveedor {
     }
 
     public Proveedor(String nombre, String cuilCuit, String razonSocial, String direccion, String telefono, String email) {
-        this.nombre = nombre;
         this.cuilCuit = cuilCuit;
         this.razonSocial = razonSocial;
         this.direccion = direccion;
         this.telefono = telefono;
         this.email = email;
+        this.nombre = nombre;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCuilCuit(String cuilCuit) {
+        this.cuilCuit = cuilCuit;
+    }
+
+    public void setRazonSocial(String razonSocial) {
+        this.razonSocial = razonSocial;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRazonSocial() {
+        return razonSocial;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
     }
 
     public int getId() {
