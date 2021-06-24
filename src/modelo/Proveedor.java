@@ -18,22 +18,11 @@ public class Proveedor {
     @Column(name = "cuil_cuit")
     private String cuilCuit;
 
-    @Column(name = "nombre")
-    private String nombre;
-    
     @Column(name = "razon_social")
     private String razonSocial;
 
     @Column(name = "direccion")
     private String direccion;
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
 
     @Column(name = "telefono")
     private String telefono;
@@ -57,6 +46,11 @@ public class Proveedor {
         this.telefono = telefono;
         this.email = email;
         this.nombre = nombre;
+    }
+
+    //ME LO PEDIA EN GUARDAR PROVEEDOR
+    public Proveedor(String text, String text0, String text1, Object selectedItem, String text2, String text3, String text4) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void setId(int id) {
@@ -97,6 +91,10 @@ public class Proveedor {
 
     public int getId() {
         return id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getNombre() {

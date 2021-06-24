@@ -34,7 +34,7 @@ public class ProveedorConsultas extends HibernateUtil {
         return proveedor;
     }
 
-    public ArrayList<Proveedor> getProveedoresBusacador(String buscador) {
+    public ArrayList<Proveedor> getProveedoresBuscador(String buscador) {
         buscador = buscador.toUpperCase();
 
         SessionFactory sessionFactory = newSessionFactory();
@@ -56,7 +56,7 @@ public class ProveedorConsultas extends HibernateUtil {
         return (ArrayList<Proveedor>) proveedores;
     }
 
-    public void saveCliente(Proveedor proveedores) {
+    public void saveProveedor(Proveedor proveedores) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -68,7 +68,7 @@ public class ProveedorConsultas extends HibernateUtil {
         sessionFactory.close();
     }
     
-    public void updateCliente(Proveedor newProveedor, int idProveedor) {
+    public void updateProveedor(Proveedor newProveedor, int idProveedor) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -89,6 +89,20 @@ public class ProveedorConsultas extends HibernateUtil {
         sessionFactory.close();
     }
 
+    public void deleteProveedor (int idProveedor){
+    
+    SessionFactory sessionFactory = newSessionFactory();
+        Session session = sessionFactory.openSession();
+        Proveedor proveedor = (Proveedor) session.get(Proveedor.class, idProveedor);
+
+        session.beginTransaction();
+        session.delete(proveedor);
+        session.getTransaction().commit();
+
+        session.close();
+        sessionFactory.close();
+   
+    }
     
     
     
