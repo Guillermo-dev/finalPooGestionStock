@@ -39,6 +39,19 @@ public class ArticuloConsultas extends HibernateUtil {
         sessionFactory.close();
         return (ArrayList<Articulo>) articulos;
     }
+    
+    public ArrayList<Articulo> getArticulosStockMinimo() {
+        SessionFactory sessionFactory = newSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+        Query query = session.createQuery("FROM Articulo WHERE stock_actual < stock_minimo");
+        List<Articulo> articulos = (List<Articulo>) query.list();
+
+        session.close();
+        sessionFactory.close();
+        return (ArrayList<Articulo>) articulos;
+    }
 
     public void saveArticulo(Articulo articulo) {
         SessionFactory sessionFactory = newSessionFactory();
