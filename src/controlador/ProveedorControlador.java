@@ -16,6 +16,7 @@ public class ProveedorControlador {
 
     public static void iniciarDropdownRazonSocial(Index view) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) view.provDropdownRazonSocial.getModel();
+             dropModel.addElement("<Seleccionar Razon Social>");
         for (String RAZONES_SOCIALES1 : RAZONES_SOCIALES) {
             dropModel.addElement(RAZONES_SOCIALES1);
         }
@@ -64,7 +65,7 @@ public class ProveedorControlador {
         view.provInputTextCuilT.setText("");
         view.provInputTextNombre.setText("");
         view.provInputTextDireccion.setText("");
-        view.provDropdownRazonSocial.setSelectedItem("");
+        view.provDropdownRazonSocial.setSelectedItem("<Seleccionar Razon Social>");
         view.provInputTextDireccion.setText("");
         view.provInputTextTelefono.setText("");
         view.provInputTextEmail.setText("");
@@ -75,7 +76,7 @@ public class ProveedorControlador {
         return view.provInputTextCuilT.getText().equals("")
                 || view.provInputTextNombre.getText().equals("")
                 || view.provInputTextDireccion.getText().equals("")
-                || view.provDropdownRazonSocial.getSelectedItem().equals("")
+                || view.provDropdownRazonSocial.getSelectedItem().equals("<Seleccionar Razon Social>")
                 || view.provInputTextDireccion.getText().equals("")
                 || view.provInputTextTelefono.getText().equals("")
                 || view.provInputTextEmail.getText().equals("");
@@ -104,11 +105,16 @@ public class ProveedorControlador {
                     //TODO
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
+            }else { 
+                try{
+                    services.saveProveedor(proveedor);
+                }catch (Exception e){
+                    JOptionPane.showMessageDialog(null, "Error inesperado");
+                }
             }
             iniciarTabla(view.provTabla, services);
             vaciarInputTexts(view);
         }
-
     }
     
     public static void eliminarProveedor(Index view, ProveedorConsultas services){

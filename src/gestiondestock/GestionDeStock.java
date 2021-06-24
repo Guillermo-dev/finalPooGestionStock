@@ -7,19 +7,22 @@ import modelo.services.ProveedorConsultas;
 import modelo.services.RubroConsultas;
 import vista.FacturaVista;
 import vista.Index;
+import vista.ListaComprasProveedor;
 
 public class GestionDeStock {
 
     public static void main(String[] args) {
         // PATRON DE DISEÑO MVC (MODELO, VISTA, CONTROLADOR)
         Index view = new Index();
-        FacturaVista facturasDetalles = new FacturaVista();
+        FacturaVista viewFacturasDetalles = new FacturaVista();
+        ListaComprasProveedor viewListaProveedores = new ListaComprasProveedor();
         ArticuloConsultas domConsultasArt = new ArticuloConsultas();
         ProveedorConsultas domConsultasProv = new ProveedorConsultas();
         ClienteConsultas domConsultasClie = new ClienteConsultas();
         RubroConsultas domConsultasRub = new RubroConsultas();
+        
 
-        Controlador ctrl = new Controlador(view, facturasDetalles, domConsultasArt, domConsultasProv, domConsultasClie, domConsultasRub);
+        Controlador ctrl = new Controlador(view, viewFacturasDetalles,viewListaProveedores, domConsultasArt, domConsultasProv, domConsultasClie, domConsultasRub );
 
         ctrl.iniciar();
 
