@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelo.services.ArticuloConsultas;
@@ -41,6 +42,7 @@ public class Controlador implements ActionListener, ListSelectionListener {
         this.view.artTabla.getSelectionModel().addListSelectionListener(this);
         this.view.artDropdownRubro.addActionListener(this);
         this.view.artBtnBuscar.addActionListener(this);
+        this.view.artCheckBoxStockMinimo.addActionListener(this);
         this.view.artBtnGuardar.addActionListener(this);
         this.view.artBtnLimpiar.addActionListener(this);
         this.view.artBtnEliminar.addActionListener(this);
@@ -81,18 +83,27 @@ public class Controlador implements ActionListener, ListSelectionListener {
         ProveedorControlador.iniciarDropdownRazonSocial(this.view);
     }
 
+    public void goToArticulos() {
+        this.view.ventanasContainer.setSelectedComponent(this.view.art);
+        ArticuloControlador.iniciarTabla(this.view.artTabla, domConsultasArt);
+        ArticuloControlador.iniciarDropdownRubros(this.view, this.domConsultasRub);
+        ArticuloControlador.iniciarDropdownProveedores(this.view, this.domConsultasProv);
+    }
+
+    public void goToRubros() {
+        this.view.ventanasContainer.setSelectedComponent(this.view.prov);
+        RubroControlador.iniciarTabla(this.view.rubroTabla, domConsultasRub);
+    }
+
     // BOTONES
     @Override
     public void actionPerformed(ActionEvent lse) {
         /// BOTONERA
         if (lse.getSource() == this.view.botoneraArt) {
-            this.view.ventanasContainer.setSelectedComponent(this.view.art);
-            ArticuloControlador.iniciarTabla(this.view.artTabla, domConsultasArt);
-            ArticuloControlador.iniciarDropdownRubros(this.view, this.domConsultasRub);
-            ArticuloControlador.iniciarDropdownProveedores(this.view, this.domConsultasProv);
+            goToArticulos();
         }
         if (lse.getSource() == this.view.botoneraProv) {
-            this.view.ventanasContainer.setSelectedComponent(this.view.prov);
+            goToRubros();
         }
         if (lse.getSource() == this.view.botoneraClie) {
             this.view.ventanasContainer.setSelectedComponent(this.view.clie);
@@ -107,10 +118,25 @@ public class Controlador implements ActionListener, ListSelectionListener {
 
         // ARTICULOS
         if (lse.getSource() == this.view.artDropdownRubro) {
-
+            if (this.view.artDropdownRubro.getSelectedItem() == "Nuevo rubro") {
+                int resp = JOptionPane.showConfirmDialog(view, "Crear nuevo rubro?");
+                if (resp == 0) {
+                    goToRubros();
+                }
+            }
         }
         if (lse.getSource() == this.view.artBtnGuardar) {
             ArticuloControlador.guardarArticulo(this.view, this.domConsultasArt, this.domConsultasRub, this.domConsultasProv);
+        }
+        if (lse.getSource() == this.view.artCheckBoxStockMinimo) {
+            if (this.view.artCheckBoxStockMinimo.isSelected()) {
+                ArticuloControlador.stockMinimoTabla(this.view.artTabla, this.domConsultasArt);
+            } else {
+                ArticuloControlador.iniciarTabla(this.view.artTabla, domConsultasArt);
+            }
+        }
+        if (lse.getSource() == this.view.artBtnLimpiar) {
+            ArticuloControlador.vaciarInputTexts(view);
         }
         if (lse.getSource() == this.view.artBtnEliminar) {
             ArticuloControlador.eliminarArticulo(this.view, this.domConsultasArt);
@@ -176,7 +202,6 @@ public class Controlador implements ActionListener, ListSelectionListener {
                         this.view.artTabla.getValueAt(this.view.artTabla.getSelectedRow(), 7).toString()
                 );
             } catch (Exception e) {
-                System.out.println(e);
             }
         }
 
@@ -201,5 +226,4 @@ public class Controlador implements ActionListener, ListSelectionListener {
             }
         }
     }
-
 }

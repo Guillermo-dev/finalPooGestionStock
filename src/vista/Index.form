@@ -317,7 +317,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="clieCheckBoxStockMinimo" min="-2" max="-2" attributes="0"/>
+                                  <Component id="artCheckBoxStockMinimo" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="artBtnEliminar" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -335,7 +335,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="artBtnEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="clieCheckBoxStockMinimo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="artCheckBoxStockMinimo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="19" max="32767" attributes="0"/>
                       </Group>
@@ -429,12 +429,12 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="clieCheckBoxStockMinimo">
+                <Component class="javax.swing.JCheckBox" name="artCheckBoxStockMinimo">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Stock M&#xed;nimo"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clieCheckBoxStockMinimoActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="artCheckBoxStockMinimoActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

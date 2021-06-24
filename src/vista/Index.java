@@ -27,7 +27,7 @@ public class Index extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         artTabla = new javax.swing.JTable();
         artBtnEliminar = new javax.swing.JButton();
-        clieCheckBoxStockMinimo = new javax.swing.JCheckBox();
+        artCheckBoxStockMinimo = new javax.swing.JCheckBox();
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -304,10 +304,10 @@ public class Index extends javax.swing.JFrame {
         artBtnEliminar.setBackground(new java.awt.Color(0, 204, 153));
         artBtnEliminar.setText("BORRAR");
 
-        clieCheckBoxStockMinimo.setText("Stock Mínimo");
-        clieCheckBoxStockMinimo.addActionListener(new java.awt.event.ActionListener() {
+        artCheckBoxStockMinimo.setText("Stock Mínimo");
+        artCheckBoxStockMinimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clieCheckBoxStockMinimoActionPerformed(evt);
+                artCheckBoxStockMinimoActionPerformed(evt);
             }
         });
 
@@ -319,7 +319,7 @@ public class Index extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(clieCheckBoxStockMinimo)
+                        .addComponent(artCheckBoxStockMinimo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(artBtnEliminar))
                     .addComponent(jScrollPane1))
@@ -333,7 +333,7 @@ public class Index extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(artBtnEliminar)
-                    .addComponent(clieCheckBoxStockMinimo))
+                    .addComponent(artCheckBoxStockMinimo))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -1639,9 +1639,9 @@ public class Index extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void clieCheckBoxStockMinimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clieCheckBoxStockMinimoActionPerformed
+    private void artCheckBoxStockMinimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artCheckBoxStockMinimoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_clieCheckBoxStockMinimoActionPerformed
+    }//GEN-LAST:event_artCheckBoxStockMinimoActionPerformed
 
     private void botoneraFactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoneraFactActionPerformed
         // TODO add your handling code here:
@@ -1703,6 +1703,7 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JButton artBtnEliminar;
     public javax.swing.JButton artBtnGuardar;
     public javax.swing.JButton artBtnLimpiar;
+    public javax.swing.JCheckBox artCheckBoxStockMinimo;
     public javax.swing.JComboBox<String> artDropdownProveedor;
     public javax.swing.JComboBox<String> artDropdownRubro;
     public javax.swing.JTextField artInputTextBuscador;
@@ -1723,7 +1724,6 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JButton clieBtnEliminar;
     public javax.swing.JButton clieBtnGuardar;
     public javax.swing.JButton clieBtnLimpiar;
-    public javax.swing.JCheckBox clieCheckBoxStockMinimo;
     public javax.swing.JTextField clieInputTextApellido;
     public javax.swing.JTextField clieInputTextBuscador;
     public javax.swing.JTextField clieInputTextDireccion;

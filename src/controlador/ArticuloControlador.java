@@ -21,7 +21,7 @@ public class ArticuloControlador {
 
         dropModel.addElement("<Seleccionar rubro>");
         rubros.forEach(rubro -> {
-            dropModel.addElement(rubro.getId() + ", " + rubro.getNombre());
+            dropModel.addElement(rubro.getId() + "- " + rubro.getNombre());
         });
         dropModel.addElement("Nuevo rubro");
     }
@@ -32,7 +32,7 @@ public class ArticuloControlador {
 
         dropModel.addElement("<Seleccionar Proveedor>");
         proveedores.forEach(proveedor -> {
-            dropModel.addElement(proveedor.getId() + ", " + proveedor.getNombre());
+            dropModel.addElement(proveedor.getId() + "- " + proveedor.getNombre());
         });
     }
 
@@ -44,9 +44,9 @@ public class ArticuloControlador {
             String[] data = new String[8];
             data[0] = Integer.toString(articulo.getId());
             data[1] = articulo.getNombre();
-            data[2] = articulo.getRubro().getId() + ", " + articulo.getRubro().getNombre();
+            data[2] = articulo.getRubro().getId() + "- " + articulo.getRubro().getNombre();
             data[3] = articulo.getDescripcion();
-            data[4] = articulo.getProveedor().getId() + ", " + articulo.getProveedor().getNombre();
+            data[4] = articulo.getProveedor().getId() + "- " + articulo.getProveedor().getNombre();
             data[5] = Integer.toString(articulo.getStockActual());
             data[6] = Integer.toString(articulo.getStockMinimo());
             data[7] = String.valueOf(articulo.getPrecioUnitario());
@@ -61,6 +61,11 @@ public class ArticuloControlador {
 
     public static void buscarTabla(JTable artTabla, ArticuloConsultas services, String buscador) {
         ArrayList<Articulo> articulos = services.getArticulosBusacador(buscador);
+        cargarTabla(artTabla, articulos);
+    }
+    
+    public static void stockMinimoTabla(JTable artTabla, ArticuloConsultas services){
+        ArrayList<Articulo> articulos = services.getArticulosStockMinimo();
         cargarTabla(artTabla, articulos);
     }
 
