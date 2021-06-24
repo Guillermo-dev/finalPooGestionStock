@@ -10,6 +10,7 @@ import modelo.services.ProveedorConsultas;
 import modelo.services.RubroConsultas;
 import vista.FacturaVista;
 import vista.Index;
+import vista.ListaComprasProveedor;
 
 // diasble button  setEnabled(false);
 public class Controlador implements ActionListener, ListSelectionListener {
@@ -20,8 +21,9 @@ public class Controlador implements ActionListener, ListSelectionListener {
     private final ClienteConsultas domConsultasClie;
     private final RubroConsultas domConsultasRub;
     private final ProveedorConsultas domConsultasProv;
+    private final ListaComprasProveedor viewListaProveedores; 
 
-    public Controlador(Index view, FacturaVista viewFacturasDetalles,
+    public Controlador(Index view, FacturaVista viewFacturasDetalles,ListaComprasProveedor viewListaProveedores,
             ArticuloConsultas domConsultasArt, ProveedorConsultas domConsultasProv, ClienteConsultas domConsultasClie, RubroConsultas domConsultasRub) {
         this.view = view;
         this.viewFacturasDetalles = viewFacturasDetalles;
@@ -29,6 +31,7 @@ public class Controlador implements ActionListener, ListSelectionListener {
         this.domConsultasProv = domConsultasProv;
         this.domConsultasClie = domConsultasClie;
         this.domConsultasRub = domConsultasRub;
+        this.viewListaProveedores = viewListaProveedores;
 
         // BOTONERA
         this.view.botoneraArt.addActionListener(this);
@@ -46,8 +49,15 @@ public class Controlador implements ActionListener, ListSelectionListener {
         this.view.artBtnEliminar.addActionListener(this);
 
         // PROVEEDORES
+        this.view.provTabla.getSelectionModel().addListSelectionListener(this);
         this.view.provDropdownRazonSocial.addActionListener(this);
-
+        this.view.provBtnBuscar.addActionListener(this);
+        this.view.provBtnGuardar.addActionListener(this);
+        this.view.provBtnLimpiar.addActionListener(this);
+        this.view.provBtnEliminar.addActionListener(this);
+        this.view.provBtnNuevaFactura.addActionListener(this);
+        this.view.provBtnListaCompra.addActionListener(this);
+        
         // CLIENTES
         this.view.clieTabla.getSelectionModel().addListSelectionListener(this);
         this.view.clieBtnBuscar.addActionListener(this);
@@ -121,6 +131,31 @@ public class Controlador implements ActionListener, ListSelectionListener {
             System.out.println(this.view.provDropdownRazonSocial.getSelectedItem());
         }
 
+        if (lse.getSource() == this.view.provBtnBuscar) {
+            ProveedorControlador.buscarTabla(this.view.provTabla, this.domConsultasProv, this.view.provInputTextBuscador.getText());
+        }
+
+        if (lse.getSource() == this.view.provBtnGuardar) {
+            ProveedorControlador.guardarProveedor(this.view, this.domConsultasProv);
+        }
+        if (lse.getSource() == this.view.clieBtnLimpiar) {
+            ProveedorControlador.vaciarInputTexts(view);
+        }
+        if (lse.getSource() == this.view.clieBtnEliminar) {
+            ProveedorControlador.eliminarProveedor(this.view, this.domConsultasProv);
+        }
+
+        //BotonCargarFactura  --ESTA BIEN?--
+         if (lse.getSource() == this.view.provBtnNuevaFactura) {
+            FacturaControlador.crearFactura(this.viewFacturasDetalles);
+        }
+        
+        //BotonListaCompra 
+        if (lse.getSource() == this.view.provBtnListaCompra) {
+            ListaProvControlador.listarProveedores(this.viewListaProveedores);
+        }
+
+       
         // Clientes
         if (lse.getSource() == this.view.clieBtnBuscar) {
             ClienteControlador.buscarTabla(this.view.clieTabla, this.domConsultasClie, this.view.clieInputTextBuscador.getText());
@@ -200,6 +235,27 @@ public class Controlador implements ActionListener, ListSelectionListener {
 
             }
         }
-    }
 
+        // Proveedores
+        if (lse.getSource() == this.view.provTabla.getSelectionModel()) {
+            try {
+                int row = this.view.provTabla.getSelectedRow();
+                this.view.provTabla.setRowSelectionInterval(row, row);
+
+                ClienteControlador.cargarInputTexts(
+                        this.view,
+                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 0).toString(),
+                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 1).toString(),
+                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 2).toString(),
+                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 3).toString(),
+                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 4).toString(),
+                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 5).toString(),
+                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 6).toString()
+                );
+            } catch (Exception e) {
+
+            }
+        }
+
+    }
 }
