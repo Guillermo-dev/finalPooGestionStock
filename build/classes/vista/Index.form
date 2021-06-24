@@ -560,9 +560,9 @@
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="artBtnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="artBtnLimpiar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="artBtnGuardar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -850,14 +850,11 @@
                                       <Component id="jLabel29" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
                                       <Component id="jLabel27" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="provInputTextTelefono" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="provInputTextEmail" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="provInputTextDireccion" min="-2" pref="283" max="-2" attributes="0"/>
-                                      </Group>
+                                  <EmptySpace pref="39" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="provInputTextTelefono" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="provInputTextDireccion" alignment="1" pref="283" max="32767" attributes="0"/>
+                                      <Component id="provInputTextEmail" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
@@ -872,7 +869,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="provInputTextCuilT" min="-2" pref="283" max="-2" attributes="0"/>
                                           <Component id="provInputTextId" min="-2" pref="283" max="-2" attributes="0"/>
-                                          <Component id="jTextField1" alignment="0" min="-2" pref="283" max="-2" attributes="0"/>
+                                          <Component id="provInputTextNombre" alignment="0" min="-2" pref="283" max="-2" attributes="0"/>
                                           <Component id="provDropdownRazonSocial" alignment="0" min="-2" pref="283" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -898,7 +895,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="provInputTextNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -1054,7 +1051,10 @@
                     <Property name="text" type="java.lang.String" value="NOMBRE:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="provInputTextNombre">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -1103,7 +1103,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable3">
+                    <Component class="javax.swing.JTable" name="provTabla">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="7" rowCount="0">
@@ -1716,9 +1716,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                          <Component id="factBtnFact" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                          <Component id="factBtnNotas" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1737,8 +1737,8 @@
                               <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="factInputTextBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="factBtnBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="factBtnFact" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="factBtnNotas" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1767,12 +1767,12 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton3">
+                <Component class="javax.swing.JButton" name="factBtnFact">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="FACTURAS"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton4">
+                <Component class="javax.swing.JButton" name="factBtnNotas">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="NOTAS DE CREDITO"/>
                   </Properties>

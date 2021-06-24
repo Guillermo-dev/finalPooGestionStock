@@ -72,10 +72,10 @@ public class Index extends javax.swing.JFrame {
         provBtnListaCompra = new javax.swing.JButton();
         provBtnNuevaFactura = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        provInputTextNombre = new javax.swing.JTextField();
         jPanel26 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        provTabla = new javax.swing.JTable();
         provBtnEliminar = new javax.swing.JButton();
         clie = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
@@ -110,8 +110,8 @@ public class Index extends javax.swing.JFrame {
         jLabel42 = new javax.swing.JLabel();
         factInputTextBuscador = new javax.swing.JTextField();
         factBtnBuscar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        factBtnFact = new javax.swing.JButton();
+        factBtnNotas = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panelFactura = new javax.swing.JPanel();
         jPanel31 = new javax.swing.JPanel();
@@ -452,9 +452,9 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(artBtnGuardar)
-                    .addComponent(artBtnLimpiar))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(artBtnLimpiar)
+                    .addComponent(artBtnGuardar))
                 .addContainerGap())
         );
 
@@ -573,13 +573,11 @@ public class Index extends javax.swing.JFrame {
                             .addComponent(jLabel28)
                             .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(provInputTextTelefono)
-                            .addComponent(provInputTextEmail)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(provInputTextDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(provInputTextTelefono, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(provInputTextDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                            .addComponent(provInputTextEmail)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel26)
@@ -591,7 +589,7 @@ public class Index extends javax.swing.JFrame {
                             .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(provInputTextCuilT, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(provInputTextId, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(provInputTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(provDropdownRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
@@ -609,7 +607,7 @@ public class Index extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(provInputTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
@@ -639,7 +637,7 @@ public class Index extends javax.swing.JFrame {
 
         jPanel26.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        provTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -655,7 +653,7 @@ public class Index extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane6.setViewportView(jTable3);
+        jScrollPane6.setViewportView(provTabla);
 
         provBtnEliminar.setBackground(new java.awt.Color(0, 204, 153));
         provBtnEliminar.setText("BORRAR");
@@ -959,9 +957,9 @@ public class Index extends javax.swing.JFrame {
         factBtnBuscar.setBackground(new java.awt.Color(0, 204, 153));
         factBtnBuscar.setText("BUSCAR");
 
-        jButton3.setText("FACTURAS");
+        factBtnFact.setText("FACTURAS");
 
-        jButton4.setText("NOTAS DE CREDITO");
+        factBtnNotas.setText("NOTAS DE CREDITO");
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
@@ -969,9 +967,9 @@ public class Index extends javax.swing.JFrame {
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jButton3)
+                .addComponent(factBtnFact)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(factBtnNotas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel42)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -988,8 +986,8 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(jLabel42)
                     .addComponent(factInputTextBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(factBtnBuscar)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(factBtnFact)
+                    .addComponent(factBtnNotas))
                 .addContainerGap())
         );
 
@@ -1733,10 +1731,12 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JTable clieTabla;
     public javax.swing.JPanel fact;
     public javax.swing.JButton factBtnBuscar;
+    private javax.swing.JButton factBtnFact;
     public javax.swing.JButton factBtnGuardar;
     public javax.swing.JButton factBtnGuardar1;
     public javax.swing.JButton factBtnLimpiar;
     public javax.swing.JButton factBtnLimpiar1;
+    private javax.swing.JButton factBtnNotas;
     public javax.swing.JButton factBtnNuevaFactura;
     public javax.swing.JButton factBtnVerMas;
     private javax.swing.JCheckBox factCheckBoxCompra;
@@ -1754,8 +1754,6 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JTable factTabla;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1833,9 +1831,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel panelFactura;
     private javax.swing.JPanel panelNotasC;
     public javax.swing.JPanel prov;
@@ -1851,7 +1847,9 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JTextField provInputTextDireccion;
     public javax.swing.JTextField provInputTextEmail;
     public javax.swing.JTextField provInputTextId;
+    public javax.swing.JTextField provInputTextNombre;
     public javax.swing.JTextField provInputTextTelefono;
+    private javax.swing.JTable provTabla;
     public javax.swing.JPanel rub;
     public javax.swing.JButton rubBtnBuscar;
     public javax.swing.JButton rubBtnEliminar;
