@@ -2,7 +2,6 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelo.services.ArticuloConsultas;
@@ -22,7 +21,8 @@ public class Controlador implements ActionListener, ListSelectionListener {
     private final RubroConsultas domConsultasRub;
     private final ProveedorConsultas domConsultasProv;
 
-    public Controlador(Index view, ArticuloConsultas domConsultasArt, FacturaVista viewFacturasDetalles, ProveedorConsultas domConsultasProv, ClienteConsultas domConsultasClie, RubroConsultas domConsultasRub) {
+    public Controlador(Index view, FacturaVista viewFacturasDetalles,
+            ArticuloConsultas domConsultasArt, ProveedorConsultas domConsultasProv, ClienteConsultas domConsultasClie, RubroConsultas domConsultasRub) {
         this.view = view;
         this.viewFacturasDetalles = viewFacturasDetalles;
         this.domConsultasArt = domConsultasArt;
@@ -54,14 +54,14 @@ public class Controlador implements ActionListener, ListSelectionListener {
         this.view.clieBtnGuardar.addActionListener(this);
         this.view.clieBtnLimpiar.addActionListener(this);
         this.view.clieBtnEliminar.addActionListener(this);
-        
+
         //RUBROS
         this.view.rubroTabla.getSelectionModel().addListSelectionListener(this);
         this.view.rubBtnBuscar.addActionListener(this);
-        this.view.rubBtnGuardar.addActionListener (this);
-         this.view.rubBtnLimpiar.addActionListener(this);
-         this.view.rubBtnEliminar.addActionListener(this);
-         
+        this.view.rubBtnGuardar.addActionListener(this);
+        this.view.rubBtnLimpiar.addActionListener(this);
+        this.view.rubBtnEliminar.addActionListener(this);
+
         // FACTURAS
         this.view.factBtnNuevaFactura.addActionListener(this);
         this.view.factBtnVerMas.addActionListener(this);
@@ -86,15 +86,17 @@ public class Controlador implements ActionListener, ListSelectionListener {
     public void actionPerformed(ActionEvent lse) {
         /// BOTONERA
         if (lse.getSource() == this.view.botoneraArt) {
-
             this.view.ventanasContainer.setSelectedComponent(this.view.art);
+            ArticuloControlador.iniciarTabla(this.view.artTabla, domConsultasArt);
+            ArticuloControlador.iniciarDropdownRubros(this.view, this.domConsultasRub);
+            ArticuloControlador.iniciarDropdownProveedores(this.view, this.domConsultasProv);
         }
         if (lse.getSource() == this.view.botoneraProv) {
             this.view.ventanasContainer.setSelectedComponent(this.view.prov);
         }
         if (lse.getSource() == this.view.botoneraClie) {
-            ClienteControlador.iniciarTabla(this.view.clieTabla, this.domConsultasClie);
             this.view.ventanasContainer.setSelectedComponent(this.view.clie);
+            ClienteControlador.iniciarTabla(this.view.clieTabla, this.domConsultasClie);
         }
         if (lse.getSource() == this.view.botoneraFact) {
             this.view.ventanasContainer.setSelectedComponent(this.view.rub);
@@ -133,26 +135,22 @@ public class Controlador implements ActionListener, ListSelectionListener {
             ClienteControlador.eliminarCliente(this.view, this.domConsultasClie);
         }
 
-        
         //Rubros
-        if (lse.getSource() == this.view.rubBtnBuscar){
+        if (lse.getSource() == this.view.rubBtnBuscar) {
             RubroControlador.buscarTabla(this.view.rubroTabla, this.domConsultasRub, this.view.rubInputTextBuscador.getText());
         }
-        if (lse.getSource() == this.view.rubBtnGuardar){
+        if (lse.getSource() == this.view.rubBtnGuardar) {
             RubroControlador.agregarRubro(this.view, this.domConsultasRub);
         }
-        if (lse.getSource() == this.view.rubBtnLimpiar){
+        if (lse.getSource() == this.view.rubBtnLimpiar) {
             RubroControlador.vaciarInputTexts(view);
         }
-        if (lse.getSource() == this.view.rubBtnEliminar){
+        if (lse.getSource() == this.view.rubBtnEliminar) {
             RubroControlador.eliminarRubro(this.view, this.domConsultasRub);
         }
-        
-        
+
         // Facturas
         if (lse.getSource() == this.view.factBtnNuevaFactura) {
-            // DIALOG MENSAJE (https://www.youtube.com/watch?v=sT5zeMX8X50&t=205s)
-            //JOptionPane.showMessageDialog(null, "HOLA MUNDO");
             FacturaControlador.crearFactura(this.viewFacturasDetalles);
         }
     }
@@ -163,7 +161,6 @@ public class Controlador implements ActionListener, ListSelectionListener {
         // Articulos
         if (lse.getSource() == this.view.artTabla.getSelectionModel()) {
             try {
-                // Limitar una sola seleccion
                 int row = this.view.artTabla.getSelectedRow();
                 this.view.artTabla.setRowSelectionInterval(row, row);
 
@@ -186,7 +183,6 @@ public class Controlador implements ActionListener, ListSelectionListener {
         // Clientes
         if (lse.getSource() == this.view.clieTabla.getSelectionModel()) {
             try {
-                // Limitar una sola seleccion
                 int row = this.view.clieTabla.getSelectedRow();
                 this.view.clieTabla.setRowSelectionInterval(row, row);
 

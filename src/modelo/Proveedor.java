@@ -12,6 +12,9 @@ public class Proveedor {
     @Column(name = "id_proveedor")
     private int id;
 
+    @Column(name = "nombre")
+    private String nombre;
+
     @Column(name = "cuil_cuit")
     private String cuilCuit;
 
@@ -96,7 +99,10 @@ public class Proveedor {
         return id;
     }
 
-     
+    public String getNombre() {
+        return nombre;
+    }
+
     public String getCuilCuit() {
         return cuilCuit;
     }
@@ -104,6 +110,4 @@ public class Proveedor {
     public String getEmail() {
         return email;
     }
-
-    
 }

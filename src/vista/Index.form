@@ -1505,56 +1505,38 @@
                 </Container>
                 <Component class="javax.swing.JTextField" name="clieInputTextId">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField2"/>
+                    <Property name="editable" type="boolean" value="false"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="clieInputTextNombre">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField3"/>
-                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="clieInputTextApellido">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField4"/>
-                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="clieInputTextDni">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField5"/>
-                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="clieInputTextDireccion">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField6"/>
-                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="clieInputTextTelefono">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField7"/>
-                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="clieInputTextEmail">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField8"/>
-                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -1716,9 +1698,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="factBtnFact" min="-2" max="-2" attributes="0"/>
+                          <Component id="factBtnFacturas" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="factBtnNotas" min="-2" max="-2" attributes="0"/>
+                          <Component id="notBtnNotasCredito" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1737,8 +1719,8 @@
                               <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="factInputTextBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="factBtnBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="factBtnFact" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="factBtnNotas" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="factBtnFacturas" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="notBtnNotasCredito" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1767,15 +1749,21 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="factBtnFact">
+                <Component class="javax.swing.JButton" name="factBtnFacturas">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="FACTURAS"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="factBtnNotas">
+                <Component class="javax.swing.JButton" name="notBtnNotasCredito">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="NOTAS DE CREDITO"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -2132,6 +2120,9 @@
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                                 </Property>
                               </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -2187,11 +2178,17 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Venta"/>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JCheckBox" name="factCheckBoxCompra">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Compra"/>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -2266,20 +2263,20 @@
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="factBtnLimpiar1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="notBtnLimpiar" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="factBtnGuardar1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="notBtnGuardar" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Component id="factInputTextTotal1" alignment="1" min="-2" pref="258" max="-2" attributes="0"/>
+                                                      <Component id="notInputTextTotal" alignment="1" min="-2" pref="258" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                          <Component id="factInputTextProposito1" alignment="1" min="-2" pref="257" max="-2" attributes="0"/>
+                                                          <Component id="notInputTextCliente" alignment="1" min="-2" pref="257" max="-2" attributes="0"/>
                                                           <Group type="102" alignment="0" attributes="0">
                                                               <Component id="jLabel55" min="-2" pref="64" max="-2" attributes="0"/>
                                                               <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="factInputTextId1" min="-2" pref="258" max="-2" attributes="0"/>
+                                                              <Component id="notInputTextId" min="-2" pref="258" max="-2" attributes="0"/>
                                                           </Group>
                                                           <Group type="102" alignment="0" attributes="0">
                                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -2287,12 +2284,12 @@
                                                                   <Component id="jLabel50" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                                                               </Group>
                                                               <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="jComboBox1" max="32767" attributes="0"/>
+                                                              <Component id="notDropDownFactura" max="32767" attributes="0"/>
                                                           </Group>
                                                           <Group type="102" attributes="0">
                                                               <Component id="jLabel52" min="-2" max="-2" attributes="0"/>
                                                               <EmptySpace max="32767" attributes="0"/>
-                                                              <Component id="factInputTextFecha1" min="-2" pref="257" max="-2" attributes="0"/>
+                                                              <Component id="notInputTextFecha" min="-2" pref="257" max="-2" attributes="0"/>
                                                           </Group>
                                                       </Group>
                                                   </Group>
@@ -2311,33 +2308,33 @@
                                   <Component id="jLabel49" min="-2" pref="42" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="factInputTextId1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="notInputTextId" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel55" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel50" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="notDropDownFactura" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="factInputTextProposito1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="notInputTextCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="factInputTextFecha1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="notInputTextFecha" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel52" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="factInputTextTotal1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="notInputTextTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel53" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="factBtnLimpiar1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="factBtnGuardar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="notBtnLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="notBtnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -2361,7 +2358,7 @@
                             <Property name="text" type="java.lang.String" value="FECHA:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="factInputTextFecha1">
+                        <Component class="javax.swing.JTextField" name="notInputTextFecha">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                           </Properties>
@@ -2369,7 +2366,7 @@
                             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JButton" name="factBtnGuardar1">
+                        <Component class="javax.swing.JButton" name="notBtnGuardar">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="99" green="cc" red="0" type="rgb"/>
@@ -2380,7 +2377,7 @@
                             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JButton" name="factBtnLimpiar1">
+                        <Component class="javax.swing.JButton" name="notBtnLimpiar">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="99" green="cc" red="0" type="rgb"/>
@@ -2396,18 +2393,18 @@
                             <Property name="text" type="java.lang.String" value="TOTAL:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="factInputTextTotal1">
+                        <Component class="javax.swing.JTextField" name="notInputTextTotal">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="factInputTextTotal1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="notInputTextTotalActionPerformed"/>
                           </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="factInputTextProposito1">
+                        <Component class="javax.swing.JTextField" name="notInputTextCliente">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                           </Properties>
@@ -2425,7 +2422,7 @@
                             <Property name="text" type="java.lang.String" value="ID:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="factInputTextId1">
+                        <Component class="javax.swing.JTextField" name="notInputTextId">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                           </Properties>
@@ -2433,19 +2430,15 @@
                             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox1">
+                        <Component class="javax.swing.JComboBox" name="notDropDownFactura">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="4">
-                                <StringItem index="0" value="Item 1"/>
-                                <StringItem index="1" value="Item 2"/>
-                                <StringItem index="2" value="Item 3"/>
-                                <StringItem index="3" value="Item 4"/>
-                              </StringArray>
+                              <StringArray count="0"/>
                             </Property>
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                           </AuxValues>
                         </Component>
                       </SubComponents>
@@ -2487,7 +2480,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTable" name="jTable4">
+                            <Component class="javax.swing.JTable" name="notTabla">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="5" rowCount="0">
@@ -2531,6 +2524,9 @@
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                                 </Property>
                               </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                              </AuxValues>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -2550,7 +2546,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="notBtnEliminar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -2559,17 +2555,20 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="notBtnEliminar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JButton" name="jButton2">
+                        <Component class="javax.swing.JButton" name="notBtnEliminar">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="BORRAR"/>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                       </SubComponents>
                     </Container>
