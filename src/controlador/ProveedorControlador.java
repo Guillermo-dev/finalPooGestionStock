@@ -90,11 +90,10 @@ public class ProveedorControlador {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos");
         } else {
             Proveedor proveedor = new Proveedor(
-                    view.provInputTextCuilT.getText(),
                     view.provInputTextNombre.getText(),
-                    view.provInputTextDireccion.getText(),
-                    view.provDropdownRazonSocial.getSelectedItem(),
-                    view.provInputTextDireccion.getText(),
+                    view.provInputTextCuilT.getText(),
+                    view.provDropdownRazonSocial.getSelectedItem().toString(),
+                    view.provInputTextDireccion.getText(),                  
                     view.provInputTextTelefono.getText(),
                     view.provInputTextEmail.getText());
             if (proveedorSeleccionado(view)) {

@@ -40,17 +40,13 @@ public class Proveedor {
     }
 
     public Proveedor(String nombre, String cuilCuit, String razonSocial, String direccion, String telefono, String email) {
+        this.nombre = nombre;
         this.cuilCuit = cuilCuit;
         this.razonSocial = razonSocial;
         this.direccion = direccion;
         this.telefono = telefono;
         this.email = email;
-        this.nombre = nombre;
-    }
-
-    //ME LO PEDIA EN GUARDAR PROVEEDOR
-    public Proveedor(String text, String text0, String text1, Object selectedItem, String text2, String text3, String text4) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     public void setId(int id) {
