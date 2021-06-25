@@ -1,6 +1,9 @@
 package controlador;
 
+import controlador.excepciones.excepcion;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -58,13 +61,54 @@ public class ClienteControlador {
     }
 
     public static boolean inputsTextInvalidos(Index view) {
-        // TODO: Agregar logica de validacion
-        return view.clieInputTextApellido.getText().equals("")
+        //Reviso que los campos esten llenos
+        if (view.clieInputTextApellido.getText().equals("")
                 || view.clieInputTextNombre.getText().equals("")
                 || view.clieInputTextDni.getText().equals("")
                 || view.clieInputTextDireccion.getText().equals("")
                 || view.clieInputTextTelefono.getText().equals("")
-                || view.clieInputTextEmail.getText().equals("");
+                || view.clieInputTextEmail.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+            return true;
+        }
+        //Reviso que el formato de los datos sean validos
+        else{
+            try {
+                int dni = Integer.parseInt(view.clieInputTextDni.getText());
+                int telefono = Integer.parseInt(view.clieInputTextTelefono.getText());
+                comprobarTextos(view.clieInputTextApellido.getText());
+                comprobarTextos(view.clieInputTextNombre.getText());
+                comprobarEmail(view.clieInputTextEmail.getText());
+            }
+            catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos para DNI y/o telefono.");
+                return true;
+            }
+            catch (excepcion e){
+                JOptionPane.showMessageDialog(null, e.getMessage());
+                return true;
+            }
+            return false;
+        }
+    }
+    
+    static void comprobarEmail(String email) throws excepcion{
+        Pattern pattern = Pattern.compile("([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z]+)\\.([a-z]+))+");
+        Matcher mather = pattern.matcher(email);
+        if (!mather.find()){
+            throw new excepcion("El email ingresado no es valido");
+        }
+    }
+    static void comprobarTextos (String texto) throws excepcion{
+        //Compruebo si hay un caracter especial o numero
+        String REG_EXP = "\\¿+|\\?+|\\°+|\\¬+|\\|+|\\!+|\\#+|\\$+|" +
+        "\\%+|\\&+|\\+|\\=+|\\’+|\\¡+|\\++|\\*+|\\~+|\\[+|\\]" +
+        "+|\\{+|\\}+|\\^+|\\<+|\\>+|\\@|\\_+|\\-+|[0-9]";
+        Pattern pattern = Pattern.compile(REG_EXP);
+        Matcher matcher = pattern.matcher(texto);
+        if(matcher.find()){
+            throw new excepcion("El nombre/apellido no puede tener caracteres especiales ni numeros");
+        };
     }
 
     public static boolean clienteSeleccionado(Index view) {
@@ -73,7 +117,7 @@ public class ClienteControlador {
 
     public static void guardarCliente(Index view, ClienteConsultas services) {
         if (inputsTextInvalidos(view)) {
-            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+            System.out.println("Error al cargar cliente");
         } else {
             Cliente cliente = new Cliente(
                     view.clieInputTextNombre.getText(),
