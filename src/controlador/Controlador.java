@@ -183,10 +183,10 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         if (lse.getSource() == this.view.provBtnGuardar) {
             ProveedorControlador.guardarProveedor(this.view, this.domConsultasProv);
         }
-        if (lse.getSource() == this.view.clieBtnLimpiar) {
+        if (lse.getSource() == this.view.provBtnLimpiar) {
             ProveedorControlador.vaciarInputTexts(view);
         }
-        if (lse.getSource() == this.view.clieBtnEliminar) {
+        if (lse.getSource() == this.view.provBtnEliminar) {
             ProveedorControlador.eliminarProveedor(this.view, this.domConsultasProv);
         }
         //TODO otro emtodo con distintos parametros

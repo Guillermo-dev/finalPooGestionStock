@@ -112,6 +112,7 @@ public class ClienteControlador {
             vaciarInputTexts(view);
         } catch (Exception e) {
             // TODO
+            System.out.println("asdasd");
             JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");
         }
 

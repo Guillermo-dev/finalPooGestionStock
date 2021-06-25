@@ -45,7 +45,7 @@ Contributor(s):
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/poo_gestion_stock</property>
         <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.connection.password">newpassword</property>
         <property name="hibernate.c3p0.timeout">0</property>
         <mapping class="modelo.Articulo"/>
         <mapping class="modelo.Cliente"/>
