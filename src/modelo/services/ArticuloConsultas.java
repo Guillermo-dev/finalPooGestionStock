@@ -22,6 +22,17 @@ public class ArticuloConsultas extends HibernateUtil {
         return (ArrayList<Articulo>) articulos;
     }
 
+    public Articulo getArticulo(int idArticulo) {
+        SessionFactory sessionFactory = newSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        Articulo articulo = (Articulo) session.get(Articulo.class, idArticulo);
+
+        session.close();
+        sessionFactory.close();
+        return articulo;
+    }
+
     public ArrayList<Articulo> getArticulosBusacador(String buscador) {
         buscador = buscador.toUpperCase();
 
@@ -39,7 +50,7 @@ public class ArticuloConsultas extends HibernateUtil {
         sessionFactory.close();
         return (ArrayList<Articulo>) articulos;
     }
-    
+
     public ArrayList<Articulo> getArticulosStockMinimo() {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();

@@ -2,6 +2,7 @@ package controlador;
 
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -63,10 +64,15 @@ public class ArticuloControlador {
         ArrayList<Articulo> articulos = services.getArticulosBusacador(buscador);
         cargarTabla(artTabla, articulos);
     }
-    
-    public static void stockMinimoTabla(JTable artTabla, ArticuloConsultas services){
-        ArrayList<Articulo> articulos = services.getArticulosStockMinimo();
-        cargarTabla(artTabla, articulos);
+
+    public static void stockMinimoTabla(JTable artTabla, JCheckBox checkBoxStockMinimo, ArticuloConsultas services) {
+        if (checkBoxStockMinimo.isSelected()) {
+            ArrayList<Articulo> articulos = services.getArticulosStockMinimo();
+            cargarTabla(artTabla, articulos);
+        } else {
+            iniciarTabla(artTabla, services);
+        }
+
     }
 
     public static void cargarInputTexts(Index view, String id, String nombre, String rubro, String descripcion, String proveedor, String stockActual, String stockMinimo, String precio) {
@@ -109,8 +115,8 @@ public class ArticuloControlador {
         if (inputsTextInvalidos(view)) {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos");
         } else {
-            int idProveedor = Integer.parseInt(view.artDropdownProveedor.getSelectedItem().toString().split(",")[0]);
-            int idRubro = Integer.parseInt(view.artDropdownRubro.getSelectedItem().toString().split(",")[0]);
+            int idProveedor = Integer.parseInt(view.artDropdownProveedor.getSelectedItem().toString().split("-")[0]);
+            int idRubro = Integer.parseInt(view.artDropdownRubro.getSelectedItem().toString().split("-")[0]);
             Proveedor proveedor = servicesProv.getProveedor(idProveedor);
             Rubro rubro = servicesRub.getRubro(idRubro);
 
@@ -140,9 +146,9 @@ public class ArticuloControlador {
             vaciarInputTexts(view);
         }
     }
-    
-    public static void eliminarArticulo (Index view, ArticuloConsultas services) {
-                try {
+
+    public static void eliminarArticulo(Index view, ArticuloConsultas services) {
+        try {
             services.deleteArticulo(Integer.parseInt(view.artInputTextId.getText()));
 
             DefaultTableModel tablaModel = (DefaultTableModel) view.artTabla.getModel();
@@ -153,5 +159,13 @@ public class ArticuloControlador {
             // TODO
             JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");
         }
+    }
+
+    public static boolean nuevoRubroSeleccionado(Index view) {
+        if (view.artDropdownRubro.getSelectedItem() == "Nuevo rubro") {
+            int resp = JOptionPane.showConfirmDialog(view, "Crear nuevo rubro?");
+            return (resp == 0);
+        }
+        return false;
     }
 }
