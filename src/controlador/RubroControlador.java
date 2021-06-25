@@ -51,8 +51,8 @@ public class RubroControlador {
         try {
             services.deleteRubro(Integer.parseInt(view.rubInputTextId.getText()));
 
-            DefaultTableModel rubrosModel = (DefaultTableModel) view.rubroTabla.getModel();
-            rubrosModel.removeRow(view.rubroTabla.getSelectedRow());
+            DefaultTableModel rubrosModel = (DefaultTableModel) view.rubTabla.getModel();
+            rubrosModel.removeRow(view.rubTabla.getSelectedRow());
 
             vaciarInputTexts(view);
         } catch (Exception e) {
@@ -93,7 +93,7 @@ public class RubroControlador {
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             }
-            iniciarTabla(view.rubroTabla, services);
+            iniciarTabla(view.rubTabla, services);
             vaciarInputTexts(view);
         }
     }

@@ -1,12 +1,12 @@
 package controlador;
 
-import static controlador.FacturaControlador.generarLineas;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelo.Articulo;
@@ -18,7 +18,7 @@ import modelo.services.ClienteConsultas;
 import modelo.services.FacturaConsultas;
 import vista.FacturaVistaVenta;
 
-public class FacturaVentaControlador extends FacturaControlador {
+public class FacturaVentaControlador {
 
     public static void inicializarDropdownClientes(FacturaVistaVenta facturaDetallesVenta, ClienteConsultas servicesCli) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) facturaDetallesVenta.dropdownCliente.getModel();
@@ -40,20 +40,23 @@ public class FacturaVentaControlador extends FacturaControlador {
         });
     }
 
-    public static void cargarInputTexts(JComboBox dropdownArticulo, JTextField inputTextPrecio, JSpinner spinnerCantidad, ArticuloConsultas servicesArt) {
+    public static void seleccionarArticulo(JComboBox dropdownArticulo, JTextField inputTextPrecio, JSpinner spinnerCantidad, ArticuloConsultas servicesArt) {
         if (!dropdownArticulo.getSelectedItem().equals("<Seleccionar Articulo>")) {
             int idArticulo = Integer.parseInt(dropdownArticulo.getSelectedItem().toString().split("-")[0]);
             Articulo articulo = servicesArt.getArticulo(idArticulo);
 
             inputTextPrecio.setText(Float.toString(articulo.getPrecioUnitario()));
-            if ((Integer) spinnerCantidad.getValue() == 0) {
-                spinnerCantidad.setValue(1);
-            }
+            spinnerCantidad.setValue(1);
         }
     }
 
-    public static void cargarInputTexts(FacturaVistaVenta facturaDetallesVenta, String cliente, String articulo, String precio, String cantidad) {
-        facturaDetallesVenta.dropdownCliente.setSelectedItem(cliente);
+    public static void noNegativosSpinner(JSpinner spinner) {
+        if ((Integer) spinner.getValue() < 1) {
+            spinner.setValue(1);
+        }
+    }
+
+    public static void cargarInputTexts(FacturaVistaVenta facturaDetallesVenta, String articulo, String precio, String cantidad) {
         facturaDetallesVenta.dropdownArticulo.setSelectedItem(articulo);
         facturaDetallesVenta.inputTextPrecio.setText(precio);
         facturaDetallesVenta.spinnerCantidad.setValue(Integer.parseInt(cantidad));
@@ -64,6 +67,43 @@ public class FacturaVentaControlador extends FacturaControlador {
         facturaDetallesVenta.dropdownArticulo.setSelectedItem("<Seleccionar Articulo>");
         facturaDetallesVenta.inputTextPrecio.setText("");
         facturaDetallesVenta.spinnerCantidad.setValue(0);
+        facturaDetallesVenta.inputTextTotal.setText("");
+    }
+
+    public static void agregarArticulo(JTable tabla, JComboBox dropdownArticulo, JTextField inputTextPrecio, JSpinner spinnerCantidad, JTextField inputTextTotal) {
+        try {
+            DefaultTableModel tableModel = (DefaultTableModel) tabla.getModel();
+            float subtotal = (Integer) spinnerCantidad.getValue() * Float.parseFloat(inputTextPrecio.getText());
+
+            String[] data = new String[5];
+            data[0] = dropdownArticulo.getSelectedItem().toString().split("-")[0];
+            data[1] = dropdownArticulo.getSelectedItem().toString();
+            data[2] = inputTextPrecio.getText();
+            data[3] = spinnerCantidad.getValue().toString();
+            data[4] = Float.toString(subtotal);
+            tableModel.addRow(data);
+
+            float total;
+            if (inputTextTotal.getText().equals("")) {
+                total = subtotal;
+            } else {
+                total = Float.parseFloat(inputTextTotal.getText()) + subtotal;
+            }
+            inputTextTotal.setText(Float.toString(total));
+        } catch (Exception e) {
+            // TODO: MANEJO VALIDACION
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Error inesperado");
+        }
+    }
+
+    public static void quitarArticulo(JTable tabla, JTextField inputTextTotal) {
+        DefaultTableModel tablaModel = (DefaultTableModel) tabla.getModel();
+        float subtotal = Float.parseFloat(tabla.getValueAt(tabla.getSelectedRow(), 6).toString());
+        float total = Float.parseFloat(inputTextTotal.getText()) - subtotal;
+        inputTextTotal.setText(Float.toString(total));
+
+        tablaModel.removeRow(tabla.getSelectedRow());
     }
 
     public static boolean facturaInvalida(FacturaVistaVenta facturaDetallesVenta) {
@@ -74,6 +114,24 @@ public class FacturaVentaControlador extends FacturaControlador {
             return true;
         }
         return false;
+    }
+
+    public static ArrayList<Linea> generarLineas(JTable tabla, ArticuloConsultas servicesArt, Factura factura) {
+        ArrayList<Linea> lineas = new ArrayList<>();
+
+        for (int i = 0; i <= tabla.getRowCount() - 1; i++) {
+
+            int idArticulo = Integer.parseInt(tabla.getValueAt(i, 0).toString());
+            Articulo articulo = servicesArt.getArticulo(idArticulo);
+            float precioUnitario = Float.parseFloat(tabla.getValueAt(i, 2).toString());
+            int cantidad = Integer.parseInt(tabla.getValueAt(i, 3).toString());
+            float subtotal = Float.parseFloat(tabla.getValueAt(i, 4).toString());
+
+            Linea nuevaLinea = new Linea(articulo, factura, precioUnitario, cantidad, subtotal);
+            lineas.add(nuevaLinea);
+
+        }
+        return lineas;
     }
 
     public static void guardarFactura(FacturaVistaVenta facturaDetallesVenta, ArticuloConsultas servicesArt, ClienteConsultas servicesClie, FacturaConsultas servicesFact) {
