@@ -315,6 +315,26 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
             } catch (Exception e) {
             }
         }
+        // Rubros
+        if (lse.getSource() == this.view.provTabla.getSelectionModel()) {
+            try {
+                int row = this.view.provTabla.getSelectedRow();
+                this.view.provTabla.setRowSelectionInterval(row, row);
+
+                ClienteControlador.cargarInputTexts(
+                        this.view,
+                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 0).toString(),
+                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 1).toString(),
+                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 2).toString(),
+                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 3).toString(),
+                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 4).toString(),
+                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 5).toString(),
+                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 6).toString()
+                );
+            } catch (Exception e) {
+
+            }
+        }
 
         // FACTURAS
         // VISTA DE FACTURA DE VENTA
