@@ -44,6 +44,18 @@ public class ClienteConsultas extends HibernateUtil {
         return (ArrayList<Cliente>) clientes;
     }
 
+    public Cliente getCliente(int idCliente) {
+        SessionFactory sessionFactory = newSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        Cliente cliente = (Cliente) session.get(Cliente.class, idCliente);
+
+        session.close();
+        sessionFactory.close();
+
+        return cliente;
+    }
+
     public void saveCliente(Cliente cliente) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
@@ -67,7 +79,6 @@ public class ClienteConsultas extends HibernateUtil {
         oldCliente.setDireccion(newCliente.getDireccion());
         oldCliente.setTelefono(newCliente.getTelefono());
         oldCliente.setEmail(newCliente.getEmail());
-        
 
         session.beginTransaction();
         session.update(oldCliente);

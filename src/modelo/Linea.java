@@ -31,7 +31,7 @@ public class Linea {
     public Linea() {
     }
 
-    public Linea(Articulo articulo, Factura factura, int cantidad, float precioUnitario, float subTotal) {
+    public Linea(Articulo articulo, Factura factura, float precioUnitario, int cantidad, float subTotal) {
         this.articulo = articulo;
         this.factura = factura;
         this.cantidad = cantidad;

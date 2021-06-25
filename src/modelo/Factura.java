@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
@@ -27,10 +28,10 @@ public class Factura {
     private char proposito;
 
     @Column(name = "num_factura")
-    private int numeroFactura;
+    private String numeroFactura;
 
     @Column(name = "fecha")
-    private String fecha;
+    private Date fecha;
 
     @Column(name = "total")
     private float total;
@@ -41,21 +42,46 @@ public class Factura {
     public Factura() {
     }
 
-    public Factura(Cliente cliente, char proposito, int numeroFactura, String fecha, List<Linea> lineas) {
+    public Factura(Cliente cliente, char proposito, String numeroFactura, Date fecha, float total) {
         this.cliente = cliente;
         this.proposito = proposito;
         this.numeroFactura = numeroFactura;
         this.fecha = fecha;
-        this.lineas = lineas;
+        this.total = total;
     }
 
-    public Factura(Proveedor proveedor, char proposito, int numeroFactura, String fecha, float total, List<Linea> lineas) {
+    public Factura(Proveedor proveedor, char proposito, String numeroFactura, Date fecha, float total) {
         this.proveedor = proveedor;
         this.proposito = proposito;
         this.numeroFactura = numeroFactura;
         this.fecha = fecha;
         this.total = total;
-        this.lineas = lineas;
     }
 
+    public void setLineas(List<Linea> lineas) {
+        this.lineas = lineas;
+    }
+    
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNumeroFactura() {
+        return numeroFactura;
+    }
+
+    public char getProposito() {
+        return proposito;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    
 }

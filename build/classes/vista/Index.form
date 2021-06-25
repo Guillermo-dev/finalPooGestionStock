@@ -145,9 +145,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="FACTURAS"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botoneraFactActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
@@ -433,9 +430,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Stock M&#xed;nimo"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="artCheckBoxStockMinimoActionPerformed"/>
-                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -1027,9 +1021,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="LISTA COMPRAS"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="provBtnListaCompraActionPerformed"/>
-                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -1483,9 +1474,6 @@
                           <Image iconType="3" name="/vista/Iconos/eliminar mediano.png"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clieBtnEliminarActionPerformed"/>
-                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                       </AuxValues>
@@ -1648,7 +1636,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="rub">
+        <Container class="javax.swing.JPanel" name="fact">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
@@ -1987,9 +1975,6 @@
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="factInputTextTotalActionPerformed"/>
-                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                           </AuxValues>
@@ -2027,9 +2012,6 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="+  NUEVA FACTURA"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="factBtnNuevaFacturaActionPerformed"/>
-                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                           </AuxValues>
@@ -2085,8 +2067,8 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="5" rowCount="0">
-                                    <Column editable="false" title="FECHA" type="java.lang.Object"/>
                                     <Column editable="false" title="ID" type="java.lang.Object"/>
+                                    <Column editable="false" title="FECHA" type="java.lang.Object"/>
                                     <Column editable="false" title="NUMERO" type="java.lang.Object"/>
                                     <Column editable="false" title="PROP&#xd3;SITO" type="java.lang.Object"/>
                                     <Column editable="false" title="TOTAL" type="java.lang.Object"/>
@@ -2151,7 +2133,7 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="factCheckBoxCompra" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="factBtnEliminar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -2163,7 +2145,7 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="factCheckBoxVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="factCheckBoxCompra" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="factBtnEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -2171,13 +2153,13 @@
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JButton" name="jButton1">
+                        <Component class="javax.swing.JButton" name="factBtnEliminar">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="BORRAR"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-                          </Events>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JCheckBox" name="factCheckBoxVenta">
                           <Properties>
@@ -2402,9 +2384,6 @@
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="notInputTextTotalActionPerformed"/>
-                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                           </AuxValues>
@@ -2489,8 +2468,8 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="5" rowCount="0">
-                                    <Column editable="false" title="FECHA" type="java.lang.Object"/>
                                     <Column editable="false" title="ID" type="java.lang.Object"/>
+                                    <Column editable="false" title="FECHA" type="java.lang.Object"/>
                                     <Column editable="false" title="FACTURA" type="java.lang.Object"/>
                                     <Column editable="false" title="CLIENTE" type="java.lang.Object"/>
                                     <Column editable="false" title="TOTAL" type="java.lang.Object"/>
@@ -2583,7 +2562,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="fact">
+        <Container class="javax.swing.JPanel" name="rub">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
