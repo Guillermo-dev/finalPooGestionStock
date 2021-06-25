@@ -316,20 +316,16 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
             }
         }
         // Rubros
-        if (lse.getSource() == this.view.provTabla.getSelectionModel()) {
+        if (lse.getSource() == this.view.rubroTabla.getSelectionModel()) {
             try {
-                int row = this.view.provTabla.getSelectedRow();
-                this.view.provTabla.setRowSelectionInterval(row, row);
+                int row = this.view.rubroTabla.getSelectedRow();
+                this.view.rubroTabla.setRowSelectionInterval(row, row);
 
-                ClienteControlador.cargarInputTexts(
+                RubroControlador.cargarInputTexts(
                         this.view,
-                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 0).toString(),
-                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 1).toString(),
-                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 2).toString(),
-                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 3).toString(),
-                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 4).toString(),
-                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 5).toString(),
-                        this.view.provTabla.getValueAt(this.view.provTabla.getSelectedRow(), 6).toString()
+                        this.view.rubroTabla.getValueAt(this.view.rubroTabla.getSelectedRow(), 0).toString(),
+                        this.view.rubroTabla.getValueAt(this.view.rubroTabla.getSelectedRow(), 1).toString(),
+                        this.view.rubroTabla.getValueAt(this.view.rubroTabla.getSelectedRow(), 2).toString()
                 );
             } catch (Exception e) {
 
