@@ -110,4 +110,21 @@ public class ArticuloConsultas extends HibernateUtil {
         session.close();
         sessionFactory.close();
     }
+    
+    public ArrayList<Articulo> getAllArticulosIdProveedor(int idProveedor) {
+        SessionFactory sessionFactory = newSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+        Query query = session.createQuery("FROM Articulo WHERE id_proveedor = :idProveedor");
+        query.setParameter("idProveedor", idProveedor);
+        List<Articulo> articulos = (List<Articulo>) query.list();
+
+        session.close();
+        sessionFactory.close();
+        return (ArrayList<Articulo>) articulos;
+    }
+    
+    
+    
 }

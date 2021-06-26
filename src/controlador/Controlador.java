@@ -27,6 +27,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
     private final ProveedorConsultas domConsultasProv;
     private final ListaComprasProveedor viewListaProveedores;
     private final FacturaConsultas domConsultasFact;
+    
 
     public Controlador(Index view, FacturaVistaVenta viewFacturasDetallesVenta, FacturaVistaCompra viewFacturasDetallesCompra, ListaComprasProveedor viewListaProveedores,
             ArticuloConsultas domConsultasArt, ProveedorConsultas domConsultasProv, ClienteConsultas domConsultasClie, RubroConsultas domConsultasRub, FacturaConsultas domConsultasFact) {
@@ -39,6 +40,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         this.domConsultasRub = domConsultasRub;
         this.viewListaProveedores = viewListaProveedores;
         this.domConsultasFact = domConsultasFact;
+       
 
         // BOTONERA
         this.view.botoneraArt.addActionListener(this);
@@ -65,7 +67,14 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         this.view.provBtnEliminar.addActionListener(this);
         this.view.provBtnNuevaFactura.addActionListener(this);
         this.view.provBtnListaCompra.addActionListener(this);
-
+        
+       
+        // LISTA DE COMPRA
+        this.viewListaProveedores.listaProvTabla.getSelectionModel().addListSelectionListener(this);
+        this.viewListaProveedores.listaProvBtnAceptar.addActionListener(this);
+        this.viewListaProveedores.listaProvImputTextProv.addActionListener(this);      
+        
+        
         // CLIENTES
         this.view.clieTabla.getSelectionModel().addListSelectionListener(this);
         this.view.clieBtnBuscar.addActionListener(this);
@@ -98,6 +107,9 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         this.viewFacturasDetallesCompra.btnBorrarProducto.addActionListener(this);
         this.viewFacturasDetallesCompra.btnGuardar.addActionListener(this);
         this.viewFacturasDetallesCompra.spinnerCantidad.addChangeListener(this);
+      
+        //NOTAS DE CREDITO
+
     }
 
     public void iniciar() {
@@ -196,11 +208,17 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         if (lse.getSource() == this.view.provBtnEliminar) {
             ProveedorControlador.eliminarProveedor(this.view, this.domConsultasProv);
         }
-        //TODO otro emtodo con distintos parametros
+        
+        //TODO otro metodo con distintos parametros
         if (lse.getSource() == this.view.provBtnNuevaFactura) {
             // FacturaControlador.abrirNuevaFactura(this.viewFacturasDetallesVenta, this.viewFacturasDetallesCompra);
         }
 
+        // LISTA DE COMPRAS 
+        if (lse.getSource() == this.view.provBtnListaCompra) {
+            ListaProvControlador.listarProveedores(this.viewListaProveedores);
+        }
+        
         // CLIENTES
         if (lse.getSource() == this.view.clieBtnBuscar) {
             ClienteControlador.buscarTabla(this.view.clieTabla, this.domConsultasClie, this.view.clieInputTextBuscador.getText());
@@ -262,10 +280,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
             FacturaCompraControlador.guardarFactura(this.viewFacturasDetallesCompra, this.domConsultasArt, this.domConsultasProv, this.domConsultasFact, this.domConsultasRub);
         }
 
-        // LISTA DE COMPRAS 
-        if (lse.getSource() == this.view.provBtnListaCompra) {
-            ListaProvControlador.listarProveedores(this.viewListaProveedores);
-        }
+        
 
     }
 
