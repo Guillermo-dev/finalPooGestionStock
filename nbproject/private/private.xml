@@ -5,12 +5,11 @@
         <group>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/vista/Index.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/vista/FacturaVistaCompra.java</file>
-            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/ArticuloControlador.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/FacturaVentaControlador.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/FacturaControlador.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/Controlador.java</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/vista/FacturaVistaVenta.java</file>
-            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/RubroControlador.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/hibernate.cfg.xml</file>
             <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/modelo/Factura.java</file>
         </group>
     </open-files>

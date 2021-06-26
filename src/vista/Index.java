@@ -294,6 +294,7 @@ public class Index extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        artTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(artTabla);
         if (artTabla.getColumnModel().getColumnCount() > 0) {
             artTabla.getColumnModel().getColumn(0).setMinWidth(0);
@@ -645,6 +646,7 @@ public class Index extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        provTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane6.setViewportView(provTabla);
         if (provTabla.getColumnModel().getColumnCount() > 0) {
             provTabla.getColumnModel().getColumn(0).setMinWidth(0);
@@ -883,6 +885,7 @@ public class Index extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        clieTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane8.setViewportView(clieTabla);
         if (clieTabla.getColumnModel().getColumnCount() > 0) {
             clieTabla.getColumnModel().getColumn(0).setMinWidth(0);
@@ -1103,6 +1106,7 @@ public class Index extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        factTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane5.setViewportView(factTabla);
         if (factTabla.getColumnModel().getColumnCount() > 0) {
             factTabla.getColumnModel().getColumn(0).setMinWidth(0);
@@ -1312,6 +1316,7 @@ public class Index extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        notTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane7.setViewportView(notTabla);
         if (notTabla.getColumnModel().getColumnCount() > 0) {
             notTabla.getColumnModel().getColumn(0).setMinWidth(0);
@@ -1538,6 +1543,7 @@ public class Index extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        rubTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(rubTabla);
         if (rubTabla.getColumnModel().getColumnCount() > 0) {
             rubTabla.getColumnModel().getColumn(0).setMinWidth(0);

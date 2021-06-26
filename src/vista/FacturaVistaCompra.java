@@ -286,6 +286,7 @@ public class FacturaVistaCompra extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla);
         if (tabla.getColumnModel().getColumnCount() > 0) {
             tabla.getColumnModel().getColumn(0).setMinWidth(0);
