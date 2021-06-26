@@ -176,7 +176,7 @@ public class Index extends javax.swing.JFrame {
         rubBtnLimpiar = new javax.swing.JButton();
         jPanel23 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        rubroTabla = new javax.swing.JTable();
+        rubTabla = new javax.swing.JTable();
         rubBtnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -302,7 +302,12 @@ public class Index extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        artTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(artTabla);
+        if (artTabla.getColumnModel().getColumnCount() > 0) {
+            artTabla.getColumnModel().getColumn(0).setMinWidth(0);
+            artTabla.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         artBtnEliminar.setBackground(new java.awt.Color(0, 204, 153));
         artBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/4xcerrar.png"))); // NOI18N
@@ -692,7 +697,13 @@ public class Index extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        provTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane6.setViewportView(provTabla);
+        if (provTabla.getColumnModel().getColumnCount() > 0) {
+            provTabla.getColumnModel().getColumn(0).setMinWidth(0);
+            provTabla.getColumnModel().getColumn(0).setPreferredWidth(0);
+            provTabla.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         provBtnEliminar.setBackground(new java.awt.Color(0, 204, 153));
         provBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/4xcerrar.png"))); // NOI18N
@@ -929,7 +940,12 @@ public class Index extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        clieTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane8.setViewportView(clieTabla);
+        if (clieTabla.getColumnModel().getColumnCount() > 0) {
+            clieTabla.getColumnModel().getColumn(0).setMinWidth(0);
+            clieTabla.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         clieBtnEliminar.setBackground(new java.awt.Color(0, 204, 153));
         clieBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/4xcerrar.png"))); // NOI18N
@@ -1121,7 +1137,12 @@ public class Index extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        factTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane5.setViewportView(factTabla);
+        if (factTabla.getColumnModel().getColumnCount() > 0) {
+            factTabla.getColumnModel().getColumn(0).setMinWidth(0);
+            factTabla.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1334,7 +1355,12 @@ public class Index extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        notTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane7.setViewportView(notTabla);
+        if (notTabla.getColumnModel().getColumnCount() > 0) {
+            notTabla.getColumnModel().getColumn(0).setMinWidth(0);
+            notTabla.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1602,7 +1628,7 @@ public class Index extends javax.swing.JFrame {
 
         jPanel23.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
-        rubroTabla.setModel(new javax.swing.table.DefaultTableModel(
+        rubTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1618,7 +1644,12 @@ public class Index extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(rubroTabla);
+        rubTabla.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(rubTabla);
+        if (rubTabla.getColumnModel().getColumnCount() > 0) {
+            rubTabla.getColumnModel().getColumn(0).setMinWidth(0);
+            rubTabla.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         rubBtnEliminar.setBackground(new java.awt.Color(0, 204, 153));
         rubBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/4xcerrar.png"))); // NOI18N
@@ -1905,7 +1936,7 @@ public class Index extends javax.swing.JFrame {
     public javax.swing.JTextArea rubInputTextDescripcion;
     public javax.swing.JTextField rubInputTextId;
     public javax.swing.JTextField rubInputTextNombre;
-    public javax.swing.JTable rubroTabla;
+    public javax.swing.JTable rubTabla;
     public javax.swing.JTabbedPane ventanasContainer;
     // End of variables declaration//GEN-END:variables
 }

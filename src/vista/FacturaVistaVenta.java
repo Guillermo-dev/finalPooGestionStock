@@ -172,7 +172,7 @@ public class FacturaVistaVenta extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Producto", "Precio_Uni", "Cantidad", "Subtotal"
+                "Id", "Articulo", "Precio_Uni", "Cantidad", "Subtotal"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -183,7 +183,12 @@ public class FacturaVistaVenta extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabla);
+        if (tabla.getColumnModel().getColumnCount() > 0) {
+            tabla.getColumnModel().getColumn(0).setMinWidth(0);
+            tabla.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
