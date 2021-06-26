@@ -330,7 +330,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
                 int row = this.view.provTabla.getSelectedRow();
                 this.view.provTabla.setRowSelectionInterval(row, row);
 
-                ClienteControlador.cargarInputTexts(
+                ProveedorControlador.cargarInputTexts(
                         this.view,
                         this.view.provTabla.getValueAt(row, 0).toString(),
                         this.view.provTabla.getValueAt(row, 1).toString(),

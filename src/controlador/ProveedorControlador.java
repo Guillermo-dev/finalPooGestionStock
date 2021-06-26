@@ -1,5 +1,6 @@
 package controlador;
 
+import controlador.excepciones.excepcion;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -72,14 +73,32 @@ public class ProveedorControlador {
     }
 
     public static boolean inputsTextInvalidos(Index view) {
-        // TODO: Agregar logica de validacion
-        return view.provInputTextCuilT.getText().equals("")
+        if  (view.provInputTextCuilT.getText().equals("")
                 || view.provInputTextNombre.getText().equals("")
                 || view.provInputTextDireccion.getText().equals("")
                 || view.provDropdownRazonSocial.getSelectedItem().equals("<Seleccionar Razon Social>")
                 || view.provInputTextDireccion.getText().equals("")
                 || view.provInputTextTelefono.getText().equals("")
-                || view.provInputTextEmail.getText().equals("");
+                || view.provInputTextEmail.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+            return true;
+        }else{
+            try{
+                excepcion.comprobarEmail(view.provInputTextEmail.getText());
+                long telefono = Long.parseLong(view.provInputTextTelefono.getText());
+                long cuil = Long.parseLong(view.provInputTextCuilT.getText());
+                excepcion.comprobarTextos(view.provInputTextNombre.getText(), "nombre");
+            }
+            catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos para el telefono y el cuil/t.");
+                return true;
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(null, e.getMessage());
+                return true;
+            }
+            return false;
+        }
     }
 
     public static boolean proveedorSeleccionado(Index view) {
@@ -88,7 +107,7 @@ public class ProveedorControlador {
 
     public static void guardarProveedor(Index view, ProveedorConsultas services) {
         if (inputsTextInvalidos(view)) {
-            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+            System.out.println("Error al cargar proveedor");
         } else {
             Proveedor proveedor = new Proveedor(
                     view.provInputTextNombre.getText(),
