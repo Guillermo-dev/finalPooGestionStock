@@ -1,12 +1,12 @@
 package controlador;
 
-import static controlador.FacturaControlador.generarLineas;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelo.Articulo;
@@ -18,12 +18,13 @@ import modelo.services.ClienteConsultas;
 import modelo.services.FacturaConsultas;
 import vista.FacturaVistaVenta;
 
-public class FacturaVentaControlador extends FacturaControlador {
+public class FacturaVentaControlador {
 
     public static void inicializarDropdownClientes(FacturaVistaVenta facturaDetallesVenta, ClienteConsultas servicesCli) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) facturaDetallesVenta.dropdownCliente.getModel();
         ArrayList<Cliente> clientes = servicesCli.getAllClientes();
 
+        facturaDetallesVenta.dropdownCliente.removeAllItems();
         dropModel.addElement("<Seleccionar cliente>");
         clientes.forEach(cliente -> {
             dropModel.addElement(cliente.getId() + "- " + cliente.getNombre());
@@ -34,26 +35,30 @@ public class FacturaVentaControlador extends FacturaControlador {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) facturaDetallesVenta.dropdownArticulo.getModel();
         ArrayList<Articulo> articulos = servicesArt.getAllArticulos();
 
+        facturaDetallesVenta.dropdownArticulo.removeAllItems();
         dropModel.addElement("<Seleccionar Articulo>");
         articulos.forEach(articulo -> {
             dropModel.addElement(articulo.getId() + "- " + articulo.getNombre());
         });
     }
 
-    public static void cargarInputTexts(JComboBox dropdownArticulo, JTextField inputTextPrecio, JSpinner spinnerCantidad, ArticuloConsultas servicesArt) {
+    public static void seleccionarArticulo(JComboBox dropdownArticulo, JTextField inputTextPrecio, JSpinner spinnerCantidad, ArticuloConsultas servicesArt) {
         if (!dropdownArticulo.getSelectedItem().equals("<Seleccionar Articulo>")) {
             int idArticulo = Integer.parseInt(dropdownArticulo.getSelectedItem().toString().split("-")[0]);
             Articulo articulo = servicesArt.getArticulo(idArticulo);
 
             inputTextPrecio.setText(Float.toString(articulo.getPrecioUnitario()));
-            if ((Integer) spinnerCantidad.getValue() == 0) {
-                spinnerCantidad.setValue(1);
-            }
+            spinnerCantidad.setValue(1);
         }
     }
 
-    public static void cargarInputTexts(FacturaVistaVenta facturaDetallesVenta, String cliente, String articulo, String precio, String cantidad) {
-        facturaDetallesVenta.dropdownCliente.setSelectedItem(cliente);
+    public static void noNegativosSpinner(JSpinner spinner) {
+        if ((Integer) spinner.getValue() < 1) {
+            spinner.setValue(1);
+        }
+    }
+
+    public static void cargarInputTexts(FacturaVistaVenta facturaDetallesVenta, String articulo, String precio, String cantidad) {
         facturaDetallesVenta.dropdownArticulo.setSelectedItem(articulo);
         facturaDetallesVenta.inputTextPrecio.setText(precio);
         facturaDetallesVenta.spinnerCantidad.setValue(Integer.parseInt(cantidad));
@@ -64,6 +69,48 @@ public class FacturaVentaControlador extends FacturaControlador {
         facturaDetallesVenta.dropdownArticulo.setSelectedItem("<Seleccionar Articulo>");
         facturaDetallesVenta.inputTextPrecio.setText("");
         facturaDetallesVenta.spinnerCantidad.setValue(0);
+        facturaDetallesVenta.inputTextTotal.setText("");
+    }
+
+    public static void agregarArticulo(FacturaVistaVenta facturaDetallesVenta) {
+        try {
+            DefaultTableModel tableModel = (DefaultTableModel) facturaDetallesVenta.tabla.getModel();
+            float subtotal = (Integer) facturaDetallesVenta.spinnerCantidad.getValue() * Float.parseFloat(facturaDetallesVenta.inputTextPrecio.getText());
+
+            String[] data = new String[5];
+            data[0] = facturaDetallesVenta.dropdownArticulo.getSelectedItem().toString().split("-")[0];
+            data[1] = facturaDetallesVenta.dropdownArticulo.getSelectedItem().toString();
+            data[2] = facturaDetallesVenta.inputTextPrecio.getText();
+            data[3] = facturaDetallesVenta.spinnerCantidad.getValue().toString();
+            data[4] = Float.toString(subtotal);
+            tableModel.addRow(data);
+
+            float total;
+            if (facturaDetallesVenta.inputTextTotal.getText().equals("")) {
+                total = subtotal;
+            } else {
+                total = Float.parseFloat(facturaDetallesVenta.inputTextTotal.getText()) + subtotal;
+            }
+            facturaDetallesVenta.inputTextTotal.setText(Float.toString(total));
+
+            facturaDetallesVenta.dropdownCliente.disable();
+        } catch (Exception e) {
+            // TODO: MANEJO VALIDACION
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Error inesperado");
+        }
+    }
+
+    public static void quitarArticulo(FacturaVistaVenta facturaDetallesVenta) {
+        DefaultTableModel tablaModel = (DefaultTableModel) facturaDetallesVenta.tabla.getModel();
+        float subtotal = Float.parseFloat(facturaDetallesVenta.tabla.getValueAt(facturaDetallesVenta.tabla.getSelectedRow(), 4).toString());
+        float total = Float.parseFloat(facturaDetallesVenta.inputTextTotal.getText()) - subtotal;
+        facturaDetallesVenta.inputTextTotal.setText(Float.toString(total));
+
+        tablaModel.removeRow(facturaDetallesVenta.tabla.getSelectedRow());
+        if (facturaDetallesVenta.tabla.getRowCount() == 0) {
+            facturaDetallesVenta.dropdownCliente.enable();
+        }
     }
 
     public static boolean facturaInvalida(FacturaVistaVenta facturaDetallesVenta) {
@@ -74,6 +121,24 @@ public class FacturaVentaControlador extends FacturaControlador {
             return true;
         }
         return false;
+    }
+
+    public static ArrayList<Linea> generarLineas(JTable tabla, ArticuloConsultas servicesArt, Factura factura) {
+        ArrayList<Linea> lineas = new ArrayList<>();
+
+        for (int i = 0; i <= tabla.getRowCount() - 1; i++) {
+
+            int idArticulo = Integer.parseInt(tabla.getValueAt(i, 0).toString());
+            Articulo articulo = servicesArt.getArticulo(idArticulo);
+            float precioUnitario = Float.parseFloat(tabla.getValueAt(i, 2).toString());
+            int cantidad = Integer.parseInt(tabla.getValueAt(i, 3).toString());
+            float subtotal = Float.parseFloat(tabla.getValueAt(i, 4).toString());
+
+            Linea nuevaLinea = new Linea(articulo, factura, precioUnitario, cantidad, subtotal);
+            lineas.add(nuevaLinea);
+
+        }
+        return lineas;
     }
 
     public static void guardarFactura(FacturaVistaVenta facturaDetallesVenta, ArticuloConsultas servicesArt, ClienteConsultas servicesClie, FacturaConsultas servicesFact) {
