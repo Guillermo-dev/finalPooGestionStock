@@ -112,7 +112,11 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
 
     public void goToProveedores() {
         this.view.ventanasContainer.setSelectedComponent(this.view.prov);
+<<<<<<< Updated upstream
         ProveedorControlador.iniciarTabla(this.view.rubroTabla, this.domConsultasProv);
+=======
+        ProveedorControlador.iniciarTabla(this.view.provTabla, this.domConsultasProv);
+>>>>>>> Stashed changes
         ProveedorControlador.iniciarDropdownRazonSocial(this.view);
     }
 
@@ -302,7 +306,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
                 int row = this.view.provTabla.getSelectedRow();
                 this.view.provTabla.setRowSelectionInterval(row, row);
 
-                ClienteControlador.cargarInputTexts(
+                ProveedorControlador.cargarInputTexts(
                         this.view,
                         this.view.provTabla.getValueAt(row, 0).toString(),
                         this.view.provTabla.getValueAt(row, 1).toString(),
