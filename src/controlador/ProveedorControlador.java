@@ -16,7 +16,9 @@ public class ProveedorControlador {
 
     public static void iniciarDropdownRazonSocial(Index view) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) view.provDropdownRazonSocial.getModel();
-             dropModel.addElement("<Seleccionar Razon Social>");
+
+        view.provDropdownRazonSocial.removeAllItems();
+        dropModel.addElement("<Seleccionar Razon Social>");
         for (String RAZONES_SOCIALES1 : RAZONES_SOCIALES) {
             dropModel.addElement(RAZONES_SOCIALES1);
         }
@@ -94,7 +96,7 @@ public class ProveedorControlador {
                     view.provInputTextNombre.getText(),
                     view.provInputTextCuilT.getText(),
                     view.provDropdownRazonSocial.getSelectedItem().toString(),
-                    view.provInputTextDireccion.getText(),                  
+                    view.provInputTextDireccion.getText(),
                     view.provInputTextTelefono.getText(),
                     view.provInputTextEmail.getText());
             if (proveedorSeleccionado(view)) {
@@ -104,10 +106,10 @@ public class ProveedorControlador {
                     //TODO
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
-            }else { 
-                try{
+            } else {
+                try {
                     services.saveProveedor(proveedor);
-                }catch (Exception e){
+                } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             }
@@ -115,18 +117,18 @@ public class ProveedorControlador {
             vaciarInputTexts(view);
         }
     }
-    
-    public static void eliminarProveedor(Index view, ProveedorConsultas services){
+
+    public static void eliminarProveedor(Index view, ProveedorConsultas services) {
         try {
             services.deleteProveedor(Integer.parseInt(view.provInputTextId.getText()));
-            
+
             DefaultTableModel tablaModel = (DefaultTableModel) view.provTabla.getModel();
             tablaModel.removeRow(view.provTabla.getSelectedRow());
-            
+
             vaciarInputTexts(view);
-        }catch (Exception e) {
+        } catch (Exception e) {
             // TODO
-            JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");   
-        } 
+            JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");
+        }
     }
 }

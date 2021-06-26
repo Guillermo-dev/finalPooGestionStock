@@ -39,4 +39,20 @@ public class Linea {
         this.subTotal = subTotal;
     }
 
+    public Articulo getArticulo() {
+        return articulo;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public float getPrecioUnitario() {
+        return precioUnitario;
+    }
+
+    public float getSubTotal() {
+        return subTotal;
+    }
+
 }
