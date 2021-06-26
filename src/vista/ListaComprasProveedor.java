@@ -239,8 +239,8 @@ public class ListaComprasProveedor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton listaProvBtnAceptar;
-    private javax.swing.JTextField listaProvImputTextProv;
-    private javax.swing.JTable listaProvTabla;
+    public javax.swing.JButton listaProvBtnAceptar;
+    public javax.swing.JTextField listaProvImputTextProv;
+    public javax.swing.JTable listaProvTabla;
     // End of variables declaration//GEN-END:variables
 }
