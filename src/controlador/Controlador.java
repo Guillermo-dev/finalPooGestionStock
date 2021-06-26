@@ -131,7 +131,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
 
     public void goToProveedores() {
         this.view.ventanasContainer.setSelectedComponent(this.view.prov);
-        ProveedorControlador.iniciarTabla(this.view.rubTabla, this.domConsultasProv);
+        ProveedorControlador.iniciarTabla(this.view.provTabla, this.domConsultasProv);
         ProveedorControlador.iniciarDropdownRazonSocial(this.view);
     }
 
