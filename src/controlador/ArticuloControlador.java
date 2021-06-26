@@ -20,6 +20,7 @@ public class ArticuloControlador {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) view.artDropdownRubro.getModel();
         ArrayList<Rubro> rubros = services.getAllRubros();
 
+        view.artDropdownRubro.removeAllItems();
         dropModel.addElement("<Seleccionar rubro>");
         rubros.forEach(rubro -> {
             dropModel.addElement(rubro.getId() + "- " + rubro.getNombre());
@@ -31,6 +32,7 @@ public class ArticuloControlador {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) view.artDropdownProveedor.getModel();
         ArrayList<Proveedor> proveedores = services.getAllProveedores();
 
+        view.artDropdownProveedor.removeAllItems();
         dropModel.addElement("<Seleccionar Proveedor>");
         proveedores.forEach(proveedor -> {
             dropModel.addElement(proveedor.getId() + "- " + proveedor.getNombre());

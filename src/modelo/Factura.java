@@ -36,7 +36,7 @@ public class Factura {
     @Column(name = "total")
     private float total;
 
-    @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Linea> lineas;
 
     public Factura() {
@@ -81,6 +81,18 @@ public class Factura {
 
     public float getTotal() {
         return total;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public List<Linea> getLineas() {
+        return lineas;
     }
 
     

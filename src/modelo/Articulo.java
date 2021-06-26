@@ -111,4 +111,11 @@ public class Articulo {
         this.stockMinimo = stockMinimo;
     }
 
+    public void sumarStock(int stock) {
+        this.setStockActual(this.getStockActual() + stock);
+    }
+
+    public void restarStock(int stock) {
+        this.setStockActual(this.getStockActual() - stock);
+    }
 }

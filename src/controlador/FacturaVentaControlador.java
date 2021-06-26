@@ -2,6 +2,7 @@ package controlador;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -43,12 +44,14 @@ public class FacturaVentaControlador {
     }
 
     public static void seleccionarArticulo(JComboBox dropdownArticulo, JTextField inputTextPrecio, JSpinner spinnerCantidad, ArticuloConsultas servicesArt) {
-        if (!dropdownArticulo.getSelectedItem().equals("<Seleccionar Articulo>")) {
-            int idArticulo = Integer.parseInt(dropdownArticulo.getSelectedItem().toString().split("-")[0]);
-            Articulo articulo = servicesArt.getArticulo(idArticulo);
+        if (dropdownArticulo.getItemCount() != 0) {
+            if (!dropdownArticulo.getSelectedItem().equals("<Seleccionar Articulo>")) {
+                int idArticulo = Integer.parseInt(dropdownArticulo.getSelectedItem().toString().split("-")[0]);
+                Articulo articulo = servicesArt.getArticulo(idArticulo);
 
-            inputTextPrecio.setText(Float.toString(articulo.getPrecioUnitario()));
-            spinnerCantidad.setValue(1);
+                inputTextPrecio.setText(Float.toString(articulo.getPrecioUnitario()));
+                spinnerCantidad.setValue(1);
+            }
         }
     }
 
@@ -134,6 +137,9 @@ public class FacturaVentaControlador {
             int cantidad = Integer.parseInt(tabla.getValueAt(i, 3).toString());
             float subtotal = Float.parseFloat(tabla.getValueAt(i, 4).toString());
 
+            articulo.restarStock(cantidad);
+            servicesArt.updateArticulo(articulo, idArticulo);
+
             Linea nuevaLinea = new Linea(articulo, factura, precioUnitario, cantidad, subtotal);
             lineas.add(nuevaLinea);
 
@@ -142,26 +148,46 @@ public class FacturaVentaControlador {
     }
 
     public static void guardarFactura(FacturaVistaVenta facturaDetallesVenta, ArticuloConsultas servicesArt, ClienteConsultas servicesClie, FacturaConsultas servicesFact) {
-        if (facturaInvalida(facturaDetallesVenta)) {
-            JOptionPane.showMessageDialog(null, "Error intenttelo nuevamente");
-        } else {
-            int idCliente = Integer.parseInt(facturaDetallesVenta.dropdownCliente.getSelectedItem().toString().split("-")[0]);
-
-            Cliente cliente = servicesClie.getCliente(idCliente);
-            String numeroFactura = facturaDetallesVenta.inputTextNumero.getText();
-            Date fecha = new Date();
-            float total = Float.parseFloat(facturaDetallesVenta.inputTextTotal.getText());
-
-            Factura factura = new Factura(cliente, 'V', numeroFactura, fecha, total);
-
-            ArrayList<Linea> lineas = generarLineas(facturaDetallesVenta.tabla, servicesArt, factura);
-            factura.setLineas(lineas);
-
-            servicesFact.saveFactura(factura);
-
+        if (facturaDetallesVenta.getTitle().equals("Detalles Factura")) {
             vaciarInputTexts(facturaDetallesVenta);
             facturaDetallesVenta.setVisible(false);
+        } else {
+            if (facturaInvalida(facturaDetallesVenta)) {
+                JOptionPane.showMessageDialog(null, "Error intenttelo nuevamente");
+            } else {
+                int idCliente = Integer.parseInt(facturaDetallesVenta.dropdownCliente.getSelectedItem().toString().split("-")[0]);
+
+                Cliente cliente = servicesClie.getCliente(idCliente);
+                String numeroFactura = facturaDetallesVenta.inputTextNumero.getText();
+                Date fecha = new Date();
+                float total = Float.parseFloat(facturaDetallesVenta.inputTextTotal.getText());
+
+                Factura factura = new Factura(cliente, 'V', numeroFactura, fecha, total);
+
+                ArrayList<Linea> lineas = generarLineas(facturaDetallesVenta.tabla, servicesArt, factura);
+                factura.setLineas(lineas);
+
+                servicesFact.saveFactura(factura);
+
+                vaciarInputTexts(facturaDetallesVenta);
+                facturaDetallesVenta.setVisible(false);
+            }
         }
+
+    }
+
+    public static void activarInteraccionVista(FacturaVistaVenta facturaDetallesVenta) {
+        facturaDetallesVenta.spinnerCantidad.setEnabled(true);
+        facturaDetallesVenta.btnAgregarProducto.setVisible(true);
+        facturaDetallesVenta.btnBorrarProducto.setVisible(true);
+        facturaDetallesVenta.dropdownArticulo.setEnabled(true);
+        facturaDetallesVenta.dropdownCliente.setEnabled(true);
+    }
+
+    public static void imprimirFactura(FacturaVistaVenta facturaDetallesVenta) {
+        JOptionPane.showMessageDialog(
+                facturaDetallesVenta,
+                "Imprimiendo factura numero:" + facturaDetallesVenta.inputTextNumero.getText());
     }
 
     public static void abrirVistaFacturaVenta(FacturaVistaVenta facturaDetallesVenta, ArticuloConsultas servicesArt, ClienteConsultas servicesClie, FacturaConsultas servicesFact) {
@@ -169,6 +195,7 @@ public class FacturaVentaControlador {
         facturaDetallesVenta.setLocationRelativeTo(null);
         facturaDetallesVenta.setVisible(true);
         facturaDetallesVenta.inputTextNumero.setText(Integer.toString(servicesFact.getLastNuemroFactura() + 1));
+        activarInteraccionVista(facturaDetallesVenta);
 
         DefaultTableModel tableModel = (DefaultTableModel) facturaDetallesVenta.tabla.getModel();
         tableModel.setNumRows(0);
@@ -176,5 +203,42 @@ public class FacturaVentaControlador {
 
         inicializarDropdownClientes(facturaDetallesVenta, servicesClie);
         inicializarDropdownArticulos(facturaDetallesVenta, servicesArt);
+    }
+
+    public static void cargarTablaVerMas(FacturaVistaVenta facturaDetallesVenta, List<Linea> lineas) {
+        DefaultTableModel tableModel = (DefaultTableModel) facturaDetallesVenta.tabla.getModel();
+        tableModel.setNumRows(0);
+        lineas.forEach((Linea linea) -> {
+            String[] data = new String[5];
+            data[1] = linea.getArticulo().getId() + "- " + linea.getArticulo().getNombre();
+            data[2] = Float.toString(linea.getPrecioUnitario());
+            data[3] = Integer.toString(linea.getCantidad());
+            data[4] = Float.toString(linea.getSubTotal());
+            tableModel.addRow(data);
+        });
+    }
+
+    public static void desactivarInteraccionVista(FacturaVistaVenta facturaDetallesVenta) {
+        facturaDetallesVenta.spinnerCantidad.setEnabled(false);
+        facturaDetallesVenta.btnAgregarProducto.setVisible(false); // setEnabled(false);
+        facturaDetallesVenta.btnBorrarProducto.setVisible(false); // setEnabled(false);
+        facturaDetallesVenta.dropdownArticulo.setEnabled(false);
+        facturaDetallesVenta.dropdownCliente.setEnabled(false);
+    }
+
+    public static void abrirVistaFacturaVenta(FacturaVistaVenta facturaDetallesVenta, ArticuloConsultas servicesArt, ClienteConsultas servicesClie, Factura factura) {
+        facturaDetallesVenta.setTitle("Detalles Factura");
+        facturaDetallesVenta.setLocationRelativeTo(null);
+        facturaDetallesVenta.setVisible(true);
+
+        inicializarDropdownClientes(facturaDetallesVenta, servicesClie);
+        inicializarDropdownArticulos(facturaDetallesVenta, servicesArt);
+
+        desactivarInteraccionVista(facturaDetallesVenta);
+
+        facturaDetallesVenta.inputTextNumero.setText(factura.getNumeroFactura());
+        facturaDetallesVenta.dropdownCliente.setSelectedItem(factura.getCliente().getId() + "- " + factura.getCliente().getNombre());
+        cargarTablaVerMas(facturaDetallesVenta, factura.getLineas());
+        facturaDetallesVenta.inputTextTotal.setText(Float.toString(factura.getTotal()));
     }
 }
