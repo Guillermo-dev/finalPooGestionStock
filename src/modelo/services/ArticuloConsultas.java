@@ -124,7 +124,4 @@ public class ArticuloConsultas extends HibernateUtil {
         sessionFactory.close();
         return (ArrayList<Articulo>) articulos;
     }
-    
-    
-    
 }

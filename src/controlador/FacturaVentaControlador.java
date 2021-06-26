@@ -24,6 +24,7 @@ public class FacturaVentaControlador {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) facturaDetallesVenta.dropdownCliente.getModel();
         ArrayList<Cliente> clientes = servicesCli.getAllClientes();
 
+        facturaDetallesVenta.dropdownCliente.removeAllItems();
         dropModel.addElement("<Seleccionar cliente>");
         clientes.forEach(cliente -> {
             dropModel.addElement(cliente.getId() + "- " + cliente.getNombre());
@@ -34,6 +35,7 @@ public class FacturaVentaControlador {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) facturaDetallesVenta.dropdownArticulo.getModel();
         ArrayList<Articulo> articulos = servicesArt.getAllArticulos();
 
+        facturaDetallesVenta.dropdownArticulo.removeAllItems();
         dropModel.addElement("<Seleccionar Articulo>");
         articulos.forEach(articulo -> {
             dropModel.addElement(articulo.getId() + "- " + articulo.getNombre());
@@ -70,26 +72,28 @@ public class FacturaVentaControlador {
         facturaDetallesVenta.inputTextTotal.setText("");
     }
 
-    public static void agregarArticulo(JTable tabla, JComboBox dropdownArticulo, JTextField inputTextPrecio, JSpinner spinnerCantidad, JTextField inputTextTotal) {
+    public static void agregarArticulo(FacturaVistaVenta facturaDetallesVenta) {
         try {
-            DefaultTableModel tableModel = (DefaultTableModel) tabla.getModel();
-            float subtotal = (Integer) spinnerCantidad.getValue() * Float.parseFloat(inputTextPrecio.getText());
+            DefaultTableModel tableModel = (DefaultTableModel) facturaDetallesVenta.tabla.getModel();
+            float subtotal = (Integer) facturaDetallesVenta.spinnerCantidad.getValue() * Float.parseFloat(facturaDetallesVenta.inputTextPrecio.getText());
 
             String[] data = new String[5];
-            data[0] = dropdownArticulo.getSelectedItem().toString().split("-")[0];
-            data[1] = dropdownArticulo.getSelectedItem().toString();
-            data[2] = inputTextPrecio.getText();
-            data[3] = spinnerCantidad.getValue().toString();
+            data[0] = facturaDetallesVenta.dropdownArticulo.getSelectedItem().toString().split("-")[0];
+            data[1] = facturaDetallesVenta.dropdownArticulo.getSelectedItem().toString();
+            data[2] = facturaDetallesVenta.inputTextPrecio.getText();
+            data[3] = facturaDetallesVenta.spinnerCantidad.getValue().toString();
             data[4] = Float.toString(subtotal);
             tableModel.addRow(data);
 
             float total;
-            if (inputTextTotal.getText().equals("")) {
+            if (facturaDetallesVenta.inputTextTotal.getText().equals("")) {
                 total = subtotal;
             } else {
-                total = Float.parseFloat(inputTextTotal.getText()) + subtotal;
+                total = Float.parseFloat(facturaDetallesVenta.inputTextTotal.getText()) + subtotal;
             }
-            inputTextTotal.setText(Float.toString(total));
+            facturaDetallesVenta.inputTextTotal.setText(Float.toString(total));
+
+            facturaDetallesVenta.dropdownCliente.disable();
         } catch (Exception e) {
             // TODO: MANEJO VALIDACION
             System.out.println(e);
@@ -97,13 +101,16 @@ public class FacturaVentaControlador {
         }
     }
 
-    public static void quitarArticulo(JTable tabla, JTextField inputTextTotal) {
-        DefaultTableModel tablaModel = (DefaultTableModel) tabla.getModel();
-        float subtotal = Float.parseFloat(tabla.getValueAt(tabla.getSelectedRow(), 6).toString());
-        float total = Float.parseFloat(inputTextTotal.getText()) - subtotal;
-        inputTextTotal.setText(Float.toString(total));
+    public static void quitarArticulo(FacturaVistaVenta facturaDetallesVenta) {
+        DefaultTableModel tablaModel = (DefaultTableModel) facturaDetallesVenta.tabla.getModel();
+        float subtotal = Float.parseFloat(facturaDetallesVenta.tabla.getValueAt(facturaDetallesVenta.tabla.getSelectedRow(), 4).toString());
+        float total = Float.parseFloat(facturaDetallesVenta.inputTextTotal.getText()) - subtotal;
+        facturaDetallesVenta.inputTextTotal.setText(Float.toString(total));
 
-        tablaModel.removeRow(tabla.getSelectedRow());
+        tablaModel.removeRow(facturaDetallesVenta.tabla.getSelectedRow());
+        if (facturaDetallesVenta.tabla.getRowCount() == 0) {
+            facturaDetallesVenta.dropdownCliente.enable();
+        }
     }
 
     public static boolean facturaInvalida(FacturaVistaVenta facturaDetallesVenta) {

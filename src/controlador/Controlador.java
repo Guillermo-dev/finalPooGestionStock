@@ -27,7 +27,6 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
     private final ProveedorConsultas domConsultasProv;
     private final ListaComprasProveedor viewListaProveedores;
     private final FacturaConsultas domConsultasFact;
-    
 
     public Controlador(Index view, FacturaVistaVenta viewFacturasDetallesVenta, FacturaVistaCompra viewFacturasDetallesCompra, ListaComprasProveedor viewListaProveedores,
             ArticuloConsultas domConsultasArt, ProveedorConsultas domConsultasProv, ClienteConsultas domConsultasClie, RubroConsultas domConsultasRub, FacturaConsultas domConsultasFact) {
@@ -40,7 +39,6 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         this.domConsultasRub = domConsultasRub;
         this.viewListaProveedores = viewListaProveedores;
         this.domConsultasFact = domConsultasFact;
-       
 
         // BOTONERA
         this.view.botoneraArt.addActionListener(this);
@@ -67,14 +65,12 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         this.view.provBtnEliminar.addActionListener(this);
         this.view.provBtnNuevaFactura.addActionListener(this);
         this.view.provBtnListaCompra.addActionListener(this);
-        
-       
+
         // LISTA DE COMPRA
         this.viewListaProveedores.listaProvTabla.getSelectionModel().addListSelectionListener(this);
         this.viewListaProveedores.listaProvBtnAceptar.addActionListener(this);
-        this.viewListaProveedores.listaProvImputTextProv.addActionListener(this);      
-        
-        
+        this.viewListaProveedores.listaProvImputTextProv.addActionListener(this);
+
         // CLIENTES
         this.view.clieTabla.getSelectionModel().addListSelectionListener(this);
         this.view.clieBtnBuscar.addActionListener(this);
@@ -103,13 +99,13 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         // FACTURACOMPRA
         this.viewFacturasDetallesCompra.tabla.getSelectionModel().addListSelectionListener(this);
         this.viewFacturasDetallesCompra.dropdownArticulo.addActionListener(this);
+        this.viewFacturasDetallesCompra.dropdownProveedor.addActionListener(this);
         this.viewFacturasDetallesCompra.btnAgregarProducto.addActionListener(this);
         this.viewFacturasDetallesCompra.btnBorrarProducto.addActionListener(this);
         this.viewFacturasDetallesCompra.btnGuardar.addActionListener(this);
         this.viewFacturasDetallesCompra.spinnerCantidad.addChangeListener(this);
-      
-        //NOTAS DE CREDITO
 
+        //NOTAS DE CREDITO
     }
 
     public void iniciar() {
@@ -208,7 +204,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         if (lse.getSource() == this.view.provBtnEliminar) {
             ProveedorControlador.eliminarProveedor(this.view, this.domConsultasProv);
         }
-        
+
         //TODO otro metodo con distintos parametros
         if (lse.getSource() == this.view.provBtnNuevaFactura) {
             // FacturaControlador.abrirNuevaFactura(this.viewFacturasDetallesVenta, this.viewFacturasDetallesCompra);
@@ -218,7 +214,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         if (lse.getSource() == this.view.provBtnListaCompra) {
             ListaProvControlador.listarProveedores(this.viewListaProveedores);
         }
-        
+
         // CLIENTES
         if (lse.getSource() == this.view.clieBtnBuscar) {
             ClienteControlador.buscarTabla(this.view.clieTabla, this.domConsultasClie, this.view.clieInputTextBuscador.getText());
@@ -257,11 +253,10 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
             FacturaVentaControlador.seleccionarArticulo(this.viewFacturasDetallesVenta.dropdownArticulo, this.viewFacturasDetallesVenta.inputTextPrecio, this.viewFacturasDetallesVenta.spinnerCantidad, this.domConsultasArt);
         }
         if (lse.getSource() == this.viewFacturasDetallesVenta.btnAgregarProducto) {
-            FacturaVentaControlador.agregarArticulo(this.viewFacturasDetallesVenta.tabla, this.viewFacturasDetallesVenta.dropdownArticulo,
-                    this.viewFacturasDetallesVenta.inputTextPrecio, this.viewFacturasDetallesVenta.spinnerCantidad, this.viewFacturasDetallesVenta.inputTextTotal);
+            FacturaVentaControlador.agregarArticulo(this.viewFacturasDetallesVenta);
         }
         if (lse.getSource() == this.viewFacturasDetallesVenta.btnBorrarProducto) {
-            FacturaVentaControlador.quitarArticulo(this.viewFacturasDetallesVenta.tabla, this.viewFacturasDetallesVenta.inputTextTotal);
+            FacturaVentaControlador.quitarArticulo(this.viewFacturasDetallesVenta);
         }
         if (lse.getSource() == this.viewFacturasDetallesVenta.btnGuardar) {
             FacturaVentaControlador.guardarFactura(this.viewFacturasDetallesVenta, domConsultasArt, domConsultasClie, domConsultasFact);
@@ -270,17 +265,18 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         if (lse.getSource() == this.viewFacturasDetallesCompra.dropdownArticulo) {
             FacturaCompraControlador.seleccionarArticulo(this.viewFacturasDetallesCompra, this.domConsultasArt);
         }
+        if (lse.getSource() == this.viewFacturasDetallesCompra.dropdownProveedor) {
+            FacturaCompraControlador.agregarArticulosDropdown(this.viewFacturasDetallesCompra, this.domConsultasArt);
+        }
         if (lse.getSource() == this.viewFacturasDetallesCompra.btnAgregarProducto) {
             FacturaCompraControlador.agregarArticulo(this.viewFacturasDetallesCompra);
         }
         if (lse.getSource() == this.viewFacturasDetallesCompra.btnBorrarProducto) {
-            FacturaCompraControlador.quitarArticulo(this.viewFacturasDetallesCompra.tabla, this.viewFacturasDetallesCompra.inputTextTotal);
+            FacturaCompraControlador.quitarArticulo(this.viewFacturasDetallesCompra);
         }
         if (lse.getSource() == this.viewFacturasDetallesCompra.btnGuardar) {
             FacturaCompraControlador.guardarFactura(this.viewFacturasDetallesCompra, this.domConsultasArt, this.domConsultasProv, this.domConsultasFact, this.domConsultasRub);
         }
-
-        
 
     }
 
