@@ -1,6 +1,6 @@
 package controlador;
 
-import controlador.excepciones.excepcion;
+import controlador.excepciones.Excepcion;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -86,16 +86,16 @@ public class ProveedorControlador {
             return true;
         }else{
             try{
-                excepcion.comprobarEmail(view.provInputTextEmail.getText());
+                Excepcion.comprobarEmail(view.provInputTextEmail.getText());
                 long telefono = Long.parseLong(view.provInputTextTelefono.getText());
                 long cuil = Long.parseLong(view.provInputTextCuilT.getText());
-                excepcion.comprobarTextos(view.provInputTextNombre.getText(), "nombre");
+                Excepcion.comprobarTextos(view.provInputTextNombre.getText(), "nombre");
             }
             catch(NumberFormatException e){
                 JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos para el telefono y el cuil/t.");
                 return true;
             }
-            catch(Exception e){
+            catch(Excepcion e){
                 JOptionPane.showMessageDialog(null, e.getMessage());
                 return true;
             }

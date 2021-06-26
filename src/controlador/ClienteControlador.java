@@ -1,6 +1,6 @@
 package controlador;
 
-import controlador.excepciones.excepcion;
+import controlador.excepciones.Excepcion;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -76,15 +76,15 @@ public class ClienteControlador {
             try {
                 long dni = Long.parseLong(view.clieInputTextDni.getText());
                 long telefono = Long.parseLong(view.clieInputTextTelefono.getText());
-                excepcion.comprobarTextos(view.clieInputTextApellido.getText(), "apellido");
-                excepcion.comprobarTextos(view.clieInputTextNombre.getText(), "nombre");
-                excepcion.comprobarEmail(view.clieInputTextEmail.getText());
+                Excepcion.comprobarTextos(view.clieInputTextApellido.getText(), "apellido");
+                Excepcion.comprobarTextos(view.clieInputTextNombre.getText(), "nombre");
+                Excepcion.comprobarEmail(view.clieInputTextEmail.getText());
             }
             catch (NumberFormatException e){
                 JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos para DNI y/o telefono.");
                 return true;
             }
-            catch (excepcion e){
+            catch (Excepcion e){
                 JOptionPane.showMessageDialog(null, e.getMessage());
                 return true;
             }
