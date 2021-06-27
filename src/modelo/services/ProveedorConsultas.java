@@ -80,7 +80,6 @@ public class ProveedorConsultas extends HibernateUtil {
         oldProveedor.setTelefono(newProveedor.getTelefono());
         oldProveedor.setEmail(newProveedor.getEmail());
         
-
         session.beginTransaction();
         session.update(oldProveedor);
         session.getTransaction().commit();

@@ -25,7 +25,7 @@ public class FacturaControlador {
         tableModel.setNumRows(0);
 
         facturas.forEach((factura) -> {
-            String[] data = new String[8];
+            String[] data = new String[5];
             data[0] = Integer.toString(factura.getId());
             data[1] = formatoFecha.format(factura.getFecha());
             data[2] = factura.getNumeroFactura();

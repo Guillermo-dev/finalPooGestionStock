@@ -25,6 +25,29 @@ public class ProveedorControlador {
         }
     }
 
+    public static String razonSocial(String razonSocialBd) {
+        switch (razonSocialBd) {
+            case "esponsable_inscripto":
+                return "Responsable inscripto";
+                
+            case "monotributista":
+                return "Monotributista";
+                
+            case "consumidor_final":
+                return "Consumidor final";
+                
+            case "Responsable inscripto":
+                return "esponsable_inscripto";
+                
+            case "Monotributista":
+                return "monotributista";
+                
+            case "Consumidor final":
+                return "consumidor_final";
+        }
+        return "";
+    }
+
     public static void cargarTabla(JTable provTabla, ArrayList<Proveedor> proveedores) {
         DefaultTableModel tableModel = (DefaultTableModel) provTabla.getModel();
         tableModel.setNumRows(0);
@@ -34,7 +57,7 @@ public class ProveedorControlador {
             data[0] = Integer.toString(proveedor.getId());
             data[1] = proveedor.getCuilCuit();
             data[2] = proveedor.getNombre();
-            data[3] = proveedor.getRazonSocial();
+            data[3] = razonSocial(proveedor.getRazonSocial());
             data[4] = proveedor.getDireccion();
             data[5] = proveedor.getTelefono();
             data[6] = proveedor.getEmail();
@@ -75,27 +98,25 @@ public class ProveedorControlador {
     }
 
     public static boolean inputsTextInvalidos(Index view) {
-        if  (view.provInputTextCuilT.getText().equals("")
+        if (view.provInputTextCuilT.getText().equals("")
                 || view.provInputTextNombre.getText().equals("")
                 || view.provInputTextDireccion.getText().equals("")
                 || view.provDropdownRazonSocial.getSelectedItem().equals("<Seleccionar Razon Social>")
                 || view.provInputTextDireccion.getText().equals("")
                 || view.provInputTextTelefono.getText().equals("")
-                || view.provInputTextEmail.getText().equals("")){
+                || view.provInputTextEmail.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos");
             return true;
-        }else{
-            try{
+        } else {
+            try {
                 Excepcion.comprobarEmail(view.provInputTextEmail.getText());
                 long telefono = Long.parseLong(view.provInputTextTelefono.getText());
                 long cuil = Long.parseLong(view.provInputTextCuilT.getText());
                 Excepcion.comprobarTextos(view.provInputTextNombre.getText(), "nombre");
-            }
-            catch(NumberFormatException e){
+            } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos para el telefono y el cuil/t.");
                 return true;
-            }
-            catch(Excepcion e){
+            } catch (Excepcion e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
                 return true;
             }
@@ -114,7 +135,7 @@ public class ProveedorControlador {
             Proveedor proveedor = new Proveedor(
                     view.provInputTextNombre.getText(),
                     view.provInputTextCuilT.getText(),
-                    view.provDropdownRazonSocial.getSelectedItem().toString(),
+                    razonSocial(view.provDropdownRazonSocial.getSelectedItem().toString()),
                     view.provInputTextDireccion.getText(),
                     view.provInputTextTelefono.getText(),
                     view.provInputTextEmail.getText());
@@ -149,5 +170,9 @@ public class ProveedorControlador {
             // TODO
             JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");
         }
+    }
+    
+    public static void abrirNuevaFactura () {
+        
     }
 }
