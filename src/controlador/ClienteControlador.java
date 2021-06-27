@@ -28,24 +28,25 @@ public class ClienteControlador {
         });
     }
 
-    public static void iniciarTabla(JTable clieTabla) {
+    public static void iniciarTabla(Index view) {
         ArrayList<Cliente> clientes = ClienteConsultas.getAllClientes();
-        cargarTabla(clieTabla, clientes);
+        cargarTabla(view.clieTabla, clientes);
     }
 
-    public static void buscarTabla(JTable clieTabla, String buscador) {
+    public static void buscarTabla(Index view) {
+        String buscador = view.clieInputTextBuscador.getText();
         ArrayList<Cliente> clientes = ClienteConsultas.getClientesBusacador(buscador);
-        cargarTabla(clieTabla, clientes);
+        cargarTabla(view.clieTabla, clientes);
     }
 
-    public static void cargarInputTexts(Index view, String id, String apellido, String nombre, String dni, String direccion, String telefono, String email) {
-        view.clieInputTextId.setText(id);
-        view.clieInputTextApellido.setText(apellido);
-        view.clieInputTextNombre.setText(nombre);
-        view.clieInputTextDni.setText(dni);
-        view.clieInputTextDireccion.setText(direccion);
-        view.clieInputTextTelefono.setText(telefono);
-        view.clieInputTextEmail.setText(email);
+    public static void cargarInputTexts(Index view) {
+        view.clieInputTextId.setText(view.clieTabla.getValueAt(view.clieTabla.getSelectedRow(), 0).toString());
+        view.clieInputTextApellido.setText(view.clieTabla.getValueAt(view.clieTabla.getSelectedRow(), 1).toString());
+        view.clieInputTextNombre.setText(view.clieTabla.getValueAt(view.clieTabla.getSelectedRow(), 2).toString());
+        view.clieInputTextDni.setText(view.clieTabla.getValueAt(view.clieTabla.getSelectedRow(), 3).toString());
+        view.clieInputTextDireccion.setText(view.clieTabla.getValueAt(view.clieTabla.getSelectedRow(), 4).toString());
+        view.clieInputTextTelefono.setText(view.clieTabla.getValueAt(view.clieTabla.getSelectedRow(), 5).toString());
+        view.clieInputTextEmail.setText(view.clieTabla.getValueAt(view.clieTabla.getSelectedRow(), 6).toString());
     }
 
     public static void vaciarInputTexts(Index view) {
@@ -121,7 +122,7 @@ public class ClienteControlador {
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             }
-            iniciarTabla(view.clieTabla);
+            iniciarTabla(view);
             vaciarInputTexts(view);
         }
     }

@@ -11,8 +11,8 @@ import vista.Index;
 
 public class RubroControlador {
     
-    public static void cargarTabla(JTable rubroTabla, ArrayList<Rubro> Rubros) {
-        DefaultTableModel tableModel = (DefaultTableModel) rubroTabla.getModel();
+    public static void cargarTabla(JTable rubTabla, ArrayList<Rubro> Rubros) {
+        DefaultTableModel tableModel = (DefaultTableModel) rubTabla.getModel();
         tableModel.setNumRows(0);
 
         Rubros.forEach((rubro) -> {
@@ -24,20 +24,21 @@ public class RubroControlador {
         });
     }
     
-    public static void iniciarTabla(JTable rubroTabla) {
+    public static void iniciarTabla(Index view) {
         ArrayList<Rubro> rubros = RubroConsultas.getAllRubros();
-        cargarTabla(rubroTabla, rubros);
+        cargarTabla(view.rubTabla, rubros);
     }
     
-    public static void buscarTabla(JTable rubroTabla, String buscador) {
+    public static void buscarTabla(Index view) {
+        String buscador = view.rubInputTextBuscador.getText();
         ArrayList<Rubro> rubros = RubroConsultas.getRubrosBuscador(buscador);
-        cargarTabla(rubroTabla, rubros);
+        cargarTabla(view.rubTabla, rubros);
     }
     
-    public static void cargarInputTexts(Index view, String id, String nombre, String descripcion) {
-        view.rubInputTextId.setText(id);
-        view.rubInputTextNombre.setText(nombre);
-        view.rubInputTextDescripcion.setText(descripcion);
+    public static void cargarInputTexts(Index view) {
+        view.rubInputTextId.setText(view.rubTabla.getValueAt(view.rubTabla.getSelectedRow(), 0).toString());
+        view.rubInputTextNombre.setText(view.rubTabla.getValueAt(view.rubTabla.getSelectedRow(), 1).toString());
+        view.rubInputTextDescripcion.setText(view.rubTabla.getValueAt(view.rubTabla.getSelectedRow(), 2).toString());
     }
     
     public static void vaciarInputTexts(Index view) {
@@ -93,7 +94,7 @@ public class RubroControlador {
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             }
-            iniciarTabla(view.rubTabla);
+            iniciarTabla(view);
             vaciarInputTexts(view);
         }
     }

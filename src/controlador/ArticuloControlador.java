@@ -2,7 +2,6 @@ package controlador;
 
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -57,35 +56,36 @@ public class ArticuloControlador {
         });
     }
 
-    public static void iniciarTabla(JTable artTabla) {
+    public static void iniciarTabla(Index view) {
         ArrayList<Articulo> articulos = ArticuloConsultas.getAllArticulos();
-        cargarTabla(artTabla, articulos);
+        cargarTabla(view.artTabla, articulos);
     }
 
-    public static void buscarTabla(JTable artTabla, String buscador) {
+    public static void buscarTabla(Index view) {
+        String buscador = view.artInputTextBuscador.getText();
         ArrayList<Articulo> articulos = ArticuloConsultas.getArticulosBusacador(buscador);
-        cargarTabla(artTabla, articulos);
+        cargarTabla(view.artTabla, articulos);
     }
 
-    public static void stockMinimoTabla(JTable artTabla, JCheckBox checkBoxStockMinimo) {
-        if (checkBoxStockMinimo.isSelected()) {
+    public static void stockMinimoTabla(Index view) {
+        if (view.artCheckBoxStockMinimo.isSelected()) {
             ArrayList<Articulo> articulos = ArticuloConsultas.getArticulosStockMinimo();
-            cargarTabla(artTabla, articulos);
+            cargarTabla(view.artTabla, articulos);
         } else {
-            iniciarTabla(artTabla);
+            iniciarTabla(view);
         }
 
     }
 
-    public static void cargarInputTexts(Index view, String id, String nombre, String rubro, String descripcion, String proveedor, String stockActual, String stockMinimo, String precio) {
-        view.artInputTextId.setText(id);
-        view.artInputTextNombre.setText(nombre);
-        view.artDropdownRubro.setSelectedItem(rubro);
-        view.artInputTextDescripcion.setText(descripcion);
-        view.artDropdownProveedor.setSelectedItem(proveedor);
-        view.artInputTextStock.setText(stockActual);
-        view.artInputTextStockMin.setText(stockMinimo);
-        view.artInputTextPrecio.setText(precio);
+    public static void cargarInputTexts(Index view) {
+        view.artInputTextId.setText(view.artTabla.getValueAt(view.artTabla.getSelectedRow(), 0).toString());
+        view.artInputTextNombre.setText(view.artTabla.getValueAt(view.artTabla.getSelectedRow(), 1).toString());
+        view.artDropdownRubro.setSelectedItem(view.artTabla.getValueAt(view.artTabla.getSelectedRow(), 2).toString());
+        view.artInputTextDescripcion.setText(view.artTabla.getValueAt(view.artTabla.getSelectedRow(), 3).toString());
+        view.artDropdownProveedor.setSelectedItem(view.artTabla.getValueAt(view.artTabla.getSelectedRow(), 4).toString());
+        view.artInputTextStock.setText(view.artTabla.getValueAt(view.artTabla.getSelectedRow(), 5).toString());
+        view.artInputTextStockMin.setText(view.artTabla.getValueAt(view.artTabla.getSelectedRow(), 6).toString());
+        view.artInputTextPrecio.setText(view.artTabla.getValueAt(view.artTabla.getSelectedRow(), 7).toString());
     }
 
     public static void vaciarInputTexts(Index view) {
@@ -100,28 +100,26 @@ public class ArticuloControlador {
     }
 
     public static boolean inputsTextInvalidos(Index view) {
-        if(view.artInputTextNombre.equals("")
+        if (view.artInputTextNombre.equals("")
                 || view.artInputTextDescripcion.equals("")
                 || view.artInputTextPrecio.equals("")
                 || view.artInputTextStock.equals("")
                 || view.artInputTextStockMin.equals("")
                 || view.artDropdownRubro.getSelectedItem() == "<Seleccionar rubro>"
-                || view.artDropdownProveedor.getSelectedItem() == "<Seleccionar Proveedor>"){
+                || view.artDropdownProveedor.getSelectedItem() == "<Seleccionar Proveedor>") {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos");
             return true;
+        } else {
+            try {
+                int stock = Integer.parseInt(view.artInputTextStock.getText());
+                int stock_min = Integer.parseInt(view.artInputTextStockMin.getText());
+                double precio = Double.parseDouble(view.artInputTextPrecio.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos enteros para los stocks y valores reales para el precio.");
+                return true;
+            }
+            return false;
         }
-        else{
-                try{
-                    int stock = Integer.parseInt(view.artInputTextStock.getText());
-                    int stock_min = Integer.parseInt(view.artInputTextStockMin.getText());
-                    double precio = Double.parseDouble(view.artInputTextPrecio.getText());
-                }
-                catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos enteros para los stocks y valores reales para el precio.");
-                    return true;
-                }
-                return false;
-                }
     }
 
     public static boolean articuloSeleccionado(Index view) {
@@ -159,7 +157,7 @@ public class ArticuloControlador {
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             }
-            iniciarTabla(view.artTabla);
+            iniciarTabla(view);
             vaciarInputTexts(view);
         }
     }

@@ -67,25 +67,25 @@ public class ProveedorControlador {
         });
     }
 
-    public static void iniciarTabla(JTable provTabla) {
+    public static void iniciarTabla(Index view) {
         ArrayList<Proveedor> proveedores = ProveedorConsultas.getAllProveedores();
-        cargarTabla(provTabla, proveedores);
+        cargarTabla(view.provTabla, proveedores);
     }
 
-    public static void buscarTabla(JTable provTabla, String buscador) {
+    public static void buscarTabla(Index view) {
+        String buscador = view.provInputTextBuscador.getText();
         ArrayList<Proveedor> proveedores = ProveedorConsultas.getProveedoresBuscador(buscador);
-        cargarTabla(provTabla, proveedores);
+        cargarTabla(view.provTabla, proveedores);
     }
 
-    public static void cargarInputTexts(Index view, String id, String cuilCuit, String nombre, String razonSocial, String direccion, String telefono, String email) {
-        view.provInputTextId.setText(id);
-        view.provInputTextCuilT.setText(cuilCuit);
-        view.provInputTextNombre.setText(nombre);
-        view.provInputTextDireccion.setText(direccion);
-        view.provDropdownRazonSocial.setSelectedItem(razonSocial);
-        view.provInputTextDireccion.setText(direccion);
-        view.provInputTextTelefono.setText(telefono);
-        view.provInputTextEmail.setText(email);
+    public static void cargarInputTexts(Index view) {
+        view.provInputTextId.setText(view.provTabla.getValueAt(view.provTabla.getSelectedRow(), 0).toString());
+        view.provInputTextCuilT.setText(view.provTabla.getValueAt(view.provTabla.getSelectedRow(), 1).toString());
+        view.provInputTextNombre.setText(view.provTabla.getValueAt(view.provTabla.getSelectedRow(), 2).toString());
+        view.provDropdownRazonSocial.setSelectedItem(view.provTabla.getValueAt(view.provTabla.getSelectedRow(), 3).toString());
+        view.provInputTextDireccion.setText(view.provTabla.getValueAt(view.provTabla.getSelectedRow(), 4).toString());
+        view.provInputTextTelefono.setText(view.provTabla.getValueAt(view.provTabla.getSelectedRow(), 5).toString());
+        view.provInputTextEmail.setText(view.provTabla.getValueAt(view.provTabla.getSelectedRow(), 6).toString());
     }
 
     public static void vaciarInputTexts(Index view) {
@@ -155,7 +155,7 @@ public class ProveedorControlador {
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             }
-            iniciarTabla(view.provTabla);
+            iniciarTabla(view);
             vaciarInputTexts(view);
         }
     }

@@ -10,8 +10,6 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Factura;
 import modelo.NotaCredito;
-import modelo.services.ArticuloConsultas;
-import modelo.services.ClienteConsultas;
 import modelo.services.FacturaConsultas;
 import modelo.services.NotaCreditoConsultas;
 import vista.FacturaVistaVenta;
@@ -48,9 +46,9 @@ public class NotasDeCreditoControlador {
         });
     }
 
-    public static void iniciarTabla(JTable notTabla) {
+    public static void iniciarTabla(Index view) {
         ArrayList<NotaCredito> notasCreditos = NotaCreditoConsultas.getAllNotasCredito();
-        cargarTabla(notTabla, notasCreditos);
+        cargarTabla(view.notTabla, notasCreditos);
     }
 
     public static void cargarDatosFactura(Index view) {
@@ -79,12 +77,12 @@ public class NotasDeCreditoControlador {
         }
     }
 
-    public static void cargarInputsTexts(Index view, String idNotaCredito, String fecha, String factura, String cliente, String importe) {
-        view.notInputTextId.setText(idNotaCredito);
-        view.notDropDownFactura.setSelectedItem(factura);
-        view.notInputTextCliente.setText(cliente);
-        view.notInputTextFecha.setText(fecha);
-        view.notInputTextTotal.setText(importe);
+    public static void cargarInputsTexts(Index view) {
+        view.notInputTextId.setText(view.notTabla.getValueAt(view.notTabla.getSelectedRow(), 0).toString());
+        view.notInputTextFecha.setText(view.notTabla.getValueAt(view.notTabla.getSelectedRow(), 1).toString());
+        view.notDropDownFactura.setSelectedItem(view.notTabla.getValueAt(view.notTabla.getSelectedRow(), 2).toString());
+        view.notInputTextCliente.setText(view.notTabla.getValueAt(view.notTabla.getSelectedRow(), 3).toString());
+        view.notInputTextTotal.setText(view.notTabla.getValueAt(view.notTabla.getSelectedRow(), 4).toString());
     }
 
     public static void vaciarInputsTexts(Index view) {
@@ -124,7 +122,7 @@ public class NotasDeCreditoControlador {
                     NotaCredito notaCredito = new NotaCredito(factura, cliente, factura.getNumeroFactura(), factura.getTotal(), fecha);
                     NotaCreditoConsultas.saveFactura(notaCredito);
 
-                    iniciarTabla(view.notTabla);
+                    iniciarTabla(view);
                     vaciarInputsTexts(view);
                 }
             }
