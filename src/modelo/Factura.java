@@ -20,9 +20,6 @@ public class Factura {
     @ManyToOne(optional = true)
     @JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;
-    
-    @OneToOne(mappedBy="factura")
-    private NotaCredito notaCredito;
 
     @Column(name = "proposito")
     private char proposito;
@@ -36,6 +33,10 @@ public class Factura {
     @Column(name = "total")
     private float total;
 
+    @OneToOne(mappedBy = "factura", cascade = CascadeType.PERSIST)
+    private NotaCredito notaCredito;
+
+    // Fetch = FetchType.EAGER trae lista de lineas cuando se trae la facuta por consulta
     @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Linea> lineas;
 
@@ -61,7 +62,6 @@ public class Factura {
     public void setLineas(List<Linea> lineas) {
         this.lineas = lineas;
     }
-    
 
     public int getId() {
         return id;
@@ -95,5 +95,4 @@ public class Factura {
         return lineas;
     }
 
-    
 }

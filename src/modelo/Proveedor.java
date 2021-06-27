@@ -30,10 +30,10 @@ public class Proveedor {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.PERSIST)
     private List<Articulo> articulos;
 
-    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.PERSIST)
     private List<Factura> facturas;
 
     public Proveedor() {

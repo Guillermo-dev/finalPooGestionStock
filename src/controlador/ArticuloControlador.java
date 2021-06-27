@@ -12,6 +12,7 @@ import vista.Index;
 import modelo.services.ArticuloConsultas;
 import modelo.services.ProveedorConsultas;
 import modelo.services.RubroConsultas;
+import org.hibernate.exception.ConstraintViolationException;
 
 public class ArticuloControlador {
 
@@ -170,9 +171,8 @@ public class ArticuloControlador {
             tablaModel.removeRow(view.artTabla.getSelectedRow());
 
             vaciarInputTexts(view);
-        } catch (Exception e) {
-            // TODO
-            JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");
+        } catch (ConstraintViolationException e) {
+            JOptionPane.showMessageDialog(view, "Este articulo esta asociado a una factura");
         }
     }
 

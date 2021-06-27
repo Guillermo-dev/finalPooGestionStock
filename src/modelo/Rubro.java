@@ -18,7 +18,7 @@ public class Rubro {
     @Column(name = "descripcion")
     private String descripcion;
 
-    @OneToMany(mappedBy = "rubro", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "rubro", cascade = CascadeType.PERSIST)
     private List<Articulo> articulos;
 
     public Rubro() {
