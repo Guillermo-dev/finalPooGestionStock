@@ -30,6 +30,10 @@ public class FacturaVentaControlador {
         });
     }
 
+    public static boolean articuloStockMinimo(Articulo articulo) {
+        return articulo.getStockActual() < articulo.getStockMinimo();
+    }
+
     public static void inicializarDropdownArticulos(FacturaVistaVenta viewFacturasDetallesVenta) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) viewFacturasDetallesVenta.dropdownArticulo.getModel();
         ArrayList<Articulo> articulos = ArticuloConsultas.getAllArticulos();
@@ -37,7 +41,10 @@ public class FacturaVentaControlador {
         viewFacturasDetallesVenta.dropdownArticulo.removeAllItems();
         dropModel.addElement("<Seleccionar Articulo>");
         articulos.forEach(articulo -> {
-            dropModel.addElement(articulo.getId() + "- " + articulo.getNombre());
+            if (!articuloStockMinimo(articulo)) {
+                dropModel.addElement(articulo.getId() + "- " + articulo.getNombre());
+            }
+
         });
     }
 
@@ -137,6 +144,10 @@ public class FacturaVentaControlador {
 
             articulo.restarStock(cantidad);
             ArticuloConsultas.updateArticulo(articulo, idArticulo);
+
+            if (articuloStockMinimo(articulo)) {
+                JOptionPane.showMessageDialog(null, "El articulo:" + articulo.getNombre() + "\n Esta por debajo de su stock minimo");
+            }
 
             Linea nuevaLinea = new Linea(articulo, factura, precioUnitario, cantidad, subtotal);
             lineas.add(nuevaLinea);

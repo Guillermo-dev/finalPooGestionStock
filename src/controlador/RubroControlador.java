@@ -1,4 +1,3 @@
-
 package controlador;
 
 import java.util.ArrayList;
@@ -7,10 +6,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.Rubro;
 import modelo.services.RubroConsultas;
+import org.hibernate.exception.ConstraintViolationException;
 import vista.Index;
 
 public class RubroControlador {
-    
+
     public static void cargarTabla(JTable rubTabla, ArrayList<Rubro> Rubros) {
         DefaultTableModel tableModel = (DefaultTableModel) rubTabla.getModel();
         tableModel.setNumRows(0);
@@ -23,55 +23,40 @@ public class RubroControlador {
             tableModel.addRow(data);
         });
     }
-    
+
     public static void iniciarTabla(Index view) {
         ArrayList<Rubro> rubros = RubroConsultas.getAllRubros();
         cargarTabla(view.rubTabla, rubros);
     }
-    
+
     public static void buscarTabla(Index view) {
         String buscador = view.rubInputTextBuscador.getText();
         ArrayList<Rubro> rubros = RubroConsultas.getRubrosBuscador(buscador);
         cargarTabla(view.rubTabla, rubros);
     }
-    
+
     public static void cargarInputTexts(Index view) {
         view.rubInputTextId.setText(view.rubTabla.getValueAt(view.rubTabla.getSelectedRow(), 0).toString());
         view.rubInputTextNombre.setText(view.rubTabla.getValueAt(view.rubTabla.getSelectedRow(), 1).toString());
         view.rubInputTextDescripcion.setText(view.rubTabla.getValueAt(view.rubTabla.getSelectedRow(), 2).toString());
     }
-    
+
     public static void vaciarInputTexts(Index view) {
         view.rubInputTextId.setText(null);
         view.rubInputTextNombre.setText(null);
         view.rubInputTextDescripcion.setText(null);
     }
-    
 
-    public static void eliminarRubro(Index view) {
-        try {
-            RubroConsultas.deleteRubro(Integer.parseInt(view.rubInputTextId.getText()));
-
-            DefaultTableModel rubrosModel = (DefaultTableModel) view.rubTabla.getModel();
-            rubrosModel.removeRow(view.rubTabla.getSelectedRow());
-
-            vaciarInputTexts(view);
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-            JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentelo mas tarde");
-        }
-    }
-    
     public static boolean inputsTextValido(Index view) {
         // TODO: Agregar logica de validacion
         return view.rubInputTextNombre.getText().equals("")
                 || view.rubInputTextDescripcion.getText().equals("");
     }
-    
+
     public static boolean rubroSeleccionado(Index view) {
         return !view.rubInputTextId.getText().equals("");
     }
-    
+
     public static void agregarRubro(Index view) {
         if (inputsTextValido(view)) {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos");
@@ -96,6 +81,19 @@ public class RubroControlador {
             }
             iniciarTabla(view);
             vaciarInputTexts(view);
+        }
+    }
+
+    public static void eliminarRubro(Index view) {
+        try {
+            RubroConsultas.deleteRubro(Integer.parseInt(view.rubInputTextId.getText()));
+
+            DefaultTableModel rubrosModel = (DefaultTableModel) view.rubTabla.getModel();
+            rubrosModel.removeRow(view.rubTabla.getSelectedRow());
+
+            vaciarInputTexts(view);
+        } catch (ConstraintViolationException e) {
+            JOptionPane.showMessageDialog(view, "El rubro esata asociado a un articulo, no se puede eliminar");
         }
     }
 }

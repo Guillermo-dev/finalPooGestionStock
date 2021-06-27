@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
 import modelo.Articulo;
 import modelo.Factura;
@@ -34,6 +33,7 @@ public class FacturaCompraControlador {
 
     public static void inicializarDropdownArticulos(FacturaVistaCompra viewFacturasDetallesCompra) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) viewFacturasDetallesCompra.dropdownArticulo.getModel();
+        
         viewFacturasDetallesCompra.dropdownArticulo.removeAllItems();
         dropModel.addElement("<Seleccionar Articulo>");
         dropModel.addElement("Nuevo Articulo");
@@ -64,7 +64,7 @@ public class FacturaCompraControlador {
                 articulos.forEach(articulo -> {
                     dropModel.addElement(articulo.getId() + "- " + articulo.getNombre());
                 });
-            }
+           }
         }
     }
 
@@ -72,6 +72,7 @@ public class FacturaCompraControlador {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) viewFacturasDetallesCompra.dropdownRubro.getModel();
         ArrayList<Rubro> rubros = RubroConsultas.getAllRubros();
 
+        viewFacturasDetallesCompra.dropdownRubro.removeAllItems();
         dropModel.addElement("<Seleccionar rubro>");
         rubros.forEach(rubro -> {
             dropModel.addElement(rubro.getId() + "- " + rubro.getNombre());
@@ -85,13 +86,15 @@ public class FacturaCompraControlador {
     }
 
     public static void cargarInputTexts(FacturaVistaCompra viewFacturasDetallesCompra) {
-        viewFacturasDetallesCompra.dropdownArticulo.setSelectedItem(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 1).toString());
-        viewFacturasDetallesCompra.inputTextNombre.setText(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 2).toString());
+        viewFacturasDetallesCompra.dropdownArticulo.setSelectedItem(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 0).toString()
+                + "- " + viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 1).toString());
+        viewFacturasDetallesCompra.inputTextNombre.setText(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 1).toString());
+        viewFacturasDetallesCompra.inputTextDescripcion.setText(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 2).toString());
         viewFacturasDetallesCompra.dropdownRubro.setSelectedItem(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 3).toString());
-        viewFacturasDetallesCompra.inputTextPrecio.setText(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 4).toString());
-        viewFacturasDetallesCompra.spinnerCantidad.setValue(Integer.parseInt(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 5).toString()));
-        viewFacturasDetallesCompra.inputTextDescripcion.setText(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 6).toString());
-        viewFacturasDetallesCompra.inputTextStockMinimo.setText(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 7).toString());
+        viewFacturasDetallesCompra.inputTextStockMinimo.setText(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 4).toString());
+        viewFacturasDetallesCompra.inputTextPrecio.setText(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 5).toString());
+        viewFacturasDetallesCompra.spinnerCantidad.setValue(Integer.parseInt(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 6).toString()));
+
     }
 
     public static void vaciarInputTexts(FacturaVistaCompra viewFacturasDetallesCompra) {
@@ -147,35 +150,56 @@ public class FacturaCompraControlador {
         }
 
     }
+  
+    public static boolean inputsTextInvalidos(FacturaVistaCompra viewFacturasDetallesCompra) {
+        return viewFacturasDetallesCompra.dropdownArticulo.getSelectedItem().equals("<Seleccionar Articulo>")
+                || viewFacturasDetallesCompra.dropdownRubro.getSelectedItem().equals("<Seleccionar rubro>")
+                || viewFacturasDetallesCompra.dropdownProveedor.getSelectedItem().equals("<Seleccionar Proveedor>")
+                || viewFacturasDetallesCompra.inputTextNombre.getText().equals("")
+                || viewFacturasDetallesCompra.inputTextDescripcion.getText().equals("")
+                || viewFacturasDetallesCompra.inputTextPrecio.getText().equals("")
+                || viewFacturasDetallesCompra.inputTextStockMinimo.getText().equals("")
+                || viewFacturasDetallesCompra.inputTextTotal.getText().equals("");
+    }
+
 
     public static void agregarArticulo(FacturaVistaCompra viewFacturasDetallesCompra) {
-        try {
-            DefaultTableModel tableModel = (DefaultTableModel) viewFacturasDetallesCompra.tabla.getModel();
-            float subtotal = (Integer) viewFacturasDetallesCompra.spinnerCantidad.getValue() * Float.parseFloat(viewFacturasDetallesCompra.inputTextPrecio.getText());
+        if (inputsTextInvalidos(viewFacturasDetallesCompra)) {
+            JOptionPane.showMessageDialog(viewFacturasDetallesCompra, "Rellenar los campos validos");
+        } else {
+            try {
+                DefaultTableModel tableModel = (DefaultTableModel) viewFacturasDetallesCompra.tabla.getModel();
+                float subtotal = (Integer) viewFacturasDetallesCompra.spinnerCantidad.getValue() * Float.parseFloat(viewFacturasDetallesCompra.inputTextPrecio.getText());
 
-            String[] data = new String[8];
-            if (viewFacturasDetallesCompra.dropdownArticulo.getSelectedItem().equals("Nuevo Articulo")) {
-                data[0] = "NUEVO";
-            } else {
-                data[0] = viewFacturasDetallesCompra.dropdownArticulo.getSelectedItem().toString().split("-")[0];
-            }
-            Integer.parseInt(viewFacturasDetallesCompra.inputTextStockMinimo.getText());
-            Double.parseDouble(viewFacturasDetallesCompra.inputTextPrecio.getText());
-            data[1] = viewFacturasDetallesCompra.inputTextNombre.getText();
-            data[2] = viewFacturasDetallesCompra.inputTextDescripcion.getText();
-            data[3] = viewFacturasDetallesCompra.dropdownRubro.getSelectedItem().toString();
-            data[4] = viewFacturasDetallesCompra.inputTextStockMinimo.getText();
-            data[5] = viewFacturasDetallesCompra.inputTextPrecio.getText();
-            data[6] = viewFacturasDetallesCompra.spinnerCantidad.getValue().toString();
-            data[7] = Float.toString(subtotal);
-            tableModel.addRow(data);
+                String[] data = new String[8];
+                if (viewFacturasDetallesCompra.dropdownArticulo.getSelectedItem().equals("Nuevo Articulo")) {
+                    data[0] = "NUEVO";
+                } else {
+                    data[0] = viewFacturasDetallesCompra.dropdownArticulo.getSelectedItem().toString().split("-")[0];
+                }
+                data[1] = viewFacturasDetallesCompra.inputTextNombre.getText();
+                data[2] = viewFacturasDetallesCompra.inputTextDescripcion.getText();
+                data[3] = viewFacturasDetallesCompra.dropdownRubro.getSelectedItem().toString();
+                data[4] = viewFacturasDetallesCompra.inputTextStockMinimo.getText();
+                data[5] = viewFacturasDetallesCompra.inputTextPrecio.getText();
+                data[6] = viewFacturasDetallesCompra.spinnerCantidad.getValue().toString();
+                data[7] = Float.toString(subtotal);
+                tableModel.addRow(data);
 
-            float total;
-            if (viewFacturasDetallesCompra.inputTextTotal.getText().equals("")) {
-                total = subtotal;
-            } else {
-                total = Float.parseFloat(viewFacturasDetallesCompra.inputTextTotal.getText()) + subtotal;
+                float total;
+                if (viewFacturasDetallesCompra.inputTextTotal.getText().equals("")) {
+                    total = subtotal;
+                } else {
+                    total = Float.parseFloat(viewFacturasDetallesCompra.inputTextTotal.getText()) + subtotal;
+                }
+                viewFacturasDetallesCompra.inputTextTotal.setText(Float.toString(total));
+                viewFacturasDetallesCompra.dropdownProveedor.disable();
+            } catch (Exception e) {
+                // TODO: MANEJO VALIDACION
+                System.out.println(e);
+                JOptionPane.showMessageDialog(null, "Error inesperado");
             }
+
             viewFacturasDetallesCompra.inputTextTotal.setText(Float.toString(total));
             viewFacturasDetallesCompra.dropdownProveedor.disable();
         } 
@@ -227,6 +251,7 @@ public class FacturaCompraControlador {
                 float precioUnitario = Float.parseFloat(viewFacturasDetallesCompra.tabla.getValueAt(i, 5).toString());
                 int stockActual = Integer.parseInt(viewFacturasDetallesCompra.tabla.getValueAt(i, 6).toString());
                 int stockMinimo = Integer.parseInt(viewFacturasDetallesCompra.tabla.getValueAt(i, 4).toString());
+
                 articulo = new Articulo(proveedor, rubro, nombre, descripcion, precioUnitario, stockActual, stockMinimo);
                 ArticuloConsultas.saveArticulo(articulo);
             } else {

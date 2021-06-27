@@ -9,7 +9,7 @@ import modelo.Proveedor;
 import vista.Index;
 import modelo.services.ProveedorConsultas;
 import javax.swing.DefaultComboBoxModel;
-import modelo.services.FacturaConsultas;
+import org.hibernate.exception.ConstraintViolationException;
 import vista.ListaComprasProveedor;
 
 public class ProveedorControlador {
@@ -168,9 +168,8 @@ public class ProveedorControlador {
             tablaModel.removeRow(view.provTabla.getSelectedRow());
 
             vaciarInputTexts(view);
-        } catch (Exception e) {
-            // TODO
-            JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");
+        } catch (ConstraintViolationException e) {
+            JOptionPane.showMessageDialog(view, "El proveedor esata asociado a una factura, no se puede eliminar");
         }
     }
 

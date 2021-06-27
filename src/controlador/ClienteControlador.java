@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import vista.Index;
 import modelo.services.ClienteConsultas;
+import org.hibernate.exception.ConstraintViolationException;
 
 public class ClienteControlador {
 
@@ -135,10 +136,8 @@ public class ClienteControlador {
             tablaModel.removeRow(view.clieTabla.getSelectedRow());
 
             vaciarInputTexts(view);
-        } catch (Exception e) {
-            // TODO
-            System.out.println("asdasd");
-            JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");
+        } catch (ConstraintViolationException e) {
+            JOptionPane.showMessageDialog(view, "El cliente esata asociado a una factura, no se puede eliminar");
         }
 
     }
