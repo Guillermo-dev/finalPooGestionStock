@@ -16,9 +16,9 @@ import modelo.services.RubroConsultas;
 
 public class ArticuloControlador {
 
-    public static void iniciarDropdownRubros(Index view, RubroConsultas services) {
+    public static void iniciarDropdownRubros(Index view) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) view.artDropdownRubro.getModel();
-        ArrayList<Rubro> rubros = services.getAllRubros();
+        ArrayList<Rubro> rubros = RubroConsultas.getAllRubros();
 
         view.artDropdownRubro.removeAllItems();
         dropModel.addElement("<Seleccionar rubro>");
@@ -28,9 +28,9 @@ public class ArticuloControlador {
         dropModel.addElement("Nuevo rubro");
     }
 
-    public static void iniciarDropdownProveedores(Index view, ProveedorConsultas services) {
+    public static void iniciarDropdownProveedores(Index view) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) view.artDropdownProveedor.getModel();
-        ArrayList<Proveedor> proveedores = services.getAllProveedores();
+        ArrayList<Proveedor> proveedores = ProveedorConsultas.getAllProveedores();
 
         view.artDropdownProveedor.removeAllItems();
         dropModel.addElement("<Seleccionar Proveedor>");
@@ -57,22 +57,22 @@ public class ArticuloControlador {
         });
     }
 
-    public static void iniciarTabla(JTable artTabla, ArticuloConsultas services) {
-        ArrayList<Articulo> articulos = services.getAllArticulos();
+    public static void iniciarTabla(JTable artTabla) {
+        ArrayList<Articulo> articulos = ArticuloConsultas.getAllArticulos();
         cargarTabla(artTabla, articulos);
     }
 
-    public static void buscarTabla(JTable artTabla, ArticuloConsultas services, String buscador) {
-        ArrayList<Articulo> articulos = services.getArticulosBusacador(buscador);
+    public static void buscarTabla(JTable artTabla, String buscador) {
+        ArrayList<Articulo> articulos = ArticuloConsultas.getArticulosBusacador(buscador);
         cargarTabla(artTabla, articulos);
     }
 
-    public static void stockMinimoTabla(JTable artTabla, JCheckBox checkBoxStockMinimo, ArticuloConsultas services) {
+    public static void stockMinimoTabla(JTable artTabla, JCheckBox checkBoxStockMinimo) {
         if (checkBoxStockMinimo.isSelected()) {
-            ArrayList<Articulo> articulos = services.getArticulosStockMinimo();
+            ArrayList<Articulo> articulos = ArticuloConsultas.getArticulosStockMinimo();
             cargarTabla(artTabla, articulos);
         } else {
-            iniciarTabla(artTabla, services);
+            iniciarTabla(artTabla);
         }
 
     }
@@ -128,14 +128,14 @@ public class ArticuloControlador {
         return !view.artInputTextId.getText().equals("");
     }
 
-    public static void guardarArticulo(Index view, ArticuloConsultas servicesArt, RubroConsultas servicesRub, ProveedorConsultas servicesProv) {
+    public static void guardarArticulo(Index view) {
         if (inputsTextInvalidos(view)) {
             JOptionPane.showMessageDialog(null, "Error al cargar articulo");
         } else {
             int idProveedor = Integer.parseInt(view.artDropdownProveedor.getSelectedItem().toString().split("-")[0]);
             int idRubro = Integer.parseInt(view.artDropdownRubro.getSelectedItem().toString().split("-")[0]);
-            Proveedor proveedor = servicesProv.getProveedor(idProveedor);
-            Rubro rubro = servicesRub.getRubro(idRubro);
+            Proveedor proveedor = ProveedorConsultas.getProveedor(idProveedor);
+            Rubro rubro = RubroConsultas.getRubro(idRubro);
 
             Articulo articulo = new Articulo(proveedor, rubro,
                     view.artInputTextNombre.getText(),
@@ -146,27 +146,27 @@ public class ArticuloControlador {
             );
             if (articuloSeleccionado(view)) {
                 try {
-                    servicesArt.updateArticulo(articulo, Integer.parseInt(view.artInputTextId.getText()));
+                    ArticuloConsultas.updateArticulo(articulo, Integer.parseInt(view.artInputTextId.getText()));
                 } catch (Exception e) {
                     // TODO
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             } else {
                 try {
-                    servicesArt.saveArticulo(articulo);
+                    ArticuloConsultas.saveArticulo(articulo);
                 } catch (Exception e) {
                     // TODO
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             }
-            iniciarTabla(view.artTabla, servicesArt);
+            iniciarTabla(view.artTabla);
             vaciarInputTexts(view);
         }
     }
 
-    public static void eliminarArticulo(Index view, ArticuloConsultas services) {
+    public static void eliminarArticulo(Index view) {
         try {
-            services.deleteArticulo(Integer.parseInt(view.artInputTextId.getText()));
+            ArticuloConsultas.deleteArticulo(Integer.parseInt(view.artInputTextId.getText()));
 
             DefaultTableModel tablaModel = (DefaultTableModel) view.artTabla.getModel();
             tablaModel.removeRow(view.artTabla.getSelectedRow());

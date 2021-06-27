@@ -25,26 +25,28 @@ public class FacturaControlador {
         tableModel.setNumRows(0);
 
         facturas.forEach((factura) -> {
-            String[] data = new String[5];
+            String[] data = new String[6];
             data[0] = Integer.toString(factura.getId());
             data[1] = formatoFecha.format(factura.getFecha());
             data[2] = factura.getNumeroFactura();
             data[3] = Character.toString(factura.getProposito()).equals("V") ? "VENTA" : "COMPRA";
-            data[4] = Float.toString(factura.getTotal());
+            data[4] = Character.toString(factura.getProposito()).equals("V") ? factura.getCliente().getNombre()
+                    : factura.getProveedor().getNombre() + " " + factura.getProveedor().getCuilCuit();
+            data[5] = Float.toString(factura.getTotal());
 
             tableModel.addRow(data);
         });
     }
 
-    public static void iniciarTabla(JTable factTabla, JCheckBox checkBoxCompra, JCheckBox checkBoxVenta, FacturaConsultas services) {
+    public static void iniciarTabla(JTable factTabla, JCheckBox checkBoxCompra, JCheckBox checkBoxVenta) {
         if (checkBoxCompra.isSelected() && checkBoxVenta.isSelected()) {
-            ArrayList<Factura> facturas = services.getAllFacturas();
+            ArrayList<Factura> facturas = FacturaConsultas.getAllFacturas();
             cargarTabla(factTabla, facturas);
         } else if (checkBoxCompra.isSelected()) {
-            ArrayList<Factura> facturas = services.getAllFacturasFiltro('C');
+            ArrayList<Factura> facturas = FacturaConsultas.getAllFacturasFiltro('C');
             cargarTabla(factTabla, facturas);
         } else if (checkBoxVenta.isSelected()) {
-            ArrayList<Factura> facturas = services.getAllFacturasFiltro('V');
+            ArrayList<Factura> facturas = FacturaConsultas.getAllFacturasFiltro('V');
             cargarTabla(factTabla, facturas);
         } else {
             DefaultTableModel tableModel = (DefaultTableModel) factTabla.getModel();
@@ -52,20 +54,20 @@ public class FacturaControlador {
         }
     }
 
-    public static void buscarTabla(JTable factTabla, JCheckBox checkBoxCompra, JCheckBox checkBoxVenta, FacturaConsultas services, String buscador) {
+    public static void buscarTabla(JTable factTabla, JCheckBox checkBoxCompra, JCheckBox checkBoxVenta, String buscador) {
         if (checkBoxCompra.isSelected() && checkBoxVenta.isSelected()) {
-            ArrayList<Factura> facturas = services.getAllFacturas();
-            
+            ArrayList<Factura> facturas = FacturaConsultas.getAllFacturas();
+
             //TODO FILTAR POR BUSCADOR
             cargarTabla(factTabla, facturas);
         } else if (checkBoxCompra.isSelected()) {
-            ArrayList<Factura> facturas = services.getAllFacturasFiltro('C');
-            
+            ArrayList<Factura> facturas = FacturaConsultas.getAllFacturasFiltro('C');
+
             //TODO: FILTAR POR BUSCADOR
             cargarTabla(factTabla, facturas);
         } else if (checkBoxVenta.isSelected()) {
-            ArrayList<Factura> facturas = services.getAllFacturasFiltro('V');
-            
+            ArrayList<Factura> facturas = FacturaConsultas.getAllFacturasFiltro('V');
+
             //TODO FILTAR POR BUSCADOR
             cargarTabla(factTabla, facturas);
         } else {
@@ -90,14 +92,13 @@ public class FacturaControlador {
         view.factInputTextTotal.setText("");
     }
 
-    public static void abrirDetallesFactura(Index view, FacturaVistaVenta facturaDetallesVenta, FacturaVistaCompra facturaDetallesCompra,
-            ArticuloConsultas servicesArt, ProveedorConsultas servicesProv, ClienteConsultas servicesClie, FacturaConsultas servicesFact, RubroConsultas servicesRub) {
+    public static void abrirDetallesFactura(Index view, FacturaVistaVenta facturaDetallesVenta, FacturaVistaCompra facturaDetallesCompra) {
         if (!view.factInputTextId.getText().equals("")) {
-            Factura factura = servicesFact.getFactura(Integer.parseInt(view.factInputTextId.getText()));
+            Factura factura = FacturaConsultas.getFactura(Integer.parseInt(view.factInputTextId.getText()));
             if (factura.getProposito() == 'V') {
-                FacturaVentaControlador.abrirVistaFacturaVenta(facturaDetallesVenta, servicesArt, servicesClie, factura);
+                FacturaVentaControlador.abrirVistaFacturaVenta(facturaDetallesVenta, factura);
             } else if (factura.getProposito() == 'C') {
-                FacturaCompraControlador.abrirVistaFacturaVenta(facturaDetallesCompra, servicesArt, servicesProv, servicesRub, factura);
+                FacturaCompraControlador.abrirVistaFacturaVenta(facturaDetallesCompra, factura);
             }
         } else {
             JOptionPane.showMessageDialog(
@@ -106,8 +107,7 @@ public class FacturaControlador {
         }
     }
 
-    public static void abrirNuevaFactura(FacturaVistaVenta facturaDetallesVenta, FacturaVistaCompra facturaDetallesCompra,
-            ArticuloConsultas servicesArt, ProveedorConsultas servicesProv, ClienteConsultas servicesClie, FacturaConsultas servicesFact, RubroConsultas servicesRub) {
+    public static void abrirNuevaFactura(FacturaVistaVenta facturaDetallesVenta, FacturaVistaCompra facturaDetallesCompra) {
         int resp = JOptionPane.showOptionDialog(null, "Que tipo de factura desea hacer", "Nueva factura",
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
@@ -115,10 +115,10 @@ public class FacturaControlador {
                 new Object[]{"VENTA", "COMPRA", "CANCELAR"}, null);
         switch (resp) {
             case 0:
-                FacturaVentaControlador.abrirVistaFacturaVenta(facturaDetallesVenta, servicesArt, servicesClie, servicesFact);
+                FacturaVentaControlador.abrirVistaFacturaVenta(facturaDetallesVenta);
                 break;
             case 1:
-                FacturaCompraControlador.abrirVistaFacturaCompra(facturaDetallesCompra, servicesArt, servicesProv, servicesFact, servicesRub);
+                FacturaCompraControlador.abrirVistaFacturaCompra(facturaDetallesCompra);
                 break;
             default:
         }

@@ -24,13 +24,13 @@ public class RubroControlador {
         });
     }
     
-    public static void iniciarTabla(JTable rubroTabla, RubroConsultas services) {
-        ArrayList<Rubro> rubros = services.getAllRubros();
+    public static void iniciarTabla(JTable rubroTabla) {
+        ArrayList<Rubro> rubros = RubroConsultas.getAllRubros();
         cargarTabla(rubroTabla, rubros);
     }
     
-    public static void buscarTabla(JTable rubroTabla, RubroConsultas services, String buscador) {
-        ArrayList<Rubro> rubros = services.getRubrosBuscador(buscador);
+    public static void buscarTabla(JTable rubroTabla, String buscador) {
+        ArrayList<Rubro> rubros = RubroConsultas.getRubrosBuscador(buscador);
         cargarTabla(rubroTabla, rubros);
     }
     
@@ -47,9 +47,9 @@ public class RubroControlador {
     }
     
 
-    public static void eliminarRubro(Index view, RubroConsultas services) {
+    public static void eliminarRubro(Index view) {
         try {
-            services.deleteRubro(Integer.parseInt(view.rubInputTextId.getText()));
+            RubroConsultas.deleteRubro(Integer.parseInt(view.rubInputTextId.getText()));
 
             DefaultTableModel rubrosModel = (DefaultTableModel) view.rubTabla.getModel();
             rubrosModel.removeRow(view.rubTabla.getSelectedRow());
@@ -71,7 +71,7 @@ public class RubroControlador {
         return !view.rubInputTextId.getText().equals("");
     }
     
-    public static void agregarRubro(Index view, RubroConsultas services) {
+    public static void agregarRubro(Index view) {
         if (inputsTextValido(view)) {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos");
         } else {
@@ -80,20 +80,20 @@ public class RubroControlador {
                     view.rubInputTextDescripcion.getText());
             if (rubroSeleccionado(view)) {
                 try {
-                    services.updateRubro(rubro, Integer.parseInt(view.rubInputTextId.getText()));
+                    RubroConsultas.updateRubro(rubro, Integer.parseInt(view.rubInputTextId.getText()));
                 } catch (Exception e) {
                     // TODO
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             } else {
                 try {
-                    services.saveRubro(rubro);
+                    RubroConsultas.saveRubro(rubro);
                 } catch (Exception e) {
                     // TODO
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             }
-            iniciarTabla(view.rubTabla, services);
+            iniciarTabla(view.rubTabla);
             vaciarInputTexts(view);
         }
     }

@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 
 public class NotaCreditoConsultas extends HibernateUtil {
 
-    public ArrayList<NotaCredito> getAllNotasCredito() {
+    public static ArrayList<NotaCredito> getAllNotasCredito() {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -22,7 +22,7 @@ public class NotaCreditoConsultas extends HibernateUtil {
         return (ArrayList<NotaCredito>) notasCreditos;
     }
 
-    public void saveFactura(NotaCredito notaCredito) {
+    public static void saveFactura(NotaCredito notaCredito) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 

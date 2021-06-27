@@ -18,12 +18,13 @@ import modelo.services.ArticuloConsultas;
 import modelo.services.ClienteConsultas;
 import modelo.services.FacturaConsultas;
 import vista.FacturaVistaVenta;
+import vista.Index;
 
 public class FacturaVentaControlador {
 
-    public static void inicializarDropdownClientes(FacturaVistaVenta facturaDetallesVenta, ClienteConsultas servicesCli) {
+    public static void inicializarDropdownClientes(FacturaVistaVenta facturaDetallesVenta) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) facturaDetallesVenta.dropdownCliente.getModel();
-        ArrayList<Cliente> clientes = servicesCli.getAllClientes();
+        ArrayList<Cliente> clientes = ClienteConsultas.getAllClientes();
 
         facturaDetallesVenta.dropdownCliente.removeAllItems();
         dropModel.addElement("<Seleccionar cliente>");
@@ -32,9 +33,9 @@ public class FacturaVentaControlador {
         });
     }
 
-    public static void inicializarDropdownArticulos(FacturaVistaVenta facturaDetallesVenta, ArticuloConsultas servicesArt) {
+    public static void inicializarDropdownArticulos(FacturaVistaVenta facturaDetallesVenta) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) facturaDetallesVenta.dropdownArticulo.getModel();
-        ArrayList<Articulo> articulos = servicesArt.getAllArticulos();
+        ArrayList<Articulo> articulos = ArticuloConsultas.getAllArticulos();
 
         facturaDetallesVenta.dropdownArticulo.removeAllItems();
         dropModel.addElement("<Seleccionar Articulo>");
@@ -43,11 +44,11 @@ public class FacturaVentaControlador {
         });
     }
 
-    public static void seleccionarArticulo(JComboBox dropdownArticulo, JTextField inputTextPrecio, JSpinner spinnerCantidad, ArticuloConsultas servicesArt) {
+    public static void seleccionarArticulo(JComboBox dropdownArticulo, JTextField inputTextPrecio, JSpinner spinnerCantidad) {
         if (dropdownArticulo.getItemCount() != 0) {
             if (!dropdownArticulo.getSelectedItem().equals("<Seleccionar Articulo>")) {
                 int idArticulo = Integer.parseInt(dropdownArticulo.getSelectedItem().toString().split("-")[0]);
-                Articulo articulo = servicesArt.getArticulo(idArticulo);
+                Articulo articulo = ArticuloConsultas.getArticulo(idArticulo);
 
                 inputTextPrecio.setText(Float.toString(articulo.getPrecioUnitario()));
                 spinnerCantidad.setValue(1);
@@ -126,19 +127,19 @@ public class FacturaVentaControlador {
         return false;
     }
 
-    public static ArrayList<Linea> generarLineas(JTable tabla, ArticuloConsultas servicesArt, Factura factura) {
+    public static ArrayList<Linea> generarLineas(JTable tabla, Factura factura) {
         ArrayList<Linea> lineas = new ArrayList<>();
 
         for (int i = 0; i <= tabla.getRowCount() - 1; i++) {
 
             int idArticulo = Integer.parseInt(tabla.getValueAt(i, 0).toString());
-            Articulo articulo = servicesArt.getArticulo(idArticulo);
+            Articulo articulo = ArticuloConsultas.getArticulo(idArticulo);
             float precioUnitario = Float.parseFloat(tabla.getValueAt(i, 2).toString());
             int cantidad = Integer.parseInt(tabla.getValueAt(i, 3).toString());
             float subtotal = Float.parseFloat(tabla.getValueAt(i, 4).toString());
 
             articulo.restarStock(cantidad);
-            servicesArt.updateArticulo(articulo, idArticulo);
+            ArticuloConsultas.updateArticulo(articulo, idArticulo);
 
             Linea nuevaLinea = new Linea(articulo, factura, precioUnitario, cantidad, subtotal);
             lineas.add(nuevaLinea);
@@ -147,7 +148,7 @@ public class FacturaVentaControlador {
         return lineas;
     }
 
-    public static void guardarFactura(FacturaVistaVenta facturaDetallesVenta, ArticuloConsultas servicesArt, ClienteConsultas servicesClie, FacturaConsultas servicesFact) {
+    public static void guardarFactura(Index view, FacturaVistaVenta facturaDetallesVenta) {
         if (facturaDetallesVenta.getTitle().equals("Detalles Factura")) {
             vaciarInputTexts(facturaDetallesVenta);
             facturaDetallesVenta.setVisible(false);
@@ -157,20 +158,21 @@ public class FacturaVentaControlador {
             } else {
                 int idCliente = Integer.parseInt(facturaDetallesVenta.dropdownCliente.getSelectedItem().toString().split("-")[0]);
 
-                Cliente cliente = servicesClie.getCliente(idCliente);
+                Cliente cliente = ClienteConsultas.getCliente(idCliente);
                 String numeroFactura = facturaDetallesVenta.inputTextNumero.getText();
                 Date fecha = new Date();
                 float total = Float.parseFloat(facturaDetallesVenta.inputTextTotal.getText());
 
                 Factura factura = new Factura(cliente, 'V', numeroFactura, fecha, total);
 
-                ArrayList<Linea> lineas = generarLineas(facturaDetallesVenta.tabla, servicesArt, factura);
+                ArrayList<Linea> lineas = generarLineas(facturaDetallesVenta.tabla, factura);
                 factura.setLineas(lineas);
 
-                servicesFact.saveFactura(factura);
+                FacturaConsultas.saveFactura(factura);
 
                 vaciarInputTexts(facturaDetallesVenta);
                 facturaDetallesVenta.setVisible(false);
+                FacturaControlador.iniciarTabla(view.factTabla, view.factCheckBoxCompra, view.factCheckBoxVenta);
             }
         }
 
@@ -190,12 +192,12 @@ public class FacturaVentaControlador {
                 "Imprimiendo factura numero:" + facturaDetallesVenta.inputTextNumero.getText());
     }
 
-    public static void abrirVistaFacturaVenta(FacturaVistaVenta facturaDetallesVenta, ArticuloConsultas servicesArt, ClienteConsultas servicesClie, FacturaConsultas servicesFact) {
+    public static void abrirVistaFacturaVenta(FacturaVistaVenta facturaDetallesVenta) {
         facturaDetallesVenta.setTitle("Nueva factura de venta");
         facturaDetallesVenta.setLocationRelativeTo(null);
         facturaDetallesVenta.setVisible(true);
 
-        facturaDetallesVenta.inputTextNumero.setText(Integer.toString(servicesFact.getLastNumeroFactura() + 1));
+        facturaDetallesVenta.inputTextNumero.setText(Integer.toString(FacturaConsultas.getLastNumeroFactura() + 1));
         activarInteraccionVista(facturaDetallesVenta);
 
 
@@ -203,8 +205,8 @@ public class FacturaVentaControlador {
         tableModel.setNumRows(0);
         vaciarInputTexts(facturaDetallesVenta);
 
-        inicializarDropdownClientes(facturaDetallesVenta, servicesClie);
-        inicializarDropdownArticulos(facturaDetallesVenta, servicesArt);
+        inicializarDropdownClientes(facturaDetallesVenta);
+        inicializarDropdownArticulos(facturaDetallesVenta);
     }
 
     public static void cargarTablaVerMas(FacturaVistaVenta facturaDetallesVenta, List<Linea> lineas) {
@@ -228,13 +230,13 @@ public class FacturaVentaControlador {
         facturaDetallesVenta.dropdownCliente.setEnabled(false);
     }
 
-    public static void abrirVistaFacturaVenta(FacturaVistaVenta facturaDetallesVenta, ArticuloConsultas servicesArt, ClienteConsultas servicesClie, Factura factura) {
+    public static void abrirVistaFacturaVenta(FacturaVistaVenta facturaDetallesVenta, Factura factura) {
         facturaDetallesVenta.setTitle("Detalles Factura");
         facturaDetallesVenta.setLocationRelativeTo(null);
         facturaDetallesVenta.setVisible(true);
 
-        inicializarDropdownClientes(facturaDetallesVenta, servicesClie);
-        inicializarDropdownArticulos(facturaDetallesVenta, servicesArt);
+        inicializarDropdownClientes(facturaDetallesVenta);
+        inicializarDropdownArticulos(facturaDetallesVenta);
 
         desactivarInteraccionVista(facturaDetallesVenta);
 

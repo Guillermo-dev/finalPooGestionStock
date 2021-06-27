@@ -368,11 +368,6 @@ public class Index extends javax.swing.JFrame {
         artBtnGuardar.setMinimumSize(new java.awt.Dimension(32, 32));
         artBtnGuardar.setOpaque(false);
         artBtnGuardar.setPreferredSize(new java.awt.Dimension(32, 32));
-        artBtnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                artBtnGuardarActionPerformed(evt);
-            }
-        });
 
         artBtnLimpiar.setBackground(new java.awt.Color(102, 102, 102));
         artBtnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/3limpiar.png"))); // NOI18N
@@ -515,11 +510,6 @@ public class Index extends javax.swing.JFrame {
         provBtnBuscar.setBackground(new java.awt.Color(0, 204, 153));
         provBtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/buscar.png"))); // NOI18N
         provBtnBuscar.setOpaque(false);
-        provBtnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                provBtnBuscarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -1115,11 +1105,11 @@ public class Index extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "FECHA", "NUMERO", "PROPÓSITO", "TOTAL"
+                "ID", "FECHA", "NUMERO", "PROPÓSITO", "CLIENTE/PROVEEDOR", "TOTAL"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1228,11 +1218,6 @@ public class Index extends javax.swing.JFrame {
 
         notBtnLimpiar.setBackground(new java.awt.Color(0, 204, 153));
         notBtnLimpiar.setText("LIMPIAR");
-        notBtnLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                notBtnLimpiarActionPerformed(evt);
-            }
-        });
 
         jLabel53.setText("TOTAL:");
 
@@ -1708,18 +1693,6 @@ public class Index extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void notBtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notBtnLimpiarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_notBtnLimpiarActionPerformed
-
-    private void artBtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_artBtnGuardarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_artBtnGuardarActionPerformed
-
-    private void provBtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provBtnBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_provBtnBuscarActionPerformed
 
     public static void main(String args[]) {
         try {

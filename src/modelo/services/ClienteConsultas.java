@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 
 public class ClienteConsultas extends HibernateUtil {
 
-    public ArrayList<Cliente> getAllClientes() {
+    public static ArrayList<Cliente> getAllClientes() {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -22,7 +22,7 @@ public class ClienteConsultas extends HibernateUtil {
         return (ArrayList<Cliente>) clientes;
     }
 
-    public ArrayList<Cliente> getClientesBusacador(String buscador) {
+    public static ArrayList<Cliente> getClientesBusacador(String buscador) {
         buscador = buscador.toUpperCase();
 
         SessionFactory sessionFactory = newSessionFactory();
@@ -44,7 +44,7 @@ public class ClienteConsultas extends HibernateUtil {
         return (ArrayList<Cliente>) clientes;
     }
 
-    public Cliente getCliente(int idCliente) {
+    public static Cliente getCliente(int idCliente) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -56,7 +56,7 @@ public class ClienteConsultas extends HibernateUtil {
         return cliente;
     }
 
-    public void saveCliente(Cliente cliente) {
+    public static void saveCliente(Cliente cliente) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -68,7 +68,7 @@ public class ClienteConsultas extends HibernateUtil {
         sessionFactory.close();
     }
 
-    public void updateCliente(Cliente newCliente, int idCliente) {
+    public static void updateCliente(Cliente newCliente, int idCliente) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -88,7 +88,7 @@ public class ClienteConsultas extends HibernateUtil {
         sessionFactory.close();
     }
 
-    public void deleteCliente(int idCliente) {
+    public static void deleteCliente(int idCliente) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 

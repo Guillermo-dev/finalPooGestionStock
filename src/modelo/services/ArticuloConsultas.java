@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 
 public class ArticuloConsultas extends HibernateUtil {
 
-    public ArrayList<Articulo> getAllArticulos() {
+    public static ArrayList<Articulo> getAllArticulos() {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -22,7 +22,7 @@ public class ArticuloConsultas extends HibernateUtil {
         return (ArrayList<Articulo>) articulos;
     }
 
-    public Articulo getArticulo(int idArticulo) {
+    public static Articulo getArticulo(int idArticulo) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -33,7 +33,7 @@ public class ArticuloConsultas extends HibernateUtil {
         return articulo;
     }
 
-    public ArrayList<Articulo> getArticulosBusacador(String buscador) {
+    public static ArrayList<Articulo> getArticulosBusacador(String buscador) {
         buscador = buscador.toUpperCase();
 
         SessionFactory sessionFactory = newSessionFactory();
@@ -51,7 +51,7 @@ public class ArticuloConsultas extends HibernateUtil {
         return (ArrayList<Articulo>) articulos;
     }
 
-    public ArrayList<Articulo> getArticulosStockMinimo() {
+    public static ArrayList<Articulo> getArticulosStockMinimo() {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -64,7 +64,7 @@ public class ArticuloConsultas extends HibernateUtil {
         return (ArrayList<Articulo>) articulos;
     }
 
-    public void saveArticulo(Articulo articulo) {
+    public static void saveArticulo(Articulo articulo) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -76,7 +76,7 @@ public class ArticuloConsultas extends HibernateUtil {
         sessionFactory.close();
     }
 
-    public void updateArticulo(Articulo newArticulo, int idArticulo) {
+    public static void updateArticulo(Articulo newArticulo, int idArticulo) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -97,7 +97,7 @@ public class ArticuloConsultas extends HibernateUtil {
         sessionFactory.close();
     }
 
-    public void deleteArticulo(int idArticulo) {
+    public static void deleteArticulo(int idArticulo) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -111,7 +111,7 @@ public class ArticuloConsultas extends HibernateUtil {
         sessionFactory.close();
     }
     
-    public ArrayList<Articulo> getAllArticulosIdProveedor(int idProveedor) {
+    public static ArrayList<Articulo> getAllArticulosIdProveedor(int idProveedor) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 

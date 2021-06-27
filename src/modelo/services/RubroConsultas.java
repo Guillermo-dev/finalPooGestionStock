@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 
 public class RubroConsultas extends HibernateUtil {
 
-    public ArrayList<Rubro> getAllRubros() {
+    public static ArrayList<Rubro> getAllRubros() {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -22,7 +22,7 @@ public class RubroConsultas extends HibernateUtil {
         return (ArrayList<Rubro>) rubros;
     }
 
-    public ArrayList<Rubro> getRubrosBuscador(String buscador) {
+    public static ArrayList<Rubro> getRubrosBuscador(String buscador) {
         buscador = buscador.toUpperCase();
 
         SessionFactory sessionFactory = newSessionFactory();
@@ -40,7 +40,7 @@ public class RubroConsultas extends HibernateUtil {
         return (ArrayList<Rubro>) rubros;
     }
     
-    public void saveRubro(Rubro rubro) {
+    public static void saveRubro(Rubro rubro) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -52,7 +52,7 @@ public class RubroConsultas extends HibernateUtil {
         sessionFactory.close();
     }
     
-    public void updateRubro(Rubro newRubro, int idRubro) {
+    public static void updateRubro(Rubro newRubro, int idRubro) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -69,7 +69,7 @@ public class RubroConsultas extends HibernateUtil {
         sessionFactory.close();
     }
     
-    public void deleteRubro(int idRubro) {
+    public static void deleteRubro(int idRubro) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -83,7 +83,7 @@ public class RubroConsultas extends HibernateUtil {
         sessionFactory.close();
     }
 
-    public Rubro getRubro(int idRubro) {
+    public static Rubro getRubro(int idRubro) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 

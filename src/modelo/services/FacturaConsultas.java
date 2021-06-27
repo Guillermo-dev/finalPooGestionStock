@@ -5,13 +5,14 @@ import java.util.Collections;
 import java.util.Comparator;
 import modelo.Factura;
 import java.util.List;
+import modelo.Proveedor;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 public class FacturaConsultas extends HibernateUtil {
 
-    public ArrayList<Factura> getAllFacturas() {
+    public static ArrayList<Factura> getAllFacturas() {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -24,7 +25,7 @@ public class FacturaConsultas extends HibernateUtil {
         return (ArrayList<Factura>) facturas;
     }
 
-    public ArrayList<Factura> getAllFacturasFiltro(char proposito) {
+    public static ArrayList<Factura> getAllFacturasFiltro(char proposito) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -38,7 +39,21 @@ public class FacturaConsultas extends HibernateUtil {
         return (ArrayList<Factura>) facturas;
     }
 
-    public int getLastNumeroFactura() {
+    public static ArrayList<Factura> getFacturasProveedor(Proveedor proveedor) {
+        SessionFactory sessionFactory = newSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+        Query query = session.createQuery("FROM Factura WHERE proveedor = :proveedor ORDER  BY fecha");
+        query.setParameter("proveedor", proveedor);
+        List<Factura> facturas = (List<Factura>) query.list();
+
+        session.close();
+        sessionFactory.close();
+        return (ArrayList<Factura>) facturas;
+    }
+    
+    public static int getLastNumeroFactura() {
 
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
@@ -55,11 +70,13 @@ public class FacturaConsultas extends HibernateUtil {
             sessionFactory.close();
             return Integer.parseInt(ultimaFactura.getNumeroFactura());
         } catch (Exception e) {
+            session.close();
+            sessionFactory.close();
             return 0;
         }
     }
 
-    public Factura getFactura(int idFactura) {
+    public static Factura getFactura(int idFactura) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -71,7 +88,7 @@ public class FacturaConsultas extends HibernateUtil {
         return factura;
     }
 
-    public void saveFactura(Factura factura) {
+    public static void saveFactura(Factura factura) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 

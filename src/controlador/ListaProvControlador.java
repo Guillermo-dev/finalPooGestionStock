@@ -1,59 +1,52 @@
 package controlador;
 
-import vista.ListaComprasProveedor;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import modelo.Articulo;
-import modelo.services.ArticuloConsultas;
-import vista.Index;
+import modelo.Factura;
+import modelo.Proveedor;
+import modelo.services.FacturaConsultas;
+import vista.ListaComprasProveedor;
 
 public class ListaProvControlador {
 
-    public static void listarProveedores(ListaComprasProveedor listaProveedores) {
+    static SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+
+    public static void cargarTabla(JTable tabla, ArrayList<Factura> ventas) {
+        DefaultTableModel tableModel = (DefaultTableModel) tabla.getModel();
+        tableModel.setNumRows(0);
+
+        ventas.forEach((venta) -> {
+            venta.getLineas().forEach((linea) -> {
+                String[] data = new String[6];
+                data[0] = formatoFecha.format(venta.getFecha());
+                data[1] = linea.getArticulo().getNombre();
+                data[2] = Integer.toString(linea.getCantidad());
+                data[3] = Float.toString(linea.getPrecioUnitario());
+                data[4] = Float.toString(linea.getSubTotal());
+                data[5] = linea.getArticulo().getRubro().getNombre();
+                tableModel.addRow(data);
+            });
+        });
+    }
+
+    public static void cargarInfo(ListaComprasProveedor listaProveedores, Proveedor proveedor) {
+        listaProveedores.inputTextProv.setText(proveedor.getCuilCuit() + " " + proveedor.getNombre());
+
+        ArrayList<Factura> ventas = FacturaConsultas.getFacturasProveedor(proveedor);
+        cargarTabla(listaProveedores.tabla, ventas);
+    }
+
+    public static void abrirListaCompra(ListaComprasProveedor listaProveedores, Proveedor proveedor) {
         listaProveedores.setTitle("Lista de Proveedores");
         listaProveedores.setLocationRelativeTo(null);
         listaProveedores.setVisible(true);
-    }
 
-    /*
-     public static void cargarTabla(JTable listaProvTabla, ArrayList<Articulo> listaCompraArticulo, int idProveedor) {
-        DefaultTableModel tableModel = (DefaultTableModel) listaProvTabla.getModel();
-        tableModel.setNumRows(0);
-
-        // estos datos no se traen de la factura del proveedor??
-        
-        listaCompraArticulo.forEach((articulo) -> {
-            String[] data = new String[6];
-            data[0] = Integer.toString(articulo.getFecha());
-            data[1] = articulo.getNombre();
-            data[2] = Integer.toString(articulo.getCantidad());
-            data[3] = Integer.toString(articulo.getPrecioUnitario());
-            data[4] = Integer.toString(articulo.getSubtotal()));
-            data[5] = articulo.getRubro());
-            tableModel.addRow(data);
-        });
+        cargarInfo(listaProveedores, proveedor);
     }
     
-    
-     //pasar lista de articulos
-    public static void iniciarTabla(JTable clieTabla, ArticuloConsultas services) {
-        ArrayList<Articulo> articulos = services.getAllArticulosIdProveedor(idProveedor);
-        cargarTabla(listaProvTabla, articulos, idProveedor);
+    public static void cerrarListaCompra(ListaComprasProveedor listaProveedores){
+        listaProveedores.setVisible(false);
     }
-    */
-    
-    
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
