@@ -20,6 +20,7 @@ public class ArticuloControlador {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) view.artDropdownRubro.getModel();
         ArrayList<Rubro> rubros = services.getAllRubros();
 
+        view.artDropdownRubro.removeAllItems();
         dropModel.addElement("<Seleccionar rubro>");
         rubros.forEach(rubro -> {
             dropModel.addElement(rubro.getId() + "- " + rubro.getNombre());
@@ -31,6 +32,7 @@ public class ArticuloControlador {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) view.artDropdownProveedor.getModel();
         ArrayList<Proveedor> proveedores = services.getAllProveedores();
 
+        view.artDropdownProveedor.removeAllItems();
         dropModel.addElement("<Seleccionar Proveedor>");
         proveedores.forEach(proveedor -> {
             dropModel.addElement(proveedor.getId() + "- " + proveedor.getNombre());
@@ -98,13 +100,28 @@ public class ArticuloControlador {
     }
 
     public static boolean inputsTextInvalidos(Index view) {
-        return view.artInputTextNombre.equals("")
+        if(view.artInputTextNombre.equals("")
                 || view.artInputTextDescripcion.equals("")
                 || view.artInputTextPrecio.equals("")
                 || view.artInputTextStock.equals("")
                 || view.artInputTextStockMin.equals("")
                 || view.artDropdownRubro.getSelectedItem() == "<Seleccionar rubro>"
-                || view.artDropdownProveedor.getSelectedItem() == "<Seleccionar Proveedor>";
+                || view.artDropdownProveedor.getSelectedItem() == "<Seleccionar Proveedor>"){
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+            return true;
+        }
+        else{
+                try{
+                    int stock = Integer.parseInt(view.artInputTextStock.getText());
+                    int stock_min = Integer.parseInt(view.artInputTextStockMin.getText());
+                    double precio = Double.parseDouble(view.artInputTextPrecio.getText());
+                }
+                catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos enteros para los stocks y valores reales para el precio.");
+                    return true;
+                }
+                return false;
+                }
     }
 
     public static boolean articuloSeleccionado(Index view) {
@@ -113,7 +130,7 @@ public class ArticuloControlador {
 
     public static void guardarArticulo(Index view, ArticuloConsultas servicesArt, RubroConsultas servicesRub, ProveedorConsultas servicesProv) {
         if (inputsTextInvalidos(view)) {
-            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+            JOptionPane.showMessageDialog(null, "Error al cargar articulo");
         } else {
             int idProveedor = Integer.parseInt(view.artDropdownProveedor.getSelectedItem().toString().split("-")[0]);
             int idRubro = Integer.parseInt(view.artDropdownRubro.getSelectedItem().toString().split("-")[0]);

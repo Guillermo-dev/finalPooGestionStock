@@ -24,12 +24,28 @@ public class FacturaConsultas extends HibernateUtil {
         return (ArrayList<Factura>) facturas;
     }
 
-    public int getLastNumeroFactura() {
+    public ArrayList<Factura> getAllFacturasFiltro(char proposito) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
         session.beginTransaction();
-        Query query = session.createQuery("FROM Factura");
+        Query query = session.createQuery("FROM Factura WHERE proposito = :proposito");
+        query.setParameter("proposito", proposito);
+        List<Factura> facturas = (List<Factura>) query.list();
+
+        session.close();
+        sessionFactory.close();
+        return (ArrayList<Factura>) facturas;
+    }
+
+    public int getLastNumeroFactura() {
+
+        SessionFactory sessionFactory = newSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+        Query query = session.createQuery("FROM Factura WHERE proposito = :venta");
+        query.setParameter("venta", 'V');
         List<Factura> facturas = (List<Factura>) query.list();
 
         try {
@@ -42,8 +58,20 @@ public class FacturaConsultas extends HibernateUtil {
             return 0;
         }
     }
-    
-        public void saveFactura(Factura factura) {
+
+    public Factura getFactura(int idFactura) {
+        SessionFactory sessionFactory = newSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        Factura factura = (Factura) session.get(Factura.class, idFactura);
+
+        session.close();
+        sessionFactory.close();
+
+        return factura;
+    }
+
+    public void saveFactura(Factura factura) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 

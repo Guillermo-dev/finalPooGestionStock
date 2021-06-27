@@ -1,5 +1,6 @@
 package controlador;
 
+import controlador.excepciones.Excepcion;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -16,10 +17,35 @@ public class ProveedorControlador {
 
     public static void iniciarDropdownRazonSocial(Index view) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) view.provDropdownRazonSocial.getModel();
-             dropModel.addElement("<Seleccionar Razon Social>");
+
+        view.provDropdownRazonSocial.removeAllItems();
+        dropModel.addElement("<Seleccionar Razon Social>");
         for (String RAZONES_SOCIALES1 : RAZONES_SOCIALES) {
             dropModel.addElement(RAZONES_SOCIALES1);
         }
+    }
+
+    public static String razonSocial(String razonSocialBd) {
+        switch (razonSocialBd) {
+            case "esponsable_inscripto":
+                return "Responsable inscripto";
+                
+            case "monotributista":
+                return "Monotributista";
+                
+            case "consumidor_final":
+                return "Consumidor final";
+                
+            case "Responsable inscripto":
+                return "esponsable_inscripto";
+                
+            case "Monotributista":
+                return "monotributista";
+                
+            case "Consumidor final":
+                return "consumidor_final";
+        }
+        return "";
     }
 
     public static void cargarTabla(JTable provTabla, ArrayList<Proveedor> proveedores) {
@@ -31,7 +57,7 @@ public class ProveedorControlador {
             data[0] = Integer.toString(proveedor.getId());
             data[1] = proveedor.getCuilCuit();
             data[2] = proveedor.getNombre();
-            data[3] = proveedor.getRazonSocial();
+            data[3] = razonSocial(proveedor.getRazonSocial());
             data[4] = proveedor.getDireccion();
             data[5] = proveedor.getTelefono();
             data[6] = proveedor.getEmail();
@@ -72,14 +98,30 @@ public class ProveedorControlador {
     }
 
     public static boolean inputsTextInvalidos(Index view) {
-        // TODO: Agregar logica de validacion
-        return view.provInputTextCuilT.getText().equals("")
+        if (view.provInputTextCuilT.getText().equals("")
                 || view.provInputTextNombre.getText().equals("")
                 || view.provInputTextDireccion.getText().equals("")
                 || view.provDropdownRazonSocial.getSelectedItem().equals("<Seleccionar Razon Social>")
                 || view.provInputTextDireccion.getText().equals("")
                 || view.provInputTextTelefono.getText().equals("")
-                || view.provInputTextEmail.getText().equals("");
+                || view.provInputTextEmail.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+            return true;
+        } else {
+            try {
+                Excepcion.comprobarEmail(view.provInputTextEmail.getText());
+                long telefono = Long.parseLong(view.provInputTextTelefono.getText());
+                long cuil = Long.parseLong(view.provInputTextCuilT.getText());
+                Excepcion.comprobarTextos(view.provInputTextNombre.getText(), "nombre");
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos para el telefono y el cuil/t.");
+                return true;
+            } catch (Excepcion e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+                return true;
+            }
+            return false;
+        }
     }
 
     public static boolean proveedorSeleccionado(Index view) {
@@ -88,13 +130,13 @@ public class ProveedorControlador {
 
     public static void guardarProveedor(Index view, ProveedorConsultas services) {
         if (inputsTextInvalidos(view)) {
-            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+            System.out.println("Error al cargar proveedor");
         } else {
             Proveedor proveedor = new Proveedor(
                     view.provInputTextNombre.getText(),
                     view.provInputTextCuilT.getText(),
-                    view.provDropdownRazonSocial.getSelectedItem().toString(),
-                    view.provInputTextDireccion.getText(),                  
+                    razonSocial(view.provDropdownRazonSocial.getSelectedItem().toString()),
+                    view.provInputTextDireccion.getText(),
                     view.provInputTextTelefono.getText(),
                     view.provInputTextEmail.getText());
             if (proveedorSeleccionado(view)) {
@@ -104,10 +146,10 @@ public class ProveedorControlador {
                     //TODO
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
-            }else { 
-                try{
+            } else {
+                try {
                     services.saveProveedor(proveedor);
-                }catch (Exception e){
+                } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             }
@@ -115,18 +157,22 @@ public class ProveedorControlador {
             vaciarInputTexts(view);
         }
     }
-    
-    public static void eliminarProveedor(Index view, ProveedorConsultas services){
+
+    public static void eliminarProveedor(Index view, ProveedorConsultas services) {
         try {
             services.deleteProveedor(Integer.parseInt(view.provInputTextId.getText()));
-            
+
             DefaultTableModel tablaModel = (DefaultTableModel) view.provTabla.getModel();
             tablaModel.removeRow(view.provTabla.getSelectedRow());
-            
+
             vaciarInputTexts(view);
-        }catch (Exception e) {
+        } catch (Exception e) {
             // TODO
-            JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");   
-        } 
+            JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");
+        }
+    }
+    
+    public static void abrirNuevaFactura () {
+        
     }
 }

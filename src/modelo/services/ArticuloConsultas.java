@@ -85,7 +85,7 @@ public class ArticuloConsultas extends HibernateUtil {
         oldArticulo.setRubro(newArticulo.getRubro());
         oldArticulo.setDescripcion(newArticulo.getDescripcion());
         oldArticulo.setProveedor(newArticulo.getProveedor());
-        oldArticulo.setStockActual(oldArticulo.getStockActual());
+        oldArticulo.setStockActual(newArticulo.getStockActual());
         oldArticulo.setStockMinimo(newArticulo.getStockMinimo());
         oldArticulo.setPrecioUnitario(newArticulo.getPrecioUnitario());
 
@@ -124,7 +124,4 @@ public class ArticuloConsultas extends HibernateUtil {
         sessionFactory.close();
         return (ArrayList<Articulo>) articulos;
     }
-    
-    
-    
 }

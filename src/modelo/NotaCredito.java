@@ -1,6 +1,6 @@
 package modelo;
 
-import java.util.List;
+import java.util.Date;
 import javax.persistence.*;
 
 @Entity
@@ -21,23 +21,47 @@ public class NotaCredito {
     private Cliente cliente;
 
     @Column(name = "numero_factura")
-    private int nuemroFactura;
+    private String nuemroFactura;
 
     @Column(name = "importe")
     private float importe;
 
     @Column(name = "fecha")
-    private String fecha;
+    private Date fecha;
 
     public NotaCredito() {
     }
 
-    public NotaCredito(Factura factura, Cliente cliente, int nuemroFactura, float importe, String fecha) {
+    public NotaCredito(Factura factura, Cliente cliente, String nuemroFactura, float importe, Date fecha) {
         this.factura = factura;
         this.cliente = cliente;
         this.nuemroFactura = nuemroFactura;
         this.importe = importe;
         this.fecha = fecha;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Factura getFactura() {
+        return factura;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public String getNuemroFactura() {
+        return nuemroFactura;
+    }
+
+    public float getImporte() {
+        return importe;
+    }
+
+    public Date getFecha() {
+        return fecha;
     }
 
 }
