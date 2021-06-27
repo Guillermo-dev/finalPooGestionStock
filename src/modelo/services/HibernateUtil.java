@@ -7,7 +7,7 @@ import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
 
-    public SessionFactory newSessionFactory() {
+    public static SessionFactory newSessionFactory() {
         Configuration configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();

@@ -21,9 +21,9 @@ public class NotasDeCreditoControlador {
 
     static SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
 
-    public static void iniciarDropdownFacturas(Index view, FacturaConsultas servicesFact) {
+    public static void iniciarDropdownFacturas(Index view) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) view.notDropDownFactura.getModel();
-        ArrayList<Factura> facturas = servicesFact.getAllFacturasFiltro('V');
+        ArrayList<Factura> facturas = FacturaConsultas.getAllFacturasFiltro('V');
 
         view.notDropDownFactura.removeAllItems();
         dropModel.addElement("<Seleccionar Factura>");
@@ -48,16 +48,16 @@ public class NotasDeCreditoControlador {
         });
     }
 
-    public static void iniciarTabla(JTable notTabla, NotaCreditoConsultas servicesNot) {
-        ArrayList<NotaCredito> notasCreditos = servicesNot.getAllNotasCredito();
+    public static void iniciarTabla(JTable notTabla) {
+        ArrayList<NotaCredito> notasCreditos = NotaCreditoConsultas.getAllNotasCredito();
         cargarTabla(notTabla, notasCreditos);
     }
 
-    public static void cargarDatosFactura(Index view, FacturaConsultas servicesFact) {
+    public static void cargarDatosFactura(Index view) {
         if (view.notDropDownFactura.getItemCount() != 0) {
             if (!view.notDropDownFactura.getSelectedItem().equals("<Seleccionar Factura>")) {
                 int idFactura = Integer.parseInt(view.notDropDownFactura.getSelectedItem().toString().split("-")[0]);
-                Factura factura = servicesFact.getFactura(idFactura);
+                Factura factura = FacturaConsultas.getFactura(idFactura);
 
                 view.notInputTextCliente.setText(factura.getCliente().getNombre() + " " + factura.getCliente().getApellido());
                 view.notInputTextFecha.setText(formatoFecha.format(factura.getFecha()));
@@ -67,11 +67,11 @@ public class NotasDeCreditoControlador {
 
     }
 
-    public static void abrirDetallesFactura(Index view, FacturaVistaVenta facturaDetallesVenta, ArticuloConsultas servicesArt, ClienteConsultas servicesClie, FacturaConsultas servicesFact) {
+    public static void abrirDetallesFactura(Index view, FacturaVistaVenta facturaDetallesVenta) {
         if (!view.notInputTextId.getText().equals("")) {
             int idFactura = Integer.parseInt(view.notDropDownFactura.getSelectedItem().toString().split("-")[0]);
-            Factura factura = servicesFact.getFactura(idFactura);
-            FacturaVentaControlador.abrirVistaFacturaVenta(facturaDetallesVenta, servicesArt, servicesClie, factura);
+            Factura factura = FacturaConsultas.getFactura(idFactura);
+            FacturaVentaControlador.abrirVistaFacturaVenta(facturaDetallesVenta, factura);
         } else {
             JOptionPane.showMessageDialog(
                     facturaDetallesVenta,
@@ -95,8 +95,8 @@ public class NotasDeCreditoControlador {
         view.notInputTextTotal.setText("");
     }
 
-    public static boolean notaCreditoExistente(Index view, NotaCreditoConsultas servicesNot) {
-        ArrayList<NotaCredito> notasCredito = servicesNot.getAllNotasCredito();
+    public static boolean notaCreditoExistente(Index view) {
+        ArrayList<NotaCredito> notasCredito = NotaCreditoConsultas.getAllNotasCredito();
         int facturaId = Integer.parseInt(view.notDropDownFactura.getSelectedItem().toString().split("-")[0]);
         for (NotaCredito notaCredito : notasCredito) {
             if (notaCredito.getFactura().getId() == facturaId) {
@@ -106,9 +106,9 @@ public class NotasDeCreditoControlador {
         return false;
     }
 
-    public static void crearNotaCredito(Index view, FacturaConsultas servicesFact, NotaCreditoConsultas servicesNot) {
+    public static void crearNotaCredito(Index view) {
         if (!view.notDropDownFactura.getSelectedItem().equals("<Seleccionar Factura>")) {
-            if (notaCreditoExistente(view, servicesNot)) {
+            if (notaCreditoExistente(view)) {
                 JOptionPane.showMessageDialog(
                         view,
                         "Ya existe una nota de credito para esta factura");
@@ -117,14 +117,14 @@ public class NotasDeCreditoControlador {
                         + "Numero:" + view.notDropDownFactura.getSelectedItem().toString().split("-")[1]);
                 if (resp == 0) {
                     int idFactura = Integer.parseInt(view.notDropDownFactura.getSelectedItem().toString().split("-")[0]);
-                    Factura factura = servicesFact.getFactura(idFactura);
+                    Factura factura = FacturaConsultas.getFactura(idFactura);
                     Cliente cliente = factura.getCliente();
                     Date fecha = new Date();
 
                     NotaCredito notaCredito = new NotaCredito(factura, cliente, factura.getNumeroFactura(), factura.getTotal(), fecha);
-                    servicesNot.saveFactura(notaCredito);
+                    NotaCreditoConsultas.saveFactura(notaCredito);
 
-                    iniciarTabla(view.notTabla, servicesNot);
+                    iniciarTabla(view.notTabla);
                     vaciarInputsTexts(view);
                 }
             }

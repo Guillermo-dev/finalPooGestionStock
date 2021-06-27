@@ -2,8 +2,6 @@ package controlador;
 
 import controlador.excepciones.Excepcion;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -30,13 +28,13 @@ public class ClienteControlador {
         });
     }
 
-    public static void iniciarTabla(JTable clieTabla, ClienteConsultas services) {
-        ArrayList<Cliente> clientes = services.getAllClientes();
+    public static void iniciarTabla(JTable clieTabla) {
+        ArrayList<Cliente> clientes = ClienteConsultas.getAllClientes();
         cargarTabla(clieTabla, clientes);
     }
 
-    public static void buscarTabla(JTable clieTabla, ClienteConsultas services, String buscador) {
-        ArrayList<Cliente> clientes = services.getClientesBusacador(buscador);
+    public static void buscarTabla(JTable clieTabla, String buscador) {
+        ArrayList<Cliente> clientes = ClienteConsultas.getClientesBusacador(buscador);
         cargarTabla(clieTabla, clientes);
     }
 
@@ -97,7 +95,7 @@ public class ClienteControlador {
         return !view.clieInputTextId.getText().equals("");
     }
 
-    public static void guardarCliente(Index view, ClienteConsultas services) {
+    public static void guardarCliente(Index view) {
         if (inputsTextInvalidos(view)) {
             System.out.println("Error al cargar cliente");
         } else {
@@ -110,27 +108,27 @@ public class ClienteControlador {
                     view.clieInputTextEmail.getText());
             if (clienteSeleccionado(view)) {
                 try {
-                    services.updateCliente(cliente, Integer.parseInt(view.clieInputTextId.getText()));
+                    ClienteConsultas.updateCliente(cliente, Integer.parseInt(view.clieInputTextId.getText()));
                 } catch (Exception e) {
                     // TODO
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             } else {
                 try {
-                    services.saveCliente(cliente);
+                    ClienteConsultas.saveCliente(cliente);
                 } catch (Exception e) {
                     // TODO
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             }
-            iniciarTabla(view.clieTabla, services);
+            iniciarTabla(view.clieTabla);
             vaciarInputTexts(view);
         }
     }
 
-    public static void eliminarCliente(Index view, ClienteConsultas services) {
+    public static void eliminarCliente(Index view) {
         try {
-            services.deleteCliente(Integer.parseInt(view.clieInputTextId.getText()));
+            ClienteConsultas.deleteCliente(Integer.parseInt(view.clieInputTextId.getText()));
 
             DefaultTableModel tablaModel = (DefaultTableModel) view.clieTabla.getModel();
             tablaModel.removeRow(view.clieTabla.getSelectedRow());

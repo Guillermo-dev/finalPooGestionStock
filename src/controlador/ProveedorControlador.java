@@ -9,6 +9,8 @@ import modelo.Proveedor;
 import vista.Index;
 import modelo.services.ProveedorConsultas;
 import javax.swing.DefaultComboBoxModel;
+import modelo.services.FacturaConsultas;
+import vista.ListaComprasProveedor;
 
 public class ProveedorControlador {
 
@@ -29,19 +31,19 @@ public class ProveedorControlador {
         switch (razonSocialBd) {
             case "esponsable_inscripto":
                 return "Responsable inscripto";
-                
+
             case "monotributista":
                 return "Monotributista";
-                
+
             case "consumidor_final":
                 return "Consumidor final";
-                
+
             case "Responsable inscripto":
                 return "esponsable_inscripto";
-                
+
             case "Monotributista":
                 return "monotributista";
-                
+
             case "Consumidor final":
                 return "consumidor_final";
         }
@@ -65,13 +67,13 @@ public class ProveedorControlador {
         });
     }
 
-    public static void iniciarTabla(JTable provTabla, ProveedorConsultas services) {
-        ArrayList<Proveedor> proveedores = services.getAllProveedores();
+    public static void iniciarTabla(JTable provTabla) {
+        ArrayList<Proveedor> proveedores = ProveedorConsultas.getAllProveedores();
         cargarTabla(provTabla, proveedores);
     }
 
-    public static void buscarTabla(JTable provTabla, ProveedorConsultas services, String buscador) {
-        ArrayList<Proveedor> proveedores = services.getProveedoresBuscador(buscador);
+    public static void buscarTabla(JTable provTabla, String buscador) {
+        ArrayList<Proveedor> proveedores = ProveedorConsultas.getProveedoresBuscador(buscador);
         cargarTabla(provTabla, proveedores);
     }
 
@@ -128,7 +130,7 @@ public class ProveedorControlador {
         return !view.provInputTextId.getText().equals("");
     }
 
-    public static void guardarProveedor(Index view, ProveedorConsultas services) {
+    public static void guardarProveedor(Index view) {
         if (inputsTextInvalidos(view)) {
             System.out.println("Error al cargar proveedor");
         } else {
@@ -141,26 +143,26 @@ public class ProveedorControlador {
                     view.provInputTextEmail.getText());
             if (proveedorSeleccionado(view)) {
                 try {
-                    services.updateProveedor(proveedor, Integer.parseInt(view.provInputTextId.getText()));
+                    ProveedorConsultas.updateProveedor(proveedor, Integer.parseInt(view.provInputTextId.getText()));
                 } catch (Exception e) {
                     //TODO
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             } else {
                 try {
-                    services.saveProveedor(proveedor);
+                    ProveedorConsultas.saveProveedor(proveedor);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Error inesperado");
                 }
             }
-            iniciarTabla(view.provTabla, services);
+            iniciarTabla(view.provTabla);
             vaciarInputTexts(view);
         }
     }
 
-    public static void eliminarProveedor(Index view, ProveedorConsultas services) {
+    public static void eliminarProveedor(Index view) {
         try {
-            services.deleteProveedor(Integer.parseInt(view.provInputTextId.getText()));
+            ProveedorConsultas.deleteProveedor(Integer.parseInt(view.provInputTextId.getText()));
 
             DefaultTableModel tablaModel = (DefaultTableModel) view.provTabla.getModel();
             tablaModel.removeRow(view.provTabla.getSelectedRow());
@@ -171,8 +173,16 @@ public class ProveedorControlador {
             JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");
         }
     }
-    
-    public static void abrirNuevaFactura () {
-        
+
+    public static void abrirListaCompra(Index view, ListaComprasProveedor listaProveedores) {
+        if (view.provInputTextId.getText().equals("")) {
+            JOptionPane.showMessageDialog(
+                    view,
+                    "Seleccionar un proveedor");
+        } else {
+            int idProveedor = Integer.parseInt(view.provInputTextId.getText());
+            Proveedor proveedor = ProveedorConsultas.getProveedor(idProveedor);
+            ListaProvControlador.abrirListaCompra(listaProveedores, proveedor);
+        }
     }
 }

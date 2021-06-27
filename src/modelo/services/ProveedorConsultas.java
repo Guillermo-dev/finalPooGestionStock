@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 
 public class ProveedorConsultas extends HibernateUtil {
 
-    public ArrayList<Proveedor> getAllProveedores() {
+    public static ArrayList<Proveedor> getAllProveedores() {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -22,7 +22,7 @@ public class ProveedorConsultas extends HibernateUtil {
         return (ArrayList<Proveedor>) proveedores;
     }
 
-    public Proveedor getProveedor(int idProveedor) {
+    public static Proveedor getProveedor(int idProveedor) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -34,7 +34,7 @@ public class ProveedorConsultas extends HibernateUtil {
         return proveedor;
     }
 
-    public ArrayList<Proveedor> getProveedoresBuscador(String buscador) {
+    public static ArrayList<Proveedor> getProveedoresBuscador(String buscador) {
         buscador = buscador.toUpperCase();
 
         SessionFactory sessionFactory = newSessionFactory();
@@ -56,7 +56,7 @@ public class ProveedorConsultas extends HibernateUtil {
         return (ArrayList<Proveedor>) proveedores;
     }
 
-    public void saveProveedor(Proveedor proveedores) {
+    public static void saveProveedor(Proveedor proveedores) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -68,7 +68,7 @@ public class ProveedorConsultas extends HibernateUtil {
         sessionFactory.close();
     }
     
-    public void updateProveedor(Proveedor newProveedor, int idProveedor) {
+    public static void updateProveedor(Proveedor newProveedor, int idProveedor) {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
@@ -88,7 +88,7 @@ public class ProveedorConsultas extends HibernateUtil {
         sessionFactory.close();
     }
 
-    public void deleteProveedor (int idProveedor){
+    public static void deleteProveedor (int idProveedor){
     
     SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
