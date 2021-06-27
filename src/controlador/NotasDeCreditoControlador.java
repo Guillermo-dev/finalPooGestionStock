@@ -66,7 +66,7 @@ public class NotasDeCreditoControlador {
     }
 
     public static void abrirDetallesFactura(Index view, FacturaVistaVenta facturaDetallesVenta) {
-        if (!view.notInputTextId.getText().equals("")) {
+        if (!view.notDropDownFactura.getSelectedItem().toString().equals("")) {
             int idFactura = Integer.parseInt(view.notDropDownFactura.getSelectedItem().toString().split("-")[0]);
             Factura factura = FacturaConsultas.getFactura(idFactura);
             FacturaVentaControlador.abrirVistaFacturaVenta(facturaDetallesVenta, factura);
