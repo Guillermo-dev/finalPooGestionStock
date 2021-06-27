@@ -161,7 +161,7 @@ public class FacturaVentaControlador {
         facturaDetallesVenta.setTitle("Nueva factura de venta");
         facturaDetallesVenta.setLocationRelativeTo(null);
         facturaDetallesVenta.setVisible(true);
-        facturaDetallesVenta.inputTextNumero.setText(Integer.toString(servicesFact.getLastNuemroFactura() + 1));
+        facturaDetallesVenta.inputTextNumero.setText(Integer.toString(servicesFact.getLastNumeroFactura() + 1));
 
         DefaultTableModel tableModel = (DefaultTableModel) facturaDetallesVenta.tabla.getModel();
         tableModel.setNumRows(0);

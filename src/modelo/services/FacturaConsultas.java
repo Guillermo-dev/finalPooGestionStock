@@ -24,7 +24,7 @@ public class FacturaConsultas extends HibernateUtil {
         return (ArrayList<Factura>) facturas;
     }
 
-    public int getLastNuemroFactura() {
+    public int getLastNumeroFactura() {
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
