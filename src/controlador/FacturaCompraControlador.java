@@ -159,6 +159,8 @@ public class FacturaCompraControlador {
             } else {
                 data[0] = viewFacturasDetallesCompra.dropdownArticulo.getSelectedItem().toString().split("-")[0];
             }
+            Integer.parseInt(viewFacturasDetallesCompra.inputTextStockMinimo.getText());
+            Double.parseDouble(viewFacturasDetallesCompra.inputTextPrecio.getText());
             data[1] = viewFacturasDetallesCompra.inputTextNombre.getText();
             data[2] = viewFacturasDetallesCompra.inputTextDescripcion.getText();
             data[3] = viewFacturasDetallesCompra.dropdownRubro.getSelectedItem().toString();
@@ -176,11 +178,16 @@ public class FacturaCompraControlador {
             }
             viewFacturasDetallesCompra.inputTextTotal.setText(Float.toString(total));
             viewFacturasDetallesCompra.dropdownProveedor.disable();
-        } catch (Exception e) {
+        } 
+        catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos enteros para los stocks y valores reales para el precio.");
+            }
+        catch (Exception e) {
             // TODO: MANEJO VALIDACION
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "Error inesperado");
         }
+        
     }
 
     public static void quitarArticulo(FacturaVistaCompra viewFacturasDetallesCompra) {

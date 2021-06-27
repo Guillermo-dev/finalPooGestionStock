@@ -73,8 +73,8 @@ public class ClienteControlador {
         //Reviso que el formato de los datos sean validos
         else{
             try {
-                long dni = Long.parseLong(view.clieInputTextDni.getText());
-                long telefono = Long.parseLong(view.clieInputTextTelefono.getText());
+                Long.parseLong(view.clieInputTextDni.getText());
+                Long.parseLong(view.clieInputTextTelefono.getText());
                 Excepcion.comprobarTextos(view.clieInputTextApellido.getText(), "apellido");
                 Excepcion.comprobarTextos(view.clieInputTextNombre.getText(), "nombre");
                 Excepcion.comprobarEmail(view.clieInputTextEmail.getText());

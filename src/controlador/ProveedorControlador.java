@@ -112,8 +112,8 @@ public class ProveedorControlador {
         } else {
             try {
                 Excepcion.comprobarEmail(view.provInputTextEmail.getText());
-                long telefono = Long.parseLong(view.provInputTextTelefono.getText());
-                long cuil = Long.parseLong(view.provInputTextCuilT.getText());
+                Long.parseLong(view.provInputTextTelefono.getText());
+                Long.parseLong(view.provInputTextCuilT.getText());
                 Excepcion.comprobarTextos(view.provInputTextNombre.getText(), "nombre");
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos para el telefono y el cuil/t.");
