@@ -281,7 +281,9 @@ public class FacturaCompraControlador {
         facturaDetallesCompra.btnBorrarProducto.setVisible(true);
     }
 
-    public static void abrirVistaFacturaCompra(FacturaVistaCompra facturaDetallesCompra, ArticuloConsultas servicesArt, ProveedorConsultas servicesProv, FacturaConsultas servicesFact, RubroConsultas servicesRub) {
+    public static void abrirVistaFacturaCompra(FacturaVistaCompra facturaDetallesCompra, ArticuloConsultas servicesArt, 
+            ProveedorConsultas servicesProv, FacturaConsultas servicesFact, RubroConsultas servicesRub) {
+        
         facturaDetallesCompra.setTitle("Nueva factura de compra");
         facturaDetallesCompra.setLocationRelativeTo(null);
         facturaDetallesCompra.setVisible(true);
