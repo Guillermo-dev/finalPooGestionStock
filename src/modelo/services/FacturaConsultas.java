@@ -38,11 +38,11 @@ public class FacturaConsultas extends HibernateUtil {
         return (ArrayList<Factura>) facturas;
     }
 
-    public int getLastNuemroFactura() {
+    public int getLastNumeroFactura() {
+
         SessionFactory sessionFactory = newSessionFactory();
         Session session = sessionFactory.openSession();
 
-        // TODO: ACOMODAR ULTIMO NUMERO SOLO VENTA
         session.beginTransaction();
         Query query = session.createQuery("FROM Factura WHERE proposito = :venta");
         query.setParameter("venta", 'V');
