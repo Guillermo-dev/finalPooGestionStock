@@ -1,5 +1,6 @@
 package controlador;
 
+import controlador.excepciones.Excepcion;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -112,11 +113,16 @@ public class ArticuloControlador {
             return true;
         } else {
             try {
-                Integer.parseInt(view.artInputTextStock.getText());
-                Integer.parseInt(view.artInputTextStockMin.getText());
+                int stock = Integer.parseInt(view.artInputTextStock.getText());
+                int stock_min = Integer.parseInt(view.artInputTextStockMin.getText());
                 Double.parseDouble(view.artInputTextPrecio.getText());
+                Excepcion.comprobarStocks(stock_min, stock);
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos enteros para los stocks y valores reales para el precio.");
+                return true;
+            }
+            catch (Excepcion e){
+                JOptionPane.showMessageDialog(null, e.getMessage());
                 return true;
             }
             return false;

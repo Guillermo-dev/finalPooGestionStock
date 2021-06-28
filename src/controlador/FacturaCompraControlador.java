@@ -1,5 +1,6 @@
 package controlador;
 
+import controlador.excepciones.Excepcion;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -152,19 +153,37 @@ public class FacturaCompraControlador {
     }
 
     public static boolean inputsTextInvalidos(FacturaVistaCompra viewFacturasDetallesCompra) {
-        return viewFacturasDetallesCompra.dropdownArticulo.getSelectedItem().equals("<Seleccionar Articulo>")
+        if (viewFacturasDetallesCompra.dropdownArticulo.getSelectedItem().equals("<Seleccionar Articulo>")
                 || viewFacturasDetallesCompra.dropdownRubro.getSelectedItem().equals("<Seleccionar rubro>")
                 || viewFacturasDetallesCompra.dropdownProveedor.getSelectedItem().equals("<Seleccionar Proveedor>")
                 || viewFacturasDetallesCompra.inputTextNombre.getText().equals("")
                 || viewFacturasDetallesCompra.inputTextDescripcion.getText().equals("")
                 || viewFacturasDetallesCompra.inputTextPrecio.getText().equals("")
-                || viewFacturasDetallesCompra.inputTextStockMinimo.getText().equals("")
-                || viewFacturasDetallesCompra.inputTextTotal.getText().equals("");
+                || viewFacturasDetallesCompra.inputTextStockMinimo.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+            return true;
+        }else{
+            try{
+                int stock = (Integer) viewFacturasDetallesCompra.spinnerCantidad.getValue();
+                int stock_min = Integer.parseInt(viewFacturasDetallesCompra.inputTextStockMinimo.getText());
+                Double.parseDouble(viewFacturasDetallesCompra.inputTextPrecio.getText());
+                Excepcion.comprobarStocks(stock_min, stock);
+            }
+            catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "Ingrese solo un valor numerico entero para el stock minimo y real para el precio.");
+                return true;
+            }
+            catch (Excepcion e){
+                JOptionPane.showMessageDialog(null, e.getMessage());
+                return true;
+            }
+            return false;
+        }
     }
 
     public static void agregarArticulo(FacturaVistaCompra viewFacturasDetallesCompra) {
         if (inputsTextInvalidos(viewFacturasDetallesCompra)) {
-            JOptionPane.showMessageDialog(viewFacturasDetallesCompra, "Rellenar los campos validos");
+            System.out.println("Error al agregar articulo");
         } else {
             try {
                 DefaultTableModel tableModel = (DefaultTableModel) viewFacturasDetallesCompra.tabla.getModel();
@@ -194,7 +213,7 @@ public class FacturaCompraControlador {
                 viewFacturasDetallesCompra.inputTextTotal.setText(Float.toString(total));
                 viewFacturasDetallesCompra.dropdownProveedor.disable();
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos enteros para los stocks y valores reales para el precio.");
+                JOptionPane.showMessageDialog(null, "Error de calculo");
             } catch (Exception e) {
                 // TODO: MANEJO VALIDACION
                 System.out.println(e);
