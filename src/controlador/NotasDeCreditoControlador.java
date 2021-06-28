@@ -20,13 +20,14 @@ import vista.Index;
 public class NotasDeCreditoControlador {
 
     static SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+    private static final String SELECCIONAR_FACTURA = "<Seleccionar Factura>";
 
     public static void iniciarDropdownFacturas(Index view) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) view.notDropDownFactura.getModel();
         ArrayList<Factura> facturas = FacturaConsultas.getAllFacturasFiltro('V');
 
         view.notDropDownFactura.removeAllItems();
-        dropModel.addElement("<Seleccionar Factura>");
+        dropModel.addElement(SELECCIONAR_FACTURA);
         facturas.forEach(factura -> {
             dropModel.addElement(factura.getId() + "- " + factura.getNumeroFactura());
         });
@@ -61,7 +62,7 @@ public class NotasDeCreditoControlador {
 
     public static void cargarDatosFactura(Index view) {
         if (view.notDropDownFactura.getItemCount() != 0) {
-            if (!view.notDropDownFactura.getSelectedItem().equals("<Seleccionar Factura>")) {
+            if (!view.notDropDownFactura.getSelectedItem().equals(SELECCIONAR_FACTURA)) {
                 int idFactura = Integer.parseInt(view.notDropDownFactura.getSelectedItem().toString().split("-")[0]);
                 Factura factura = FacturaConsultas.getFactura(idFactura);
 
@@ -95,7 +96,7 @@ public class NotasDeCreditoControlador {
 
     public static void vaciarInputsTexts(Index view) {
         view.notInputTextId.setText("");
-        view.notDropDownFactura.setSelectedItem("<Seleccionar Factura>");
+        view.notDropDownFactura.setSelectedItem(SELECCIONAR_FACTURA);
         view.notInputTextCliente.setText("");
         view.notInputTextFecha.setText("");
         view.notInputTextTotal.setText("");
@@ -121,7 +122,7 @@ public class NotasDeCreditoControlador {
     }
 
     public static void crearNotaCredito(Index view) {
-        if (!view.notDropDownFactura.getSelectedItem().equals("<Seleccionar Factura>")) {
+        if (!view.notDropDownFactura.getSelectedItem().equals(SELECCIONAR_FACTURA)) {
             if (notaCreditoExistente(view)) {
                 JOptionPane.showMessageDialog(
                         view,
