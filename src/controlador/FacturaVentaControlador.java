@@ -1,5 +1,6 @@
 package controlador;
 
+import controlador.excepciones.Excepcion;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -81,11 +82,30 @@ public class FacturaVentaControlador {
         viewFacturasDetallesVenta.inputTextTotal.setText("");
     }
 
+    
+    public static int calcularStockSolicitado (FacturaVistaVenta viewFacturasDetallesVenta, Articulo articulo){
+        int stock = (Integer) viewFacturasDetallesVenta.spinnerCantidad.getValue();
+                
+        for (int i = 0; i <= viewFacturasDetallesVenta.tabla.getRowCount() - 1; i++) {
+            if (Integer.parseInt(viewFacturasDetallesVenta.tabla.getValueAt(i, 0).toString()) == articulo.getId()){
+                stock =  stock + Integer.parseInt(viewFacturasDetallesVenta.tabla.getValueAt(i, 3).toString());
+            }
+        }
+        return stock;
+    }
+    
+    
     public static void agregarArticulo(FacturaVistaVenta viewFacturasDetallesVenta) {
         try {
             DefaultTableModel tableModel = (DefaultTableModel) viewFacturasDetallesVenta.tabla.getModel();
             float subtotal = (Integer) viewFacturasDetallesVenta.spinnerCantidad.getValue() * Float.parseFloat(viewFacturasDetallesVenta.inputTextPrecio.getText());
-
+            
+            int idArticulo = Integer.parseInt(viewFacturasDetallesVenta.dropdownArticulo.getSelectedItem().toString().split("-")[0]);
+            Articulo articulo = ArticuloConsultas.getArticulo(idArticulo);
+            int stockActual = articulo.getStockActual();
+            int stockSolicitado = calcularStockSolicitado(viewFacturasDetallesVenta, articulo);
+            Excepcion.comprobarVentaArticulo(stockActual, stockSolicitado);
+            
             String[] data = new String[5];
             data[0] = viewFacturasDetallesVenta.dropdownArticulo.getSelectedItem().toString().split("-")[0];
             data[1] = viewFacturasDetallesVenta.dropdownArticulo.getSelectedItem().toString();
@@ -103,7 +123,11 @@ public class FacturaVentaControlador {
             viewFacturasDetallesVenta.inputTextTotal.setText(Float.toString(total));
 
             viewFacturasDetallesVenta.dropdownCliente.disable();
-        } catch (Exception e) {
+        } 
+        catch (Excepcion e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        catch (Exception e) {
             // TODO: MANEJO VALIDACION
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "Error inesperado");
