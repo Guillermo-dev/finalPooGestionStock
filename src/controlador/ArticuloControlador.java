@@ -15,17 +15,22 @@ import modelo.services.RubroConsultas;
 import org.hibernate.exception.ConstraintViolationException;
 
 public class ArticuloControlador {
+    
+    private static final String SELECCIONAR_RUBRO = "<Seleccionar rubro>";
+    private static final String NUEVO_RUBRO = "Nuevo rubro";
+    private static final String SELECCIONAR_PROVEEDOR = "<Seleccionar Proveedor>";
+    
 
     public static void iniciarDropdownRubros(Index view) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) view.artDropdownRubro.getModel();
         ArrayList<Rubro> rubros = RubroConsultas.getAllRubros();
 
         view.artDropdownRubro.removeAllItems();
-        dropModel.addElement("<Seleccionar rubro>");
+        dropModel.addElement(SELECCIONAR_RUBRO);
         rubros.forEach(rubro -> {
             dropModel.addElement(rubro.getId() + "- " + rubro.getNombre());
         });
-        dropModel.addElement("Nuevo rubro");
+        dropModel.addElement(NUEVO_RUBRO);
     }
 
     public static void iniciarDropdownProveedores(Index view) {
@@ -33,7 +38,7 @@ public class ArticuloControlador {
         ArrayList<Proveedor> proveedores = ProveedorConsultas.getAllProveedores();
 
         view.artDropdownProveedor.removeAllItems();
-        dropModel.addElement("<Seleccionar Proveedor>");
+        dropModel.addElement(SELECCIONAR_PROVEEDOR);
         proveedores.forEach(proveedor -> {
             dropModel.addElement(proveedor.getId() + "- " + proveedor.getNombre());
         });
@@ -98,11 +103,12 @@ public class ArticuloControlador {
         view.artInputTextPrecio.setText("");
         view.artInputTextStock.setText("");
         view.artInputTextStockMin.setText("");
-        view.artDropdownRubro.setSelectedItem("<Seleccionar rubro>");
-        view.artDropdownProveedor.setSelectedItem("<Seleccionar Proveedor>");
+        view.artDropdownRubro.setSelectedItem(SELECCIONAR_RUBRO);
+        view.artDropdownProveedor.setSelectedItem(SELECCIONAR_PROVEEDOR);
     }
 
     public static boolean inputsTextInvalidos(Index view) {
+<<<<<<< HEAD
         if (view.artInputTextNombre.getText().equals("")
                 || view.artInputTextDescripcion.getText().equals("")
                 || view.artInputTextPrecio.getText().equals("")
@@ -110,6 +116,15 @@ public class ArticuloControlador {
                 || view.artInputTextStockMin.getText().equals("")
                 || view.artDropdownRubro.getSelectedItem() == "<Seleccionar rubro>"
                 || view.artDropdownProveedor.getSelectedItem() == "<Seleccionar Proveedor>") {
+=======
+        if (view.artInputTextNombre.equals("")
+                || view.artInputTextDescripcion.equals("")
+                || view.artInputTextPrecio.equals("")
+                || view.artInputTextStock.equals("")
+                || view.artInputTextStockMin.equals("")
+                || view.artDropdownRubro.getSelectedItem() == SELECCIONAR_RUBRO
+                || view.artDropdownProveedor.getSelectedItem() == SELECCIONAR_PROVEEDOR) {
+>>>>>>> 0ebadab4561ec87311d9b7ccb717957b1178ef7f
             JOptionPane.showMessageDialog(null, "Rellene todos los campos");
             return true;
         } else {
@@ -185,7 +200,7 @@ public class ArticuloControlador {
     }
 
     public static boolean nuevoRubroSeleccionado(Index view) {
-        if (view.artDropdownRubro.getSelectedItem() == "Nuevo rubro") {
+        if (view.artDropdownRubro.getSelectedItem() == NUEVO_RUBRO) {
             int resp = JOptionPane.showConfirmDialog(view, "Crear nuevo rubro?");
             return (resp == 0);
         }

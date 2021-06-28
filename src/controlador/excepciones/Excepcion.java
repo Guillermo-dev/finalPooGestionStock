@@ -40,4 +40,10 @@ public class Excepcion extends Exception{
             throw new Excepcion("El stock minimo no puede tener un valor mayor al stock");
         }
     }
+    
+    public static void comprobarVentaArticulo (int stock_actual, int stock_solicitado) throws Excepcion{
+        if (stock_actual < stock_solicitado){
+            throw new Excepcion ("No hay suficiente stock para el pedido");
+        }
+    }
 }

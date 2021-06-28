@@ -14,13 +14,14 @@ import vista.ListaComprasProveedor;
 
 public class ProveedorControlador {
 
-    static String[] RAZONES_SOCIALES = {"Responsable inscripto", "Monotributista", "Consumidor final"};
+    private static final String[] RAZONES_SOCIALES = {"Responsable inscripto", "Monotributista", "Consumidor final"};
+    private static final String SELECCIONAR_RAZON_SOCIAL = "<Seleccionar Razon Social>";
 
     public static void iniciarDropdownRazonSocial(Index view) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) view.provDropdownRazonSocial.getModel();
 
         view.provDropdownRazonSocial.removeAllItems();
-        dropModel.addElement("<Seleccionar Razon Social>");
+        dropModel.addElement(SELECCIONAR_RAZON_SOCIAL);
         for (String RAZONES_SOCIALES1 : RAZONES_SOCIALES) {
             dropModel.addElement(RAZONES_SOCIALES1);
         }
@@ -69,7 +70,7 @@ public class ProveedorControlador {
         view.provInputTextCuilT.setText("");
         view.provInputTextNombre.setText("");
         view.provInputTextDireccion.setText("");
-        view.provDropdownRazonSocial.setSelectedItem("<Seleccionar Razon Social>");
+        view.provDropdownRazonSocial.setSelectedItem(SELECCIONAR_RAZON_SOCIAL);
         view.provInputTextDireccion.setText("");
         view.provInputTextTelefono.setText("");
         view.provInputTextEmail.setText("");
@@ -79,7 +80,7 @@ public class ProveedorControlador {
         if (view.provInputTextCuilT.getText().equals("")
                 || view.provInputTextNombre.getText().equals("")
                 || view.provInputTextDireccion.getText().equals("")
-                || view.provDropdownRazonSocial.getSelectedItem().equals("<Seleccionar Razon Social>")
+                || view.provDropdownRazonSocial.getSelectedItem().equals(SELECCIONAR_RAZON_SOCIAL)
                 || view.provInputTextDireccion.getText().equals("")
                 || view.provInputTextTelefono.getText().equals("")
                 || view.provInputTextEmail.getText().equals("")) {
