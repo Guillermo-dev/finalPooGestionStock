@@ -53,6 +53,12 @@ public class NotasDeCreditoControlador {
         cargarTabla(view.notTabla, notasCreditos);
     }
 
+    public static void buscarTabla(Index view) {
+        String buscador = view.notInputTextBuscador.getText();
+        ArrayList<NotaCredito> notasCredito = NotaCreditoConsultas.getNotasCreditoBuscador(buscador);
+        cargarTabla(view.notTabla, notasCredito);
+    }
+
     public static void cargarDatosFactura(Index view) {
         if (view.notDropDownFactura.getItemCount() != 0) {
             if (!view.notDropDownFactura.getSelectedItem().equals("<Seleccionar Factura>")) {

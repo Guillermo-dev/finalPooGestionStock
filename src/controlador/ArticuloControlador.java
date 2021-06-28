@@ -64,12 +64,14 @@ public class ArticuloControlador {
     }
 
     public static void buscarTabla(Index view) {
+        view.artCheckBoxStockMinimo.setSelected(false);
         String buscador = view.artInputTextBuscador.getText();
         ArrayList<Articulo> articulos = ArticuloConsultas.getArticulosBusacador(buscador);
         cargarTabla(view.artTabla, articulos);
     }
 
     public static void stockMinimoTabla(Index view) {
+        view.artInputTextBuscador.setText("");
         if (view.artCheckBoxStockMinimo.isSelected()) {
             ArrayList<Articulo> articulos = ArticuloConsultas.getArticulosStockMinimo();
             cargarTabla(view.artTabla, articulos);
@@ -120,7 +122,8 @@ public class ArticuloControlador {
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos enteros para los stocks y valores reales para el precio.");
                 return true;
-            } /*catch (Excepcion e) {
+            }
+            /*catch (Excepcion e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
                 return true;
             }*/
@@ -180,8 +183,8 @@ public class ArticuloControlador {
             } catch (ConstraintViolationException e) {
                 JOptionPane.showMessageDialog(view, "Este articulo esta asociado a una factura");
             }
-        }else{
-           JOptionPane.showMessageDialog(null, "Seleccione un articulo"); 
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un articulo");
         }
 
     }

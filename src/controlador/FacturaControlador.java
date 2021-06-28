@@ -50,26 +50,12 @@ public class FacturaControlador {
     }
 
     public static void buscarTabla(Index view) {
+        view.factCheckBoxCompra.setSelected(true);
+        view.factCheckBoxVenta.setSelected(true);
         String buscador = view.factInputTextBuscador.getText();
-        if (view.factCheckBoxCompra.isSelected() && view.factCheckBoxVenta.isSelected()) {
-            ArrayList<Factura> facturas = FacturaConsultas.getAllFacturas();
 
-            //TODO FILTAR POR BUSCADOR
-            cargarTabla(view.factTabla, facturas);
-        } else if (view.factCheckBoxCompra.isSelected()) {
-            ArrayList<Factura> facturas = FacturaConsultas.getAllFacturasFiltro('C');
-
-            //TODO: FILTAR POR BUSCADOR
-            cargarTabla(view.factTabla, facturas);
-        } else if (view.factCheckBoxVenta.isSelected()) {
-            ArrayList<Factura> facturas = FacturaConsultas.getAllFacturasFiltro('V');
-
-            //TODO FILTAR POR BUSCADOR
-            cargarTabla(view.factTabla, facturas);
-        } else {
-            DefaultTableModel tableModel = (DefaultTableModel) view.factTabla.getModel();
-            tableModel.setNumRows(0);
-        }
+        ArrayList<Factura> facturas = FacturaConsultas.getFacturasBuscador(buscador);
+        cargarTabla(view.factTabla, facturas);
     }
 
     public static void cargarInputTexts(Index view) {

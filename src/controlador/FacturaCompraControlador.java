@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
 import modelo.Articulo;
 import modelo.Factura;
@@ -232,6 +233,8 @@ public class FacturaCompraControlador {
             if (viewFacturasDetallesCompra.tabla.getRowCount() == 0) {
                 viewFacturasDetallesCompra.dropdownProveedor.enable();
             }
+        }else{
+            JOptionPane.showMessageDialog(viewFacturasDetallesCompra, "Seleccionar un articulo para eliminar");
         }
     }
 
@@ -335,6 +338,7 @@ public class FacturaCompraControlador {
 
         activarInteraccionVista(viewFacturasDetallesCompra);
 
+        ((JSpinner.DefaultEditor) viewFacturasDetallesCompra.spinnerCantidad.getEditor()).getTextField().setEditable(false);
         DefaultTableModel tableModel = (DefaultTableModel) viewFacturasDetallesCompra.tabla.getModel();
         tableModel.setNumRows(0);
         vaciarInputTexts(viewFacturasDetallesCompra);
