@@ -54,7 +54,6 @@ public class FacturaVistaVenta extends javax.swing.JFrame {
         inputTextTotal = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setAutoRequestFocus(false);
         setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(450, 646));
         setResizable(false);

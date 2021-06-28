@@ -39,7 +39,6 @@ public class ListaComprasProveedor extends javax.swing.JFrame {
         tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setAutoRequestFocus(false);
         setBackground(new java.awt.Color(204, 204, 204));
         setResizable(false);
 
