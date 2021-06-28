@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.Articulo;
@@ -110,14 +111,18 @@ public class FacturaVentaControlador {
     }
 
     public static void quitarArticulo(FacturaVistaVenta viewFacturasDetallesVenta) {
-        DefaultTableModel tablaModel = (DefaultTableModel) viewFacturasDetallesVenta.tabla.getModel();
-        float subtotal = Float.parseFloat(viewFacturasDetallesVenta.tabla.getValueAt(viewFacturasDetallesVenta.tabla.getSelectedRow(), 4).toString());
-        float total = Float.parseFloat(viewFacturasDetallesVenta.inputTextTotal.getText()) - subtotal;
-        viewFacturasDetallesVenta.inputTextTotal.setText(Float.toString(total));
+        if (viewFacturasDetallesVenta.tabla.getSelectedRow() != -1) {
+            DefaultTableModel tablaModel = (DefaultTableModel) viewFacturasDetallesVenta.tabla.getModel();
+            float subtotal = Float.parseFloat(viewFacturasDetallesVenta.tabla.getValueAt(viewFacturasDetallesVenta.tabla.getSelectedRow(), 4).toString());
+            float total = Float.parseFloat(viewFacturasDetallesVenta.inputTextTotal.getText()) - subtotal;
+            viewFacturasDetallesVenta.inputTextTotal.setText(Float.toString(total));
 
-        tablaModel.removeRow(viewFacturasDetallesVenta.tabla.getSelectedRow());
-        if (viewFacturasDetallesVenta.tabla.getRowCount() == 0) {
-            viewFacturasDetallesVenta.dropdownCliente.enable();
+            tablaModel.removeRow(viewFacturasDetallesVenta.tabla.getSelectedRow());
+            if (viewFacturasDetallesVenta.tabla.getRowCount() == 0) {
+                viewFacturasDetallesVenta.dropdownCliente.enable();
+            }
+        } else {
+            JOptionPane.showMessageDialog(viewFacturasDetallesVenta, "Seleccionar un articulo para eliminar");
         }
     }
 
@@ -205,6 +210,7 @@ public class FacturaVentaControlador {
         viewFacturasDetallesVenta.setLocationRelativeTo(null);
         viewFacturasDetallesVenta.setVisible(true);
 
+        ((JSpinner.DefaultEditor) viewFacturasDetallesVenta.spinnerCantidad.getEditor()).getTextField().setEditable(false);
         viewFacturasDetallesVenta.inputTextNumero.setText(Integer.toString(FacturaConsultas.getLastNumeroFactura() + 1));
         activarInteraccionVista(viewFacturasDetallesVenta);
 

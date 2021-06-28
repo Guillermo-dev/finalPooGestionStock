@@ -41,6 +41,22 @@ public class FacturaConsultas extends HibernateUtil {
         return (ArrayList<Factura>) facturas;
     }
 
+    public static ArrayList<Factura> getFacturasBuscador(String buscador) {
+        SessionFactory sessionFactory = getSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("FROM Factura WHERE"
+                + " num_factura LIKE CONCAT('%',:buscador,'%')");
+        query.setParameter("buscador", buscador);
+        List<Factura> facturas = (List<Factura>) query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return (ArrayList<Factura>) facturas;
+    }
+
     public static ArrayList<Factura> getFacturasProveedor(Proveedor proveedor) {
         SessionFactory sessionFactory = getSessionFactory();
         Session session = sessionFactory.openSession();
@@ -67,7 +83,7 @@ public class FacturaConsultas extends HibernateUtil {
 
         session.getTransaction().commit();
         session.close();
-      
+
         if (!facturas.isEmpty()) {
             Factura ultimaFactura = Collections.max(facturas, Comparator.comparing(factura -> factura.getNumeroFactura()));
             return Integer.parseInt(ultimaFactura.getNumeroFactura());
@@ -91,9 +107,9 @@ public class FacturaConsultas extends HibernateUtil {
         SessionFactory sessionFactory = getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        
+
         session.save(factura);
-        
+
         session.getTransaction().commit();
         session.close();
     }

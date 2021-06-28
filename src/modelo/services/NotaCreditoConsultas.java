@@ -13,8 +13,24 @@ public class NotaCreditoConsultas extends HibernateUtil {
         SessionFactory sessionFactory = getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        
+
         Query query = session.createQuery("FROM NotaCredito");
+        List<NotaCredito> notasCreditos = (List<NotaCredito>) query.list();
+
+        session.getTransaction().commit();
+        session.close();
+
+        return (ArrayList<NotaCredito>) notasCreditos;
+    }
+
+    public static ArrayList<NotaCredito> getNotasCreditoBuscador(String buscador) {
+        SessionFactory sessionFactory = getSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("FROM NotaCredito WHERE "
+                + "numero_factura LIKE CONCAT('%',:buscador,'%')");
+        query.setParameter("buscador", buscador);
         List<NotaCredito> notasCreditos = (List<NotaCredito>) query.list();
 
         session.getTransaction().commit();
@@ -27,9 +43,9 @@ public class NotaCreditoConsultas extends HibernateUtil {
         SessionFactory sessionFactory = getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        
+
         session.save(notaCredito);
-        
+
         session.getTransaction().commit();
         session.close();
     }

@@ -94,6 +94,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         //NOTAS DE CREDITO
         this.view.notTabla.getSelectionModel().addListSelectionListener(this);
         this.view.notBtnNotasCredito.addActionListener(this);
+        this.view.notBtnBuscar.addActionListener(this);
         this.view.notDropDownFactura.addActionListener(this);
         this.view.notBtnGuardar.addActionListener(this);
         this.view.notBtnLimpiar.addActionListener(this);
@@ -307,6 +308,9 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         }
         if (lse.getSource() == this.view.notDropDownFactura) {
             NotasDeCreditoControlador.cargarDatosFactura(this.view);
+        }
+        if(lse.getSource() == this.view.notBtnBuscar) {
+            NotasDeCreditoControlador.buscarTabla(this.view);
         }
         if (lse.getSource() == this.view.notBtnVerMas) {
             NotasDeCreditoControlador.abrirDetallesFactura(this.view, this.viewFacturasDetallesVenta);
