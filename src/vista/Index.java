@@ -290,25 +290,21 @@ public class Index extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotoneraLayout.createSequentialGroup()
                         .addComponent(botoneraArt)
                         .addGap(29, 29, 29)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotoneraLayout.createSequentialGroup()
                         .addComponent(botoneraProv)
                         .addGap(33, 33, 33)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotoneraLayout.createSequentialGroup()
                         .addComponent(botoneraClie, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotoneraLayout.createSequentialGroup()
                         .addComponent(botoneraFact)
                         .addGap(33, 33, 33)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(BotoneraLayout.createSequentialGroup()
@@ -320,12 +316,12 @@ public class Index extends javax.swing.JFrame {
             BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BotoneraLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botoneraArt)
+                .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botoneraArt, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(botoneraProv)
                     .addComponent(botoneraClie)
-                    .addComponent(botoneraFact)
-                    .addComponent(botoneraRub))
+                    .addComponent(botoneraFact, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botoneraRub, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -347,6 +343,8 @@ public class Index extends javax.swing.JFrame {
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel37.setBackground(new java.awt.Color(204, 204, 204));
+
+        artInputTextId.setEditable(false);
 
         artInputTextNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -584,9 +582,7 @@ public class Index extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(artBtnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
+            .addComponent(artBtnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
             .addComponent(artCheckBoxStockMinimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -686,6 +682,8 @@ public class Index extends javax.swing.JFrame {
 
         jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setText("ID:");
+
+        provInputTextId.setEditable(false);
 
         jLabel27.setForeground(new java.awt.Color(0, 0, 0));
         jLabel27.setText("CUIL/T:");
@@ -1028,6 +1026,8 @@ public class Index extends javax.swing.JFrame {
         jLabel39.setForeground(new java.awt.Color(0, 0, 0));
         jLabel39.setText("EMAIL:");
 
+        clieInputTextId.setEditable(false);
+
         javax.swing.GroupLayout jPanel41Layout = new javax.swing.GroupLayout(jPanel41);
         jPanel41.setLayout(jPanel41Layout);
         jPanel41Layout.setHorizontalGroup(
@@ -1316,6 +1316,7 @@ public class Index extends javax.swing.JFrame {
         jLabel43.setForeground(new java.awt.Color(0, 0, 0));
         jLabel43.setText("ID:");
 
+        factInputTextId.setEditable(false);
         factInputTextId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 factInputTextIdActionPerformed(evt);
@@ -1598,7 +1599,7 @@ public class Index extends javax.swing.JFrame {
             panelFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFacturaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1622,6 +1623,8 @@ public class Index extends javax.swing.JFrame {
 
         jLabel48.setForeground(new java.awt.Color(0, 0, 0));
         jLabel48.setText("ID:");
+
+        notInputTextId.setEditable(false);
 
         jLabel49.setForeground(new java.awt.Color(0, 0, 0));
         jLabel49.setText("FACTURA:");
@@ -1926,6 +1929,8 @@ public class Index extends javax.swing.JFrame {
 
         jLabel40.setForeground(new java.awt.Color(0, 0, 0));
         jLabel40.setText("ID:");
+
+        rubInputTextId.setEditable(false);
 
         jLabel41.setForeground(new java.awt.Color(0, 0, 0));
         jLabel41.setText("NOMBRE:");

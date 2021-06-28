@@ -166,6 +166,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="inputTextNumero">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
@@ -312,6 +315,9 @@
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="inputTextPrecio">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
@@ -540,6 +546,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="inputTextTotal">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>

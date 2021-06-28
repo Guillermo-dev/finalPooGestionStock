@@ -116,15 +116,14 @@ public class ArticuloControlador {
                 int stock = Integer.parseInt(view.artInputTextStock.getText());
                 int stock_min = Integer.parseInt(view.artInputTextStockMin.getText());
                 Double.parseDouble(view.artInputTextPrecio.getText());
-                Excepcion.comprobarStocks(stock_min, stock);
+                // Excepcion.comprobarStocks(stock_min, stock);
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos enteros para los stocks y valores reales para el precio.");
                 return true;
-            }
-            catch (Excepcion e){
+            } /*catch (Excepcion e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
                 return true;
-            }
+            }*/
             return false;
         }
     }
@@ -170,16 +169,21 @@ public class ArticuloControlador {
     }
 
     public static void eliminarArticulo(Index view) {
-        try {
-            ArticuloConsultas.deleteArticulo(Integer.parseInt(view.artInputTextId.getText()));
+        if (articuloSeleccionado(view)) {
+            try {
+                ArticuloConsultas.deleteArticulo(Integer.parseInt(view.artInputTextId.getText()));
 
-            DefaultTableModel tablaModel = (DefaultTableModel) view.artTabla.getModel();
-            tablaModel.removeRow(view.artTabla.getSelectedRow());
+                DefaultTableModel tablaModel = (DefaultTableModel) view.artTabla.getModel();
+                tablaModel.removeRow(view.artTabla.getSelectedRow());
 
-            vaciarInputTexts(view);
-        } catch (ConstraintViolationException e) {
-            JOptionPane.showMessageDialog(view, "Este articulo esta asociado a una factura");
+                vaciarInputTexts(view);
+            } catch (ConstraintViolationException e) {
+                JOptionPane.showMessageDialog(view, "Este articulo esta asociado a una factura");
+            }
+        }else{
+           JOptionPane.showMessageDialog(null, "Seleccione un articulo"); 
         }
+
     }
 
     public static boolean nuevoRubroSeleccionado(Index view) {

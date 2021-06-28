@@ -67,32 +67,28 @@ public class ClienteControlador {
                 || view.clieInputTextDni.getText().equals("")
                 || view.clieInputTextDireccion.getText().equals("")
                 || view.clieInputTextTelefono.getText().equals("")
-                || view.clieInputTextEmail.getText().equals("")){
+                || view.clieInputTextEmail.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos");
             return true;
-        }
-        //Reviso que el formato de los datos sean validos
-        else{
+        } //Reviso que el formato de los datos sean validos
+        else {
             try {
                 Long.parseLong(view.clieInputTextDni.getText());
                 Long.parseLong(view.clieInputTextTelefono.getText());
                 Excepcion.comprobarTextos(view.clieInputTextApellido.getText(), "apellido");
                 Excepcion.comprobarTextos(view.clieInputTextNombre.getText(), "nombre");
                 Excepcion.comprobarEmail(view.clieInputTextEmail.getText());
-            }
-            catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos para DNI y/o telefono.");
                 return true;
-            }
-            catch (Excepcion e){
+            } catch (Excepcion e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
                 return true;
             }
             return false;
         }
     }
-    
-    
+
     public static boolean clienteSeleccionado(Index view) {
         return !view.clieInputTextId.getText().equals("");
     }
@@ -129,16 +125,19 @@ public class ClienteControlador {
     }
 
     public static void eliminarCliente(Index view) {
-        try {
-            ClienteConsultas.deleteCliente(Integer.parseInt(view.clieInputTextId.getText()));
+        if (clienteSeleccionado(view)) {
+            try {
+                ClienteConsultas.deleteCliente(Integer.parseInt(view.clieInputTextId.getText()));
 
-            DefaultTableModel tablaModel = (DefaultTableModel) view.clieTabla.getModel();
-            tablaModel.removeRow(view.clieTabla.getSelectedRow());
+                DefaultTableModel tablaModel = (DefaultTableModel) view.clieTabla.getModel();
+                tablaModel.removeRow(view.clieTabla.getSelectedRow());
 
-            vaciarInputTexts(view);
-        } catch (ConstraintViolationException e) {
-            JOptionPane.showMessageDialog(view, "El cliente esata asociado a una factura, no se puede eliminar");
+                vaciarInputTexts(view);
+            } catch (ConstraintViolationException e) {
+                JOptionPane.showMessageDialog(view, "El cliente esata asociado a una factura, no se puede eliminar");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un cliente");
         }
-
     }
 }

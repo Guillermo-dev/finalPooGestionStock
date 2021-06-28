@@ -137,16 +137,21 @@ public class ProveedorControlador {
     }
 
     public static void eliminarProveedor(Index view) {
-        try {
-            ProveedorConsultas.deleteProveedor(Integer.parseInt(view.provInputTextId.getText()));
+        if (proveedorSeleccionado(view)) {
+            try {
+                ProveedorConsultas.deleteProveedor(Integer.parseInt(view.provInputTextId.getText()));
 
-            DefaultTableModel tablaModel = (DefaultTableModel) view.provTabla.getModel();
-            tablaModel.removeRow(view.provTabla.getSelectedRow());
+                DefaultTableModel tablaModel = (DefaultTableModel) view.provTabla.getModel();
+                tablaModel.removeRow(view.provTabla.getSelectedRow());
 
-            vaciarInputTexts(view);
-        } catch (ConstraintViolationException e) {
-            JOptionPane.showMessageDialog(view, "El proveedor esata asociado a una factura, no se puede eliminar");
+                vaciarInputTexts(view);
+            } catch (ConstraintViolationException e) {
+                JOptionPane.showMessageDialog(view, "El proveedor esata asociado a una factura, no se puede eliminar");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un proveedor");
         }
+
     }
 
     public static void abrirListaCompra(Index view, ListaComprasProveedor listaProveedores) {

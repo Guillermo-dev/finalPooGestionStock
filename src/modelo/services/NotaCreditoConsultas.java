@@ -23,7 +23,7 @@ public class NotaCreditoConsultas extends HibernateUtil {
         return (ArrayList<NotaCredito>) notasCreditos;
     }
 
-    public static void saveFactura(NotaCredito notaCredito) {
+    public static void saveNotaCredito(NotaCredito notaCredito) {
         SessionFactory sessionFactory = getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();

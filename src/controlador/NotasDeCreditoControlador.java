@@ -39,9 +39,9 @@ public class NotasDeCreditoControlador {
         notasCreditos.forEach((notaCredito) -> {
             String[] data = new String[5];
             data[0] = Integer.toString(notaCredito.getId());
-            data[1] = formatoFecha.format(notaCredito.getFecha());
-            data[2] = notaCredito.getFactura().getId() + "- " + notaCredito.getFactura().getNumeroFactura();
-            data[3] = notaCredito.getCliente().getNombre() + " " + notaCredito.getCliente().getApellido();
+            data[1] = notaCredito.getFactura().getId() + "- " + notaCredito.getFactura().getNumeroFactura();
+            data[2] = notaCredito.getCliente().getNombre() + " " + notaCredito.getCliente().getApellido();
+            data[3] = formatoFecha.format(notaCredito.getFecha());
             data[4] = Float.toString(notaCredito.getImporte());
 
             tableModel.addRow(data);
@@ -113,7 +113,7 @@ public class NotasDeCreditoControlador {
             ArticuloConsultas.updateArticulo(articulo, articulo.getId());
         });
     }
-    
+
     public static void crearNotaCredito(Index view) {
         if (!view.notDropDownFactura.getSelectedItem().equals("<Seleccionar Factura>")) {
             if (notaCreditoExistente(view)) {
@@ -126,12 +126,15 @@ public class NotasDeCreditoControlador {
                 if (resp == 0) {
                     int idFactura = Integer.parseInt(view.notDropDownFactura.getSelectedItem().toString().split("-")[0]);
                     Factura factura = FacturaConsultas.getFactura(idFactura);
+
                     Cliente cliente = factura.getCliente();
+                    String numeroFactura = factura.getNumeroFactura();
                     Date fecha = new Date();
+                    Float total = factura.getTotal();
 
                     actualizarStock(factura);
-                    NotaCredito notaCredito = new NotaCredito(factura, cliente, factura.getNumeroFactura(), factura.getTotal(), fecha);
-                    NotaCreditoConsultas.saveFactura(notaCredito);
+                    NotaCredito notaCredito = new NotaCredito(factura, cliente, numeroFactura, total, fecha);
+                    NotaCreditoConsultas.saveNotaCredito(notaCredito);
 
                     iniciarTabla(view);
                     vaciarInputsTexts(view);

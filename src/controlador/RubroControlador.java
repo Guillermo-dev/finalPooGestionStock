@@ -85,15 +85,20 @@ public class RubroControlador {
     }
 
     public static void eliminarRubro(Index view) {
-        try {
-            RubroConsultas.deleteRubro(Integer.parseInt(view.rubInputTextId.getText()));
+        if (rubroSeleccionado(view)) {
+            try {
+                RubroConsultas.deleteRubro(Integer.parseInt(view.rubInputTextId.getText()));
 
-            DefaultTableModel rubrosModel = (DefaultTableModel) view.rubTabla.getModel();
-            rubrosModel.removeRow(view.rubTabla.getSelectedRow());
+                DefaultTableModel rubrosModel = (DefaultTableModel) view.rubTabla.getModel();
+                rubrosModel.removeRow(view.rubTabla.getSelectedRow());
 
-            vaciarInputTexts(view);
-        } catch (ConstraintViolationException e) {
-            JOptionPane.showMessageDialog(view, "El rubro esata asociado a un articulo, no se puede eliminar");
+                vaciarInputTexts(view);
+            } catch (ConstraintViolationException e) {
+                JOptionPane.showMessageDialog(view, "El rubro esata asociado a un articulo, no se puede eliminar");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un rubro");
         }
+
     }
 }

@@ -75,6 +75,8 @@ public class FacturaVistaVenta extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("N° Factura:");
 
+        inputTextNumero.setEditable(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -113,6 +115,8 @@ public class FacturaVistaVenta extends javax.swing.JFrame {
 
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Cantidad:");
+
+        inputTextPrecio.setEditable(false);
 
         btnAgregarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/agregarArt.png"))); // NOI18N
         btnAgregarProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -248,6 +252,8 @@ public class FacturaVistaVenta extends javax.swing.JFrame {
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Total:");
+
+        inputTextTotal.setEditable(false);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
