@@ -170,6 +170,7 @@
       <Properties>
         <Property name="tabPlacement" type="int" value="3"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="requestFocusEnabled" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
@@ -1792,6 +1793,9 @@
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JTabbedPane" name="facturasContainer">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>

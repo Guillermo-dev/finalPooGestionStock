@@ -235,6 +235,7 @@ public class Index extends javax.swing.JFrame {
 
         ventanasContainer.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
         ventanasContainer.setToolTipText("");
+        ventanasContainer.setEnabled(false);
         ventanasContainer.setRequestFocusEnabled(false);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -989,6 +990,8 @@ public class Index extends javax.swing.JFrame {
         );
 
         ventanasContainer.addTab("", clie);
+
+        facturasContainer.setEnabled(false);
 
         jPanel31.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
