@@ -72,6 +72,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         this.view.factBtnLimpiar.addActionListener(this);
         this.view.factBtnNuevaFactura.addActionListener(this);
         this.view.factBtnVerMas.addActionListener(this);
+        
         // FACTURAVENTA
         this.viewFacturasDetallesVenta.tabla.getSelectionModel().addListSelectionListener(this);
         this.viewFacturasDetallesVenta.dropdownArticulo.addActionListener(this);
@@ -80,6 +81,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         this.viewFacturasDetallesVenta.btnGuardar.addActionListener(this);
         this.viewFacturasDetallesVenta.btnImprimir.addActionListener(this);
         this.viewFacturasDetallesVenta.spinnerCantidad.addChangeListener(this);
+        
         // FACTURACOMPRA
         this.viewFacturasDetallesCompra.tabla.getSelectionModel().addListSelectionListener(this);
         this.viewFacturasDetallesCompra.dropdownArticulo.addActionListener(this);
@@ -140,6 +142,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         RubroControlador.iniciarTabla(this.view);
     }
 
+    
     public void goToFacturasContainer() {
         this.view.facturasContainer.setSelectedComponent(this.view.panelFactura);
         FacturaControlador.iniciarTabla(this.view);
