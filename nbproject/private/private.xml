@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-
-            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/vista/Index.java</file>
-            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/modelo/NotaCredito.java</file>
-            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/NotasDeCreditoControlador.java</file>
-            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/modelo/Factura.java</file>
-
-            <file>file:/C:/Users/paosa/Desktop/2021/1%20Cuatrimestre/Programación%20O.O/FINAL/Proyecto/finalPooGestionStock/src/vista/FacturaVistaVenta.java</file>
-            <file>file:/C:/Users/paosa/Desktop/2021/1%20Cuatrimestre/Programación%20O.O/FINAL/Proyecto/finalPooGestionStock/src/vista/FacturaVistaCompra.java</file>
-            <file>file:/C:/Users/paosa/Desktop/2021/1%20Cuatrimestre/Programación%20O.O/FINAL/Proyecto/finalPooGestionStock/src/vista/Index.java</file>
-            <file>file:/C:/Users/paosa/Desktop/2021/1%20Cuatrimestre/Programación%20O.O/FINAL/Proyecto/finalPooGestionStock/src/vista/ListaComprasProveedor.java</file>
-
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/vista/FacturaVistaCompra.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/Controlador.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/vista/FacturaVistaVenta.java</file>
+            <file>file:/C:/Users/guill/OneDrive/Documentos/NetBeansProjects/GestionDeStock/src/controlador/FacturaCompraControlador.java</file>
         </group>
     </open-files>
 </project-private>

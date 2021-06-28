@@ -335,6 +335,7 @@ public class Index extends javax.swing.JFrame {
         ventanasContainer.setBackground(new java.awt.Color(204, 204, 204));
         ventanasContainer.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         ventanasContainer.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+        ventanasContainer.setEnabled(false);
         ventanasContainer.setRequestFocusEnabled(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -1298,6 +1299,7 @@ public class Index extends javax.swing.JFrame {
         ventanasContainer.addTab("", clie);
 
         facturasContainer.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+        facturasContainer.setEnabled(false);
 
         jPanel27.setBackground(new java.awt.Color(204, 204, 204));
         jPanel27.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -1483,12 +1485,13 @@ public class Index extends javax.swing.JFrame {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel15)
-                    .addComponent(factInputTextBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(factBtnBuscar)
-                    .addComponent(notBtnNotasCredito))
+                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel15)
+                        .addComponent(factInputTextBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(notBtnNotasCredito)))
                 .addGap(9, 9, 9))
         );
 

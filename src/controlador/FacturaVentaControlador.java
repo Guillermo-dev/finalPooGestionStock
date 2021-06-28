@@ -20,12 +20,15 @@ import vista.Index;
 
 public class FacturaVentaControlador {
 
+    private static final String SELECCIONAR_CLIENTE = "<Seleccionar cliente>";
+    private static final String SELECCIONAR_ARTICULO = "<Seleccionar Articulo>";
+
     public static void inicializarDropdownClientes(FacturaVistaVenta viewFacturasDetallesVenta) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) viewFacturasDetallesVenta.dropdownCliente.getModel();
         ArrayList<Cliente> clientes = ClienteConsultas.getAllClientes();
 
         viewFacturasDetallesVenta.dropdownCliente.removeAllItems();
-        dropModel.addElement("<Seleccionar cliente>");
+        dropModel.addElement(SELECCIONAR_CLIENTE);
         clientes.forEach(cliente -> {
             dropModel.addElement(cliente.getId() + "- " + cliente.getNombre());
         });
@@ -40,7 +43,7 @@ public class FacturaVentaControlador {
         ArrayList<Articulo> articulos = ArticuloConsultas.getAllArticulos();
 
         viewFacturasDetallesVenta.dropdownArticulo.removeAllItems();
-        dropModel.addElement("<Seleccionar Articulo>");
+        dropModel.addElement(SELECCIONAR_ARTICULO);
         articulos.forEach(articulo -> {
             if (!articuloStockMinimo(articulo)) {
                 dropModel.addElement(articulo.getId() + "- " + articulo.getNombre());
@@ -51,7 +54,7 @@ public class FacturaVentaControlador {
 
     public static void seleccionarArticulo(FacturaVistaVenta viewFacturasDetallesVenta) {
         if (viewFacturasDetallesVenta.dropdownArticulo.getItemCount() != 0) {
-            if (!viewFacturasDetallesVenta.dropdownArticulo.getSelectedItem().equals("<Seleccionar Articulo>")) {
+            if (!viewFacturasDetallesVenta.dropdownArticulo.getSelectedItem().equals(SELECCIONAR_ARTICULO)) {
                 int idArticulo = Integer.parseInt(viewFacturasDetallesVenta.dropdownArticulo.getSelectedItem().toString().split("-")[0]);
                 Articulo articulo = ArticuloConsultas.getArticulo(idArticulo);
 
@@ -74,8 +77,8 @@ public class FacturaVentaControlador {
     }
 
     public static void vaciarInputTexts(FacturaVistaVenta viewFacturasDetallesVenta) {
-        viewFacturasDetallesVenta.dropdownCliente.setSelectedItem("<Seleccionar cliente>");
-        viewFacturasDetallesVenta.dropdownArticulo.setSelectedItem("<Seleccionar Articulo>");
+        viewFacturasDetallesVenta.dropdownCliente.setSelectedItem(SELECCIONAR_CLIENTE);
+        viewFacturasDetallesVenta.dropdownArticulo.setSelectedItem(SELECCIONAR_ARTICULO);
         viewFacturasDetallesVenta.inputTextPrecio.setText("");
         viewFacturasDetallesVenta.spinnerCantidad.setValue(0);
         viewFacturasDetallesVenta.inputTextTotal.setText("");
@@ -130,7 +133,7 @@ public class FacturaVentaControlador {
         if (viewFacturasDetallesVenta.tabla.getRowCount() == 0) {
             return true;
         }
-        if (viewFacturasDetallesVenta.dropdownCliente.getSelectedItem().equals("<Seleccionar cliente>")) {
+        if (viewFacturasDetallesVenta.dropdownCliente.getSelectedItem().equals(SELECCIONAR_CLIENTE)) {
             return true;
         }
         return false;
@@ -200,9 +203,12 @@ public class FacturaVentaControlador {
     }
 
     public static void imprimirFactura(FacturaVistaVenta viewFacturasDetallesVenta) {
-        JOptionPane.showMessageDialog(
-                viewFacturasDetallesVenta,
-                "Imprimiendo factura numero:" + viewFacturasDetallesVenta.inputTextNumero.getText());
+        if (!facturaInvalida(viewFacturasDetallesVenta)) {
+            JOptionPane.showMessageDialog(
+                    viewFacturasDetallesVenta,
+                    "Imprimiendo factura numero:" + viewFacturasDetallesVenta.inputTextNumero.getText()
+                    + "\n chuck  \n chuck  \n chuck \n primmmmmm");
+        }
     }
 
     public static void abrirVistaFacturaVenta(FacturaVistaVenta viewFacturasDetallesVenta) {
@@ -237,8 +243,8 @@ public class FacturaVentaControlador {
 
     public static void desactivarInteraccionVista(FacturaVistaVenta viewFacturasDetallesVenta) {
         viewFacturasDetallesVenta.spinnerCantidad.setEnabled(false);
-        viewFacturasDetallesVenta.btnAgregarProducto.setVisible(false); // setEnabled(false);
-        viewFacturasDetallesVenta.btnBorrarProducto.setVisible(false); // setEnabled(false);
+        viewFacturasDetallesVenta.btnAgregarProducto.setVisible(false);
+        viewFacturasDetallesVenta.btnBorrarProducto.setVisible(false);
         viewFacturasDetallesVenta.dropdownArticulo.setEnabled(false);
         viewFacturasDetallesVenta.dropdownCliente.setEnabled(false);
     }

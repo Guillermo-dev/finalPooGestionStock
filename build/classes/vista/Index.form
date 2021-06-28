@@ -299,6 +299,7 @@
           </Border>
         </Property>
         <Property name="tabPlacement" type="int" value="3"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="requestFocusEnabled" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
@@ -2403,6 +2404,7 @@
             <Container class="javax.swing.JTabbedPane" name="facturasContainer">
               <Properties>
                 <Property name="tabPlacement" type="int" value="3"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -2806,12 +2808,14 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel14" alignment="3" max="32767" attributes="0"/>
-                                          <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="factInputTextBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="factBtnBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="notBtnNotasCredito" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel14" alignment="3" max="32767" attributes="0"/>
+                                              <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="factInputTextBuscador" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="notBtnNotasCredito" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                                   </Group>
