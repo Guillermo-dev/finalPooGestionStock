@@ -41,8 +41,6 @@ public class ListaComprasProveedor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(204, 204, 204));
-        setFocusable(false);
-        setFocusableWindowState(false);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));

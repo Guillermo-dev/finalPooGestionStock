@@ -56,8 +56,6 @@ public class FacturaVistaVenta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(204, 204, 204));
-        setFocusable(false);
-        setFocusableWindowState(false);
         setMinimumSize(new java.awt.Dimension(450, 646));
         setResizable(false);
 

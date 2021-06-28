@@ -66,8 +66,6 @@ public class FacturaVistaCompra extends javax.swing.JFrame {
         jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setFocusable(false);
-        setFocusableWindowState(false);
         setResizable(false);
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));

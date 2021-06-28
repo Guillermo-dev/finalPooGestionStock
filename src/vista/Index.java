@@ -224,8 +224,6 @@ public class Index extends javax.swing.JFrame {
         rubTabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAutoRequestFocus(false);
-        setFocusableWindowState(false);
         setResizable(false);
 
         Botonera.setBackground(new java.awt.Color(0, 102, 153));
