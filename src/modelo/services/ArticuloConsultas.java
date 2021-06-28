@@ -10,33 +10,34 @@ import org.hibernate.SessionFactory;
 public class ArticuloConsultas extends HibernateUtil {
 
     public static ArrayList<Articulo> getAllArticulos() {
-        SessionFactory sessionFactory = newSessionFactory();
+        SessionFactory sessionFactory = getSessionFactory();
         Session session = sessionFactory.openSession();
-
         session.beginTransaction();
+
         Query query = session.createQuery("FROM Articulo");
         List<Articulo> articulos = (List<Articulo>) query.list();
 
+        session.getTransaction().commit();
         session.close();
-        sessionFactory.close();
+
         return (ArrayList<Articulo>) articulos;
     }
 
     public static Articulo getArticulo(int idArticulo) {
-        SessionFactory sessionFactory = newSessionFactory();
+        SessionFactory sessionFactory = getSessionFactory();
         Session session = sessionFactory.openSession();
 
         Articulo articulo = (Articulo) session.get(Articulo.class, idArticulo);
 
         session.close();
-        sessionFactory.close();
+
         return articulo;
     }
 
     public static ArrayList<Articulo> getArticulosBusacador(String buscador) {
         buscador = buscador.toUpperCase();
 
-        SessionFactory sessionFactory = newSessionFactory();
+        SessionFactory sessionFactory = getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -46,38 +47,39 @@ public class ArticuloConsultas extends HibernateUtil {
         query.setParameter("buscador", buscador);
         List<Articulo> articulos = (List<Articulo>) query.list();
 
+        session.getTransaction().commit();
         session.close();
-        sessionFactory.close();
+
         return (ArrayList<Articulo>) articulos;
     }
 
     public static ArrayList<Articulo> getArticulosStockMinimo() {
-        SessionFactory sessionFactory = newSessionFactory();
+        SessionFactory sessionFactory = getSessionFactory();
         Session session = sessionFactory.openSession();
-
         session.beginTransaction();
+
         Query query = session.createQuery("FROM Articulo WHERE stock_actual < stock_minimo");
         List<Articulo> articulos = (List<Articulo>) query.list();
 
+        session.getTransaction().commit();
         session.close();
-        sessionFactory.close();
+
         return (ArrayList<Articulo>) articulos;
     }
 
     public static void saveArticulo(Articulo articulo) {
-        SessionFactory sessionFactory = newSessionFactory();
+        SessionFactory sessionFactory = getSessionFactory();
         Session session = sessionFactory.openSession();
-
         session.beginTransaction();
-        session.save(articulo);
-        session.getTransaction().commit();
 
+        session.save(articulo);
+
+        session.getTransaction().commit();
         session.close();
-        sessionFactory.close();
     }
 
     public static void updateArticulo(Articulo newArticulo, int idArticulo) {
-        SessionFactory sessionFactory = newSessionFactory();
+        SessionFactory sessionFactory = getSessionFactory();
         Session session = sessionFactory.openSession();
 
         Articulo oldArticulo = (Articulo) session.get(Articulo.class, idArticulo);
@@ -90,38 +92,39 @@ public class ArticuloConsultas extends HibernateUtil {
         oldArticulo.setPrecioUnitario(newArticulo.getPrecioUnitario());
 
         session.beginTransaction();
-        session.update(oldArticulo);
-        session.getTransaction().commit();
 
+        session.update(oldArticulo);
+
+        session.getTransaction().commit();
         session.close();
-        sessionFactory.close();
     }
 
     public static void deleteArticulo(int idArticulo) {
-        SessionFactory sessionFactory = newSessionFactory();
+        SessionFactory sessionFactory = getSessionFactory();
         Session session = sessionFactory.openSession();
 
         Articulo articulo = (Articulo) session.get(Articulo.class, idArticulo);
 
         session.beginTransaction();
+
         session.delete(articulo);
+
         session.getTransaction().commit();
-
         session.close();
-        sessionFactory.close();
     }
-    
-    public static ArrayList<Articulo> getAllArticulosIdProveedor(int idProveedor) {
-        SessionFactory sessionFactory = newSessionFactory();
-        Session session = sessionFactory.openSession();
 
+    public static ArrayList<Articulo> getAllArticulosIdProveedor(int idProveedor) {
+        SessionFactory sessionFactory = getSessionFactory();
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
+
         Query query = session.createQuery("FROM Articulo WHERE id_proveedor = :idProveedor");
         query.setParameter("idProveedor", idProveedor);
         List<Articulo> articulos = (List<Articulo>) query.list();
 
+        session.getTransaction().commit();
         session.close();
-        sessionFactory.close();
+
         return (ArrayList<Articulo>) articulos;
     }
 }
