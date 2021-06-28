@@ -408,7 +408,7 @@
             <Component class="javax.swing.JButton" name="btnAgregarProducto">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/vista/Iconos/finales/guardar.png"/>
+                  <Image iconType="3" name="/vista/Iconos/finales/agregarArt.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -426,7 +426,7 @@
                   <Color blue="99" green="66" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/vista/Iconos/finales/borrar.png"/>
+                  <Image iconType="3" name="/vista/Iconos/finales/eliminarArt.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">

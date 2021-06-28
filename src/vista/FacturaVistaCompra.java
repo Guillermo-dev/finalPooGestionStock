@@ -140,11 +140,11 @@ public class FacturaVistaCompra extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Rubro:");
 
-        btnAgregarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/guardar.png"))); // NOI18N
+        btnAgregarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/agregarArt.png"))); // NOI18N
         btnAgregarProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btnBorrarProducto.setBackground(new java.awt.Color(0, 102, 153));
-        btnBorrarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/borrar.png"))); // NOI18N
+        btnBorrarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/eliminarArt.png"))); // NOI18N
         btnBorrarProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBorrarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

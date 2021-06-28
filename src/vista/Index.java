@@ -231,7 +231,7 @@ public class Index extends javax.swing.JFrame {
 
         botoneraArt.setBackground(new java.awt.Color(0, 102, 153));
         botoneraArt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/BtnArticulos.png"))); // NOI18N
-        botoneraArt.setBorder(null);
+        botoneraArt.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botoneraArt.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botoneraArt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,22 +241,22 @@ public class Index extends javax.swing.JFrame {
 
         botoneraProv.setBackground(new java.awt.Color(0, 102, 153));
         botoneraProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/BtnProveedores.png"))); // NOI18N
-        botoneraProv.setBorder(null);
+        botoneraProv.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botoneraProv.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         botoneraClie.setBackground(new java.awt.Color(0, 102, 153));
         botoneraClie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/BtnClientes.png"))); // NOI18N
-        botoneraClie.setBorder(null);
+        botoneraClie.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botoneraClie.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         botoneraFact.setBackground(new java.awt.Color(0, 102, 153));
         botoneraFact.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/BtnFacturas.png"))); // NOI18N
-        botoneraFact.setBorder(null);
+        botoneraFact.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botoneraFact.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         botoneraRub.setBackground(new java.awt.Color(0, 102, 153));
         botoneraRub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/BtnRubros.png"))); // NOI18N
-        botoneraRub.setBorder(null);
+        botoneraRub.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botoneraRub.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -285,25 +285,35 @@ public class Index extends javax.swing.JFrame {
             BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BotoneraLayout.createSequentialGroup()
                 .addGap(192, 192, 192)
-                .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botoneraArt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botoneraProv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotoneraLayout.createSequentialGroup()
+                        .addComponent(botoneraArt)
+                        .addGap(29, 29, 29)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botoneraClie, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botoneraFact, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotoneraLayout.createSequentialGroup()
+                        .addComponent(botoneraProv)
+                        .addGap(33, 33, 33)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botoneraRub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotoneraLayout.createSequentialGroup()
+                        .addComponent(botoneraClie, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BotoneraLayout.createSequentialGroup()
+                        .addComponent(botoneraFact)
+                        .addGap(33, 33, 33)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(BotoneraLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(botoneraRub)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         BotoneraLayout.setVerticalGroup(
@@ -311,11 +321,11 @@ public class Index extends javax.swing.JFrame {
             .addGroup(BotoneraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botoneraArt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botoneraProv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botoneraClie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botoneraFact, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botoneraRub, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(botoneraArt)
+                    .addComponent(botoneraProv)
+                    .addComponent(botoneraClie)
+                    .addComponent(botoneraFact)
+                    .addComponent(botoneraRub))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -392,7 +402,7 @@ public class Index extends javax.swing.JFrame {
                             .addComponent(artInputTextNombre)
                             .addComponent(artDropdownProveedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(artDropdownRubro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane7)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                             .addGroup(jPanel37Layout.createSequentialGroup()
                                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(artInputTextPrecio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
@@ -509,6 +519,7 @@ public class Index extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("ARTICULOS");
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Buscador:");
 
         artBtnBuscar.setBackground(new java.awt.Color(0, 102, 153));
@@ -521,7 +532,7 @@ public class Index extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                 .addGap(77, 77, 77)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -545,11 +556,15 @@ public class Index extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(0, 102, 153));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
-        artBtnEliminar.setBackground(new java.awt.Color(204, 204, 204));
+        artBtnEliminar.setBackground(new java.awt.Color(0, 102, 153));
         artBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/borrar.png"))); // NOI18N
         artBtnEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        artBtnEliminar.setMaximumSize(new java.awt.Dimension(32, 32));
+        artBtnEliminar.setMinimumSize(new java.awt.Dimension(32, 32));
+        artBtnEliminar.setPreferredSize(new java.awt.Dimension(32, 32));
 
         artCheckBoxStockMinimo.setBackground(new java.awt.Color(0, 102, 153));
+        artCheckBoxStockMinimo.setForeground(new java.awt.Color(0, 0, 0));
         artCheckBoxStockMinimo.setText("Stock Mínimo");
         artCheckBoxStockMinimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -563,15 +578,15 @@ public class Index extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addComponent(artCheckBoxStockMinimo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(artBtnEliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 485, Short.MAX_VALUE)
+                .addComponent(artBtnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(artBtnEliminar))
+                .addComponent(artBtnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
             .addComponent(artCheckBoxStockMinimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -666,7 +681,7 @@ public class Index extends javax.swing.JFrame {
         jPanel39.setBackground(new java.awt.Color(204, 204, 204));
 
         provBtnNuevaFactura.setBackground(new java.awt.Color(204, 204, 204));
-        provBtnNuevaFactura.setForeground(new java.awt.Color(255, 255, 255));
+        provBtnNuevaFactura.setForeground(new java.awt.Color(0, 0, 0));
         provBtnNuevaFactura.setText("CARGAR FACTURA");
 
         jLabel26.setForeground(new java.awt.Color(0, 0, 0));
@@ -782,6 +797,8 @@ public class Index extends javax.swing.JFrame {
         provBtnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/limpiar.png"))); // NOI18N
         provBtnLimpiar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        provBtnListaCompra.setBackground(new java.awt.Color(204, 204, 204));
+        provBtnListaCompra.setForeground(new java.awt.Color(0, 0, 0));
         provBtnListaCompra.setText("LISTA COMPRAS");
 
         javax.swing.GroupLayout jPanel40Layout = new javax.swing.GroupLayout(jPanel40);
@@ -840,6 +857,7 @@ public class Index extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("PROVEEDORES");
 
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Buscador:");
 
         provBtnBuscar.setBackground(new java.awt.Color(0, 102, 153));
@@ -876,24 +894,27 @@ public class Index extends javax.swing.JFrame {
         jPanel11.setBackground(new java.awt.Color(0, 102, 153));
         jPanel11.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
-        provBtnEliminar.setBackground(new java.awt.Color(204, 204, 204));
+        provBtnEliminar.setBackground(new java.awt.Color(0, 102, 153));
         provBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/borrar.png"))); // NOI18N
         provBtnEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        provBtnEliminar.setMaximumSize(new java.awt.Dimension(32, 32));
+        provBtnEliminar.setMinimumSize(new java.awt.Dimension(32, 32));
+        provBtnEliminar.setPreferredSize(new java.awt.Dimension(32, 32));
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap(582, Short.MAX_VALUE)
-                .addComponent(provBtnEliminar)
+                .addContainerGap(586, Short.MAX_VALUE)
+                .addComponent(provBtnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(0, 6, Short.MAX_VALUE)
-                .addComponent(provBtnEliminar))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(provBtnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel12.setBackground(new java.awt.Color(204, 204, 204));
@@ -931,7 +952,7 @@ public class Index extends javax.swing.JFrame {
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -1134,6 +1155,7 @@ public class Index extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("CLIENTES");
 
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Buscador:");
 
         clieBtnBuscar.setBackground(new java.awt.Color(0, 102, 153));
@@ -1170,24 +1192,28 @@ public class Index extends javax.swing.JFrame {
         jPanel16.setBackground(new java.awt.Color(0, 102, 153));
         jPanel16.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
-        clieBtnEliminar.setBackground(new java.awt.Color(204, 204, 204));
+        clieBtnEliminar.setBackground(new java.awt.Color(0, 102, 153));
+        clieBtnEliminar.setForeground(new java.awt.Color(204, 204, 204));
         clieBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/borrar.png"))); // NOI18N
         clieBtnEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        clieBtnEliminar.setMaximumSize(new java.awt.Dimension(32, 32));
+        clieBtnEliminar.setMinimumSize(new java.awt.Dimension(32, 32));
+        clieBtnEliminar.setPreferredSize(new java.awt.Dimension(32, 32));
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addContainerGap(596, Short.MAX_VALUE)
-                .addComponent(clieBtnEliminar)
+                .addContainerGap(599, Short.MAX_VALUE)
+                .addComponent(clieBtnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(clieBtnEliminar))
+                .addComponent(clieBtnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel17.setBackground(new java.awt.Color(204, 204, 204));
@@ -1248,7 +1274,7 @@ public class Index extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1283,7 +1309,8 @@ public class Index extends javax.swing.JFrame {
 
         jPanel45.setBackground(new java.awt.Color(204, 204, 204));
 
-        factBtnNuevaFactura.setForeground(new java.awt.Color(255, 255, 255));
+        factBtnNuevaFactura.setBackground(new java.awt.Color(204, 204, 204));
+        factBtnNuevaFactura.setForeground(new java.awt.Color(0, 0, 0));
         factBtnNuevaFactura.setText("+ NUEVA FACTURA");
 
         jLabel43.setForeground(new java.awt.Color(0, 0, 0));
@@ -1371,7 +1398,8 @@ public class Index extends javax.swing.JFrame {
         factBtnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/limpiar.png"))); // NOI18N
         factBtnLimpiar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        factBtnVerMas.setForeground(new java.awt.Color(255, 255, 255));
+        factBtnVerMas.setBackground(new java.awt.Color(204, 204, 204));
+        factBtnVerMas.setForeground(new java.awt.Color(0, 0, 0));
         factBtnVerMas.setText("VER MÁS");
 
         javax.swing.GroupLayout jPanel46Layout = new javax.swing.GroupLayout(jPanel46);
@@ -1427,13 +1455,15 @@ public class Index extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("FACTURAS");
 
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Buscador:");
 
         factBtnBuscar.setBackground(new java.awt.Color(0, 102, 153));
         factBtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/buscar.png"))); // NOI18N
         factBtnBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        notBtnNotasCredito.setForeground(new java.awt.Color(255, 255, 255));
+        notBtnNotasCredito.setBackground(new java.awt.Color(204, 204, 204));
+        notBtnNotasCredito.setForeground(new java.awt.Color(0, 0, 0));
         notBtnNotasCredito.setText("NOTAS DE CREDITO");
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
@@ -1470,6 +1500,8 @@ public class Index extends javax.swing.JFrame {
         jPanel30.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         factCheckBoxVenta.setBackground(new java.awt.Color(0, 102, 153));
+        factCheckBoxVenta.setForeground(new java.awt.Color(0, 0, 0));
+        factCheckBoxVenta.setSelected(true);
         factCheckBoxVenta.setText("Venta");
         factCheckBoxVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1478,6 +1510,8 @@ public class Index extends javax.swing.JFrame {
         });
 
         factCheckBoxCompra.setBackground(new java.awt.Color(0, 102, 153));
+        factCheckBoxCompra.setForeground(new java.awt.Color(0, 0, 0));
+        factCheckBoxCompra.setSelected(true);
         factCheckBoxCompra.setText("Compra");
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
@@ -1670,6 +1704,8 @@ public class Index extends javax.swing.JFrame {
         notBtnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/limpiar.png"))); // NOI18N
         notBtnLimpiar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        notBtnVerMas.setBackground(new java.awt.Color(204, 204, 204));
+        notBtnVerMas.setForeground(new java.awt.Color(0, 0, 0));
         notBtnVerMas.setText("VER MAS FACTURA");
 
         javax.swing.GroupLayout jPanel48Layout = new javax.swing.GroupLayout(jPanel48);
@@ -1730,12 +1766,15 @@ public class Index extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("NOTAS DE CREDITO");
 
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Buscador:");
 
         notBtnBuscar.setBackground(new java.awt.Color(0, 102, 153));
         notBtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/buscar.png"))); // NOI18N
         notBtnBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        factBtnFacturas.setBackground(new java.awt.Color(204, 204, 204));
+        factBtnFacturas.setForeground(new java.awt.Color(0, 0, 0));
         factBtnFacturas.setText("FACTURAS");
 
         javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
@@ -2006,6 +2045,7 @@ public class Index extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("RUBROS");
 
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Buscador:");
 
         rubBtnBuscar.setBackground(new java.awt.Color(0, 102, 153));
@@ -2042,9 +2082,11 @@ public class Index extends javax.swing.JFrame {
         jPanel25.setBackground(new java.awt.Color(0, 102, 153));
         jPanel25.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
-        rubBtnEliminar.setBackground(new java.awt.Color(204, 204, 204));
+        rubBtnEliminar.setBackground(new java.awt.Color(0, 102, 153));
         rubBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/borrar.png"))); // NOI18N
         rubBtnEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        rubBtnEliminar.setMaximumSize(new java.awt.Dimension(32, 32));
+        rubBtnEliminar.setMinimumSize(new java.awt.Dimension(32, 32));
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
@@ -2052,14 +2094,14 @@ public class Index extends javax.swing.JFrame {
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
                 .addContainerGap(596, Short.MAX_VALUE)
-                .addComponent(rubBtnEliminar)
+                .addComponent(rubBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel25Layout.setVerticalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel25Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(rubBtnEliminar))
+                .addComponent(rubBtnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel26.setBackground(new java.awt.Color(204, 204, 204));
