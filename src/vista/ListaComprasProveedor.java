@@ -56,6 +56,7 @@ public class ListaComprasProveedor extends javax.swing.JFrame {
         jLabel2.setText("PROVEEDOR:");
 
         inputTextProv.setEditable(false);
+        inputTextProv.setSelectionColor(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -83,7 +84,7 @@ public class ListaComprasProveedor extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 153));
 
-        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/guardar.png"))); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Iconos/finales/aceptar.png"))); // NOI18N
         btnAceptar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
