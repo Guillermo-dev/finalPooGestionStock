@@ -225,7 +225,6 @@ public class Index extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
-        setFocusable(false);
         setFocusableWindowState(false);
         setResizable(false);
 
@@ -328,9 +327,11 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
+
         ventanasContainer.setBackground(new java.awt.Color(204, 204, 204));
         ventanasContainer.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         ventanasContainer.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+        ventanasContainer.setEnabled(false);
         ventanasContainer.setRequestFocusEnabled(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -1275,7 +1276,9 @@ public class Index extends javax.swing.JFrame {
         );
 
         ventanasContainer.addTab("", clie);
+
         facturasContainer.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+        facturasContainer.setEnabled(false);
 
         jPanel27.setBackground(new java.awt.Color(204, 204, 204));
         jPanel27.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
