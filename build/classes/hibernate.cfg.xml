@@ -54,11 +54,10 @@ Contributor(s):
         <property name="hibernate.c3p0.max_statements">50</property>
         <property name="hibernate.c3p0.idle_test_period">50</property>
         
-        <!-- Consolelogs de las consultas -->
-       
+        <!-- Consolelogs de las consultas 
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
-        
+        -->
         <mapping class="modelo.Articulo"/>
         <mapping class="modelo.Cliente"/>
         <mapping class="modelo.Factura"/>
