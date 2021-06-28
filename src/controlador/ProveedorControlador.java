@@ -14,7 +14,6 @@ import vista.ListaComprasProveedor;
 
 public class ProveedorControlador {
 
-    // En bd responsable_inscripto", "monotributista", "consumidor_final"
     static String[] RAZONES_SOCIALES = {"Responsable inscripto", "Monotributista", "Consumidor final"};
 
     public static void iniciarDropdownRazonSocial(Index view) {
