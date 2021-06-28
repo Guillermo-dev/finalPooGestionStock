@@ -158,8 +158,7 @@ public class FacturaCompraControlador {
                 || viewFacturasDetallesCompra.inputTextNombre.getText().equals("")
                 || viewFacturasDetallesCompra.inputTextDescripcion.getText().equals("")
                 || viewFacturasDetallesCompra.inputTextPrecio.getText().equals("")
-                || viewFacturasDetallesCompra.inputTextStockMinimo.getText().equals("")
-                || viewFacturasDetallesCompra.inputTextTotal.getText().equals("");
+                || viewFacturasDetallesCompra.inputTextStockMinimo.getText().equals("");
     }
 
     public static void agregarArticulo(FacturaVistaCompra viewFacturasDetallesCompra) {
