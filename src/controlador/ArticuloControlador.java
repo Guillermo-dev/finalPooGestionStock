@@ -108,7 +108,6 @@ public class ArticuloControlador {
     }
 
     public static boolean inputsTextInvalidos(Index view) {
-<<<<<<< HEAD
         if (view.artInputTextNombre.getText().equals("")
                 || view.artInputTextDescripcion.getText().equals("")
                 || view.artInputTextPrecio.getText().equals("")
@@ -116,15 +115,6 @@ public class ArticuloControlador {
                 || view.artInputTextStockMin.getText().equals("")
                 || view.artDropdownRubro.getSelectedItem() == "<Seleccionar rubro>"
                 || view.artDropdownProveedor.getSelectedItem() == "<Seleccionar Proveedor>") {
-=======
-        if (view.artInputTextNombre.equals("")
-                || view.artInputTextDescripcion.equals("")
-                || view.artInputTextPrecio.equals("")
-                || view.artInputTextStock.equals("")
-                || view.artInputTextStockMin.equals("")
-                || view.artDropdownRubro.getSelectedItem() == SELECCIONAR_RUBRO
-                || view.artDropdownProveedor.getSelectedItem() == SELECCIONAR_PROVEEDOR) {
->>>>>>> 0ebadab4561ec87311d9b7ccb717957b1178ef7f
             JOptionPane.showMessageDialog(null, "Rellene todos los campos");
             return true;
         } else {
