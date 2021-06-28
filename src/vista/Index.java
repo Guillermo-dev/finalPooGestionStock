@@ -328,7 +328,6 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-
         ventanasContainer.setBackground(new java.awt.Color(204, 204, 204));
         ventanasContainer.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         ventanasContainer.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
@@ -1276,7 +1275,6 @@ public class Index extends javax.swing.JFrame {
         );
 
         ventanasContainer.addTab("", clie);
-
         facturasContainer.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
 
         jPanel27.setBackground(new java.awt.Color(204, 204, 204));

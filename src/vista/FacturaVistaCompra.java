@@ -81,11 +81,9 @@ public class FacturaVistaCompra extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("FACTURA");
-
         jLabel2.setBackground(new java.awt.Color(0, 102, 153));
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("N° Factura:");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -190,7 +188,7 @@ public class FacturaVistaCompra extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
+                                        .addComponent(jLabel9)r
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(spinnerCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -428,6 +426,7 @@ public class FacturaVistaCompra extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> dropdownProveedor;
     public javax.swing.JComboBox<String> dropdownRubro;
     public javax.swing.JTextArea inputTextDescripcion;
+    public com.toedter.calendar.JDateChooser inputTextFecha;
     public javax.swing.JTextField inputTextNombre;
     public javax.swing.JTextField inputTextNumero;
     public javax.swing.JTextField inputTextPrecio;

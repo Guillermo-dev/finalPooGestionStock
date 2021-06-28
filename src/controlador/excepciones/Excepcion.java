@@ -32,6 +32,12 @@ public class Excepcion extends Exception{
         Matcher matcher = pattern.matcher(texto);
         if(matcher.find()){
             throw new Excepcion("El "+ dato +" no puede tener caracteres especiales ni numeros");
-        };
+        }
+    }
+    
+    public static void comprobarStocks (int stock_min, int stock)throws Excepcion{
+        if (stock_min < stock){
+            throw new Excepcion("El stock minimo no puede tener un valor mayor al stock");
+        }
     }
 }

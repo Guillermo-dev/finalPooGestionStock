@@ -18,8 +18,6 @@ public class GestionDeStock {
         Controlador ctrl = new Controlador(view, viewFacturasDetallesVenta, viewFacturasDetallesCompra, viewListaProveedores);
 
         ctrl.iniciar();
-
         //Agregar el diseño de la vista  3- AcrylLookAndFeel()
     }
-
 }

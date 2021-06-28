@@ -23,7 +23,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
         this.viewFacturasDetallesVenta = viewFacturasDetallesVenta;
         this.viewFacturasDetallesCompra = viewFacturasDetallesCompra;
         this.viewListaProveedores = viewListaProveedores;
-
+       
         // BOTONERA
         this.view.botoneraArt.addActionListener(this);
         this.view.botoneraProv.addActionListener(this);

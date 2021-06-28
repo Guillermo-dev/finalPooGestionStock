@@ -9,12 +9,11 @@ import modelo.Proveedor;
 import vista.Index;
 import modelo.services.ProveedorConsultas;
 import javax.swing.DefaultComboBoxModel;
-import modelo.services.FacturaConsultas;
+import org.hibernate.exception.ConstraintViolationException;
 import vista.ListaComprasProveedor;
 
 public class ProveedorControlador {
 
-    // En bd responsable_inscripto", "monotributista", "consumidor_final"
     static String[] RAZONES_SOCIALES = {"Responsable inscripto", "Monotributista", "Consumidor final"};
 
     public static void iniciarDropdownRazonSocial(Index view) {
@@ -27,29 +26,6 @@ public class ProveedorControlador {
         }
     }
 
-    public static String razonSocial(String razonSocialBd) {
-        switch (razonSocialBd) {
-            case "esponsable_inscripto":
-                return "Responsable inscripto";
-
-            case "monotributista":
-                return "Monotributista";
-
-            case "consumidor_final":
-                return "Consumidor final";
-
-            case "Responsable inscripto":
-                return "esponsable_inscripto";
-
-            case "Monotributista":
-                return "monotributista";
-
-            case "Consumidor final":
-                return "consumidor_final";
-        }
-        return "";
-    }
-
     public static void cargarTabla(JTable provTabla, ArrayList<Proveedor> proveedores) {
         DefaultTableModel tableModel = (DefaultTableModel) provTabla.getModel();
         tableModel.setNumRows(0);
@@ -59,7 +35,7 @@ public class ProveedorControlador {
             data[0] = Integer.toString(proveedor.getId());
             data[1] = proveedor.getCuilCuit();
             data[2] = proveedor.getNombre();
-            data[3] = razonSocial(proveedor.getRazonSocial());
+            data[3] = proveedor.getRazonSocial();
             data[4] = proveedor.getDireccion();
             data[5] = proveedor.getTelefono();
             data[6] = proveedor.getEmail();
@@ -112,8 +88,8 @@ public class ProveedorControlador {
         } else {
             try {
                 Excepcion.comprobarEmail(view.provInputTextEmail.getText());
-                long telefono = Long.parseLong(view.provInputTextTelefono.getText());
-                long cuil = Long.parseLong(view.provInputTextCuilT.getText());
+                Long.parseLong(view.provInputTextTelefono.getText());
+                Long.parseLong(view.provInputTextCuilT.getText());
                 Excepcion.comprobarTextos(view.provInputTextNombre.getText(), "nombre");
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos para el telefono y el cuil/t.");
@@ -137,7 +113,7 @@ public class ProveedorControlador {
             Proveedor proveedor = new Proveedor(
                     view.provInputTextNombre.getText(),
                     view.provInputTextCuilT.getText(),
-                    razonSocial(view.provDropdownRazonSocial.getSelectedItem().toString()),
+                    view.provDropdownRazonSocial.getSelectedItem().toString(),
                     view.provInputTextDireccion.getText(),
                     view.provInputTextTelefono.getText(),
                     view.provInputTextEmail.getText());
@@ -168,9 +144,8 @@ public class ProveedorControlador {
             tablaModel.removeRow(view.provTabla.getSelectedRow());
 
             vaciarInputTexts(view);
-        } catch (Exception e) {
-            // TODO
-            JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");
+        } catch (ConstraintViolationException e) {
+            JOptionPane.showMessageDialog(view, "El proveedor esata asociado a una factura, no se puede eliminar");
         }
     }
 

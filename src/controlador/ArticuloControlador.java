@@ -1,5 +1,6 @@
 package controlador;
 
+import controlador.excepciones.Excepcion;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -12,6 +13,7 @@ import vista.Index;
 import modelo.services.ArticuloConsultas;
 import modelo.services.ProveedorConsultas;
 import modelo.services.RubroConsultas;
+import org.hibernate.exception.ConstraintViolationException;
 
 public class ArticuloControlador {
 
@@ -113,9 +115,14 @@ public class ArticuloControlador {
             try {
                 int stock = Integer.parseInt(view.artInputTextStock.getText());
                 int stock_min = Integer.parseInt(view.artInputTextStockMin.getText());
-                double precio = Double.parseDouble(view.artInputTextPrecio.getText());
+                Double.parseDouble(view.artInputTextPrecio.getText());
+                Excepcion.comprobarStocks(stock_min, stock);
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos enteros para los stocks y valores reales para el precio.");
+                return true;
+            }
+            catch (Excepcion e){
+                JOptionPane.showMessageDialog(null, e.getMessage());
                 return true;
             }
             return false;
@@ -128,7 +135,7 @@ public class ArticuloControlador {
 
     public static void guardarArticulo(Index view) {
         if (inputsTextInvalidos(view)) {
-            JOptionPane.showMessageDialog(null, "Error al cargar articulo");
+            System.out.println("Error al cargar articulo");
         } else {
             int idProveedor = Integer.parseInt(view.artDropdownProveedor.getSelectedItem().toString().split("-")[0]);
             int idRubro = Integer.parseInt(view.artDropdownRubro.getSelectedItem().toString().split("-")[0]);
@@ -170,9 +177,8 @@ public class ArticuloControlador {
             tablaModel.removeRow(view.artTabla.getSelectedRow());
 
             vaciarInputTexts(view);
-        } catch (Exception e) {
-            // TODO
-            JOptionPane.showMessageDialog(null, "ERROR INESPERADO \n Intentolo mas tarde");
+        } catch (ConstraintViolationException e) {
+            JOptionPane.showMessageDialog(view, "Este articulo esta asociado a una factura");
         }
     }
 

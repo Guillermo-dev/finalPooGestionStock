@@ -30,10 +30,10 @@ public class Cliente {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST)
     private List<Factura> factura;
     
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST)
     private List<NotaCredito> notasCredito;
 
     public Cliente() {

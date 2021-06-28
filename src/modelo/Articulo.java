@@ -35,7 +35,7 @@ public class Articulo {
     @Column(name = "stock_minimo")
     private int stockMinimo;
 
-    @OneToMany(mappedBy = "articulo", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "articulo", cascade = CascadeType.PERSIST)
     private List<Linea> lineas;
 
     public Articulo() {

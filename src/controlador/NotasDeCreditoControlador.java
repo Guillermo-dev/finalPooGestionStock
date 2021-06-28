@@ -7,9 +7,11 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import modelo.Articulo;
 import modelo.Cliente;
 import modelo.Factura;
 import modelo.NotaCredito;
+import modelo.services.ArticuloConsultas;
 import modelo.services.FacturaConsultas;
 import modelo.services.NotaCreditoConsultas;
 import vista.FacturaVistaVenta;
@@ -104,6 +106,14 @@ public class NotasDeCreditoControlador {
         return false;
     }
 
+    public static void actualizarStock(Factura factura) {
+        factura.getLineas().forEach((linea) -> {
+            Articulo articulo = ArticuloConsultas.getArticulo(linea.getArticulo().getId());
+            articulo.sumarStock(linea.getCantidad());
+            ArticuloConsultas.updateArticulo(articulo, articulo.getId());
+        });
+    }
+    
     public static void crearNotaCredito(Index view) {
         if (!view.notDropDownFactura.getSelectedItem().equals("<Seleccionar Factura>")) {
             if (notaCreditoExistente(view)) {
@@ -119,6 +129,7 @@ public class NotasDeCreditoControlador {
                     Cliente cliente = factura.getCliente();
                     Date fecha = new Date();
 
+                    actualizarStock(factura);
                     NotaCredito notaCredito = new NotaCredito(factura, cliente, factura.getNumeroFactura(), factura.getTotal(), fecha);
                     NotaCreditoConsultas.saveFactura(notaCredito);
 
