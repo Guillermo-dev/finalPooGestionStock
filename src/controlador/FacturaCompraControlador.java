@@ -1,6 +1,5 @@
 package controlador;
 
-import controlador.excepciones.Excepcion;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -169,14 +168,10 @@ public class FacturaCompraControlador {
                 int stock = (Integer) viewFacturasDetallesCompra.spinnerCantidad.getValue();
                 int stock_min = Integer.parseInt(viewFacturasDetallesCompra.inputTextStockMinimo.getText());
                 Double.parseDouble(viewFacturasDetallesCompra.inputTextPrecio.getText());
-                // Excepcion.comprobarStocks(stock_min, stock);
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Ingrese solo un valor numerico entero para el stock minimo y real para el precio.");
                 return true;
-            } /*catch (Excepcion e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
-                return true;
-            }*/
+            }
             return false;
         }
     }

@@ -1,6 +1,5 @@
 package controlador;
 
-import controlador.excepciones.Excepcion;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -104,11 +103,11 @@ public class ArticuloControlador {
     }
 
     public static boolean inputsTextInvalidos(Index view) {
-        if (view.artInputTextNombre.equals("")
-                || view.artInputTextDescripcion.equals("")
-                || view.artInputTextPrecio.equals("")
-                || view.artInputTextStock.equals("")
-                || view.artInputTextStockMin.equals("")
+        if (view.artInputTextNombre.getText().equals("")
+                || view.artInputTextDescripcion.getText().equals("")
+                || view.artInputTextPrecio.getText().equals("")
+                || view.artInputTextStock.getText().equals("")
+                || view.artInputTextStockMin.getText().equals("")
                 || view.artDropdownRubro.getSelectedItem() == "<Seleccionar rubro>"
                 || view.artDropdownProveedor.getSelectedItem() == "<Seleccionar Proveedor>") {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos");
@@ -118,15 +117,11 @@ public class ArticuloControlador {
                 int stock = Integer.parseInt(view.artInputTextStock.getText());
                 int stock_min = Integer.parseInt(view.artInputTextStockMin.getText());
                 Double.parseDouble(view.artInputTextPrecio.getText());
-                // Excepcion.comprobarStocks(stock_min, stock);
+
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos enteros para los stocks y valores reales para el precio.");
                 return true;
             }
-            /*catch (Excepcion e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
-                return true;
-            }*/
             return false;
         }
     }
