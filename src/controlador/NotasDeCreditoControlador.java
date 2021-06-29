@@ -29,7 +29,7 @@ public class NotasDeCreditoControlador {
         view.notDropDownFactura.removeAllItems();
         dropModel.addElement(SELECCIONAR_FACTURA);
         facturas.forEach(factura -> {
-            dropModel.addElement(factura.getId() + "- " + factura.getNumeroFactura());
+            dropModel.addElement(factura.getId() + "- Numero:" + factura.getNumeroFactura());
         });
     }
 
@@ -40,7 +40,7 @@ public class NotasDeCreditoControlador {
         notasCreditos.forEach((notaCredito) -> {
             String[] data = new String[5];
             data[0] = Integer.toString(notaCredito.getId());
-            data[1] = notaCredito.getFactura().getId() + "- " + notaCredito.getFactura().getNumeroFactura();
+            data[1] = notaCredito.getFactura().getId() + "- Numero:" + notaCredito.getFactura().getNumeroFactura();
             data[2] = notaCredito.getCliente().getNombre() + " " + notaCredito.getCliente().getApellido();
             data[3] = formatoFecha.format(notaCredito.getFecha());
             data[4] = Float.toString(notaCredito.getImporte());
@@ -129,7 +129,7 @@ public class NotasDeCreditoControlador {
                         "Ya existe una nota de credito para esta factura");
             } else {
                 int resp = JOptionPane.showConfirmDialog(view, "Seguro de crear una nota de credito para la factura?\n"
-                        + "Numero:" + view.notDropDownFactura.getSelectedItem().toString().split("-")[1]);
+                        + view.notDropDownFactura.getSelectedItem().toString().split("-")[1]);
                 if (resp == 0) {
                     int idFactura = Integer.parseInt(view.notDropDownFactura.getSelectedItem().toString().split("-")[0]);
                     Factura factura = FacturaConsultas.getFactura(idFactura);
