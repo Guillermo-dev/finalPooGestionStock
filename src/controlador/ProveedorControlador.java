@@ -84,7 +84,7 @@ public class ProveedorControlador {
                 || view.provInputTextDireccion.getText().equals("")
                 || view.provInputTextTelefono.getText().equals("")
                 || view.provInputTextEmail.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+            JOptionPane.showMessageDialog(view, "Rellene todos los campos");
             return true;
         } else {
             try {
@@ -93,10 +93,10 @@ public class ProveedorControlador {
                 Long.parseLong(view.provInputTextCuilT.getText());
                 Excepcion.comprobarTextos(view.provInputTextNombre.getText(), "nombre");
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos para el telefono y el cuil/t.");
+                JOptionPane.showMessageDialog(view, "Error, compruebe los datos del proveedor");
                 return true;
             } catch (Excepcion e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                JOptionPane.showMessageDialog(view, e.getMessage());
                 return true;
             }
             return false;
@@ -108,9 +108,7 @@ public class ProveedorControlador {
     }
 
     public static void guardarProveedor(Index view) {
-        if (inputsTextInvalidos(view)) {
-            System.out.println("Error al cargar proveedor");
-        } else {
+        if (!inputsTextInvalidos(view)) {
             Proveedor proveedor = new Proveedor(
                     view.provInputTextNombre.getText(),
                     view.provInputTextCuilT.getText(),
@@ -122,14 +120,13 @@ public class ProveedorControlador {
                 try {
                     ProveedorConsultas.updateProveedor(proveedor, Integer.parseInt(view.provInputTextId.getText()));
                 } catch (Exception e) {
-                    //TODO
-                    JOptionPane.showMessageDialog(null, "Error inesperado");
+                    JOptionPane.showMessageDialog(view, "Error al actualizar el proveedor");
                 }
             } else {
                 try {
                     ProveedorConsultas.saveProveedor(proveedor);
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Error inesperado");
+                    JOptionPane.showMessageDialog(view, "Error al guardar el proveedor");
                 }
             }
             iniciarTabla(view);
@@ -147,19 +144,17 @@ public class ProveedorControlador {
 
                 vaciarInputTexts(view);
             } catch (ConstraintViolationException e) {
-                JOptionPane.showMessageDialog(view, "El proveedor esata asociado a una factura, no se puede eliminar");
+                JOptionPane.showMessageDialog(view, "No puede borrar éste proveedor.  \n Está asociado a una factura");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Seleccione un proveedor");
+            JOptionPane.showMessageDialog(view, "Seleccione un proveedor");
         }
 
     }
 
     public static void abrirListaCompra(Index view, ListaComprasProveedor listaProveedores) {
         if (view.provInputTextId.getText().equals("")) {
-            JOptionPane.showMessageDialog(
-                    view,
-                    "Seleccionar un proveedor");
+            JOptionPane.showMessageDialog(view, "Seleccione un proveedor");
         } else {
             int idProveedor = Integer.parseInt(view.provInputTextId.getText());
             Proveedor proveedor = ProveedorConsultas.getProveedor(idProveedor);

@@ -68,7 +68,7 @@ public class ClienteControlador {
                 || view.clieInputTextDireccion.getText().equals("")
                 || view.clieInputTextTelefono.getText().equals("")
                 || view.clieInputTextEmail.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+            JOptionPane.showMessageDialog(view, "Rellene todos los campos");
             return true;
         } //Reviso que el formato de los datos sean validos
         else {
@@ -79,10 +79,10 @@ public class ClienteControlador {
                 Excepcion.comprobarTextos(view.clieInputTextNombre.getText(), "nombre");
                 Excepcion.comprobarEmail(view.clieInputTextEmail.getText());
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos para DNI y/o telefono.");
+                JOptionPane.showMessageDialog(view, "Solo puede ingresar valores numéricos para DNI y/o teléfono.");
                 return true;
             } catch (Excepcion e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                JOptionPane.showMessageDialog(view, e.getMessage());
                 return true;
             }
             return false;
@@ -109,14 +109,14 @@ public class ClienteControlador {
                     ClienteConsultas.updateCliente(cliente, Integer.parseInt(view.clieInputTextId.getText()));
                 } catch (Exception e) {
                     // TODO
-                    JOptionPane.showMessageDialog(null, "Error inesperado");
+                    JOptionPane.showMessageDialog(view, "Error al actualizar el cliente");
                 }
             } else {
                 try {
                     ClienteConsultas.saveCliente(cliente);
                 } catch (Exception e) {
                     // TODO
-                    JOptionPane.showMessageDialog(null, "Error inesperado");
+                    JOptionPane.showMessageDialog(view, "Error al guardar el cliente");
                 }
             }
             iniciarTabla(view);
@@ -134,10 +134,10 @@ public class ClienteControlador {
 
                 vaciarInputTexts(view);
             } catch (ConstraintViolationException e) {
-                JOptionPane.showMessageDialog(view, "El cliente esata asociado a una factura, no se puede eliminar");
+                JOptionPane.showMessageDialog(view, "No se puede borrar el cliente. \n Está  asociado a una factura");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Seleccione un cliente");
+            JOptionPane.showMessageDialog(view, "Seleccione un cliente");
         }
     }
 }

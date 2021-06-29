@@ -25,8 +25,7 @@ public class FacturaControlador {
             data[1] = formatoFecha.format(factura.getFecha());
             data[2] = factura.getNumeroFactura();
             data[3] = Character.toString(factura.getProposito()).equals("V") ? "VENTA" : "COMPRA";
-            data[4] = Character.toString(factura.getProposito()).equals("V") ? factura.getCliente().getNombre()
-                    : factura.getProveedor().getNombre() + " " + factura.getProveedor().getCuilCuit();
+            data[4] = Character.toString(factura.getProposito()).equals("V") ? factura.getCliente().getNombre() : factura.getProveedor().getNombre();
             data[5] = Float.toString(factura.getTotal());
 
             tableModel.addRow(data);
@@ -83,14 +82,12 @@ public class FacturaControlador {
                 FacturaCompraControlador.abrirVistaFacturaVenta(facturaDetallesCompra, factura);
             }
         } else {
-            JOptionPane.showMessageDialog(
-                    facturaDetallesVenta,
-                    "Selecciones una factura");
+            JOptionPane.showMessageDialog(facturaDetallesVenta, "Seleccione una factura");
         }
     }
 
     public static void abrirNuevaFactura(FacturaVistaVenta facturaDetallesVenta, FacturaVistaCompra facturaDetallesCompra) {
-        int resp = JOptionPane.showOptionDialog(null, "Que tipo de factura desea hacer", "Nueva factura",
+        int resp = JOptionPane.showOptionDialog(null, "¿Qué tipo de factura desea generar?", "Nueva factura",
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,

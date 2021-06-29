@@ -48,7 +48,6 @@ public class RubroControlador {
     }
 
     public static boolean inputsTextValido(Index view) {
-        // TODO: Agregar logica de validacion
         return view.rubInputTextNombre.getText().equals("")
                 || view.rubInputTextDescripcion.getText().equals("");
     }
@@ -59,7 +58,7 @@ public class RubroControlador {
 
     public static void agregarRubro(Index view) {
         if (inputsTextValido(view)) {
-            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+            JOptionPane.showMessageDialog(view, "Rellene todos los campos");
         } else {
             Rubro rubro = new Rubro(
                     view.rubInputTextNombre.getText(),
@@ -68,15 +67,13 @@ public class RubroControlador {
                 try {
                     RubroConsultas.updateRubro(rubro, Integer.parseInt(view.rubInputTextId.getText()));
                 } catch (Exception e) {
-                    // TODO
-                    JOptionPane.showMessageDialog(null, "Error inesperado");
+                    JOptionPane.showMessageDialog(view, "Error al actualizar el rubro");
                 }
             } else {
                 try {
                     RubroConsultas.saveRubro(rubro);
                 } catch (Exception e) {
-                    // TODO
-                    JOptionPane.showMessageDialog(null, "Error inesperado");
+                    JOptionPane.showMessageDialog(view, "Error al guardar el rubro");
                 }
             }
             iniciarTabla(view);
@@ -94,10 +91,10 @@ public class RubroControlador {
 
                 vaciarInputTexts(view);
             } catch (ConstraintViolationException e) {
-                JOptionPane.showMessageDialog(view, "El rubro esata asociado a un articulo, no se puede eliminar");
+                JOptionPane.showMessageDialog(view, "No puede borrar éste rubro.  \n Está asociado a una articulo");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Seleccione un rubro");
+            JOptionPane.showMessageDialog(view, "Seleccione un rubro");
         }
 
     }

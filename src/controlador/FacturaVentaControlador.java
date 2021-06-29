@@ -128,12 +128,10 @@ public class FacturaVentaControlador {
             viewFacturasDetallesVenta.dropdownCliente.disable();
         } 
         catch (Excepcion e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(viewFacturasDetallesVenta, e.getMessage());
         }
         catch (Exception e) {
-            // TODO: MANEJO VALIDACION
-            System.out.println(e);
-            JOptionPane.showMessageDialog(null, "Error inesperado");
+            JOptionPane.showMessageDialog(viewFacturasDetallesVenta, "Error, compruebe los datos del artículo");
         }
     }
 
@@ -149,7 +147,7 @@ public class FacturaVentaControlador {
                 viewFacturasDetallesVenta.dropdownCliente.enable();
             }
         } else {
-            JOptionPane.showMessageDialog(viewFacturasDetallesVenta, "Seleccionar un articulo para eliminar");
+            JOptionPane.showMessageDialog(viewFacturasDetallesVenta, "Seleccionar un artículo");
         }
     }
 
@@ -178,7 +176,7 @@ public class FacturaVentaControlador {
             ArticuloConsultas.updateArticulo(articulo, idArticulo);
 
             if (articuloStockMinimo(articulo)) {
-                JOptionPane.showMessageDialog(null, "El articulo:" + articulo.getNombre() + "\n Esta por debajo de su stock minimo");
+                JOptionPane.showMessageDialog(null, "El artículo:" + articulo.getNombre() + ".\n Está por debajo de su stock mínimo");
             }
 
             Linea nuevaLinea = new Linea(articulo, factura, precioUnitario, cantidad, subtotal);
@@ -194,7 +192,7 @@ public class FacturaVentaControlador {
             viewFacturasDetallesVenta.setVisible(false);
         } else {
             if (facturaInvalida(viewFacturasDetallesVenta)) {
-                JOptionPane.showMessageDialog(null, "Error intenttelo nuevamente");
+                JOptionPane.showMessageDialog(viewFacturasDetallesVenta, "Error, compruebe la carga de los datos en la factura");
             } else {
                 int idCliente = Integer.parseInt(viewFacturasDetallesVenta.dropdownCliente.getSelectedItem().toString().split("-")[0]);
 
@@ -230,7 +228,7 @@ public class FacturaVentaControlador {
         if (!facturaInvalida(viewFacturasDetallesVenta)) {
             JOptionPane.showMessageDialog(
                     viewFacturasDetallesVenta,
-                    "Imprimiendo factura numero:" + viewFacturasDetallesVenta.inputTextNumero.getText()
+                    "Imprimiendo la factura número:" + viewFacturasDetallesVenta.inputTextNumero.getText()
                     + "\n chuck  \n chuck  \n chuck \n primmmmmm");
         }
     }

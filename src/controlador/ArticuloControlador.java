@@ -15,11 +15,10 @@ import modelo.services.RubroConsultas;
 import org.hibernate.exception.ConstraintViolationException;
 
 public class ArticuloControlador {
-    
+
     private static final String SELECCIONAR_RUBRO = "<Seleccionar rubro>";
     private static final String NUEVO_RUBRO = "Nuevo rubro";
     private static final String SELECCIONAR_PROVEEDOR = "<Seleccionar Proveedor>";
-    
 
     public static void iniciarDropdownRubros(Index view) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) view.artDropdownRubro.getModel();
@@ -113,9 +112,10 @@ public class ArticuloControlador {
                 || view.artInputTextPrecio.getText().equals("")
                 || view.artInputTextStock.getText().equals("")
                 || view.artInputTextStockMin.getText().equals("")
-                || view.artDropdownRubro.getSelectedItem() == "<Seleccionar rubro>"
-                || view.artDropdownProveedor.getSelectedItem() == "<Seleccionar Proveedor>") {
-            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+                || view.artDropdownRubro.getSelectedItem() == SELECCIONAR_RUBRO
+                || view.artDropdownProveedor.getSelectedItem() == SELECCIONAR_PROVEEDOR) {
+
+            JOptionPane.showMessageDialog(view, "Rellene todos los campos");
             return true;
         } else {
             try {
@@ -124,7 +124,7 @@ public class ArticuloControlador {
                 Double.parseDouble(view.artInputTextPrecio.getText());
 
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Ingrese solo valores numericos enteros para los stocks y valores reales para el precio.");
+                JOptionPane.showMessageDialog(view, "Ingrese solo valores numericos enteros para los stocks y valores reales para el precio.");
                 return true;
             }
             return false;
@@ -136,9 +136,7 @@ public class ArticuloControlador {
     }
 
     public static void guardarArticulo(Index view) {
-        if (inputsTextInvalidos(view)) {
-            System.out.println("Error al cargar articulo");
-        } else {
+        if (!inputsTextInvalidos(view)) {
             int idProveedor = Integer.parseInt(view.artDropdownProveedor.getSelectedItem().toString().split("-")[0]);
             int idRubro = Integer.parseInt(view.artDropdownRubro.getSelectedItem().toString().split("-")[0]);
             Proveedor proveedor = ProveedorConsultas.getProveedor(idProveedor);
@@ -155,15 +153,13 @@ public class ArticuloControlador {
                 try {
                     ArticuloConsultas.updateArticulo(articulo, Integer.parseInt(view.artInputTextId.getText()));
                 } catch (Exception e) {
-                    // TODO
-                    JOptionPane.showMessageDialog(null, "Error inesperado");
+                    JOptionPane.showMessageDialog(view, "Error al actualizar el artículo");
                 }
             } else {
                 try {
                     ArticuloConsultas.saveArticulo(articulo);
                 } catch (Exception e) {
-                    // TODO
-                    JOptionPane.showMessageDialog(null, "Error inesperado");
+                    JOptionPane.showMessageDialog(view, "Error al guardar el artículo");
                 }
             }
             iniciarTabla(view);
@@ -181,17 +177,17 @@ public class ArticuloControlador {
 
                 vaciarInputTexts(view);
             } catch (ConstraintViolationException e) {
-                JOptionPane.showMessageDialog(view, "Este articulo esta asociado a una factura");
+                JOptionPane.showMessageDialog(view, "No puede borrar éste artículo.  \n Está asociado a una factura");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Seleccione un articulo");
+            JOptionPane.showMessageDialog(view, "Seleccione un artículo");
         }
 
     }
 
     public static boolean nuevoRubroSeleccionado(Index view) {
         if (view.artDropdownRubro.getSelectedItem() == NUEVO_RUBRO) {
-            int resp = JOptionPane.showConfirmDialog(view, "Crear nuevo rubro?");
+            int resp = JOptionPane.showConfirmDialog(view, "¿Desea crear un nuevo rubro?");
             return (resp == 0);
         }
         return false;

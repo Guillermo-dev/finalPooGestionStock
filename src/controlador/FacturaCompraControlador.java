@@ -25,7 +25,7 @@ public class FacturaCompraControlador {
     private static final String SELECCIONAR_PROVEEDOR = "<Seleccionar Proveedor>";
     private static final String NUEVO_ARTICULO = "Nuevo Articulo";
     private static final String SELECCIONAR_RUBRO = "<Seleccionar rubro>";
-    
+
     public static void inicializarDropdownProveedores(FacturaVistaCompra viewFacturasDetallesCompra) {
         DefaultComboBoxModel dropModel = (DefaultComboBoxModel) viewFacturasDetallesCompra.dropdownProveedor.getModel();
         ArrayList<Proveedor> proveedores = ProveedorConsultas.getAllProveedores();
@@ -92,8 +92,7 @@ public class FacturaCompraControlador {
     }
 
     public static void cargarInputTexts(FacturaVistaCompra viewFacturasDetallesCompra) {
-        viewFacturasDetallesCompra.dropdownArticulo.setSelectedItem(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 0).toString()
-                + "- " + viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 1).toString());
+        viewFacturasDetallesCompra.dropdownArticulo.setSelectedItem(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 1).toString());
         viewFacturasDetallesCompra.inputTextNombre.setText(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 1).toString());
         viewFacturasDetallesCompra.inputTextDescripcion.setText(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 2).toString());
         viewFacturasDetallesCompra.dropdownRubro.setSelectedItem(viewFacturasDetallesCompra.tabla.getValueAt(viewFacturasDetallesCompra.tabla.getSelectedRow(), 3).toString());
@@ -166,7 +165,7 @@ public class FacturaCompraControlador {
                 || viewFacturasDetallesCompra.inputTextDescripcion.getText().equals("")
                 || viewFacturasDetallesCompra.inputTextPrecio.getText().equals("")
                 || viewFacturasDetallesCompra.inputTextStockMinimo.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+            JOptionPane.showMessageDialog(viewFacturasDetallesCompra, "Rellene todos los campos");
             return true;
         } else {
             try {
@@ -174,7 +173,7 @@ public class FacturaCompraControlador {
                 int stock_min = Integer.parseInt(viewFacturasDetallesCompra.inputTextStockMinimo.getText());
                 Double.parseDouble(viewFacturasDetallesCompra.inputTextPrecio.getText());
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Ingrese solo un valor numerico entero para el stock minimo y real para el precio.");
+                JOptionPane.showMessageDialog(viewFacturasDetallesCompra, "Error, compruebe los datos del artículo");
                 return true;
             }
             return false;
@@ -182,9 +181,7 @@ public class FacturaCompraControlador {
     }
 
     public static void agregarArticulo(FacturaVistaCompra viewFacturasDetallesCompra) {
-        if (inputsTextInvalidos(viewFacturasDetallesCompra)) {
-            System.out.println("Error al agregar articulo");
-        } else {
+        if (!inputsTextInvalidos(viewFacturasDetallesCompra)) {
             try {
                 DefaultTableModel tableModel = (DefaultTableModel) viewFacturasDetallesCompra.tabla.getModel();
                 float subtotal = (Integer) viewFacturasDetallesCompra.spinnerCantidad.getValue() * Float.parseFloat(viewFacturasDetallesCompra.inputTextPrecio.getText());
@@ -212,12 +209,8 @@ public class FacturaCompraControlador {
                 }
                 viewFacturasDetallesCompra.inputTextTotal.setText(Float.toString(total));
                 viewFacturasDetallesCompra.dropdownProveedor.disable();
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Error de calculo");
             } catch (Exception e) {
-                // TODO: MANEJO VALIDACION
-                System.out.println(e);
-                JOptionPane.showMessageDialog(null, "Error inesperado");
+                JOptionPane.showMessageDialog(viewFacturasDetallesCompra, "Error, compruebe los datos del artículo");
             }
         }
     }
@@ -233,8 +226,8 @@ public class FacturaCompraControlador {
             if (viewFacturasDetallesCompra.tabla.getRowCount() == 0) {
                 viewFacturasDetallesCompra.dropdownProveedor.enable();
             }
-        }else{
-            JOptionPane.showMessageDialog(viewFacturasDetallesCompra, "Seleccionar un articulo para eliminar");
+        } else {
+            JOptionPane.showMessageDialog(viewFacturasDetallesCompra, "Seleccione un artículo");
         }
     }
 
@@ -294,7 +287,7 @@ public class FacturaCompraControlador {
             viewFacturasDetallesCompra.setVisible(false);
         } else {
             if (facturaInvalida(viewFacturasDetallesCompra)) {
-                JOptionPane.showMessageDialog(null, "Error intentelo nuevamente");
+                JOptionPane.showMessageDialog(viewFacturasDetallesCompra, "Error, compruebe la carga de los datos en la factura");
             } else {
                 int idProveedor = Integer.parseInt(viewFacturasDetallesCompra.dropdownProveedor.getSelectedItem().toString().split("-")[0]);
 
@@ -375,14 +368,14 @@ public class FacturaCompraControlador {
         viewFacturasDetallesCompra.inputTextDescripcion.setEditable(false);
         viewFacturasDetallesCompra.inputTextStockMinimo.setEditable(false);
         viewFacturasDetallesCompra.btnAgregarProducto.setVisible(false);
-        viewFacturasDetallesCompra.btnBorrarProducto.setVisible(false); 
+        viewFacturasDetallesCompra.btnBorrarProducto.setVisible(false);
     }
 
     public static void abrirVistaFacturaVenta(FacturaVistaCompra viewFacturasDetallesCompra, Factura factura) {
         viewFacturasDetallesCompra.setTitle("Detalles Factura");
         viewFacturasDetallesCompra.setLocationRelativeTo(null);
         viewFacturasDetallesCompra.setVisible(true);
-      
+
         inicializarDropdownProveedores(viewFacturasDetallesCompra);
         inicializarDropdownArticulos(viewFacturasDetallesCompra);
         iniciarDropdownRubros(viewFacturasDetallesCompra);

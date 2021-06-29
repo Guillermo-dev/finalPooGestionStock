@@ -105,7 +105,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
     }
 
     public void iniciar() {
-        this.view.setTitle("Gestion de stock");
+        this.view.setTitle("Gestion de Stock");
         this.view.setLocationRelativeTo(null);
         this.view.setVisible(true);
 
@@ -404,6 +404,7 @@ public class Controlador implements ActionListener, ListSelectionListener, Chang
 
                 FacturaCompraControlador.cargarInputTexts(this.viewFacturasDetallesCompra);
             } catch (Exception e) {
+                System.out.println(e);
             }
         }
 
