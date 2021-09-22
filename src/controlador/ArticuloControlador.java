@@ -13,11 +13,11 @@ import modelo.services.ArticuloConsultas;
 import modelo.services.ProveedorConsultas;
 import modelo.services.RubroConsultas;
 import org.hibernate.exception.ConstraintViolationException;
-
+asd
 public class ArticuloControlador {
 
     private static final String SELECCIONAR_RUBRO = "<Seleccionar rubro>";
-    private static final String NUEVO_RUBRO = "Nuevo rubro";
+    private static final String NUEVO_RUBRO = "Nsuevo rubro";
     private static final String SELECCIONAR_PROVEEDOR = "<Seleccionar Proveedor>";
 
     public static void iniciarDropdownRubros(Index view) {
